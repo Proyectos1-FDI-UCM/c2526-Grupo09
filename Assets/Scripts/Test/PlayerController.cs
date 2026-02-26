@@ -1,5 +1,5 @@
 //---------------------------------------------------------
-// Breve descripción del contenido del archivo
+// SCRIPT TEMPORAL, SOLO SIRVE PARA DETECTAR Q HAY UN JUGADOR EN LA ESCENA DE PRUEBAS GETOBJECTS
 // Responsable de la creación de este archivo
 // Nombre del juego
 // Proyectos 1 - Curso 2025-26

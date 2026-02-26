@@ -9,20 +9,16 @@
 using UnityEngine;
 // Añadir aquí el resto de directivas using
 
-
 /// <summary>
-/// Antes de cada class, descripción de qué es y para qué sirve,
-/// usando todas las líneas que sean necesarias.
+/// Script para la gestión de recogida e interacción de objetos. Como el jugador sólo puede tener un objeto que se puede lanzar (throwable objects) a la vez,
+/// este script prohibe la interacción con el objeto al que este componente está unido mientras no se haya lanzado/tirado el anterior objeto.
+/// Está programado para que cuando el jugador entre en el collider de la entidad, tenga la oportunidad de realizar la acción asociada a "Interact" para recoger un
+/// throwable object.
 /// </summary>
 public class GetObject : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
-    // Documentar cada atributo que aparece aquí.
-    // El convenio de nombres de Unity recomienda que los atributos
-    // públicos y de inspector se nombren en formato PascalCase
-    // (palabras con primera letra mayúscula, incluida la primera letra)
-    // Ejemplo: MaxHealthPoints
 
     /// <summary>
     /// Variable que representa el InputManager, se debe configurar en el editor para que reconozca al gameObject. 
@@ -34,12 +30,6 @@ public class GetObject : MonoBehaviour
 
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
-    // Documentar cada atributo que aparece aquí.
-    // El convenio de nombres de Unity recomienda que los atributos
-    // privados se nombren en formato _camelCase (comienza con _, 
-    // primera palabra en minúsculas y el resto con la 
-    // primera letra en mayúsculas)
-    // Ejemplo: _maxHealthPoints
 
     /// <summary>
     /// Variable que contiene el script PlayerController, se utiliza para detectar al gameObject Player.
@@ -53,6 +43,7 @@ public class GetObject : MonoBehaviour
 
     /// <summary>
     /// Detecta si un gameObject con el script PlayerController (el jugador) está dentro del trigger del objeto.
+    /// True si está dentro, False en caso contrario.
     /// </summary>
     private bool _insideCollider = false;
 
@@ -61,10 +52,6 @@ public class GetObject : MonoBehaviour
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
-
-    // Por defecto están los típicos (Update y Start) pero:
-    // - Hay que añadir todos los que sean necesarios
-    // - Hay que borrar los que no se usen 
 
     /// <summary>
     /// Start is called on the frame when a script is enabled just before 
@@ -84,7 +71,7 @@ public class GetObject : MonoBehaviour
     /// </summary>
     void Update()
     {
-        if (_insideCollider && !_hasObject) { 
+        if (_insideCollider && !_hasObject) { // si el jugador está dentro del collider y no tiene objeto, entra en el if
             Debug.Log("no tiene objeto, puedes cogerlo");
                 if (Input.InteractWasPressedThisFrame()) {
                     _hasObject = true;
@@ -112,25 +99,6 @@ public class GetObject : MonoBehaviour
                 // desactiva el GUI de la burbuja
         }
     }
-
-    /* NO BORRARLO X AHORA; PROBLEMA: ESTE METODO SOLO SE EJECUTA EN LOS FRAMES DONDE SE MUEVE ALGUN COLLIDER/RIGIDBODY, SI EL PLAYER ESTA QUIETO NO FURULA
-    private void OnTriggerStay2D (Collider2D collision) // mientras el jugador permanezca dentro del trigger, tendrá la opción de recoger el objeto
-    {
-        _player = collision.gameObject.GetComponent<PlayerController>();
-        if (_player != null)
-            if (!_hasObject) {
-                // aparece GUI q muestra el botón (mando/teclado --> lo debe diferenciar) q sea un metodo a parte del gameManager o algo
-                // ...
-
-                Debug.Log("no tiene objeto, puedes cogerlo");
-                if (Input.InteractWasPressedThisFrame()) {
-                    _hasObject = true;
-                    Debug.Log("has cogido el objeto yayyy");
-                }
-            }
-    } // OnTriggerStay2D
-    */
-
     #endregion
 
     // ---- MÉTODOS PÚBLICOS ----
