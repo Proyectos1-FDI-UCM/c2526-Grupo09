@@ -38,12 +38,7 @@ public class FollowPlayer : MonoBehaviour
     /// </summary>
     [SerializeField] private float TimeNormal = 1f;
     [Header("Parámetros del paneo")]
-
-    /// <summary>
-    /// Velocidad de interpolación al hacer el paneo
-    /// </summary>
     [SerializeField] private float TimePaneo = 1f;
-
     /// <summary>
     /// Es la distancia máxima que se puede desplazar la cámara respecto al jugador en el momento de hacer el paneo.
     /// </summary>
@@ -78,15 +73,15 @@ public class FollowPlayer : MonoBehaviour
     {
         Vector2 dir = InputManager.Instance.PanVector;
         Vector3 pos = Target.position + Offset;
-        Vector3 Pan;
+        Vector3 pan;
 
         if (dir != Vector2.zero)
         {
-            Pan = new Vector3(dir.x, dir.y, 0).normalized * AlcanceMax;
+            pan = new Vector3(dir.x, dir.y, 0).normalized * AlcanceMax;
         }
-        else Pan=Vector3.zero;
-
-        transform.position = Vector3.Lerp(transform.position, pos + Pan, TimeNormal * Time.deltaTime);
+        else pan=Vector3.zero;
+        panOffset =Vector3.Lerp(panOffset, pan, TimePaneo * Time.deltaTime);
+        transform.position = Vector3.Lerp(transform.position, pos + panOffset, TimeNormal * Time.deltaTime);
     }
     #endregion
 

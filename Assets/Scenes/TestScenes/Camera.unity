@@ -989,6 +989,10 @@ PrefabInstance:
       propertyPath: Target
       value: 
       objectReference: {fileID: 1769770940}
+    - target: {fileID: 5459808395061662666, guid: 1455900c3704c18489f5483df602daa7, type: 3}
+      propertyPath: TimePaneo
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6786577745074158325, guid: 1455900c3704c18489f5483df602daa7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
