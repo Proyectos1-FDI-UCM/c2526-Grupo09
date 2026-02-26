@@ -1,26 +1,19 @@
 //---------------------------------------------------------
-// Contiene la clase ControllerTest
-// Guillermo Jiménez Díaz
-// Template-P1
+// Breve descripción del contenido del archivo
+// Responsable de la creación de este archivo
+// Nombre del juego
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
 
-using System;
 using UnityEngine;
-using UnityEngine.InputSystem;
-
 // Añadir aquí el resto de directivas using
 
 
 /// <summary>
-/// Componente simple para comprobar que funcionan los controles usando el InputManager.
-/// Si se usan los controles de movimiento, el GameObject se moverá una unidad con respecto
-/// a donde se haya creado.
-/// Si se pulsa el botón de disparo (_Fire_) entonces se cambia el color del sprite
-/// (requiere un componente de tipo SpriteRenderer)
+/// Antes de cada class, descripción de qué es y para qué sirve,
+/// usando todas las líneas que sean necesarias.
 /// </summary>
-[RequireComponent(typeof(SpriteRenderer))]
-public class ControllerTest : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
@@ -29,9 +22,6 @@ public class ControllerTest : MonoBehaviour
     // públicos y de inspector se nombren en formato PascalCase
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
-    
-    [SerializeField]
-    private SpriteRenderer spriteRenderer;
 
     #endregion
     
@@ -43,11 +33,6 @@ public class ControllerTest : MonoBehaviour
     // primera palabra en minúsculas y el resto con la 
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
-    
-    /// <summary>
-    /// Color original del SpriteRenderer
-    /// </summary>
-    private Color _spriteColor;
 
     #endregion
     
@@ -57,42 +42,22 @@ public class ControllerTest : MonoBehaviour
     // Por defecto están los típicos (Update y Start) pero:
     // - Hay que añadir todos los que sean necesarios
     // - Hay que borrar los que no se usen 
-
-
+    
     /// <summary>
-    /// Se ejecuta al crear el gameobject
-    /// Cacheamos el color original 
+    /// Start is called on the frame when a script is enabled just before 
+    /// any of the Update methods are called the first time.
     /// </summary>
-    private void Start()
+    void Start()
     {
-        if (spriteRenderer != null)
-        {
-            _spriteColor = spriteRenderer.color;    
-        }
+        
     }
 
     /// <summary>
-    /// Se ejecuta en cada frame
-    /// Mueve el objeto y cambia el color en función de las acciones del Input
+    /// Update is called every frame, if the MonoBehaviour is enabled.
     /// </summary>
     void Update()
     {
-        if (InputManager.Instance)
-        {
-            transform.localPosition = InputManager.Instance.MovementVector;
-            if (spriteRenderer != null)
-            {
-                if (InputManager.Instance.InteractWasPressedThisFrame())
-                {
-                    spriteRenderer.color = Color.green;
-                }
-
-                if (InputManager.Instance.InteractWasReleasedThisFrame())
-                {
-                    spriteRenderer.color = this._spriteColor;
-                }
-            }
-        }        
+        
     }
     #endregion
 
@@ -115,5 +80,5 @@ public class ControllerTest : MonoBehaviour
 
     #endregion   
 
-} // class ControllerTest 
+} // class PlayerController 
 // namespace

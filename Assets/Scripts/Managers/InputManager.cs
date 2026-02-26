@@ -61,11 +61,9 @@ public class InputManager : MonoBehaviour
     private InputSystem_Actions _theController;
     
     /// <summary>
-    /// Acción para Fire. Si tenemos más botones tendremos que crear más
-    /// acciones como esta (y crear los métodos que necesitemos para
-    /// conocer el estado del botón)
+    /// Acción para Interact.
     /// </summary>
-    private InputAction _fire;
+    private InputAction _interact;
 
     #endregion
 
@@ -154,13 +152,12 @@ public class InputManager : MonoBehaviour
     public Vector2 MovementVector { get; private set; }
 
     /// <summary>
-    /// Método para saber si el botón de disparo (Fire) está pulsado
-    /// Devolverá true en todos los frames en los que se mantenga pulsado
-    /// <returns>True, si el botón está pulsado</returns>
+    /// Método para saber si el botón de interactuar (Interact) está pulsado.
+    /// Devolverá true en todos los frames en los que se mantenga pulsado.
     /// </summary>
-    public bool FireIsPressed()
+    public bool InteractIsPressed()
     {
-        return _fire.IsPressed();
+        return _interact.IsPressed();
     }
 
     /// <summary>
@@ -169,11 +166,12 @@ public class InputManager : MonoBehaviour
     /// y false, en otro caso
     /// </returns>
     /// </summary>
-    public bool FireWasPressedThisFrame()
+    public bool InteractWasPressedThisFrame()
     {
-        return _fire.WasPressedThisFrame();
+        return _interact.WasPressedThisFrame();
     }
 
+    
     /// <summary>
     /// Método para saber si el botón de disparo (Fire) ha dejado de pulsarse
     /// durante este frame
@@ -181,10 +179,10 @@ public class InputManager : MonoBehaviour
     /// este frame; y false, en otro caso.
     /// </returns>
     /// </summary>
-    public bool FireWasReleasedThisFrame()
+    public bool InteractWasReleasedThisFrame()
     {
-        return _fire.WasReleasedThisFrame();
-    }
+        return _interact.WasReleasedThisFrame();
+    } 
 
     #endregion
 
@@ -212,7 +210,7 @@ public class InputManager : MonoBehaviour
         // El estado lo consultaremos a través de los métodos públicos que 
         // tenemos (FireIsPressed, FireWasPressedThisFrame 
         // y FireWasReleasedThisFrame)
-        _fire = _theController.Player.Fire;
+        _interact = _theController.Player.Interact;
     }
 
     /// <summary>
@@ -222,7 +220,11 @@ public class InputManager : MonoBehaviour
     /// <param name="context">Información sobre el evento de movimiento</param>
     private void OnMove(InputAction.CallbackContext context)
     {
-        MovementVector = context.ReadValue<Vector2>();
+        MovementVector += context.ReadValue<Vector2>();
+        // Estaba originalmente como MovementVector = context.ReadValue<Vector2>();, esto lo que hacía era que
+        // cuando se dejaba de pulsar la tecla, volvía a la pos inicial, pero he hecho un += para que se pueda mover
+        // en mi escena de testing, es un cambio temporal.
+
     }
 
     #endregion
