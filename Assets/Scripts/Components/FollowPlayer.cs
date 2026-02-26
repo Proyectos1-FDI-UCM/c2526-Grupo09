@@ -13,7 +13,7 @@ using UnityEngine;
 /// Antes de cada class, descripción de qué es y para qué sirve,
 /// usando todas las líneas que sean necesarias.
 /// </summary>
-public class NewMonoBehaviourScript : MonoBehaviour
+public class FollowPlayer : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
@@ -22,17 +22,33 @@ public class NewMonoBehaviourScript : MonoBehaviour
     // públicos y de inspector se nombren en formato PascalCase
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
+    /// <summary>
+    /// Asignar desde el inspector el transform del GameObject que la cámara debe seguir.
+    /// </summary>
+    [SerializeField] private Transform Target;
 
     /// <summary>
-    /// velocidad del jugador al caminar
+    /// El offset que tiene que tener la cámara en base del gameobject que debe seguir.
     /// </summary>
-    [SerializeField]
-    private float walkSpeed = 2.0f;
+    [SerializeField] private Vector3 Offset = new Vector3(0, 0, -10);
+
     /// <summary>
-    /// velocidad del jugador al correr
+    /// Velocidad de interpolación cuando la cámara sigue al gameobject, Contola lo rápido que la cámara alcanza la posición del jugador
+    /// valores bajos hace que el movimiento sea suave y con más delay, mientras que valores altos hace lo contrario.
     /// </summary>
-    [SerializeField]
-    private float runSpeed = 3.5f;
+    [SerializeField] private float TimeNormal = 1f;
+    [Header("Parámetros del paneo")]
+
+    /// <summary>
+    /// Velocidad de interpolación al hacer el paneo
+    /// </summary>
+    [SerializeField] private float TimePaneo = 1f;
+
+    /// <summary>
+    /// Es la distancia máxima que se puede desplazar la cámara respecto al jugador en el momento de hacer el paneo.
+    /// </summary>
+    [SerializeField] private float AlcanceMax = 1f;
+
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -43,6 +59,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
     // primera palabra en minúsculas y el resto con la 
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
+    private Vector3 panOffset;
 
     #endregion
 
@@ -54,23 +71,25 @@ public class NewMonoBehaviourScript : MonoBehaviour
     // - Hay que borrar los que no se usen 
 
     /// <summary>
-    /// Start is called on the frame when a script is enabled just before 
-    /// any of the Update methods are called the first time.
+    /// Se ejecuta cada frame, después de que se han llamado todas las funciones.
+    /// Se utiliza esto para garantizar que la posición de la cámara se actualice después de que se haya movido el jugador.
     /// </summary>
-    void Start()
+    private void LateUpdate()
     {
-        
-    }
+        Vector2 dir = InputManager.Instance.PanVector;
+        Vector3 pos = Target.position + Offset;
+        Vector3 Pan;
 
-    /// <summary>
-    /// Update is called every frame, if the MonoBehaviour is enabled.
-    /// En cada frame se mueve al jugador
-    /// </summary>
-    void Update()
-    {
-        MovePlayer();
+        if (dir != Vector2.zero)
+        {
+            Pan = new Vector3(dir.x, dir.y, 0).normalized * AlcanceMax;
+        }
+        else Pan=Vector3.zero;
+
+        transform.position = Vector3.Lerp(transform.position, pos + Pan, TimeNormal * Time.deltaTime);
     }
     #endregion
+
 
     // ---- MÉTODOS PÚBLICOS ----
     #region Métodos públicos
@@ -89,33 +108,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
 
-    void MovePlayer()
-    {
-        //Obtenemos la dirección del InputManager
-        Vector2 direction = InputManager.Instance.MovementVector;
-
-        //Variable para guardar la velocidad que se usa en ese momento
-        float currentSpeed;
-
-        //Comprobamos si se pulsa el Shift
-        if (Input.GetKey(KeyCode.LeftShift))
-        {
-            //Usamos la velocidad de correr
-            currentSpeed = runSpeed;
-        }
-        else
-        {
-            //Usamos la velocidad de caminar
-            currentSpeed = walkSpeed;
-        }
-
-        //Aplicamos el movimiento
-        //Multiplicamos la dirección por la velocidad y el tiempo
-        transform.Translate(direction * currentSpeed * Time.deltaTime);
-        
-    }
-
     #endregion
 
-} // class NewMonoBehaviourScript 
+} // class FollowPlayer 
 // namespace
