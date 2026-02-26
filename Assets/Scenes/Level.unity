@@ -507,7 +507,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1683100654}
   - component: {fileID: 1683100653}
-  - component: {fileID: 1683100652}
+  - component: {fileID: 1683100655}
   m_Layer: 0
   m_Name: KnobTestMovement
   m_TagString: Untagged
@@ -515,19 +515,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1683100652
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1683100651}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97732fedd24ad4802a91369c50a79064, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 1683100653}
 --- !u!212 &1683100653
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -598,6 +585,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1683100655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1683100651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cb519cbca97bbe4ab98e131b8b1789f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  walkSpeed: 2
+  runSpeed: 3.5
 --- !u!1 &1822045311
 GameObject:
   m_ObjectHideFlags: 0
