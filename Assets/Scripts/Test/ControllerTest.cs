@@ -82,12 +82,12 @@ public class ControllerTest : MonoBehaviour
             transform.localPosition = InputManager.Instance.MovementVector;
             if (spriteRenderer != null)
             {
-                if (InputManager.Instance.FireWasPressedThisFrame())
+                if (InputManager.Instance.InteractWasPressedThisFrame())
                 {
                     spriteRenderer.color = Color.green;
                 }
 
-                if (InputManager.Instance.FireWasReleasedThisFrame())
+                if (InputManager.Instance.InteractWasReleasedThisFrame())
                 {
                     spriteRenderer.color = this._spriteColor;
                 }

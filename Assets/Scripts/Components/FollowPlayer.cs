@@ -1,7 +1,7 @@
 //---------------------------------------------------------
 // Breve descripción del contenido del archivo
 // Responsable de la creación de este archivo
-// Bouquet Of Sins
+// Nombre del juego
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
 
@@ -9,12 +9,11 @@ using UnityEngine;
 // Añadir aquí el resto de directivas using
 
 
-    #ROOTNAMESPACEBEGIN#
 /// <summary>
 /// Antes de cada class, descripción de qué es y para qué sirve,
 /// usando todas las líneas que sean necesarias.
 /// </summary>
-public class #SCRIPTNAME# : MonoBehaviour
+public class FollowPlayer : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
@@ -23,9 +22,35 @@ public class #SCRIPTNAME# : MonoBehaviour
     // públicos y de inspector se nombren en formato PascalCase
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
+    /// <summary>
+    /// Asignar desde el inspector el transform del GameObject que la cámara debe seguir.
+    /// </summary>
+    [SerializeField] private Transform Target;
+
+    /// <summary>
+    /// El offset que tiene que tener la cámara en base del gameobject que debe seguir.
+    /// </summary>
+    [SerializeField] private Vector3 Offset = new Vector3(0, 0, -10);
+
+    /// <summary>
+    /// Velocidad de interpolación cuando la cámara sigue al gameobject, Contola lo rápido que la cámara alcanza la posición del jugador
+    /// valores bajos hace que el movimiento sea suave y con más delay, mientras que valores altos hace lo contrario.
+    /// </summary>
+    [SerializeField] private float TimeNormal = 1f;
+    [Header("Parámetros del paneo")]
+
+    /// <summary>
+    /// Velocidad de interpolación al hacer el paneo
+    /// </summary>
+    [SerializeField] private float TimePaneo = 1f;
+
+    /// <summary>
+    /// Es la distancia máxima que se puede desplazar la cámara respecto al jugador en el momento de hacer el paneo.
+    /// </summary>
+    [SerializeField] private float AlcanceMax = 1f;
 
     #endregion
-    
+
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
     // Documentar cada atributo que aparece aquí.
@@ -34,33 +59,37 @@ public class #SCRIPTNAME# : MonoBehaviour
     // primera palabra en minúsculas y el resto con la 
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
+    private Vector3 panOffset;
 
     #endregion
-    
+
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
-    
+
     // Por defecto están los típicos (Update y Start) pero:
     // - Hay que añadir todos los que sean necesarios
     // - Hay que borrar los que no se usen 
-    
-    /// <summary>
-    /// Start is called on the frame when a script is enabled just before 
-    /// any of the Update methods are called the first time.
-    /// </summary>
-    void Start()
-    {
-        #NOTRIM#
-    }
 
     /// <summary>
-    /// Update is called every frame, if the MonoBehaviour is enabled.
+    /// Se ejecuta cada frame, después de que se han llamado todas las funciones.
+    /// Se utiliza esto para garantizar que la posición de la cámara se actualice después de que se haya movido el jugador.
     /// </summary>
-    void Update()
+    private void LateUpdate()
     {
-        #NOTRIM#
+        Vector2 dir = InputManager.Instance.PanVector;
+        Vector3 pos = Target.position + Offset;
+        Vector3 Pan;
+
+        if (dir != Vector2.zero)
+        {
+            Pan = new Vector3(dir.x, dir.y, 0).normalized * AlcanceMax;
+        }
+        else Pan=Vector3.zero;
+
+        transform.position = Vector3.Lerp(transform.position, pos + Pan, TimeNormal * Time.deltaTime);
     }
     #endregion
+
 
     // ---- MÉTODOS PÚBLICOS ----
     #region Métodos públicos
@@ -71,7 +100,7 @@ public class #SCRIPTNAME# : MonoBehaviour
     // Ejemplo: GetPlayerController
 
     #endregion
-    
+
     // ---- MÉTODOS PRIVADOS ----
     #region Métodos Privados
     // Documentar cada método que aparece aquí
@@ -79,8 +108,7 @@ public class #SCRIPTNAME# : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
 
-    #endregion   
+    #endregion
 
-} // class #SCRIPTNAME# 
-#NOTRIM#
-#ROOTNAMESPACEEND# // namespace
+} // class FollowPlayer 
+// namespace

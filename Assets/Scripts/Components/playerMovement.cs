@@ -92,7 +92,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
     void MovePlayer()
     {
         //Obtenemos la dirección del InputManager
-        Vector3 direction = InputManager.Instance.MovementVector;
+        Vector2 direction = InputManager.Instance.MovementVector;
 
         //Variable para guardar la velocidad que se usa en ese momento
         float currentSpeed;

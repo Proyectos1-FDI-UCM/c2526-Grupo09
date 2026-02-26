@@ -1,7 +1,7 @@
 //---------------------------------------------------------
 // Breve descripción del contenido del archivo
 // Responsable de la creación de este archivo
-// Bouquet Of Sins
+// Nombre del juego
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
 
@@ -9,12 +9,11 @@ using UnityEngine;
 // Añadir aquí el resto de directivas using
 
 
-    #ROOTNAMESPACEBEGIN#
 /// <summary>
 /// Antes de cada class, descripción de qué es y para qué sirve,
 /// usando todas las líneas que sean necesarias.
 /// </summary>
-public class #SCRIPTNAME# : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
@@ -50,7 +49,7 @@ public class #SCRIPTNAME# : MonoBehaviour
     /// </summary>
     void Start()
     {
-        #NOTRIM#
+        
     }
 
     /// <summary>
@@ -58,7 +57,7 @@ public class #SCRIPTNAME# : MonoBehaviour
     /// </summary>
     void Update()
     {
-        #NOTRIM#
+        
     }
     #endregion
 
@@ -81,6 +80,5 @@ public class #SCRIPTNAME# : MonoBehaviour
 
     #endregion   
 
-} // class #SCRIPTNAME# 
-#NOTRIM#
-#ROOTNAMESPACEEND# // namespace
+} // class PlayerController 
+// namespace
