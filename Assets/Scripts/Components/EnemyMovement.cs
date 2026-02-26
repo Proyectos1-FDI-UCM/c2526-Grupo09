@@ -1,20 +1,20 @@
 //---------------------------------------------------------
 // Breve descripción del contenido del archivo
-// Responsable de la creación de este archivo
+// Alvaro Sosa Rodriguez
 // Bouquet Of Sins
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
 
+using System.Collections;
 using UnityEngine;
 // Añadir aquí el resto de directivas using
 
 
-    #ROOTNAMESPACEBEGIN#
 /// <summary>
 /// Antes de cada class, descripción de qué es y para qué sirve,
 /// usando todas las líneas que sean necesarias.
 /// </summary>
-public class #SCRIPTNAME# : MonoBehaviour
+public class EnemyMovement : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
@@ -23,9 +23,15 @@ public class #SCRIPTNAME# : MonoBehaviour
     // públicos y de inspector se nombren en formato PascalCase
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
+    [SerializeField]
+    private Transform[] Positions; // Array de posiciones a donde irá el enemigo
+    [SerializeField]
+    private float TimeInEachPos = 0;
+    [SerializeField]
+    private float Speed;
 
     #endregion
-    
+
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
     // Documentar cada atributo que aparece aquí.
@@ -36,6 +42,7 @@ public class #SCRIPTNAME# : MonoBehaviour
     // Ejemplo: _maxHealthPoints
 
     #endregion
+    private int i = 0;
     
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
@@ -50,7 +57,6 @@ public class #SCRIPTNAME# : MonoBehaviour
     /// </summary>
     void Start()
     {
-        #NOTRIM#
     }
 
     /// <summary>
@@ -58,7 +64,11 @@ public class #SCRIPTNAME# : MonoBehaviour
     /// </summary>
     void Update()
     {
-        #NOTRIM#
+        if (i < Positions.Length)
+        {
+            MoveEnemy(Speed, TimeInEachPos, i);
+            if (Vector3.Distance(transform.position, Positions[i].position) < 0.1f) i = (i + 1) % Positions.Length;
+        }
     }
     #endregion
 
@@ -71,7 +81,7 @@ public class #SCRIPTNAME# : MonoBehaviour
     // Ejemplo: GetPlayerController
 
     #endregion
-    
+
     // ---- MÉTODOS PRIVADOS ----
     #region Métodos Privados
     // Documentar cada método que aparece aquí
@@ -79,8 +89,11 @@ public class #SCRIPTNAME# : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
 
+    private void MoveEnemy(float speed, float time, int i)
+    {
+        transform.position = Vector3.MoveTowards(transform.position, Positions[i].position, speed * Time.deltaTime);
+    }
     #endregion   
 
-} // class #SCRIPTNAME# 
-#NOTRIM#
-#ROOTNAMESPACEEND# // namespace
+} // class EnemyMovement 
+// namespace
