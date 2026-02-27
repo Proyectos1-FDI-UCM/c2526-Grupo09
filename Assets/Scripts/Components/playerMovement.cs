@@ -13,7 +13,7 @@ using UnityEngine;
 /// Antes de cada class, descripción de qué es y para qué sirve,
 /// usando todas las líneas que sean necesarias.
 /// </summary>
-public class NewMonoBehaviourScript : MonoBehaviour
+public class playerMovement : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
@@ -89,13 +89,17 @@ public class NewMonoBehaviourScript : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
 
+    /// <summary>
+    /// Método que se encarga de manejar el movimeinto del jugador
+    /// </summary>
     void MovePlayer()
     {
         //Obtenemos la dirección del InputManager
         Vector2 direction = InputManager.Instance.MovementVector;
+        Debug.Log(direction);
 
         //Variable para guardar la velocidad que se usa en ese momento
-        float currentSpeed;
+        float currentSpeed =walkSpeed;
 
         //Comprobamos si se pulsa el Shift
         if (Input.GetKey(KeyCode.LeftShift))

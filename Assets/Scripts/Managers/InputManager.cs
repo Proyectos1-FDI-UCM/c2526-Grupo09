@@ -236,10 +236,7 @@ public class InputManager : MonoBehaviour
     /// <param name="context">Información sobre el evento de movimiento</param>
     private void OnMove(InputAction.CallbackContext context)
     {
-        MovementVector += context.ReadValue<Vector2>();
-        // Estaba originalmente como MovementVector = context.ReadValue<Vector2>();, esto lo que hacía era que
-        // cuando se dejaba de pulsar la tecla, volvía a la pos inicial, pero he hecho un += para que se pueda mover
-        // en mi escena de testing, es un cambio temporal.
+        MovementVector = context.ReadValue<Vector2>();
     }
     private void OnPan(InputAction.CallbackContext context)
     {
