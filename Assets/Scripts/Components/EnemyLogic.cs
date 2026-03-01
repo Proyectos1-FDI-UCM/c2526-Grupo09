@@ -14,7 +14,7 @@ using UnityEngine;
 /// Antes de cada class, descripción de qué es y para qué sirve,
 /// usando todas las líneas que sean necesarias.
 /// </summary>
-public class EnemyMovement : MonoBehaviour
+public class EnemyLogic : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
@@ -23,10 +23,15 @@ public class EnemyMovement : MonoBehaviour
     // públicos y de inspector se nombren en formato PascalCase
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
+
+    /// <summary>
+    /// El atributo Positions define las posiciones a las que irá el enemigo cuando este patrullando.
+    /// </summary>
     [SerializeField]
-    private Transform[] Positions; // Array de posiciones a donde irá el enemigo
-    [SerializeField]
-    private float TimeInEachPos = 0;
+    private Transform[] Positions;
+    /// <summary>
+    /// El atributo speed define la velocidad a la que se mueve el enemigo.
+    /// </summary>
     [SerializeField]
     private float Speed;
 
@@ -41,8 +46,19 @@ public class EnemyMovement : MonoBehaviour
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
 
+    /// <summary>
+    /// La variable _posIndex es el índice que indica en que posición se encuentra el enemigo del array de posiciones
+    /// </summary>
     #endregion
-    private int i = 0;
+    private int _posIndex = 0;
+    /// <summary>
+    /// La variable _heardNoise determina si el enemigo a entrado en contacto con un sonido.
+    /// </summary>
+    private bool _heardNoise = false;
+    /// <summary>
+    /// La variable _isPlayerInRange determina si el jugador está dentro del rango de vision.
+    /// </summary>
+    private bool _isPlayerInRange = false;
     
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
@@ -64,11 +80,7 @@ public class EnemyMovement : MonoBehaviour
     /// </summary>
     void Update()
     {
-        if (i < Positions.Length)
-        {
-            MoveEnemy(Speed, TimeInEachPos, i);
-            if (Vector3.Distance(transform.position, Positions[i].position) < 0.1f) i = (i + 1) % Positions.Length;
-        }
+        UpdateEnemyState();
     }
     #endregion
 
@@ -88,10 +100,68 @@ public class EnemyMovement : MonoBehaviour
     // El convenio de nombres de Unity recomienda que estos métodos
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
+    /// <summary>
+    /// Se encarga de mover al enemigo de una posicion a otra a cierta velocidad.
+    /// </summary>
+    /// <param name="speed"></param>
+    /// <param name="time"></param>
+    /// <param name="i"></param>
+    /// 
 
-    private void MoveEnemy(float speed, float time, int i)
+
+
+    /// <summary>
+    /// 
+    /// </summary>
+    private void PerformPatrol(float speed)
     {
-        transform.position = Vector3.MoveTowards(transform.position, Positions[i].position, speed * Time.deltaTime);
+        if (_posIndex < Positions.Length)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, Positions[_posIndex].position, speed * Time.deltaTime);
+            if (Vector3.Distance(transform.position, Positions[_posIndex].position) < 0.1f)
+            {
+                _posIndex = (_posIndex + 1) % Positions.Length;
+            }
+        } 
+    }
+    /// <summary>
+    /// 
+    /// </summary>
+    private void UpdateEnemyState()
+    {
+        if (!_heardNoise && !_isPlayerInRange)
+        {
+            PerformPatrol(Speed);
+        }
+        else if (_heardNoise && !_isPlayerInRange)
+        {
+            PerformChase();
+        }
+        else if (_heardNoise && _isPlayerInRange)
+        {
+            PerformAttack();
+        }
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    private void PerformChase()
+    {
+
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    private void PerformAttack()
+    {
+
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        // Hacer Ducktyping para saber si es un sonido. Si lo es, poner _heardNoise a true
     }
     #endregion   
 
