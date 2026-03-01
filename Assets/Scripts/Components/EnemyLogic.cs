@@ -59,6 +59,8 @@ public class EnemyLogic : MonoBehaviour
     /// La variable _isPlayerInRange determina si el jugador está dentro del rango de vision.
     /// </summary>
     private bool _isPlayerInRange = false;
+
+    private Transform _noiseOrigin;
     
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
@@ -113,11 +115,11 @@ public class EnemyLogic : MonoBehaviour
     /// <summary>
     /// 
     /// </summary>
-    private void PerformPatrol(float speed)
+    private void PerformPatrol()
     {
         if (_posIndex < Positions.Length)
         {
-            transform.position = Vector3.MoveTowards(transform.position, Positions[_posIndex].position, speed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, Positions[_posIndex].position, Speed * Time.deltaTime);
             if (Vector3.Distance(transform.position, Positions[_posIndex].position) < 0.1f)
             {
                 _posIndex = (_posIndex + 1) % Positions.Length;
@@ -131,11 +133,11 @@ public class EnemyLogic : MonoBehaviour
     {
         if (!_heardNoise && !_isPlayerInRange)
         {
-            PerformPatrol(Speed);
+            PerformPatrol();
         }
         else if (_heardNoise && !_isPlayerInRange)
         {
-            PerformChase();
+            StartCoroutine(PerformChase());
         }
         else if (_heardNoise && _isPlayerInRange)
         {
@@ -144,11 +146,13 @@ public class EnemyLogic : MonoBehaviour
     }
 
     /// <summary>
-    /// 
+    /// Si el enemigo detecta un sonido, este se movera al origen del mismo.
     /// </summary>
-    private void PerformChase()
+    private IEnumerator PerformChase()
     {
-
+        yield return new WaitForSeconds(1f);
+        Debug.Log("Chase");
+        transform.position = Vector3.MoveTowards(transform.position, _noiseOrigin.position, Speed * Time.deltaTime);
     }
 
     /// <summary>
@@ -159,9 +163,20 @@ public class EnemyLogic : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Detecta si el enemigo entra en contacto con una onda de sonido.
+    /// </summary>
+    /// <param name="collision"></param>
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // Hacer Ducktyping para saber si es un sonido. Si lo es, poner _heardNoise a true
+        NoiseCircle noiseCircle = collision.gameObject.GetComponent<NoiseCircle>();
+        if (noiseCircle != null && !_heardNoise)
+        {
+            Debug.Log("Detecta ruido");
+            _noiseOrigin = noiseCircle.gameObject.transform;
+            _heardNoise = true;
+        }
     }
     #endregion   
 
