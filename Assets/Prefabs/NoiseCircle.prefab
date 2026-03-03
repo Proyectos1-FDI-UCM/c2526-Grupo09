@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6094459377498727721}
   - component: {fileID: 9158579597186785767}
   - component: {fileID: 6618271151952576947}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: NoiseCircle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
