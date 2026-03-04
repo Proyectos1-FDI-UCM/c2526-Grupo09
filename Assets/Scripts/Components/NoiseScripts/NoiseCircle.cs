@@ -33,6 +33,8 @@ public class NoiseCircle : MonoBehaviour
     // primera palabra en minúsculas y el resto con la 
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
+
+    bool _end;  // indica si ha llegado ya a su posición
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -42,17 +44,17 @@ public class NoiseCircle : MonoBehaviour
     // - Hay que añadir todos los que sean necesarios
     // - Hay que borrar los que no se usen 
 
+    void Start()
+    {
+        _end = false;
+    }
+
     /// <summary>
     /// Update is called every frame, if the MonoBehaviour is enabled.
     /// </summary>
-    void Update()
+    void FixedUpdate()
     {
-        if (transform.localScale.x < PosFinal.x &&
-            transform.localScale.y < PosFinal.y)
-        {
-            transform.localScale += new Vector3(1, 1, 0) * Speed * Time.deltaTime;
-        }
-        else Destroy(this.gameObject);    
+        CircleActive(ref _end);
     }
     #endregion
 
@@ -64,6 +66,19 @@ public class NoiseCircle : MonoBehaviour
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
 
+    public void SetNoiseValues(float speed, Vector3 pos)  // establece los valores para el círculo
+    {
+        Debug.Log("PENEPENEPNEPENPENPENPE");
+        Speed = speed;
+        PosFinal = pos;
+        while (!_end)
+        {
+            Debug.Log("HOLAHOLAHOLAHOLAHOLA");
+            
+        }
+        _end = false;
+        Destroy(this.gameObject);
+    }
     #endregion
     
     // ---- MÉTODOS PRIVADOS ----
@@ -73,6 +88,18 @@ public class NoiseCircle : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
 
+    private void CircleActive(ref bool _end)
+    {
+        if (transform.localScale.x < PosFinal.x &&
+            transform.localScale.y < PosFinal.y)
+        {
+            transform.localScale += new Vector3(1, 1, 0) * Speed * Time.deltaTime;
+        }
+        else
+        {
+            _end = true;
+        }     
+    }
     #endregion   
 
 } // class NoiseCircle 

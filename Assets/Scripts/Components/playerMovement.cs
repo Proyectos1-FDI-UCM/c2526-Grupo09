@@ -62,9 +62,18 @@ public class playerMovement : MonoBehaviour
     /// Update is called every frame, if the MonoBehaviour is enabled.
     /// En cada frame se mueve al jugador
     /// </summary>
-    void FixedUpdate()
+    void Update()
     {
+        _posAnterior = transform.position;  // se guarda la posición antes de moverse
         MovePlayer();
+        _posActual = transform.position;  // se guarda la posición de después de moverse
+        // si son distintas las posiciones de antes y después, el jugador se ha movido
+        if (_posAnterior != _posActual)
+        {
+            Debug.Log("AAAAAAAAAAAAAAAAAA");
+            PlayerNoise playerNoise = transform.GetComponent<PlayerNoise>();
+            playerNoise.PlayerMoving();
+        }
     }
     #endregion
 
@@ -90,7 +99,6 @@ public class playerMovement : MonoBehaviour
     /// </summary>
     void MovePlayer()
     {
-        _posAnterior = transform.position;  // se guarda la posición antes de moverse
         //Obtenemos la dirección del InputManager
         Vector2 direction = InputManager.Instance.MovementVector;
         Debug.Log(direction);
@@ -112,13 +120,7 @@ public class playerMovement : MonoBehaviour
 
         //Aplicamos el movimiento
         //Multiplicamos la dirección por la velocidad y el tiempo
-        transform.Translate(direction * currentSpeed * Time.deltaTime);
-        _posActual = transform.position;  // se guarda la posición de después de moverse
-        // si son distintas las posiciones de antes y después, el jugador se ha movido
-        if (_posAnterior != _posActual)
-        {
-
-        }
+        transform.Translate(direction * currentSpeed * Time.deltaTime);  
     }
 
     #endregion
