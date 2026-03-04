@@ -17,10 +17,6 @@ public class NoiseCircle : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
-    // Documentar cada atributo que aparece aquí.
-    // El convenio de nombres de Unity recomienda que los atributos
-    // públicos y de inspector se nombren en formato PascalCase
-    // (palabras con primera letra mayúscula, incluida la primera letra)
     [SerializeField]
     private float Speed = 1.0f;  // velocidad de aumento de tamaño
 
@@ -37,7 +33,6 @@ public class NoiseCircle : MonoBehaviour
     // primera palabra en minúsculas y el resto con la 
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
-
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -48,23 +43,16 @@ public class NoiseCircle : MonoBehaviour
     // - Hay que borrar los que no se usen 
 
     /// <summary>
-    /// Start is called on the frame when a script is enabled just before 
-    /// any of the Update methods are called the first time.
-    /// </summary>
-    void Start()
-    {
-        
-    }
-
-    /// <summary>
     /// Update is called every frame, if the MonoBehaviour is enabled.
     /// </summary>
     void Update()
     {
-        if (transform.localScale.x < PosFinal.x && transform.localScale.y < PosFinal.y && transform.localScale.z < PosFinal.z)
+        if (transform.localScale.x < PosFinal.x &&
+            transform.localScale.y < PosFinal.y)
         {
             transform.localScale += new Vector3(1, 1, 0) * Speed * Time.deltaTime;
         }
+        else Destroy(this.gameObject);    
     }
     #endregion
 
