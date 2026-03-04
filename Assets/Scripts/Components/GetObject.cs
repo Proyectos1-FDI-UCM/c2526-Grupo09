@@ -20,12 +20,6 @@ public class GetObject : MonoBehaviour
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
 
-    /// <summary>
-    /// Variable que representa el InputManager, se debe configurar en el editor para que reconozca al gameObject. 
-    /// Se utiliza para llamar a los métodos public del Script InputManager.
-    /// </summary>
-    public InputManager Input;
-
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -60,9 +54,10 @@ public class GetObject : MonoBehaviour
     void Start()
     {
         // comprobamos que el componente está bien configurado desde el editor y que la escena esté bien montada
-        if (Input == null) {
+        if (InputManager.Instance == null) 
+        {
             Debug.Log("gameObject InputManager not found, please check that it is attached to this script in the editor");
-            Destroy(this);
+            Destroy(this.gameObject);
         }
     }
 
@@ -71,9 +66,12 @@ public class GetObject : MonoBehaviour
     /// </summary>
     void Update()
     {
-        if (_insideCollider && !_hasObject) { // si el jugador está dentro del collider y no tiene objeto, entra en el if
+        // si el jugador está dentro del collider y no tiene objeto, entra en el if
+        if (_insideCollider && !_hasObject) 
+        { 
             Debug.Log("no tiene objeto, puedes cogerlo");
-                if (Input.InteractWasPressedThisFrame()) {
+                if (InputManager.Instance.InteractWasPressedThisFrame()) 
+                {
                     _hasObject = true;
                     Debug.Log("has cogido el objeto yayyy");
                 }
@@ -83,7 +81,8 @@ public class GetObject : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         _player = collision.gameObject.GetComponent<PlayerController>();
-        if (_player != null) {
+        if (_player != null) 
+        {
             _insideCollider = true;
             // if (!_hasObject)
                 // activa el GUI de la burbuja
@@ -93,7 +92,8 @@ public class GetObject : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         _player = collision.gameObject.GetComponent<PlayerController>();
-        if (_player != null) {
+        if (_player != null) 
+        {
             _insideCollider = false;
             // if (!_hasObject)
                 // desactiva el GUI de la burbuja
