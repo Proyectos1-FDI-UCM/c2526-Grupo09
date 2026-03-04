@@ -92,7 +92,7 @@ public class HidingSpot : MonoBehaviour
     //Una vez el jugador se acerque al collider, se establece como que lo está con _insideCollider.
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        _player = collision.gameObject.GetComponent<playerMovement>();
+        _player = collision.gameObject.GetComponent<PlayerMovement>();
         if (_player != null)
         {
             _insideCollider = true;
@@ -104,7 +104,7 @@ public class HidingSpot : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        _player = collision.gameObject.GetComponent<playerMovement>();
+        _player = collision.gameObject.GetComponent<PlayerMovement>();
         if (_player != null)
         {
             _insideCollider = false;
@@ -119,7 +119,7 @@ public class HidingSpot : MonoBehaviour
     {
         //_playerSprite = _player.GetComponent<SpriteRenderer>();
         IsHiding = true;
-        player.GetComponent<playerMovement>().enabled = false;
+        player.GetComponent<PlayerMovement>().enabled = false;
         player.transform.position = transform.position;
 
 
@@ -134,7 +134,7 @@ public class HidingSpot : MonoBehaviour
     {
         IsHiding = false; 
         hidingSprite.sortingOrder = 0;
-        player.GetComponent<playerMovement>().enabled = true;
+        player.GetComponent<PlayerMovement>().enabled = true;
 
 
         //_player.SetHidden(false);
