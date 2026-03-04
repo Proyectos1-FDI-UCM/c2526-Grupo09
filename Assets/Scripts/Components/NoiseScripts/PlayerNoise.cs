@@ -1,7 +1,7 @@
 //---------------------------------------------------------
-// Comportamiento del círculo que generan los ruidos
+// Ruido que genera el jugador al caminar
 // Carmen Rosino Vílchez
-// Bouquet of Sins
+// Bouquet Of Sins
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
 
@@ -13,16 +13,11 @@ using UnityEngine;
 /// Antes de cada class, descripción de qué es y para qué sirve,
 /// usando todas las líneas que sean necesarias.
 /// </summary>
-public class NoiseCircle : MonoBehaviour
+public class PlayerNoise : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
-    [SerializeField]
-    private float Speed = 1.0f;  // velocidad de aumento de tamaño
-
-    [SerializeField]
-    private Vector3 PosFinal = new Vector3(5, 5, 5);  // posición final del círculo
-
+    [SerializeField] private GameObject Circulo;  // círculo de ruido que se genera
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -33,6 +28,7 @@ public class NoiseCircle : MonoBehaviour
     // primera palabra en minúsculas y el resto con la 
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
+
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -43,16 +39,20 @@ public class NoiseCircle : MonoBehaviour
     // - Hay que borrar los que no se usen 
 
     /// <summary>
+    /// Start is called on the frame when a script is enabled just before 
+    /// any of the Update methods are called the first time.
+    /// </summary>
+    void Start()
+    {
+        Circulo.SetActive(false);  // se oculta el círculo
+    }
+
+    /// <summary>
     /// Update is called every frame, if the MonoBehaviour is enabled.
     /// </summary>
     void Update()
     {
-        if (transform.localScale.x < PosFinal.x &&
-            transform.localScale.y < PosFinal.y)
-        {
-            transform.localScale += new Vector3(1, 1, 0) * Speed * Time.deltaTime;
-        }
-        else Destroy(this.gameObject);    
+        
     }
     #endregion
 
@@ -63,6 +63,11 @@ public class NoiseCircle : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
+    public void PlayerMoving()
+    {
+        NoiseCircle noiseCircle = transform.GetComponent<NoiseCircle>();
+        //noiseCircle.
+    }
 
     #endregion
     
@@ -75,5 +80,5 @@ public class NoiseCircle : MonoBehaviour
 
     #endregion   
 
-} // class NoiseCircle 
+} // class PlayerNoise 
 // namespace

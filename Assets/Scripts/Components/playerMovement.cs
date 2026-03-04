@@ -37,12 +37,8 @@ public class playerMovement : MonoBehaviour
 
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
-    // Documentar cada atributo que aparece aquí.
-    // El convenio de nombres de Unity recomienda que los atributos
-    // privados se nombren en formato _camelCase (comienza con _, 
-    // primera palabra en minúsculas y el resto con la 
-    // primera letra en mayúsculas)
-    // Ejemplo: _maxHealthPoints
+    Vector3 _posAnterior;  //  posición que tenía antes el jugador
+    Vector3 _posActual;  // posición actual del jugador
 
     #endregion
 
@@ -66,7 +62,7 @@ public class playerMovement : MonoBehaviour
     /// Update is called every frame, if the MonoBehaviour is enabled.
     /// En cada frame se mueve al jugador
     /// </summary>
-    void Update()
+    void FixedUpdate()
     {
         MovePlayer();
     }
@@ -88,18 +84,19 @@ public class playerMovement : MonoBehaviour
     // El convenio de nombres de Unity recomienda que estos métodos
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
-
+    
     /// <summary>
     /// Método que se encarga de manejar el movimeinto del jugador
     /// </summary>
     void MovePlayer()
     {
+        _posAnterior = transform.position;  // se guarda la posición antes de moverse
         //Obtenemos la dirección del InputManager
         Vector2 direction = InputManager.Instance.MovementVector;
         Debug.Log(direction);
 
         //Variable para guardar la velocidad que se usa en ese momento
-        float currentSpeed =walkSpeed;
+        float currentSpeed = walkSpeed;
 
         //Comprobamos si se pulsa el Shift
         if (Input.GetKey(KeyCode.LeftShift))
@@ -116,7 +113,12 @@ public class playerMovement : MonoBehaviour
         //Aplicamos el movimiento
         //Multiplicamos la dirección por la velocidad y el tiempo
         transform.Translate(direction * currentSpeed * Time.deltaTime);
-        
+        _posActual = transform.position;  // se guarda la posición de después de moverse
+        // si son distintas las posiciones de antes y después, el jugador se ha movido
+        if (_posAnterior != _posActual)
+        {
+
+        }
     }
 
     #endregion
