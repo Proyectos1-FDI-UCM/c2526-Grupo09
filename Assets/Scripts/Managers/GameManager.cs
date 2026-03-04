@@ -7,6 +7,7 @@
 //---------------------------------------------------------
 
 using UnityEngine;
+using TMPro;
 
 
 /// <summary>
@@ -31,6 +32,9 @@ public class GameManager : MonoBehaviour
     // públicos y de inspector se nombren en formato PascalCase
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
+    [SerializeField] GameObject panel;
+    [SerializeField] TextMeshProUGUI text;
+
 
     #endregion
 
@@ -49,6 +53,10 @@ public class GameManager : MonoBehaviour
 
     #region Métodos de MonoBehaviour
 
+    private void Start()
+    {
+        panel.SetActive(false);
+    }
     /// <summary>
     /// Método llamado en un momento temprano de la inicialización.
     /// En el momento de la carga, si ya hay otra instancia creada,
@@ -151,6 +159,12 @@ public class GameManager : MonoBehaviour
         UnityEngine.SceneManagement.SceneManager.LoadScene(index);
         System.GC.Collect();
     } // ChangeScene
+
+    public void FinJuego()
+    {
+        panel.SetActive(true);
+        text.text = "Has perdido";
+    }
 
     #endregion
 
