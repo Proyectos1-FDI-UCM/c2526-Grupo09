@@ -17,7 +17,9 @@ public class PlayerNoise : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
-    [SerializeField] private GameObject Circulo;  // círculo de ruido que se genera
+    [SerializeField] private GameObject Circle;  // círculo de ruido que se genera
+    [SerializeField] private float PlayerSpeed = 2.0f;  // velocidad del círculo del jugador
+    [SerializeField] private Vector3 PlayerFinalPos = new Vector3(2, 2, 2);  // posición final del círculo del jugador
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -44,7 +46,7 @@ public class PlayerNoise : MonoBehaviour
     /// </summary>
     void Start()
     {
-        Circulo.SetActive(false);  // se oculta el círculo
+        Circle.SetActive(false);  // se oculta el círculo
     }
 
     /// <summary>
@@ -65,8 +67,10 @@ public class PlayerNoise : MonoBehaviour
     // Ejemplo: GetPlayerController
     public void PlayerMoving()
     {
-        NoiseCircle noiseCircle = transform.GetComponent<NoiseCircle>();
-        //noiseCircle.
+        Instantiate(Circle, transform.position, Quaternion.identity);
+        Debug.Log("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
+        //NoiseCircle noiseCircle = Circle.transform.GetComponent<NoiseCircle>();
+        //noiseCircle.SetNoiseValues(PlayerSpeed, PlayerFinalPos);
     }
 
     #endregion
