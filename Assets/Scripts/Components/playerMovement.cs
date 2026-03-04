@@ -50,15 +50,6 @@ public class PlayerMovement : MonoBehaviour
     // - Hay que borrar los que no se usen 
 
     /// <summary>
-    /// Start is called on the frame when a script is enabled just before 
-    /// any of the Update methods are called the first time.
-    /// </summary>
-    void Start()
-    {
-        
-    }
-
-    /// <summary>
     /// Update is called every frame, if the MonoBehaviour is enabled.
     /// En cada frame se mueve al jugador
     /// </summary>
@@ -70,7 +61,6 @@ public class PlayerMovement : MonoBehaviour
         // si son distintas las posiciones de antes y después, el jugador se ha movido
         if (_posAnterior != _posActual)
         {
-            Debug.Log("AAAAAAAAAAAAAAAAAA");
             PlayerNoise playerNoise = transform.GetComponent<PlayerNoise>();
             playerNoise.PlayerMoving();
         }
