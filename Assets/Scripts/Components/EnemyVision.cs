@@ -23,6 +23,9 @@ public class EnemyVision : MonoBehaviour
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
 
+    [SerializeField]
+    private Vector3 ConeScale;
+
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -49,7 +52,6 @@ public class EnemyVision : MonoBehaviour
     /// </summary>
     void Start()
     {
-
     }
 
     /// <summary>
@@ -69,7 +71,10 @@ public class EnemyVision : MonoBehaviour
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
 
-
+    public void ChangeConeScale()
+    {
+        gameObject.transform.localScale = ConeScale;
+    }
 
     #endregion
 
@@ -86,13 +91,13 @@ public class EnemyVision : MonoBehaviour
     /// <param name="collision"></param>
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        playerMovement playerScript = collision.gameObject.GetComponent<playerMovement>();
-        if (playerScript != null)
+        playerMovement PlayerScript = collision.gameObject.GetComponent<playerMovement>();
+        if (PlayerScript != null)
         {
             // Avisar a EnemyLogic que el player esta en el rango de vision
             Debug.Log("Player detected");
-            EnemyLogic enemyLogic = transform.parent.GetComponent<EnemyLogic>();
-            enemyLogic.SawThePlayer(playerScript.gameObject.transform);
+            EnemyLogic enemyLogic = transform.parent.parent.GetComponent<EnemyLogic>();
+            enemyLogic.SawThePlayer(PlayerScript.gameObject.transform);
         }
     }
 

@@ -5,8 +5,10 @@
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
 
+using Mono.Cecil.Cil;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UIElements;
 // Añadir aquí el resto de directivas using
 
 
@@ -70,20 +72,25 @@ public class EnemyLogic : MonoBehaviour
     /// Determina la posición del jugador cuando entra en el campo de vision del enemigo.
     /// </summary>
     private Transform _playerPos;
-    
+    /// <summary>
+    /// 
+    /// </summary>
+    private bool _isConeScaled = false;
+
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
-    
+
     // Por defecto están los típicos (Update y Start) pero:
     // - Hay que añadir todos los que sean necesarios
     // - Hay que borrar los que no se usen 
-    
+
     /// <summary>
     /// Start is called on the frame when a script is enabled just before 
     /// any of the Update methods are called the first time.
     /// </summary>
     void Start()
     {
+        
     }
 
     /// <summary>
@@ -116,22 +123,42 @@ public class EnemyLogic : MonoBehaviour
     // Documentar cada método que aparece aquí
     // El convenio de nombres de Unity recomienda que estos métodos
     // se nombren en formato PascalCase (palabras con primera letra
-    // mayúscula, incluida la primera letra)
+    // mayúscula, incluida la primera letra
 
     /// <summary>
-    /// El metodo PerformPatrol se encarga de mover al enemigo en las posiciones indicadas en el array Positions.
+    /// Metodo que mueve al enemigo a una posicion "endPos". Ademas, rota el cono de vision en 8 direcciones.
     /// </summary>
-    private void PerformPatrol()
+    /// <param name="endPos"></param>
+    private void MoveEnemy(Transform endPos)
     {
-        if (_posIndex < Positions.Length)
-        {
-            transform.position = Vector3.MoveTowards(transform.position, Positions[_posIndex].position, Speed * Time.deltaTime);
-            if (Vector3.Distance(transform.position, Positions[_posIndex].position) < 0.1f)
-            {
-                _posIndex = (_posIndex + 1) % Positions.Length;
-            }
-        } 
+        transform.position = Vector3.MoveTowards(transform.position, endPos.position, Speed * Time.deltaTime);
+        // Rotacion del cono de vision
+        Vector3 dir = endPos.position - transform.position;
+        float rotZ = 0;
+        int incrX = Mathf.RoundToInt(dir.x);
+        int incrY = Mathf.RoundToInt(dir.y);
+        // Derecha
+        if (incrX > 0 && incrY == 0) rotZ = -90;
+        // Abajo
+        else if (incrY < 0 && incrX == 0) rotZ = -180;
+        // Izquierda
+        else if (incrX < 0 && incrY == 0) rotZ = 90;
+        // Arriba
+        else if (incrY > 0 && incrX == 0) rotZ = 0;
+        // Derecha-Arriba
+        else if (incrX > 0 && incrY > 0) rotZ = -45;
+        // Izquierda-Abajo
+        else if (incrX < 0 && incrY < 0) rotZ = 135;
+        // Derecha-Abajo
+        else if (incrX > 0 && incrY < 0) rotZ = -135;
+        // Izquierda-Arriba
+        else if (incrX < 0 && incrY > 0) rotZ = 45;
+        EnemyVision enemyVision = transform.gameObject.GetComponentInChildren<EnemyVision>();
+        Transform enemyRotate = enemyVision.transform.parent;
+        enemyRotate.rotation = Quaternion.Euler(0, 0, rotZ);
+        //enemyVision.gameObject.transform.rotation = Quaternion.Euler(0, 0, rotZ);
     }
+
     /// <summary>
     /// El metodo UpdateEnemyState maneja los estados del enemigo.
     /// </summary>
@@ -143,8 +170,8 @@ public class EnemyLogic : MonoBehaviour
         }
         else if (_heardNoise && !_isPlayerVisible && !_isPlayerInRange || _isPlayerVisible && !_isPlayerInRange)
         {
-            if(_isPlayerVisible) StartCoroutine(PerformChase(_playerPos));
-            else if (_heardNoise) StartCoroutine(PerformChase(_noiseOrigin));
+            if(_isPlayerVisible) PerformChase(_playerPos);
+            else if (_heardNoise) PerformChase(_noiseOrigin);
 
         }
         else if (_isPlayerInRange)
@@ -154,13 +181,39 @@ public class EnemyLogic : MonoBehaviour
     }
 
     /// <summary>
+    /// El metodo PerformPatrol se encarga de mover al enemigo en las posiciones indicadas en el array Positions.
+    /// </summary>
+    private void PerformPatrol()
+    {
+        if (_posIndex < Positions.Length)
+        {
+            MoveEnemy(Positions[_posIndex]);
+
+            if (Vector3.Distance(transform.position, Positions[_posIndex].position) < 0.1f)
+            {
+                _posIndex = (_posIndex + 1) % Positions.Length;
+            }
+        }
+    }
+
+    /// <summary>
     /// Si el enemigo detecta un sonido, este se movera al origen del mismo.
     /// </summary>
-    private IEnumerator PerformChase(Transform positionToGo)
+    private void PerformChase(Transform positionToGo)
     {
-        yield return new WaitForSeconds(1f);
-        transform.position = Vector3.MoveTowards(transform.position, positionToGo.position, Speed * Time.deltaTime);
+        MoveEnemy(positionToGo);
+        EnemyVision enemyVision = transform.gameObject.GetComponentInChildren<EnemyVision>();
+        if (enemyVision != null)
+        {
+            if (!_isConeScaled)
+            {
+                enemyVision.ChangeConeScale();
+                _isConeScaled = true;
+            }
+        }
+        else Debug.Log("enemyVision no encontrado");
     }
+
 
     /// <summary>
     /// 
