@@ -24,6 +24,9 @@ public class PlayerNoise : MonoBehaviour
 
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
+    private float _lastCircle = 1f;  // cuando ha aparecido el último circulo
+    private float _delay = 0.5f;  // delay entre aparición de un círculo y otro
+    private float _circleSpeed = 1.5f;  // velocidad de aparición de círculo
     // Documentar cada atributo que aparece aquí.
     // El convenio de nombres de Unity recomienda que los atributos
     // privados se nombren en formato _camelCase (comienza con _, 
@@ -46,7 +49,7 @@ public class PlayerNoise : MonoBehaviour
     /// </summary>
     void Start()
     {
-        Circle.SetActive(false);  // se oculta el círculo
+        //Circle.SetActive(false);  // se oculta el círculo
     }
 
     /// <summary>
@@ -67,10 +70,18 @@ public class PlayerNoise : MonoBehaviour
     // Ejemplo: GetPlayerController
     public void PlayerMoving()
     {
-        Instantiate(Circle, transform.position, Quaternion.identity);
         Debug.Log("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
-        //NoiseCircle noiseCircle = Circle.transform.GetComponent<NoiseCircle>();
-        //noiseCircle.SetNoiseValues(PlayerSpeed, PlayerFinalPos);
+        if (Time.time - _lastCircle < _delay / _circleSpeed)
+        {
+            return;
+        }
+        else
+        {
+            Instantiate(Circle, transform.position, transform.rotation);
+            _lastCircle = Time.time;
+        }
+        //GameObject circle = Instantiate(Circle, transform.position, transform.rotation);
+        //circle.GetComponent<NoiseCircle>().SetNoiseValues(PlayerSpeed, PlayerFinalPos); 
     }
 
     #endregion

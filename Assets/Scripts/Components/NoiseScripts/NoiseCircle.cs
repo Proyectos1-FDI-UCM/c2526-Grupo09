@@ -6,6 +6,7 @@
 //---------------------------------------------------------
 
 using UnityEngine;
+using static UnityEditor.PlayerSettings;
 // Añadir aquí el resto de directivas using
 
 
@@ -18,11 +19,10 @@ public class NoiseCircle : MonoBehaviour
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
     [SerializeField]
-    private float Speed = 1.0f;  // velocidad de aumento de tamaño
+    private float Speed = 5f;  // velocidad de aumento de tamaño
 
     [SerializeField]
-    private Vector3 PosFinal = new Vector3(5, 5, 5);  // posición final del círculo
-
+    private Vector3 PosFinal = new Vector3(2, 2, 2);  // posición final del círculo
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -33,8 +33,6 @@ public class NoiseCircle : MonoBehaviour
     // primera palabra en minúsculas y el resto con la 
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
-
-    bool _end;  // indica si ha llegado ya a su posición
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -46,15 +44,20 @@ public class NoiseCircle : MonoBehaviour
 
     void Start()
     {
-        _end = false;
+
     }
 
     /// <summary>
     /// Update is called every frame, if the MonoBehaviour is enabled.
     /// </summary>
-    void FixedUpdate()
+    //void FixedUpdate()
+    //{
+    //    CircleActive(ref _end);
+    //}
+
+    private void Update()
     {
-        CircleActive(ref _end);
+        CircleActive();
     }
     #endregion
 
@@ -71,12 +74,7 @@ public class NoiseCircle : MonoBehaviour
         Debug.Log("PENEPENEPNEPENPENPENPE");
         Speed = speed;
         PosFinal = pos;
-        while (!_end)
-        {
-            Debug.Log("HOLAHOLAHOLAHOLAHOLA");
-            
-        }
-        _end = false;
+        
         Destroy(this.gameObject);
     }
     #endregion
@@ -88,7 +86,7 @@ public class NoiseCircle : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
 
-    private void CircleActive(ref bool _end)
+    private void CircleActive()
     {
         if (transform.localScale.x < PosFinal.x &&
             transform.localScale.y < PosFinal.y)
@@ -97,8 +95,8 @@ public class NoiseCircle : MonoBehaviour
         }
         else
         {
-            _end = true;
-        }     
+            Destroy(this.gameObject);
+        }
     }
     #endregion   
 
