@@ -19,10 +19,19 @@ public class NoiseCircle : MonoBehaviour
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
     [SerializeField]
-    private float Speed = 5f;  // velocidad de aumento de tamaño
+    private GameObject Player;  // jugador de la escena
 
     [SerializeField]
-    private Vector3 PosFinal = new Vector3(2, 2, 2);  // posición final del círculo
+    private float WalkSpeed = 3f;  // velocidad de aumento de tamaño
+
+    [SerializeField]
+    private Vector3 FinalWalkPos = new Vector3(2, 2, 2);  // posición final del círculo
+
+    [SerializeField]
+    private float RunSpeed = 6f;  // velocidad de aumento de tamaño
+
+    [SerializeField]
+    private Vector3 FinalRunPos = new Vector3(4, 4, 4);  // posición final del círculo
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -33,6 +42,9 @@ public class NoiseCircle : MonoBehaviour
     // primera palabra en minúsculas y el resto con la 
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
+
+    private float _speed;
+    private Vector3 _finalPos;
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -41,11 +53,6 @@ public class NoiseCircle : MonoBehaviour
     // Por defecto están los típicos (Update y Start) pero:
     // - Hay que añadir todos los que sean necesarios
     // - Hay que borrar los que no se usen 
-
-    void Start()
-    {
-
-    }
 
     /// <summary>
     /// Update is called every frame, if the MonoBehaviour is enabled.
@@ -57,7 +64,8 @@ public class NoiseCircle : MonoBehaviour
 
     private void Update()
     {
-        CircleActive();
+        SetNoiseValues();
+        CircleActive(_finalPos, _speed);
     }
     #endregion
 
@@ -69,12 +77,32 @@ public class NoiseCircle : MonoBehaviour
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
 
-    public void SetNoiseValues(float speed, Vector3 pos)  // establece los valores para el círculo
+    public void SetNoiseValues()  // establece los valores para el círculo
     {
-        Speed = speed;
-        PosFinal = pos;
-        
-        Destroy(this.gameObject);
+        PlayerMovement playerMovement = Player.GetComponent<PlayerMovement>();
+        if (playerMovement != null )
+        {
+            if (InputManager.Instance.RunIsPressed())
+            {
+                _speed = RunSpeed;
+                _finalPos = FinalRunPos;
+            }
+            else
+            {
+                _speed = WalkSpeed;
+                _finalPos = FinalWalkPos;
+            }
+            //if (playerMovement.CurrentlyRunning())
+            //{
+            //    _speed = RunSpeed;
+            //    _finalPos = FinalRunPos;
+            //}
+            //else
+            //{
+            //    _speed = WalkSpeed;
+            //    _finalPos = FinalWalkPos;
+            //}
+        } 
     }
     #endregion
     
@@ -85,12 +113,12 @@ public class NoiseCircle : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
 
-    private void CircleActive()
+    private void CircleActive(Vector3 _finalPos, float _speed)
     {
-        if (transform.localScale.x < PosFinal.x &&
-            transform.localScale.y < PosFinal.y)
+        if (transform.localScale.x < _finalPos.x &&
+            transform.localScale.y < _finalPos.y)
         {
-            transform.localScale += new Vector3(1, 1, 0) * Speed * Time.deltaTime;
+            transform.localScale += new Vector3(1, 1, 0) * _speed * Time.deltaTime;
         }
         else
         {

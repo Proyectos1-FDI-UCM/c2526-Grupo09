@@ -101,8 +101,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 741355305e4fe8b4ebc9ed579ad1f631, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 2
-  PosFinal: {x: 1, y: 1, z: 1}
+  Player: {fileID: 6522229758989385404, guid: 522f76ecd2425fe4aa6d9911eb852ec3, type: 3}
+  WalkSpeed: 2
+  FinalWalkPos: {x: 0.75, y: 0.75, z: 1}
+  RunSpeed: 4
+  FinalRunPos: {x: 2, y: 2, z: 1}
 --- !u!58 &-3239305065866385635
 CircleCollider2D:
   m_ObjectHideFlags: 0

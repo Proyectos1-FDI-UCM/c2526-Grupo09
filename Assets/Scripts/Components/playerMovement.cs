@@ -39,7 +39,7 @@ public class PlayerMovement : MonoBehaviour
     #region Atributos Privados (private fields)
     Vector3 _posAnterior;  //  posición que tenía antes el jugador
     Vector3 _posActual;  // posición actual del jugador
-    static bool correr = false;
+    //bool _correr = false;  // si está corriendo o no
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -85,6 +85,10 @@ public class PlayerMovement : MonoBehaviour
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
 
+    //public bool CurrentlyRunning()
+    //{
+    //    return _correr;
+    //}
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----
@@ -93,7 +97,7 @@ public class PlayerMovement : MonoBehaviour
     // El convenio de nombres de Unity recomienda que estos métodos
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
-    
+
     /// <summary>
     /// Método que se encarga de manejar el movimeinto del jugador
     /// </summary>
@@ -111,18 +115,19 @@ public class PlayerMovement : MonoBehaviour
         {
             //Usamos la velocidad de correr
             currentSpeed = runSpeed;
+            //_correr = true;
         }
         else
         {
             //Usamos la velocidad de caminar
             currentSpeed = walkSpeed;
+            //_correr = false;
         }
 
         //Aplicamos el movimiento
         //Multiplicamos la dirección por la velocidad y el tiempo
         transform.Translate(direction * currentSpeed * Time.deltaTime);  
     }
-
     #endregion
 
 } // class NewMonoBehaviourScript 
