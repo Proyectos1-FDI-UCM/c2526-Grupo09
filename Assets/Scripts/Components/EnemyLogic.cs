@@ -36,6 +36,21 @@ public class EnemyLogic : MonoBehaviour
     /// </summary>
     [SerializeField]
     private float Speed;
+    /// <summary>
+    /// 
+    /// </summary>
+    [SerializeField]
+    private Vector3 ConeScale = new Vector3 (1, 1, 1);
+    /// <summary>
+    /// 
+    /// </summary>
+    [SerializeField]
+    private Vector3 AlertConeScale = new Vector3 (2, 2, 1);
+    /// <summary>
+    /// 
+    /// </summary>
+    [SerializeField]
+    private float ChasingTime = 10;
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -67,7 +82,7 @@ public class EnemyLogic : MonoBehaviour
     /// <summary>
     /// La variable _noiseOrigin determina la posicion donde se origina el sonido con el que choca el enemigo.
     /// </summary>
-    private Transform _noiseOrigin;
+    private Vector3 _noiseOrigin;
     /// <summary>
     /// Determina la posición del jugador cuando entra en el campo de vision del enemigo.
     /// </summary>
@@ -75,7 +90,8 @@ public class EnemyLogic : MonoBehaviour
     /// <summary>
     /// 
     /// </summary>
-    private bool _isConeScaled = false;
+    private float _timer;
+    
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
@@ -109,11 +125,24 @@ public class EnemyLogic : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
-
+    
+    /// <summary>
+    /// Metodo que se llama desde EnemyVision cuando detecta al jugador en el FOV del enemigo.
+    /// </summary>
+    /// <param name="playerPos"></param>
     public void SawThePlayer(Transform playerPos)
     {
         _playerPos = playerPos;
         _isPlayerVisible = true;
+        _timer = 0;
+    }
+    /// <summary>
+    /// 
+    /// </summary>
+    public void KillThePlayer()
+    {
+        Debug.Log("Kill the player");
+        _isPlayerInRange = true;
     }
 
     #endregion
@@ -129,11 +158,11 @@ public class EnemyLogic : MonoBehaviour
     /// Metodo que mueve al enemigo a una posicion "endPos". Ademas, rota el cono de vision en 8 direcciones.
     /// </summary>
     /// <param name="endPos"></param>
-    private void MoveEnemy(Transform endPos)
+    private void MoveEnemy(Vector3 endPos)
     {
-        transform.position = Vector3.MoveTowards(transform.position, endPos.position, Speed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, endPos, Speed * Time.deltaTime);
         // Rotacion del cono de vision
-        Vector3 dir = endPos.position - transform.position;
+        Vector3 dir = endPos - transform.position;
         float rotZ = 0;
         int incrX = Mathf.RoundToInt(dir.x);
         int incrY = Mathf.RoundToInt(dir.y);
@@ -156,7 +185,6 @@ public class EnemyLogic : MonoBehaviour
         EnemyVision enemyVision = transform.gameObject.GetComponentInChildren<EnemyVision>();
         Transform enemyRotate = enemyVision.transform.parent;
         enemyRotate.rotation = Quaternion.Euler(0, 0, rotZ);
-        //enemyVision.gameObject.transform.rotation = Quaternion.Euler(0, 0, rotZ);
     }
 
     /// <summary>
@@ -170,7 +198,7 @@ public class EnemyLogic : MonoBehaviour
         }
         else if (_heardNoise && !_isPlayerVisible && !_isPlayerInRange || _isPlayerVisible && !_isPlayerInRange)
         {
-            if(_isPlayerVisible) PerformChase(_playerPos);
+            if(_isPlayerVisible) PerformChase(_playerPos.position);
             else if (_heardNoise) PerformChase(_noiseOrigin);
 
         }
@@ -187,8 +215,12 @@ public class EnemyLogic : MonoBehaviour
     {
         if (_posIndex < Positions.Length)
         {
-            MoveEnemy(Positions[_posIndex]);
-
+            MoveEnemy(Positions[_posIndex].position);
+            EnemyVision enemyVision = transform.gameObject.GetComponentInChildren<EnemyVision>();
+            if (enemyVision != null)
+            {
+                enemyVision.ChangeConeScale(ConeScale);
+            }
             if (Vector3.Distance(transform.position, Positions[_posIndex].position) < 0.1f)
             {
                 _posIndex = (_posIndex + 1) % Positions.Length;
@@ -199,19 +231,21 @@ public class EnemyLogic : MonoBehaviour
     /// <summary>
     /// Si el enemigo detecta un sonido, este se movera al origen del mismo.
     /// </summary>
-    private void PerformChase(Transform positionToGo)
+    private void PerformChase(Vector3 positionToGo)
     {
+        _timer += Time.deltaTime;
         MoveEnemy(positionToGo);
         EnemyVision enemyVision = transform.gameObject.GetComponentInChildren<EnemyVision>();
         if (enemyVision != null)
         {
-            if (!_isConeScaled)
-            {
-                enemyVision.ChangeConeScale();
-                _isConeScaled = true;
-            }
+            enemyVision.ChangeConeScale(AlertConeScale);
         }
         else Debug.Log("enemyVision no encontrado");
+        if (_timer >= ChasingTime)
+        {
+            _heardNoise = false;
+            _isPlayerVisible = false;
+        }
     }
 
 
@@ -220,7 +254,11 @@ public class EnemyLogic : MonoBehaviour
     /// </summary>
     private void PerformAttack()
     {
-
+        Debug.Log("Mata al jugador");
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.EndGame();
+        }
     }
 
     /// <summary>
@@ -233,12 +271,10 @@ public class EnemyLogic : MonoBehaviour
         NoiseCircle noiseCircle = collision.gameObject.GetComponent<NoiseCircle>();
         if (noiseCircle != null && !_heardNoise)
         {
-            Debug.Log("Detecta ruido");
-            _noiseOrigin = noiseCircle.gameObject.transform;
+            _noiseOrigin = noiseCircle.gameObject.transform.position;
             _heardNoise = true;
+            _timer = 0;
         }
-
-        // Hacer Ducktyping para saber si es el jugador. Si lo es, poner _isPlayerInRange a true.
 
     }
     #endregion   

@@ -1,6 +1,6 @@
 //---------------------------------------------------------
-// Script que comunica al script "EnemyLogic" si el jugador se encuentra en el campo de visión del enemigo.
-// Álvaro Sosa Rodríguez
+// Breve descripción del contenido del archivo
+// Responsable de la creación de este archivo
 // Bouquet Of Sins
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
@@ -13,7 +13,7 @@ using UnityEngine;
 /// Antes de cada class, descripción de qué es y para qué sirve,
 /// usando todas las líneas que sean necesarias.
 /// </summary>
-public class EnemyVision : MonoBehaviour
+public class EnemyAttack : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
@@ -24,7 +24,7 @@ public class EnemyVision : MonoBehaviour
     // Ejemplo: MaxHealthPoints
 
     #endregion
-
+    
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
     // Documentar cada atributo que aparece aquí.
@@ -35,21 +35,21 @@ public class EnemyVision : MonoBehaviour
     // Ejemplo: _maxHealthPoints
 
     #endregion
-
+    
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
-
+    
     // Por defecto están los típicos (Update y Start) pero:
     // - Hay que añadir todos los que sean necesarios
     // - Hay que borrar los que no se usen 
-
+    
     /// <summary>
     /// Start is called on the frame when a script is enabled just before 
     /// any of the Update methods are called the first time.
     /// </summary>
     void Start()
     {
-
+        
     }
 
     /// <summary>
@@ -57,7 +57,7 @@ public class EnemyVision : MonoBehaviour
     /// </summary>
     void Update()
     {
-
+        
     }
     #endregion
 
@@ -69,11 +69,6 @@ public class EnemyVision : MonoBehaviour
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
 
-    public void ChangeConeScale(Vector3 scale)
-    {
-        gameObject.transform.localScale = scale;
-    }
-
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----
@@ -84,22 +79,19 @@ public class EnemyVision : MonoBehaviour
     // mayúscula, incluida la primera letra)
 
     /// <summary>
-    /// Este metodo detecta si el jugador se encuentra en el rango de vision del enemigo y manda la posicion del jugador.
+    /// 
     /// </summary>
     /// <param name="collision"></param>
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        PlayerMovement PlayerScript = collision.gameObject.GetComponent<PlayerMovement>();
-        if (PlayerScript != null)
+        PlayerMovement playerMovement = collision.GetComponent<PlayerMovement>();
+        if (playerMovement != null)
         {
-            // Avisar a EnemyLogic que el player esta en el rango de vision
-            EnemyLogic enemyLogic = transform.parent.parent.GetComponent<EnemyLogic>();
-            if (enemyLogic != null) enemyLogic.SawThePlayer(PlayerScript.gameObject.transform);
-
+            EnemyLogic enemyLogic = transform.parent.GetComponent<EnemyLogic>();
+            if (enemyLogic != null) enemyLogic.KillThePlayer();
         }
     }
+    #endregion   
 
-    #endregion
-
-} // class EnemyVision 
+} // class EnemyAttack 
 // namespace
