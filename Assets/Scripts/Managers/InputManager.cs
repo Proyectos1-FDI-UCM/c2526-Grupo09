@@ -190,6 +190,17 @@ public class InputManager : MonoBehaviour
         return _throw.IsPressed();
     }
 
+    /// <summary>
+    /// Método para saber si el botón de lanzamiento (Throw) se ha pulsado en este frame
+    /// <returns>Devuelve true, si el botón ha sido pulsado en este frame
+    /// y false, en otro caso
+    /// </returns>
+    /// </summary>
+    public bool ThrowWasPressedThisFrame()
+    {
+        return _throw.WasPressedThisFrame();
+    }
+
 
     /// <summary>
     /// Método para saber si el botón de interactuar (Interact) se ha pulsado en este frame

@@ -1,11 +1,12 @@
 //---------------------------------------------------------
-// SCRIPT TEMPORAL, SOLO SIRVE PARA DETECTAR Q HAY UN JUGADOR EN LA ESCENA DE PRUEBAS GETOBJECTS
-// Responsable de la creación de este archivo
-// Nombre del juego
+// Breve descripción del contenido del archivo
+// Diego Martín
+// Bouquet Of Sins
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
 
 using UnityEngine;
+using UnityEngine.Timeline;
 // Añadir aquí el resto de directivas using
 
 
@@ -13,7 +14,7 @@ using UnityEngine;
 /// Antes de cada class, descripción de qué es y para qué sirve,
 /// usando todas las líneas que sean necesarias.
 /// </summary>
-public class PlayerController : MonoBehaviour
+public class ThrowingSystem : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
@@ -23,8 +24,11 @@ public class PlayerController : MonoBehaviour
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
 
+    [SerializeField] private GetObject ObjectPrefab;
+    [SerializeField] private PlayerMovement Movement;
+
     #endregion
-    
+
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
     // Documentar cada atributo que aparece aquí.
@@ -34,15 +38,17 @@ public class PlayerController : MonoBehaviour
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
 
+    private bool _inThrowingState = false;
+
     #endregion
-    
+
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
-    
+
     // Por defecto están los típicos (Update y Start) pero:
     // - Hay que añadir todos los que sean necesarios
     // - Hay que borrar los que no se usen 
-    
+
     /// <summary>
     /// Start is called on the frame when a script is enabled just before 
     /// any of the Update methods are called the first time.
@@ -50,6 +56,13 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         
+
+        // entras al modo lanzamiento manteniendo el botón pulsado (while) / pulsando el boton y sales volviendolo a pulsar (if)
+
+        // una vez entras al modo lanzamiento, bloquea el movimiento del jugador
+
+        // en el modo lanzamiento, aparece el cursor y desaparece cuando sale
+
     }
 
     /// <summary>
@@ -57,8 +70,40 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     void Update()
     {
-        
+        // si tiene un objeto, tienes la opción de entrar al modo lanzamiento
+        if (InputManager.Instance.ThrowWasPressedThisFrame())
+        {
+            // invertimos el valor del booleano para detectar si empieza o termina el estado de lanzamiento
+            _inThrowingState = !_inThrowingState;
+            // bloqueamos el movimiento del jugador
+            if (_inThrowingState)
+            {
+                Movement.enabled = false;
+
+
+
+
+
+
+
+
+            }
+            else Movement.enabled = true;
+        }
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
     #endregion
 
     // ---- MÉTODOS PÚBLICOS ----
@@ -70,7 +115,7 @@ public class PlayerController : MonoBehaviour
     // Ejemplo: GetPlayerController
 
     #endregion
-    
+
     // ---- MÉTODOS PRIVADOS ----
     #region Métodos Privados
     // Documentar cada método que aparece aquí
@@ -78,7 +123,8 @@ public class PlayerController : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
 
-    #endregion   
+    #endregion
 
-} // class PlayerController 
+
+} // class ThrowingSystem 
 // namespace

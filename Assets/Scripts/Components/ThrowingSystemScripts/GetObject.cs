@@ -28,12 +28,12 @@ public class GetObject : MonoBehaviour
     /// <summary>
     /// Variable que contiene el script PlayerController, se utiliza para detectar al gameObject Player.
     /// </summary>
-    private PlayerController _player;
+    private PlayerMovement _player;
 
     /// <summary>
     /// Es True cuando el jugador posee un objeto, False si no tiene ninguno.
     /// </summary>
-    private bool _hasObject = false;
+    public bool _hasObject { get; private set; } = false;
 
     /// <summary>
     /// Detecta si un gameObject con el script PlayerController (el jugador) está dentro del trigger del objeto.
@@ -80,7 +80,7 @@ public class GetObject : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        _player = collision.gameObject.GetComponent<PlayerController>();
+        _player = collision.gameObject.GetComponent<PlayerMovement>();
         if (_player != null) 
         {
             _insideCollider = true;
@@ -91,7 +91,7 @@ public class GetObject : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        _player = collision.gameObject.GetComponent<PlayerController>();
+        _player = collision.gameObject.GetComponent<PlayerMovement>();
         if (_player != null) 
         {
             _insideCollider = false;
