@@ -59,11 +59,11 @@ public class InputManager : MonoBehaviour
     /// la carpeta Settings
     /// </summary>
     private InputSystem_Actions _theController;
-    
+
     /// <summary>
     /// Acción para Interact.
     /// </summary>
-    private InputAction _interact;
+    private InputAction _interact, _run, _move, _throw, _confirmThrow;
 
     /// <summary>
     /// Acción para hacer el paneo de cámara
@@ -173,7 +173,26 @@ public class InputManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Método para saber si el botón de disparo (Fire) se ha pulsado en este frame
+    /// Método para saber si el botón de correr (Run) está pulsado.
+    /// Devolverá true en todos los frames en los que se mantenga pulsado.
+    /// </summary>
+    public bool RunIsPressed()
+    {
+        return _run.IsPressed();
+    }
+
+    /// <summary>
+    /// Método para saber si el botón de lanzamiento (Throw) está pulsado.
+    /// Devolverá true en todos los frames en los que se mantenga pulsado.
+    /// </summary>
+    public bool ThrowIsPressed()
+    {
+        return _throw.IsPressed();
+    }
+
+
+    /// <summary>
+    /// Método para saber si el botón de interactuar (Interact) se ha pulsado en este frame
     /// <returns>Devuelve true, si el botón ha sido pulsado en este frame
     /// y false, en otro caso
     /// </returns>
@@ -183,9 +202,20 @@ public class InputManager : MonoBehaviour
         return _interact.WasPressedThisFrame();
     }
 
-    
     /// <summary>
-    /// Método para saber si el botón de disparo (Fire) ha dejado de pulsarse
+    /// Método para saber si el botón de confirmar lanzamiento (ConfirmThrow) se ha pulsado en este frame
+    /// <returns>Devuelve true, si el botón ha sido pulsado en este frame
+    /// y false, en otro caso
+    /// </returns>
+    /// </summary>
+    public bool ConfirmThrowWasPressedThisFrame()
+    {
+        return _confirmThrow.WasPressedThisFrame();
+    }
+
+
+    /// <summary>
+    /// Método para saber si el botón de interactuar (Interact) ha dejado de pulsarse
     /// durante este frame
     /// <returns>Devuelve true, si el botón se ha dejado de pulsar en
     /// este frame; y false, en otro caso.
@@ -212,17 +242,20 @@ public class InputManager : MonoBehaviour
         _theController.Player.Enable();
 
         // Cacheamos la acción de movimiento
-        InputAction movement = _theController.Player.Move;
+        _move = _theController.Player.Move;
         // Para el movimiento, actualizamos el vector de movimiento usando
         // el método OnMove
-        movement.performed += OnMove;
-        movement.canceled += OnMove;
+        _move.performed += OnMove;
+        _move.canceled += OnMove;
 
-        // Para el disparo solo cacheamos la acción de disparo.
-        // El estado lo consultaremos a través de los métodos públicos que 
-        // tenemos (FireIsPressed, FireWasPressedThisFrame 
-        // y FireWasReleasedThisFrame)
+        // El estado de las variables de debajo lo consultaremos a través de los métodos públicos que 
+        // tenemos (XIsPressed, XWasPressedThisFrame 
+        // y XWasReleasedThisFrame), siendo X el nombre de la acción.
         _interact = _theController.Player.Interact;
+        _run = _theController.Player.Run;
+        _throw = _theController.Player.Throw;
+        _confirmThrow = _theController.Player.ConfirmThrow;
+
 
         _pan = _theController.Player.Pan;
         _pan.performed += OnPan;

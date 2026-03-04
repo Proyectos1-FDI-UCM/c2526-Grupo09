@@ -39,7 +39,7 @@ public class HidingSpot : MonoBehaviour
     #region Atributos Privados (private fields)
 
     //Sprite del jugador que va a esconder
-    private playerMovement _player;
+    private PlayerMovement _player;
     //Una vez entre en colisión con el collider del hidingspot
     private bool _insideCollider;
     //Bool que comprueba si ya está escondido o no.
