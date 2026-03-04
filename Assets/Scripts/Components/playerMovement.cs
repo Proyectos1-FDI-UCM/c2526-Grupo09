@@ -100,13 +100,8 @@ public class PlayerMovement : MonoBehaviour
     void MovePlayer()
     {
         //Obtenemos la dirección del InputManager
-<<<<<<< HEAD
         Vector2 direction = InputManager.Instance.MovementVector;
         //Debug.Log(direction);
-=======
-        Vector2 direction = InputManager.Instance.MovementVector.normalized;
-        Debug.Log(direction);
->>>>>>> fa2d2d187584e3a8ecf0d730e27c8c838caf57f4
 
         //Variable para guardar la velocidad que se usa en ese momento
         float currentSpeed = walkSpeed;

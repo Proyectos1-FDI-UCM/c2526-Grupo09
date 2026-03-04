@@ -91,7 +91,7 @@ public class EnemyVision : MonoBehaviour
     /// <param name="collision"></param>
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        playerMovement PlayerScript = collision.gameObject.GetComponent<playerMovement>();
+        PlayerMovement PlayerScript = collision.gameObject.GetComponent<PlayerMovement>();
         if (PlayerScript != null)
         {
             // Avisar a EnemyLogic que el player esta en el rango de vision
