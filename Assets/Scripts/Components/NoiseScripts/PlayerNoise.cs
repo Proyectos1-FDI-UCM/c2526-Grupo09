@@ -25,7 +25,7 @@ public class PlayerNoise : MonoBehaviour
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
     private float _lastCircle = 0.2f;  // cuando ha aparecido el último circulo
-    private float _delay = 0.5f;  // delay entre aparición de un círculo y otro
+    private float _delay = 1f;  // delay entre aparición de un círculo y otro
     private float _circleSpeed = 1.5f;  // velocidad de aparición de círculo
     // Documentar cada atributo que aparece aquí.
     // El convenio de nombres de Unity recomienda que los atributos
