@@ -257,7 +257,7 @@ public class EnemyLogic : MonoBehaviour
         Debug.Log("Mata al jugador");
         if (GameManager.Instance != null)
         {
-            GameManager.Instance.EndGame();
+            GameManager.Instance.EndGame(true);
         }
     }
 

@@ -160,11 +160,19 @@ public class GameManager : MonoBehaviour
         System.GC.Collect();
     } // ChangeScene
 
-    public void EndGame()
+    public void EndGame(bool loose)
     {
         panel.SetActive(true);
-        text.text = "Has perdido";
+        if(loose==true)
+        {
+            text.text = "Has perdido";
+        }
+        else
+        {
+            text.text = "Has Ganado";
+        }
     }
+   
 
     #endregion
 
