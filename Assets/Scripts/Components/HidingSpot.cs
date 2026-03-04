@@ -105,6 +105,7 @@ public class HidingSpot : MonoBehaviour
         playerMovement player = collision.GetComponent<playerMovement>();
         if (player != null)
         {
+            _insideCollider = false;
             _player = null;
         }
     }
