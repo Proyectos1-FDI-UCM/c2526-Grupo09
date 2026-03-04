@@ -70,7 +70,6 @@ public class PlayerNoise : MonoBehaviour
     // Ejemplo: GetPlayerController
     public void PlayerMoving()
     {
-        Debug.Log("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
         if (Time.time - _lastCircle < _delay / _circleSpeed)
         {
             return;
@@ -80,8 +79,6 @@ public class PlayerNoise : MonoBehaviour
             Instantiate(Circle, transform.position, transform.rotation);
             _lastCircle = Time.time;
         }
-        //GameObject circle = Instantiate(Circle, transform.position, transform.rotation);
-        //circle.GetComponent<NoiseCircle>().SetNoiseValues(PlayerSpeed, PlayerFinalPos); 
     }
 
     #endregion

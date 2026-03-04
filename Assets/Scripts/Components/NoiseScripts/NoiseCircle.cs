@@ -71,7 +71,6 @@ public class NoiseCircle : MonoBehaviour
 
     public void SetNoiseValues(float speed, Vector3 pos)  // establece los valores para el círculo
     {
-        Debug.Log("PENEPENEPNEPENPENPENPE");
         Speed = speed;
         PosFinal = pos;
         

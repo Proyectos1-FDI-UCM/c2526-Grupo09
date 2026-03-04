@@ -39,7 +39,7 @@ public class PlayerMovement : MonoBehaviour
     #region Atributos Privados (private fields)
     Vector3 _posAnterior;  //  posición que tenía antes el jugador
     Vector3 _posActual;  // posición actual del jugador
-
+    static bool correr = false;
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
