@@ -5,6 +5,7 @@
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
 
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 // Añadir aquí el resto de directivas using
 
@@ -59,7 +60,7 @@ public class HidingSpot : MonoBehaviour
     /// Asímismo, comprueba si ya está escondido o no para salir o entrar en el escondite.
     void Update()
     {
-       
+
         if (_insideCollider && input.InteractWasPressedThisFrame())
         {
             if (IsHiding)
@@ -71,6 +72,7 @@ public class HidingSpot : MonoBehaviour
                 EnterHiding();
             }
         }
+        
         
     }
 
@@ -102,12 +104,13 @@ public class HidingSpot : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        playerMovement player = collision.GetComponent<playerMovement>();
-        if (player != null)
+        _player = collision.gameObject.GetComponent<playerMovement>();
+        if (_player != null)
         {
             _insideCollider = false;
-            _player = null;
+            
         }
+        
     }
 
 
@@ -116,7 +119,10 @@ public class HidingSpot : MonoBehaviour
     {
         //_playerSprite = _player.GetComponent<SpriteRenderer>();
         IsHiding = true;
-        player.SetActive(false);
+        player.GetComponent<playerMovement>().enabled = false;
+        player.transform.position = transform.position;
+
+
         //_player.SetHidden(true);
         hidingSprite.sortingOrder = hidingSortingOrder;
 
@@ -128,7 +134,8 @@ public class HidingSpot : MonoBehaviour
     {
         IsHiding = false; 
         hidingSprite.sortingOrder = 0;
-        player.SetActive(true);
+        player.GetComponent<playerMovement>().enabled = true;
+
 
         //_player.SetHidden(false);
         //EnemyVision.IsPlayerHidden = false; Provisional hasta qe sepamos como funciona el enemigo
