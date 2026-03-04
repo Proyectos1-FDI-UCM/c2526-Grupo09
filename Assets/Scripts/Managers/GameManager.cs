@@ -160,7 +160,7 @@ public class GameManager : MonoBehaviour
         System.GC.Collect();
     } // ChangeScene
 
-    public void FinJuego()
+    public void EndGame()
     {
         panel.SetActive(true);
         text.text = "Has perdido";

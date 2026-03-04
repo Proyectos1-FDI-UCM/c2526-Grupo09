@@ -64,7 +64,10 @@ public class FollowPlayer : MonoBehaviour
     // Por defecto están los típicos (Update y Start) pero:
     // - Hay que añadir todos los que sean necesarios
     // - Hay que borrar los que no se usen 
-
+    private void Start()
+    {
+        transform.position=transform.position + Offset;
+    }
     /// <summary>
     /// Se ejecuta cada frame, después de que se han llamado todas las funciones.
     /// Se utiliza esto para garantizar que la posición de la cámara se actualice después de que se haya movido el jugador.

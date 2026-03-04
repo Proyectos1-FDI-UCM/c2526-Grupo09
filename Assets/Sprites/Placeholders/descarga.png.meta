@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: ee373843b9bf77f4c944ac4d2083daf6
+guid: ca3f65d2ae98e284cb440a14dbbba554
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5184779254327519595
-    second: FrontPlaceholder_0
+      213: 9139330975122868335
+    second: descarga_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -178,13 +178,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: FrontPlaceholder_0
+      name: descarga_0
       rect:
         serializedVersion: 2
-        x: 3
+        x: 0
         y: 0
-        width: 26
-        height: 34
+        width: 200
+        height: 307
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -193,8 +193,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5965ef20db6fb08b0800000000000000
-      internalID: -5184779254327519595
+      spriteID: f684ce0891d65de70800000000000000
+      internalID: 9139330975122868335
       vertices: []
       indices: 
       edges: []
@@ -213,7 +213,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      FrontPlaceholder_0: -5184779254327519595
+      descarga_0: 9139330975122868335
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
