@@ -250,7 +250,7 @@ public class EnemyLogic : MonoBehaviour
 
 
     /// <summary>
-    /// 
+    /// Metodo que se encarga de llamar a EndGame del Game Manager.
     /// </summary>
     private void PerformAttack()
     {
