@@ -9,7 +9,7 @@ namespace DialogueSystem
     public class DialogueRound : ScriptableObject
     {
         //Lista de turnos para los dialogos
-        [SerializeField] private List<DialogueTurn> dialogueTurnsList;
+        [SerializeField] private List<DialogueTurn> dialogueTurnsList; 
 
         //para poder acceder desde un script externo
         public List<DialogueTurn> DialogueTurnsList => dialogueTurnsList; 

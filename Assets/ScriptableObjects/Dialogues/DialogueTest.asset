@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueTurnsList:
   - <Character>k__BackingField: {fileID: 11400000, guid: 90e5788fb1aa2ad4e9f951968073da64, type: 2}
-    dialogueLine: Hello. I'm Chan.
+    dialogueLine: 'Hello. I''m Dialog-Chan. '
   - <Character>k__BackingField: {fileID: 11400000, guid: 90e5788fb1aa2ad4e9f951968073da64, type: 2}
-    dialogueLine: SuckMyDick.
+    dialogueLine: Nice to meet you.

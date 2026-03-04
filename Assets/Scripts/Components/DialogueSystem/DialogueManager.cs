@@ -48,13 +48,13 @@ public class DialogueManager : MonoBehaviour
 
     private DialogueTurn currentTurn;
     //bool para la separación entre carácteres
-    private bool isTyping = false;
+    private bool _isTyping = false;
     //bool que espera al input
-    private bool waitingForInput = false;
+    private bool _waitingForInput = false;
     //bool qe comprueba si hay un dialogo en proceso
-    private bool isDialogInProgress = false;
+    private bool _isDialogInProgress = false;
     //cola de turnos de dialogo,, el primero qe entra es el primero qe sale.
-    private Queue<DialogueTurn> dialogueTurnQueue; 
+    private Queue<DialogueTurn> _dialogueTurnQueue; 
 
     #endregion
 
@@ -88,17 +88,17 @@ public class DialogueManager : MonoBehaviour
     public void StartDialogue(DialogueRound dialogue) //metodo publico de facil acceso67
     {
         //Impedir que se reproduzcan dos dialogos simultáneamente.
-        if (isDialogInProgress)
+        if (_isDialogInProgress)
         {
             Debug.LogWarning($"Dialogue is already in progress");
             return;
         }
 
         //Diálogo en proceso.
-        isDialogInProgress = true;
+        _isDialogInProgress = true;
 
         //Agarramos la lista de turnos y lo convertimos en la cola de dialogo tipo Queue.
-        dialogueTurnQueue = new Queue<DialogueTurn>(dialogue.DialogueTurnsList); 
+        _dialogueTurnQueue = new Queue<DialogueTurn>(dialogue.DialogueTurnsList); 
 
         //Desactivamos el input del player.
         player.GetComponent<PlayerMovement>().enabled = false;
@@ -125,8 +125,8 @@ public class DialogueManager : MonoBehaviour
             yield return typingWaitSeconds;
         }
 
-        isTyping = false;
-        waitingForInput = true; // ahora esperamos input manualmente
+        _isTyping = false;
+        _waitingForInput = true; // ahora esperamos input manualmente
     }
    
 
@@ -136,15 +136,15 @@ public class DialogueManager : MonoBehaviour
     void Update()
     {
         //Si no hay diálogo en proceso, sale inmediatamente de este método.
-        if (!isDialogInProgress)
+        if (!_isDialogInProgress)
             return;
 
         // Espera del input.
-        if (waitingForInput)
+        if (_waitingForInput)
         {
             if (input.InteractWasPressedThisFrame())
             {
-                waitingForInput = false;
+                _waitingForInput = false;
                 NextTurn();
             }
         }
@@ -171,14 +171,14 @@ public class DialogueManager : MonoBehaviour
     private void NextTurn()
     {
         //Si no hay mas turnos en la Queue = diálogo terminado.
-        if (dialogueTurnQueue.Count == 0)
+        if (_dialogueTurnQueue.Count == 0)
         {
             EndDialogue();
             return;
         }
 
 
-        currentTurn = dialogueTurnQueue.Dequeue();
+        currentTurn = _dialogueTurnQueue.Dequeue();
 
         //Adjuntamos información de los scriptableObjects en la caja de diálogo.
         dialogueUI.setCharacterInfo(currentTurn.Character);
@@ -188,14 +188,14 @@ public class DialogueManager : MonoBehaviour
         StartCoroutine(TypeSentence(currentTurn)); 
 
         //Mientras escribe, no podemos pasar al siguiente turno.
-        isTyping = true;
+        _isTyping = true;
     }
 
 
     private void EndDialogue()
     {
         dialogueUI.HideDialogBox();
-        isDialogInProgress = false;
+        _isDialogInProgress = false;
 
         //Retomamos el input del player.
         player.GetComponent<PlayerMovement>().enabled = true;

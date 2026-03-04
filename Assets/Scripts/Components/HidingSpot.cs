@@ -32,7 +32,6 @@ public class HidingSpot : MonoBehaviour
     [SerializeField] private int hidingSortingOrder = 10;
     //Stuff del jugador y el controller
     [SerializeField] private InputManager input;
-    [SerializeField] private GameObject player;
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -43,7 +42,7 @@ public class HidingSpot : MonoBehaviour
     //Una vez entre en colisión con el collider del hidingspot
     private bool _insideCollider;
     //Bool que comprueba si ya está escondido o no.
-    private bool IsHiding;
+    private bool _isHiding;
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -63,7 +62,7 @@ public class HidingSpot : MonoBehaviour
 
         if (_insideCollider && input.InteractWasPressedThisFrame())
         {
-            if (IsHiding)
+            if (_isHiding)
             {
                 ExitHiding();
             }
@@ -118,9 +117,9 @@ public class HidingSpot : MonoBehaviour
     private void EnterHiding()
     {
         //_playerSprite = _player.GetComponent<SpriteRenderer>();
-        IsHiding = true;
-        player.GetComponent<PlayerMovement>().enabled = false;
-        player.transform.position = transform.position;
+        _isHiding = true;
+        _player.GetComponent<PlayerMovement>().enabled = false;
+        _player.transform.position = transform.position;
 
 
         //_player.SetHidden(true);
@@ -132,9 +131,9 @@ public class HidingSpot : MonoBehaviour
     }
     private void ExitHiding()
     {
-        IsHiding = false; 
+        _isHiding = false; 
         hidingSprite.sortingOrder = 0;
-        player.GetComponent<PlayerMovement>().enabled = true;
+        _player.GetComponent<PlayerMovement>().enabled = true;
 
 
         //_player.SetHidden(false);
