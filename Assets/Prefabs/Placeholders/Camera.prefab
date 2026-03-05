@@ -48,7 +48,7 @@ MonoBehaviour:
   Target: {fileID: 0}
   Offset: {x: 0, y: 0, z: -10}
   TimeNormal: 1
-  TimePaneo: 20
+  TimePaneo: 25
   AlcanceMax: 1
 --- !u!1 &7705675025863625342
 GameObject:
