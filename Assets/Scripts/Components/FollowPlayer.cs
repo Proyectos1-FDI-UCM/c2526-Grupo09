@@ -1,6 +1,6 @@
 //---------------------------------------------------------
-// Breve descripción del contenido del archivo
-// Responsable de la creación de este archivo
+// Permite a la camara seguir al jugador.
+// Hao Zheng
 // Nombre del juego
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
@@ -10,8 +10,9 @@ using UnityEngine;
 
 
 /// <summary>
-/// Antes de cada class, descripción de qué es y para qué sirve,
-/// usando todas las líneas que sean necesarias.
+/// Script que permite a la camara seguir al jugador indicado en el editor. 
+/// Sigue al jugador con un retraso pequeño, utilizando Lerp para suavizar la transicion. 
+/// También se implementa el funcionamiento del paneo de camara con retraso aparte.
 /// </summary>
 public class FollowPlayer : MonoBehaviour
 {
@@ -64,6 +65,11 @@ public class FollowPlayer : MonoBehaviour
     // Por defecto están los típicos (Update y Start) pero:
     // - Hay que añadir todos los que sean necesarios
     // - Hay que borrar los que no se usen 
+
+    /// <summary>
+    /// Start is called on the frame when a script is enabled just before 
+    /// any of the Update methods are called the first time.
+    /// </summary>
     private void Start()
     {
         transform.position=transform.position + Offset;

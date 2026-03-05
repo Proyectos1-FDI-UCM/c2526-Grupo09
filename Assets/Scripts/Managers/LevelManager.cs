@@ -111,6 +111,10 @@ public class LevelManager : MonoBehaviour
 
     #region Métodos Privados
 
+    /// <summary>
+    /// Método que activa el panel de FinDeJuego y cambia el texto del panel dependiendo de si pierdes o ganas
+    /// </summary>
+    /// <param name="loose"></param>
     public void EndGame(bool loose)
     {
         Panel.SetActive(true);

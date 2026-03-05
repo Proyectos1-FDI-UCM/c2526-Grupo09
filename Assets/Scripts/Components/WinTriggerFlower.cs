@@ -1,6 +1,6 @@
 //---------------------------------------------------------
-// Breve descripción del contenido del archivo
-// Responsable de la creación de este archivo
+// Detectar si el jugador gana
+// Hao Zheng
 // Bouquet Of Sins
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
@@ -10,8 +10,7 @@ using UnityEngine;
 
 
 /// <summary>
-/// Antes de cada class, descripción de qué es y para qué sirve,
-/// usando todas las líneas que sean necesarias.
+/// Detecta si el jugador entra en contacto con esta para ganar.
 /// </summary>
 public class WinTriggerFlower : MonoBehaviour
 {
@@ -44,13 +43,13 @@ public class WinTriggerFlower : MonoBehaviour
     // - Hay que borrar los que no se usen 
 
     /// <summary>
-    /// método para detectar si colisiona con un objeto con trigger
+    /// método para detectar si colisiona con un objeto con trigger que tenga el componente platermovement
     /// </summary>
     /// <param name="collision"></param>
     private void OnTriggerEnter2D(Collider2D collision)
     {
         PlayerMovement player = collision.GetComponent<PlayerMovement>();
-        if (player != null)
+        if (player != null&&LevelManager.Instance!=null)
         {
             LevelManager.Instance.EndGame(false);
         }

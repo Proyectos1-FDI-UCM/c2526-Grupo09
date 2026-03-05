@@ -156,11 +156,6 @@ public class GameManager : MonoBehaviour
         System.GC.Collect();
     } // ChangeScene
 
-    public void EndGame(bool loose)
-    {
-
-    }
-
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----
