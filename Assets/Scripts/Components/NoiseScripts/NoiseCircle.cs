@@ -6,7 +6,6 @@
 //---------------------------------------------------------
 
 using UnityEngine;
-using static UnityEditor.PlayerSettings;
 // Añadir aquí el resto de directivas using
 
 
