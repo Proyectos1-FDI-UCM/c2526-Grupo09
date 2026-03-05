@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 673e25135372187499d4b2ea7ab97e53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Target: {fileID: 0}
+  Target: {fileID: 2246988364955933717, guid: 522f76ecd2425fe4aa6d9911eb852ec3, type: 3}
   Offset: {x: 0, y: 0, z: -10}
   TimeNormal: 1
   TimePaneo: 25
