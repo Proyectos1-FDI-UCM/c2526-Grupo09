@@ -997,7 +997,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueUI: {fileID: 2641970758093422240}
   typingSpeed: 0.05
-  input: {fileID: 0}
   player: {fileID: 0}
 --- !u!1 &7879901078038954364
 GameObject:
