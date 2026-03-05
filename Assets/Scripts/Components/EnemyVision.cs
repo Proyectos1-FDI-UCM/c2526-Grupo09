@@ -33,7 +33,6 @@ public class EnemyVision : MonoBehaviour
     // primera palabra en minúsculas y el resto con la 
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
-
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -42,23 +41,6 @@ public class EnemyVision : MonoBehaviour
     // Por defecto están los típicos (Update y Start) pero:
     // - Hay que añadir todos los que sean necesarios
     // - Hay que borrar los que no se usen 
-
-    /// <summary>
-    /// Start is called on the frame when a script is enabled just before 
-    /// any of the Update methods are called the first time.
-    /// </summary>
-    void Start()
-    {
-
-    }
-
-    /// <summary>
-    /// Update is called every frame, if the MonoBehaviour is enabled.
-    /// </summary>
-    void Update()
-    {
-
-    }
     #endregion
 
     // ---- MÉTODOS PÚBLICOS ----
@@ -94,7 +76,11 @@ public class EnemyVision : MonoBehaviour
         {
             // Avisar a EnemyLogic que el player esta en el rango de vision
             EnemyLogic enemyLogic = transform.parent.parent.GetComponent<EnemyLogic>();
-            if (enemyLogic != null) enemyLogic.SawThePlayer(PlayerScript.gameObject.transform);
+            if (enemyLogic != null)
+            {
+                enemyLogic.SawThePlayer(PlayerScript.gameObject.transform);
+                
+            }
 
         }
     }

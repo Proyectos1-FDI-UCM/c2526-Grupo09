@@ -100,25 +100,11 @@ public class EnemyLogic : MonoBehaviour
     // - Hay que borrar los que no se usen 
 
     /// <summary>
-    /// Start is called on the frame when a script is enabled just before 
-    /// any of the Update methods are called the first time.
-    /// </summary>
-    void Start()
-    {
-        
-    }
-
-    /// <summary>
     /// Update is called every frame, if the MonoBehaviour is enabled.
     /// </summary>
     void Update()
     {
-        // Si el jugador se esconde mientras lo perseguíamos, perdemos la visibilidad
-        if (_isPlayerVisible && _playerPos.GetComponent<PlayerMovement>().GetIsHidden())
-        {
-            _isPlayerVisible = false;
-        }
-
+        PlayerIsHiding();
         UpdateEnemyState();
     }
     #endregion
@@ -142,7 +128,7 @@ public class EnemyLogic : MonoBehaviour
         _timer = 0;
     }
     /// <summary>
-    /// 
+    /// Metodo que se llama desde EnemyAttack cuando el enemigo choca con el jugador.
     /// </summary>
     public void KillThePlayer()
     {
@@ -190,6 +176,18 @@ public class EnemyLogic : MonoBehaviour
         EnemyVision enemyVision = transform.gameObject.GetComponentInChildren<EnemyVision>();
         Transform enemyRotate = enemyVision.transform.parent;
         enemyRotate.rotation = Quaternion.Euler(0, 0, rotZ);
+    }
+
+    /// <summary>
+    /// Metodo que mira si el jugador esta escondido.
+    /// </summary>
+    private void PlayerIsHiding()
+    {
+        // Si el jugador se esconde mientras lo perseguíamos, perdemos la visibilidad
+        if (_isPlayerVisible && _playerPos.GetComponent<PlayerMovement>().GetIsHidden())
+        {
+            _isPlayerVisible = false;
+        }
     }
 
     /// <summary>
@@ -260,9 +258,9 @@ public class EnemyLogic : MonoBehaviour
     private void PerformAttack()
     {
         Debug.Log("Mata al jugador");
-        if (GameManager.Instance != null)
+        if (LevelManager.Instance != null)
         {
-            GameManager.Instance.EndGame(true);
+            LevelManager.Instance.EndGame(true);
         }
     }
 
