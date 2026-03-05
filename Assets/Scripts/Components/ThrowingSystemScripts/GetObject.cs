@@ -20,6 +20,8 @@ public class GetObject : MonoBehaviour
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
 
+    [SerializeField] GameObject canvasTemp;
+
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -53,6 +55,7 @@ public class GetObject : MonoBehaviour
     /// </summary>
     void Start()
     {
+        canvasTemp.SetActive(false);
         // comprobamos que el componente está bien configurado desde el editor y que la escena esté bien montada
         if (InputManager.Instance == null) 
         {
@@ -73,6 +76,7 @@ public class GetObject : MonoBehaviour
                 if (InputManager.Instance.InteractWasPressedThisFrame()) 
                 {
                     _hasObject = true;
+                    canvasTemp.SetActive(true);
                     Debug.Log("has cogido el objeto yayyy");
                 }
         }
