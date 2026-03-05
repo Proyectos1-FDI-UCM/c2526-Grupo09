@@ -1,6 +1,6 @@
 //---------------------------------------------------------
 // Breve descripción del contenido del archivo
-// Inés de la Peña, Diego Martín, Carmen Rosino
+// Responsable de la creación de este archivo
 // Bouquet Of Sins
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
@@ -143,9 +143,9 @@ public class PlayerMovement : MonoBehaviour
 
         //Aplicamos el movimiento
         //Multiplicamos la dirección por la velocidad y el tiempo
-        transform.Translate(direction * currentSpeed * Time.deltaTime);  
+        transform.Translate(direction * currentSpeed * Time.deltaTime);
     }
     #endregion
 
-} // class NewMonoBehaviourScript 
+} // class PlayerMovement 
 // namespace

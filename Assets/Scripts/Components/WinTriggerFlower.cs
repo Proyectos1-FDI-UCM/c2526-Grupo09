@@ -13,7 +13,7 @@ using UnityEngine;
 /// Antes de cada class, descripción de qué es y para qué sirve,
 /// usando todas las líneas que sean necesarias.
 /// </summary>
-public class ScriptFlor : MonoBehaviour
+public class WinTriggerFlower : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
@@ -43,10 +43,14 @@ public class ScriptFlor : MonoBehaviour
     // - Hay que añadir todos los que sean necesarios
     // - Hay que borrar los que no se usen 
 
+    /// <summary>
+    /// método para detectar si colisiona con un objeto con trigger
+    /// </summary>
+    /// <param name="collision"></param>
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        PlayerMovement player=collision.GetComponent<PlayerMovement>();
-        if(player!=null)
+        PlayerMovement player = collision.GetComponent<PlayerMovement>();
+        if (player != null)
         {
             GameManager.Instance.EndGame(false);
         }
@@ -72,5 +76,5 @@ public class ScriptFlor : MonoBehaviour
 
     #endregion
 
-} // class ScriptFlor 
+} // class WinTriggerFlower 
 // namespace
