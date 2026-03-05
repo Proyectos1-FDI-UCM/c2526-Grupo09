@@ -1,7 +1,7 @@
 //---------------------------------------------------------
-// Script zona de escondite
-// Rafael Campos García
-// 
+// Script zona de escondite.
+// Rafa Campos García.
+// Bouquet Of Sins
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
 
@@ -11,8 +11,7 @@ using UnityEngine;
 
 
 /// <summary>
-/// Antes de cada class, descripción de qué es y para qué sirve,
-/// usando todas las líneas que sean necesarias.
+/// Script para aquellos sprites que funcionen como escondite para el jugador.
 /// </summary>
 public class HidingSpot : MonoBehaviour
 {
@@ -26,22 +25,38 @@ public class HidingSpot : MonoBehaviour
     // Ejemplo: MaxHealthPoints
     //Sprite
 
-    //Sprite del objeto que nos esconde
+    /// <summary>
+    /// Sprite del objeto que nos esconde
+    /// </summary>
     [SerializeField] private SpriteRenderer hidingSprite;
-    //El valor para echar al frente el sprite que nos esconde, ocultándo al jugador.
+
+    /// <summary>
+    /// El valor para echar al frente el sprite que nos esconde, ocultándo al jugador.
+    /// </summary>
     [SerializeField] private int hidingSortingOrder = 10;
-    //Stuff del jugador y el controller
+
+    /// <summary>
+    /// Stuff del jugador y el controller
+    /// </summary>
     [SerializeField] private InputManager input;
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
 
-    //Sprite del jugador que va a esconder
+    /// <summary>
+    /// Sprite del jugador que va a esconder
+    /// </summary>
     private PlayerMovement _player;
-    //Una vez entre en colisión con el collider del hidingspot
+
+    /// <summary>
+    /// Una vez entre en colisión con el collider del hidingspot
+    /// </summary>
     private bool _insideCollider;
-    //Bool que comprueba si ya está escondido o no.
+
+    /// <summary>
+    /// Bool que comprueba si ya está escondido o no.
+    /// </summary>
     private bool _isHiding;
     #endregion
 
@@ -50,11 +65,7 @@ public class HidingSpot : MonoBehaviour
 
 
 
-    /// <summary>
-    /// Start is called on the frame when a script is enabled just before 
-    /// any of the Update methods are called the first time.
-    /// </summary>
-
+    
     /// En el Update() va a controlar si está adentro del collider;
     /// Asímismo, comprueba si ya está escondido o no para salir o entrar en el escondite.
     void Update()
@@ -87,7 +98,12 @@ public class HidingSpot : MonoBehaviour
     // ---- MÉTODOS PRIVADOS ----
     #region Métodos Privados
 
-    //Una vez el jugador se acerque al collider, se establece como que lo está con _insideCollider.
+
+    /// <summary>
+    /// Una vez el jugador se acerque al collider, se establece como que lo está con _insideCollider.
+    /// </summary>
+    /// <param name="collision"></param>
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // Solo asignamos si el objeto tiene el script PlayerMovement
@@ -100,6 +116,11 @@ public class HidingSpot : MonoBehaviour
             Debug.Log("Jugador cerca del escondite");
         }
     }
+
+    /// <summary>
+    /// Una vez el jugador sale del collider, se establece como !_insideCollider
+    /// </summary>
+    /// <param name="collision"></param>
 
     private void OnTriggerExit2D(Collider2D collision)
     {
@@ -115,6 +136,10 @@ public class HidingSpot : MonoBehaviour
 
 
     //Métodos de entrada y salida del escondite.
+
+    /// <summary>
+    /// Método para la entrada de escondite del jugador.
+    /// </summary>
     private void EnterHiding()
     {
         //_playerSprite = _player.GetComponent<SpriteRenderer>();
@@ -131,6 +156,10 @@ public class HidingSpot : MonoBehaviour
         //Igualmente, desactivando al player no debería detectarlo.
         Debug.Log("Jugador escondido");
     }
+
+    /// <summary>
+    /// Método de salida de escondite del jugador.
+    /// </summary>
     private void ExitHiding()
     {
         if (_player == null) {

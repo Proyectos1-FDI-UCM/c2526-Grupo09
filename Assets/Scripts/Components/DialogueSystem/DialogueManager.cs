@@ -1,6 +1,6 @@
 //---------------------------------------------------------
-// Breve descripción del contenido del archivo
-// Responsable de la creación de este archivo
+// Manager del sistema de diálogos. 
+// Rafa Campos García.
 // Bouquet Of Sins
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
@@ -13,8 +13,7 @@ using UnityEngine;
 
 
 /// <summary>
-/// Antes de cada class, descripción de qué es y para qué sirve,
-/// usando todas las líneas que sean necesarias.
+/// Este script convierte a una instancia en DialogManager, que permite controlar todo el sistema de diálogo y controlar la velocidad de las letras.
 /// </summary>
 public class DialogueManager : MonoBehaviour
 {
@@ -26,9 +25,24 @@ public class DialogueManager : MonoBehaviour
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
 
+    /// <summary>
+    /// Necesitamos de un canvas para mostrar el diálogo.
+    /// </summary>
     [SerializeField] private DialogueUI dialogueUI;
-    [SerializeField] private float typingSpeed = 0.05f;
+
+    /// <summary>
+    /// Velocidad de la reproducción de las letras del texto.
+    /// </summary>
+    [SerializeField] private float typingSpeed = 0.03f;
+
+    /// <summary>
+    /// Necesitamos de un input para controlar la interacción E.
+    /// </summary>
     [SerializeField] private InputManager input;
+
+    /// <summary>
+    /// Necesitamos de un player para frenar su movimiento.
+    /// </summary>
     [SerializeField] private GameObject player;
     //[SerializeField] private AudioSource typingAudioSource;
 
@@ -43,17 +57,34 @@ public class DialogueManager : MonoBehaviour
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
 
-    //propiedad global de solo lectura para otros scripts
+    /// <summary>
+    /// Propiedad global de solo lectura para otros scripts.
+    /// </summary>
     public static DialogueManager Instance { get; private set; } 
 
+    /// <summary>
+    /// Control de turnos entre las listas de diálogos.
+    /// </summary>
     private DialogueTurn currentTurn;
-    //bool para la separación entre carácteres
+
+    /// <summary>
+    /// Bool para la separación entre carácteres en curso.
+    /// </summary>
     private bool _isTyping = false;
-    //bool que espera al input
+
+    /// <summary>
+    /// Bool que espera al input (E)
+    /// </summary>
     private bool _waitingForInput = false;
-    //bool qe comprueba si hay un dialogo en proceso
+
+    /// <summary>
+    /// Bool qe comprueba si hay un dialogo en proceso.
+    /// </summary>
     private bool _isDialogInProgress = false;
-    //cola de turnos de dialogo,, el primero qe entra es el primero qe sale.
+
+    /// <summary>
+    /// Cola de turnos de dialogo,, el primero qe entra es el primero qe sale.
+    /// </summary>
     private Queue<DialogueTurn> _dialogueTurnQueue; 
 
     #endregion
@@ -61,18 +92,12 @@ public class DialogueManager : MonoBehaviour
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
 
-    // Por defecto están los típicos (Update y Start) pero:
-    // - Hay que añadir todos los que sean necesarios
-    // - Hay que borrar los que no se usen 
-
     /// <summary>
-    /// Start is called on the frame when a script is enabled just before 
-    /// any of the Update methods are called the first time.
+    /// En el Awake controlamos la instancia y la designamos como DialogManager.
     /// </summary>
-    /// 
     private void Awake()
     {
-        //esta es la instancia DialogueManager
+        //Esta es la instancia DialogueManager.
 
         if (Instance != null && Instance != this)
         {
@@ -85,7 +110,11 @@ public class DialogueManager : MonoBehaviour
         dialogueUI.HideDialogBox();
     }
 
-    public void StartDialogue(DialogueRound dialogue) //metodo publico de facil acceso67
+    /// <summary>
+    /// Método de inicio de diálogo.
+    /// </summary>
+    /// <param name="dialogue"></param>
+    public void StartDialogue(DialogueRound dialogue)
     {
         //Impedir que se reproduzcan dos dialogos simultáneamente.
         if (_isDialogInProgress)
@@ -110,6 +139,11 @@ public class DialogueManager : MonoBehaviour
         NextTurn();
     }
 
+    /// <summary>
+    /// Corrutina provisional para la aparición de carácteres en el texto de diálogo.
+    /// </summary>
+    /// <param name="dialogTurn"></param>
+
     private IEnumerator TypeSentence(DialogueTurn dialogTurn)
     {
         //Método para reproducir texto carácter por carácter. Es una corrutina provisional.
@@ -131,7 +165,7 @@ public class DialogueManager : MonoBehaviour
    
 
     /// <summary>
-    /// Update is called every frame, if the MonoBehaviour is enabled.
+    /// En el Update() controlamos la interacción con el input.
     /// </summary>
     void Update()
     {
@@ -168,6 +202,9 @@ public class DialogueManager : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
 
+    /// <summary>
+    /// Método para reproducir el siguiente turno de la lista en Queue.
+    /// </summary>
     private void NextTurn()
     {
         //Si no hay mas turnos en la Queue = diálogo terminado.
@@ -191,7 +228,9 @@ public class DialogueManager : MonoBehaviour
         _isTyping = true;
     }
 
-
+    /// <summary>
+    /// Método para terminar diálogo.
+    /// </summary>
     private void EndDialogue()
     {
         dialogueUI.HideDialogBox();

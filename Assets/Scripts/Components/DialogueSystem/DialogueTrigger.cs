@@ -10,10 +10,9 @@ using UnityEngine;
 
 
 /// <summary>
-/// Antes de cada class, descripción de qué es y para qué sirve,
-/// usando todas las líneas que sean necesarias.
+/// Script para aquellas instancias que vayan a generar un diálogo. Se reparten por el mapa y spawnean un diálogo.
 /// </summary>
-/// 
+
 namespace DialogueSystem {
     public class DialogueTrigger : MonoBehaviour
     {
@@ -25,9 +24,12 @@ namespace DialogueSystem {
         // (palabras con primera letra mayúscula, incluida la primera letra)
         // Ejemplo: MaxHealthPoints
 
-        //Ronda de dialogos serializada a adjuntar en el inspector.
-        [SerializeField] private DialogueRound dialogue; 
-        
+        /// <summary>
+        /// Ronda de dialogos serializada a adjuntar en el inspector.
+        /// </summary>
+
+        [SerializeField] private DialogueRound dialogue;
+
 
         #endregion
 
@@ -40,9 +42,12 @@ namespace DialogueSystem {
         // primera letra en mayúsculas)
         // Ejemplo: _maxHealthPoints
 
-        //Porpiedad de player para detectarlo en el collider del trigger.
-        private PlayerMovement _player;
+        ///<summary>
+        /// Porpiedad de player para detectarlo en el collider del trigger.
+        ///</summary>
         
+        private PlayerMovement _player;
+
 
         #endregion
 
@@ -53,7 +58,7 @@ namespace DialogueSystem {
         // - Hay que añadir todos los que sean necesarios
         // - Hay que borrar los que no se usen 
 
-        
+
         #endregion
 
         // ---- MÉTODOS PÚBLICOS ----
@@ -64,7 +69,10 @@ namespace DialogueSystem {
         // mayúscula, incluida la primera letra)
         // Ejemplo: GetPlayerController
 
-        public void TriggerDialogue() //inicia el dialogo
+        /// <summary>
+        /// Inicia el dialogo.
+        /// </summary>
+        public void TriggerDialogue() 
         {
             //llama a la instancia del dialogueManager y utilizamos el metodo startDialogue
             DialogueManager.Instance.StartDialogue(dialogue); 
@@ -82,10 +90,13 @@ namespace DialogueSystem {
         // se nombren en formato PascalCase (palabras con primera letra
         // mayúscula, incluida la primera letra)
 
+        /// <summary>
+        /// Cuando entre el player al collider, llama al método que spawnea el diálogo.
+        /// </summary>
+        /// <param name="collision"></param>
         private void OnTriggerEnter2D(Collider2D collision) 
         {
 
-            //Cuando entre el player al collider, llama al método.
             _player = collision.gameObject.GetComponent<PlayerMovement>();
             if (_player != null)
             {
