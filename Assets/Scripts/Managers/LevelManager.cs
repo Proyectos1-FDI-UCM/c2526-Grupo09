@@ -6,7 +6,9 @@
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
 
+using TMPro;
 using UnityEngine;
+using static UnityEngine.Rendering.DebugUI;
 
 /// <summary>
 /// Componente que se encarga de la gestión de un nivel concreto.
@@ -30,6 +32,8 @@ public class LevelManager : MonoBehaviour
     // públicos y de inspector se nombren en formato PascalCase
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
+    [SerializeField] GameObject Panel;
+    [SerializeField] TextMeshProUGUI Text;
 
     #endregion
 
@@ -47,7 +51,9 @@ public class LevelManager : MonoBehaviour
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
 
     #region Métodos de MonoBehaviour
-
+    /// <summary>
+    /// Awake is called when the script instance is being loaded.
+    /// </summary>
     protected void Awake()
     {
         if (_instance == null)
@@ -56,6 +62,16 @@ public class LevelManager : MonoBehaviour
             _instance = this;
             Init();
         }
+
+    }
+
+    /// <summary>
+    /// Start is called on the frame when a script is enabled just before 
+    /// any of the Update methods are called the first time.
+    /// </summary>
+    private void Start()
+    {
+        Panel.SetActive(false);
     }
 
     #endregion
@@ -95,9 +111,18 @@ public class LevelManager : MonoBehaviour
 
     #region Métodos Privados
 
-    /// <summary>
-    /// Dispara la inicialización.
-    /// </summary>
+    public void EndGame(bool loose)
+    {
+        Panel.SetActive(true);
+        if (loose == true)
+        {
+            Text.text = "Has perdido";
+        }
+        else
+        {
+            Text.text = "Has Ganado";
+        }
+    }
     private void Init()
     {
         // De momento no hay nada que inicializar

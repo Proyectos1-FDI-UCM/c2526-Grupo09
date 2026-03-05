@@ -6,8 +6,10 @@
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
 
-using UnityEngine;
 using TMPro;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using static UnityEngine.Rendering.DebugUI;
 
 
 /// <summary>
@@ -32,8 +34,6 @@ public class GameManager : MonoBehaviour
     // públicos y de inspector se nombren en formato PascalCase
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
-    [SerializeField] GameObject panel;
-    [SerializeField] TextMeshProUGUI text;
 
 
     #endregion
@@ -53,10 +53,6 @@ public class GameManager : MonoBehaviour
 
     #region Métodos de MonoBehaviour
 
-    private void Start()
-    {
-        panel.SetActive(false);
-    }
     /// <summary>
     /// Método llamado en un momento temprano de la inicialización.
     /// En el momento de la carga, si ya hay otra instancia creada,
@@ -162,17 +158,8 @@ public class GameManager : MonoBehaviour
 
     public void EndGame(bool loose)
     {
-        panel.SetActive(true);
-        if(loose==true)
-        {
-            text.text = "Has perdido";
-        }
-        else
-        {
-            text.text = "Has Ganado";
-        }
+
     }
-   
 
     #endregion
 
@@ -193,7 +180,8 @@ public class GameManager : MonoBehaviour
         // De momento no hay que transferir ningún setup
         // a otro manager
     }
+    
 
     #endregion
 } // class GameManager 
-// namespace
+  // namespace

@@ -52,7 +52,7 @@ public class WinTriggerFlower : MonoBehaviour
         PlayerMovement player = collision.GetComponent<PlayerMovement>();
         if (player != null)
         {
-            GameManager.Instance.EndGame(false);
+            LevelManager.Instance.EndGame(false);
         }
     }
     #endregion
