@@ -35,10 +35,6 @@ public class DialogueManager : MonoBehaviour
     /// </summary>
     [SerializeField] private float typingSpeed = 0.03f;
 
-    /// <summary>
-    /// Necesitamos de un input para controlar la interacción E.
-    /// </summary>
-    [SerializeField] private InputManager input;
 
     /// <summary>
     /// Necesitamos de un player para frenar su movimiento.
@@ -176,7 +172,7 @@ public class DialogueManager : MonoBehaviour
         // Espera del input.
         if (_waitingForInput)
         {
-            if (input.InteractWasPressedThisFrame())
+            if (InputManager.Instance.InteractWasPressedThisFrame())
             {
                 _waitingForInput = false;
                 NextTurn();

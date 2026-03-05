@@ -35,10 +35,6 @@ public class HidingSpot : MonoBehaviour
     /// </summary>
     [SerializeField] private int hidingSortingOrder = 10;
 
-    /// <summary>
-    /// Stuff del jugador y el controller
-    /// </summary>
-    [SerializeField] private InputManager input;
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -73,13 +69,13 @@ public class HidingSpot : MonoBehaviour
         // Si ya estás escondido, solo importa la tecla para salir
         if (_isHiding)
         {
-            if (input.InteractWasPressedThisFrame())
+            if (InputManager.Instance.InteractWasPressedThisFrame())
             {
                 ExitHiding();
             }
         }
         // Si no estás escondido, necesitas estar dentro del collider
-        else if (_insideCollider && input.InteractWasPressedThisFrame())
+        else if (_insideCollider && InputManager.Instance.InteractWasPressedThisFrame())
         {
             EnterHiding();
         }
