@@ -12,4 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd1b51748c43e8043b83edef630f10d1, type: 3}
   m_Name: DialogueLevelBeta2
   m_EditorClassIdentifier: 
-  dialogueTurnsList: []
+  dialogueTurnsList:
+  - <Character>k__BackingField: {fileID: 11400000, guid: 8aa8f9a0e02c41448ae3fef161701cc8, type: 2}
+    dialogueLine: "\xA1Ah\xED est\xE1!"
+  - <Character>k__BackingField: {fileID: 11400000, guid: 307c3938c89089446b5e14d45f66cfb0, type: 2}
+    dialogueLine: "\xA1Tr\xE1emela. corre!"

@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48e550eb3a4345a43b87fe27aa1f8eaf, type: 3}
   m_Name: TestChan
   m_EditorClassIdentifier: 
-  characterName: Chan
-  profilePhoto: {fileID: 21300000, guid: d5f2ba6124ad440ec8c3ea8fb0abe848, type: 3}
+  characterName: ???
+  profilePhoto: {fileID: 7114232580911515448, guid: 16e8d783204ec084ab06d8287eab5c6a, type: 3}

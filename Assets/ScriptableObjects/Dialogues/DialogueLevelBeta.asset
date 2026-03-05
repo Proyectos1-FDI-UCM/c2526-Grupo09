@@ -12,4 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd1b51748c43e8043b83edef630f10d1, type: 3}
   m_Name: DialogueLevelBeta
   m_EditorClassIdentifier: 
-  dialogueTurnsList: []
+  dialogueTurnsList:
+  - <Character>k__BackingField: {fileID: 11400000, guid: 307c3938c89089446b5e14d45f66cfb0, type: 2}
+    dialogueLine: "\xA1Cuidado!"
+  - <Character>k__BackingField: {fileID: 11400000, guid: c721d98d35d591645a9bfba53c790a12, type: 2}
+    dialogueLine: Hay un enemigo cerca.
+  - <Character>k__BackingField: {fileID: 11400000, guid: 2e2c68027a7f2bb428bfa36fcad76995, type: 2}
+    dialogueLine: "Estas criaturas se vuelven salvajes despu\xE9s de escuchar el
+      minimo ruido."
+  - <Character>k__BackingField: {fileID: 11400000, guid: 42716e98d5f41b94e959817c5a686de3, type: 2}
+    dialogueLine: No hagas mucho ruido cerca de ellos.
+  - <Character>k__BackingField: {fileID: 11400000, guid: 8aa8f9a0e02c41448ae3fef161701cc8, type: 2}
+    dialogueLine: Y recuerda traerme la flor antes de que te maten.

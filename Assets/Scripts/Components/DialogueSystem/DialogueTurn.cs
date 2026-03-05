@@ -1,3 +1,11 @@
+//---------------------------------------------------------
+// Script para los turnos de diálogo.
+// Rafa Campos García
+// Bouquet Of Sins
+// Proyectos 1 - Curso 2025-26
+//---------------------------------------------------------
+
+
 using UnityEngine;
 
 namespace DialogueSystem
