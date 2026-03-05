@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 976402422735028487}
   - component: {fileID: 6309043059017855283}
   - component: {fileID: 7551944308022397364}
-  - component: {fileID: 4309082932156598111}
+  - component: {fileID: 1271348129770439711}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -211,7 +211,7 @@ MonoBehaviour:
   Circle: {fileID: 765020465494509383, guid: b4d38215e91faa3419c9e621ab5ac5f3, type: 3}
   PlayerSpeed: 2
   PlayerFinalPos: {x: 2, y: 2, z: 2}
---- !u!114 &4309082932156598111
+--- !u!114 &1271348129770439711
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -5,7 +5,6 @@
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
 
-using Mono.Cecil.Cil;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -114,6 +113,12 @@ public class EnemyLogic : MonoBehaviour
     /// </summary>
     void Update()
     {
+        // Si el jugador se esconde mientras lo perseguíamos, perdemos la visibilidad
+        if (_isPlayerVisible && _playerPos.GetComponent<PlayerMovement>().GetIsHidden())
+        {
+            _isPlayerVisible = false;
+        }
+
         UpdateEnemyState();
     }
     #endregion

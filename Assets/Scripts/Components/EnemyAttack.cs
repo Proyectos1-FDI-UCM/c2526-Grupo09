@@ -85,7 +85,7 @@ public class EnemyAttack : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         PlayerMovement playerMovement = collision.GetComponent<PlayerMovement>();
-        if (playerMovement != null)
+        if (playerMovement != null && !playerMovement.GetIsHidden())
         {
             EnemyLogic enemyLogic = transform.parent.GetComponent<EnemyLogic>();
             if (enemyLogic != null) enemyLogic.KillThePlayer();

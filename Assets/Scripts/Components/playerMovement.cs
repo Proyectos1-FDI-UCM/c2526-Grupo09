@@ -37,9 +37,16 @@ public class PlayerMovement : MonoBehaviour
 
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
+
+
     Vector3 _posAnterior;  //  posición que tenía antes el jugador
     Vector3 _posActual;  // posición actual del jugador
-    //bool _correr = false;  // si está corriendo o no
+
+    /// <summary>
+    /// booleano que se encarga de saber si es jugador esta escondido o no
+    /// </summary>
+    private bool _isHidden = false;
+
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -55,14 +62,21 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     void Update()
     {
-        _posAnterior = transform.position;  // se guarda la posición antes de moverse
-        MovePlayer();
-        _posActual = transform.position;  // se guarda la posición de después de moverse
-        // si son distintas las posiciones de antes y después, el jugador se ha movido
-        if (_posAnterior != _posActual)
+        if (!_isHidden)
         {
-            PlayerNoise playerNoise = transform.GetComponent<PlayerNoise>();
-            playerNoise.PlayerMoving();
+            _posAnterior = transform.position;
+            MovePlayer();
+            _posActual = transform.position;
+
+            // Solo intentamos hacer ruido si nos hemos movido Y tenemos el script de ruido
+            if (_posAnterior != _posActual)
+            {
+                PlayerNoise playerNoise = GetComponent<PlayerNoise>();
+                if (playerNoise != null)
+                {
+                    playerNoise.PlayerMoving();
+                }
+            }
         }
     }
     #endregion
@@ -75,10 +89,23 @@ public class PlayerMovement : MonoBehaviour
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
 
-    //public bool CurrentlyRunning()
-    //{
-    //    return _correr;
-    //}
+    /// <summary>
+    /// Permite a otros scripts consultar si el jugador está escondido.
+    /// </summary>
+    public bool GetIsHidden()
+    {
+        return _isHidden;
+    }
+
+    /// <summary>
+    /// Permite al escondite cambiar el estado de visibilidad del jugador.
+    /// </summary>
+    public void SetHidden(bool hidden)
+    {
+        _isHidden = hidden;
+        Debug.Log("se ha cambiado isHiden a: " + GetIsHidden());
+    }
+
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----
