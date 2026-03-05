@@ -1,5 +1,5 @@
 //---------------------------------------------------------
-// Breve descripción del contenido del archivo
+// Este script se encarga de detectar la colision del enemigo con el jugador.
 // Responsable de la creación de este archivo
 // Bouquet Of Sins
 // Proyectos 1 - Curso 2025-26
@@ -10,8 +10,8 @@ using UnityEngine;
 
 
 /// <summary>
-/// Antes de cada class, descripción de qué es y para qué sirve,
-/// usando todas las líneas que sean necesarias.
+/// Este script se encarga de detectar la colision del enemigo con el jugador, si chocan llama a "KillThePlayer"
+/// del script "EnemyLogic"
 /// </summary>
 public class EnemyAttack : MonoBehaviour
 {
@@ -24,7 +24,7 @@ public class EnemyAttack : MonoBehaviour
     // Ejemplo: MaxHealthPoints
 
     #endregion
-    
+
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
     // Documentar cada atributo que aparece aquí.
@@ -35,14 +35,27 @@ public class EnemyAttack : MonoBehaviour
     // Ejemplo: _maxHealthPoints
 
     #endregion
-    
+
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
-    
+
     // Por defecto están los típicos (Update y Start) pero:
     // - Hay que añadir todos los que sean necesarios
     // - Hay que borrar los que no se usen 
 
+    /// <summary>
+    /// Metodo que detecta cuando el jugador choca con el rango del enemigo.
+    /// </summary>
+    /// <param name="collision"></param>
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        PlayerMovement playerMovement = collision.GetComponent<PlayerMovement>();
+        if (playerMovement != null && !playerMovement.GetIsHidden())
+        {
+            EnemyLogic enemyLogic = transform.parent.GetComponent<EnemyLogic>();
+            if (enemyLogic != null) enemyLogic.KillThePlayer();
+        }
+    }
     #endregion
 
     // ---- MÉTODOS PÚBLICOS ----
@@ -62,19 +75,6 @@ public class EnemyAttack : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="collision"></param>
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        PlayerMovement playerMovement = collision.GetComponent<PlayerMovement>();
-        if (playerMovement != null && !playerMovement.GetIsHidden())
-        {
-            EnemyLogic enemyLogic = transform.parent.GetComponent<EnemyLogic>();
-            if (enemyLogic != null) enemyLogic.KillThePlayer();
-        }
-    }
     #endregion   
 
 } // class EnemyAttack 

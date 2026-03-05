@@ -12,8 +12,9 @@ using UnityEngine.UIElements;
 
 
 /// <summary>
-/// Antes de cada class, descripción de qué es y para qué sirve,
-/// usando todas las líneas que sean necesarias.
+/// Script que controla los estados y la forma de actuar de los enemigos. El enemigo va a detectar los sonidos
+/// y cuando el jugador este visible, si lo detecta, el enemigo va a la posicion del sonido o del jugador.
+/// Si el enemigo choca con el jugador, pierde la partida.
 /// </summary>
 public class EnemyLogic : MonoBehaviour
 {
@@ -31,25 +32,30 @@ public class EnemyLogic : MonoBehaviour
     [SerializeField]
     private Transform[] Positions;
     /// <summary>
-    /// El atributo Speed define la velocidad a la que se mueve el enemigo.
-    /// </summary>
-    [SerializeField]
-    private float Speed;
-    /// <summary>
-    /// 
+    /// Escala del FOV del enemigo cuando esta patrullando
     /// </summary>
     [SerializeField]
     private Vector3 ConeScale = new Vector3 (1, 1, 1);
     /// <summary>
-    /// 
+    /// Escala del FOV del enemigo cuando persigue al jugador o un sonido.
     /// </summary>
     [SerializeField]
     private Vector3 AlertConeScale = new Vector3 (2, 2, 1);
     /// <summary>
-    /// 
+    /// Es el tiempo que tardara el enemigo en volver a su estado de patrullar si no pilla al jugador
     /// </summary>
     [SerializeField]
     private float ChasingTime = 10;
+    /// <summary>
+    /// Es la velocidad a la que se mueve el enemigo cuando esta patrullando.
+    /// </summary>
+    [SerializeField]
+    private float PatrolSpeed = 1;
+    /// <summary>
+    /// Es la velocidad a la que se mueve el enemigo cuando esta persiguiendo.
+    /// </summary>
+    [SerializeField]
+    private float ChasingSpeed = 1;
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -67,19 +73,19 @@ public class EnemyLogic : MonoBehaviour
     #endregion
     private int _posIndex = 0;
     /// <summary>
-    /// La variable _heardNoise determina si el enemigo ha entrado en contacto con un sonido.
+    /// Determina si el enemigo ha entrado en contacto con un sonido.
     /// </summary>
     private bool _heardNoise = false;
     /// <summary>
-    /// La variable _isPlayerInRange determina si el jugador está dentro del rango de vision.
+    /// Determina si el jugador está dentro del rango de vision.
     /// </summary>
     private bool _isPlayerInRange = false;
     /// <summary>
-    /// 
+    /// Determina si el jugador se encuentra en el FOV del enemigo.
     /// </summary>
     private bool _isPlayerVisible = false;
     /// <summary>
-    /// La variable _noiseOrigin determina la posicion donde se origina el sonido con el que choca el enemigo.
+    /// Determina la posicion donde se origina el sonido con el que choca el enemigo.
     /// </summary>
     private Vector3 _noiseOrigin;
     /// <summary>
@@ -87,7 +93,7 @@ public class EnemyLogic : MonoBehaviour
     /// </summary>
     private Transform _playerPos;
     /// <summary>
-    /// 
+    /// Controla el tiempo en el que el enemigo persigue.
     /// </summary>
     private float _timer;
     
@@ -100,12 +106,29 @@ public class EnemyLogic : MonoBehaviour
     // - Hay que borrar los que no se usen 
 
     /// <summary>
-    /// Update is called every frame, if the MonoBehaviour is enabled.
+    /// Detecta si el jugador se esta escondiendo y cambia el estado del enemigo.
     /// </summary>
     void Update()
     {
         PlayerIsHiding();
         UpdateEnemyState();
+    }
+
+    /// <summary>
+    /// Detecta si el enemigo entra en contacto con una onda de sonido.
+    /// </summary>
+    /// <param name="collision"></param>
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        // Hacer Ducktyping para saber si es un sonido. Si lo es, poner _heardNoise a true
+        NoiseCircle noiseCircle = collision.gameObject.GetComponent<NoiseCircle>();
+        if (noiseCircle != null && !_heardNoise)
+        {
+            _noiseOrigin = noiseCircle.gameObject.transform.position;
+            _heardNoise = true;
+            _timer = 0;
+        }
+
     }
     #endregion
 
@@ -116,7 +139,7 @@ public class EnemyLogic : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
-    
+
     /// <summary>
     /// Metodo que se llama desde EnemyVision cuando detecta al jugador en el FOV del enemigo.
     /// </summary>
@@ -149,9 +172,9 @@ public class EnemyLogic : MonoBehaviour
     /// Metodo que mueve al enemigo a una posicion "endPos". Ademas, rota el cono de vision en 8 direcciones.
     /// </summary>
     /// <param name="endPos"></param>
-    private void MoveEnemy(Vector3 endPos)
+    private void MoveEnemy(Vector3 endPos, float speed)
     {
-        transform.position = Vector3.MoveTowards(transform.position, endPos, Speed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, endPos, speed * Time.deltaTime);
         // Rotacion del cono de vision
         Vector3 dir = endPos - transform.position;
         float rotZ = 0;
@@ -218,7 +241,7 @@ public class EnemyLogic : MonoBehaviour
     {
         if (_posIndex < Positions.Length)
         {
-            MoveEnemy(Positions[_posIndex].position);
+            MoveEnemy(Positions[_posIndex].position, PatrolSpeed);
             EnemyVision enemyVision = transform.gameObject.GetComponentInChildren<EnemyVision>();
             if (enemyVision != null)
             {
@@ -237,7 +260,7 @@ public class EnemyLogic : MonoBehaviour
     private void PerformChase(Vector3 positionToGo)
     {
         _timer += Time.deltaTime;
-        MoveEnemy(positionToGo);
+        MoveEnemy(positionToGo, ChasingSpeed);
         EnemyVision enemyVision = transform.gameObject.GetComponentInChildren<EnemyVision>();
         if (enemyVision != null)
         {
@@ -253,7 +276,7 @@ public class EnemyLogic : MonoBehaviour
 
 
     /// <summary>
-    /// Metodo que se encarga de llamar a EndGame del Game Manager.
+    /// Metodo que se encarga de llamar a EndGame del Level Manager.
     /// </summary>
     private void PerformAttack()
     {
@@ -262,23 +285,6 @@ public class EnemyLogic : MonoBehaviour
         {
             LevelManager.Instance.EndGame(true);
         }
-    }
-
-    /// <summary>
-    /// Detecta si el enemigo entra en contacto con una onda de sonido o con el jugador.
-    /// </summary>
-    /// <param name="collision"></param>
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        // Hacer Ducktyping para saber si es un sonido. Si lo es, poner _heardNoise a true
-        NoiseCircle noiseCircle = collision.gameObject.GetComponent<NoiseCircle>();
-        if (noiseCircle != null && !_heardNoise)
-        {
-            _noiseOrigin = noiseCircle.gameObject.transform.position;
-            _heardNoise = true;
-            _timer = 0;
-        }
-
     }
     #endregion   
 

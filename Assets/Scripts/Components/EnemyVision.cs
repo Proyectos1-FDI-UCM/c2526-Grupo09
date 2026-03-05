@@ -1,5 +1,5 @@
 //---------------------------------------------------------
-// Script que comunica al script "EnemyLogic" si el jugador se encuentra en el campo de visión del enemigo.
+// Script que detecta al jugador si se encuentra en el campo de visión del enemigo.
 // Álvaro Sosa Rodríguez
 // Bouquet Of Sins
 // Proyectos 1 - Curso 2025-26
@@ -10,8 +10,8 @@ using UnityEngine;
 
 
 /// <summary>
-/// Antes de cada class, descripción de qué es y para qué sirve,
-/// usando todas las líneas que sean necesarias.
+/// Script que comunica al script "EnemyLogic" si el jugador se encuentra en el campo de visión del enemigo y llama
+/// al metodo "SawThePlayer". Ademas, se encarga de modificar la escala del FOV del enemigo.
 /// </summary>
 public class EnemyVision : MonoBehaviour
 {
@@ -41,29 +41,6 @@ public class EnemyVision : MonoBehaviour
     // Por defecto están los típicos (Update y Start) pero:
     // - Hay que añadir todos los que sean necesarios
     // - Hay que borrar los que no se usen 
-    #endregion
-
-    // ---- MÉTODOS PÚBLICOS ----
-    #region Métodos públicos
-    // Documentar cada método que aparece aquí con ///<summary>
-    // El convenio de nombres de Unity recomienda que estos métodos
-    // se nombren en formato PascalCase (palabras con primera letra
-    // mayúscula, incluida la primera letra)
-    // Ejemplo: GetPlayerController
-
-    public void ChangeConeScale(Vector3 scale)
-    {
-        gameObject.transform.localScale = scale;
-    }
-
-    #endregion
-
-    // ---- MÉTODOS PRIVADOS ----
-    #region Métodos Privados
-    // Documentar cada método que aparece aquí
-    // El convenio de nombres de Unity recomienda que estos métodos
-    // se nombren en formato PascalCase (palabras con primera letra
-    // mayúscula, incluida la primera letra)
 
     /// <summary>
     /// Este metodo detecta si el jugador se encuentra en el rango de vision del enemigo y manda la posicion del jugador.
@@ -79,11 +56,38 @@ public class EnemyVision : MonoBehaviour
             if (enemyLogic != null)
             {
                 enemyLogic.SawThePlayer(PlayerScript.gameObject.transform);
-                
             }
-
         }
     }
+
+    #endregion
+
+    // ---- MÉTODOS PÚBLICOS ----
+    #region Métodos públicos
+    // Documentar cada método que aparece aquí con ///<summary>
+    // El convenio de nombres de Unity recomienda que estos métodos
+    // se nombren en formato PascalCase (palabras con primera letra
+    // mayúscula, incluida la primera letra)
+    // Ejemplo: GetPlayerController
+
+    /// <summary>
+    /// Metodo que recibe un Vector3 y segun este cambia la escala del FOV del enemigo.
+    /// </summary>
+    /// <param name="scale"></param>
+    public void ChangeConeScale(Vector3 scale)
+    {
+        gameObject.transform.localScale = scale;
+    }
+
+    #endregion
+
+    // ---- MÉTODOS PRIVADOS ----
+    #region Métodos Privados
+    // Documentar cada método que aparece aquí
+    // El convenio de nombres de Unity recomienda que estos métodos
+    // se nombren en formato PascalCase (palabras con primera letra
+    // mayúscula, incluida la primera letra)
+
 
     #endregion
 

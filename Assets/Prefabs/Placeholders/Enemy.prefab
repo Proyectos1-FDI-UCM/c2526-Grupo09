@@ -219,7 +219,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 2
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.087326355, g: 0.6861363, b: 0.8415094, a: 1}
+  m_Color: {r: 0.4264151, g: 0.12470624, b: 0.14386243, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -245,10 +245,11 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  Speed: 5
   ConeScale: {x: 1, y: 1, z: 1}
   AlertConeScale: {x: 2, y: 2, z: 1}
   ChasingTime: 10
+  PatrolSpeed: 1
+  ChasingSpeed: 1
 --- !u!61 &8071511312614493079
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -397,7 +398,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
