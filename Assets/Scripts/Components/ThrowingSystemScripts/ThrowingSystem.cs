@@ -50,22 +50,6 @@ public class ThrowingSystem : MonoBehaviour
     // - Hay que borrar los que no se usen 
 
     /// <summary>
-    /// Start is called on the frame when a script is enabled just before 
-    /// any of the Update methods are called the first time.
-    /// </summary>
-    void Start()
-    {
-        
-
-        // entras al modo lanzamiento manteniendo el botón pulsado (while) / pulsando el boton y sales volviendolo a pulsar (if)
-
-        // una vez entras al modo lanzamiento, bloquea el movimiento del jugador
-
-        // en el modo lanzamiento, aparece el cursor y desaparece cuando sale
-
-    }
-
-    /// <summary>
     /// Update is called every frame, if the MonoBehaviour is enabled.
     /// </summary>
     void Update()
@@ -93,7 +77,11 @@ public class ThrowingSystem : MonoBehaviour
     }
 
 
+    // entras al modo lanzamiento manteniendo el botón pulsado (while) / pulsando el boton y sales volviendolo a pulsar (if)
 
+    // una vez entras al modo lanzamiento, bloquea el movimiento del jugador
+
+    // en el modo lanzamiento, aparece el cursor y desaparece cuando sale
 
 
 
