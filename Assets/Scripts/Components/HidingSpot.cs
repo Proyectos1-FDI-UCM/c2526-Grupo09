@@ -165,7 +165,7 @@ public class HidingSpot : MonoBehaviour
         // el player ya no está escondido
         _player.SetHidden(false);
 
-        hidingSprite.sortingOrder = 0;
+        hidingSprite.sortingOrder = -1;
 
         //EnemyVision.IsPlayerHidden = false; Provisional hasta qe sepamos como funciona el enemigo
         Debug.Log("Jugador salió del escondite");

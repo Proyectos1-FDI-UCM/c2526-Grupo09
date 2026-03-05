@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueTurnsList:
   - <Character>k__BackingField: {fileID: 11400000, guid: 90e5788fb1aa2ad4e9f951968073da64, type: 2}
-    dialogueLine: Hello. I'm a hiding spot.
+    dialogueLine: Hola. Soy un escondite.
   - <Character>k__BackingField: {fileID: 11400000, guid: 90e5788fb1aa2ad4e9f951968073da64, type: 2}
-    dialogueLine: I'll protect you from all enemies.
+    dialogueLine: Te protejo de los enemigos.
