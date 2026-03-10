@@ -46,23 +46,19 @@ public class HomeExit : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("Colisionando con la salida");
-        PlayerMovement player = collision.GetComponent<PlayerMovement>();
-        if (player != null)
+        if (collision.CompareTag("Player"))
         {
             if (GameManager.Instance.GetHaDormido())
             {
-                // Si ha dormido, calculamos cuál es el siguiente nivel
-                int siguienteNivel = GameManager.Instance.GetNextScene();
+                int siguienteEscena = GameManager.Instance.GetNextScene();
 
-                // Reseteamos el estado de dormir para cuando volvamos
                 GameManager.Instance.ResetBed();
 
-                // Usamos el ChangeScene para ir al nivel que toca
-                GameManager.Instance.ChangeScene(siguienteNivel);
+                GameManager.Instance.ChangeScene(siguienteEscena);
             }
             else
             {
-                Debug.Log("No puedes salir sin dormir primero.");
+                Debug.Log("No puedes salir. Tienes que dormir primero.");
             }
         }
     }
