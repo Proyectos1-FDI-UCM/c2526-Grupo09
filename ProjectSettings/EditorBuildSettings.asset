@@ -26,6 +26,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TestScenes/RafaScene.unity
     guid: 66ce0f9a100444f42a031126e940927d
+  - enabled: 1
+    path: Assets/Scenes/Level2.unity
+    guid: f86a414cfe0b2204ea7e1c1e11e1b5b4
+  - enabled: 1
+    path: Assets/Scenes/Level3.unity
+    guid: 2d66b52ede939094fa6def176729caa7
+  - enabled: 1
+    path: Assets/Scenes/Home.unity
+    guid: 94db17cf043abd34e9d3ceb07b1e2eeb
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

@@ -47,6 +47,19 @@ public class GameManager : MonoBehaviour
     /// </summary>
     private static GameManager _instance;
 
+    /// <summary>
+    /// Dia en el que estamos actualmente
+    /// Dia1 = Level1
+    /// Dia2 = Level2
+    /// Dia3 = Level3
+    /// </summary>
+    private int _diaActual = 1;
+
+    /// <summary>
+    /// booleano para saber si el jugado para pasar de dia
+    /// </summary>
+    private bool _haDormido = false;
+
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -156,6 +169,37 @@ public class GameManager : MonoBehaviour
         System.GC.Collect();
     } // ChangeScene
 
+    //Metodo para pasar dia
+    public void Sleep()
+    {
+        _haDormido = true;
+        _diaActual++;
+        Debug.Log("Has dormido. Mañana será el día: " + _diaActual);
+    }
+
+    //Resetea la cama para dormir
+    public void ResetBed()
+    {
+        _haDormido = false; // Al salir a un nivel, reseteamos el estado para la próxima vez
+    }
+
+    //Para saber a que escena debemos de cambiar al salir de casa
+    public int GetNextScene()
+    {
+        if (_diaActual == 2) return 7; //devuelve el level2 (7 en la lista de escenas)
+        if (_diaActual == 3) return 8; //devuelve level3 (8 en la lista de escenas)
+        return 0; // Error o volver al menú
+    }
+
+
+    /// <summary>
+    /// Permite a otros scripts consultar si el jugador ha dormido hoy.
+    /// </summary>
+    public bool GetHaDormido()
+    {
+        return _haDormido;
+    }
+
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----
@@ -175,7 +219,7 @@ public class GameManager : MonoBehaviour
         // De momento no hay que transferir ningún setup
         // a otro manager
     }
-    
+
 
     #endregion
 } // class GameManager 
