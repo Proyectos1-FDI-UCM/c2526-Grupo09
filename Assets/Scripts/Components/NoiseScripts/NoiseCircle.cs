@@ -8,7 +8,6 @@
 using UnityEngine;
 // Añadir aquí el resto de directivas using
 
-
 /// <summary>
 /// Antes de cada class, descripción de qué es y para qué sirve,
 /// usando todas las líneas que sean necesarias.
@@ -21,110 +20,90 @@ public class NoiseCircle : MonoBehaviour
     private GameObject Player;  // jugador de la escena
 
     [SerializeField]
-    private float WalkSpeed = 3f;  // velocidad de aumento de tamaño
+    // velocidad de aumento de tamaño del círculo cuando camina
+    private float WalkSpeed = 3f;  
 
     [SerializeField]
-    private Vector3 FinalWalkPos = new Vector3(2, 2, 2);  // posición final del círculo
+    // posición final del círculo si se está caminando
+    private Vector3 FinalWalkPos = new Vector3(2, 2, 2);
 
     [SerializeField]
-    private float RunSpeed = 6f;  // velocidad de aumento de tamaño
+    // velocidad de aumento de tamaño del círculo cuando corre
+    private float RunSpeed = 6f;
 
     [SerializeField]
-    private Vector3 FinalRunPos = new Vector3(4, 4, 4);  // posición final del círculo
+    // posición final del círculo si se está corriendo
+    private Vector3 FinalRunPos = new Vector3(4, 4, 4);
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
-    // Documentar cada atributo que aparece aquí.
-    // El convenio de nombres de Unity recomienda que los atributos
-    // privados se nombren en formato _camelCase (comienza con _, 
-    // primera palabra en minúsculas y el resto con la 
-    // primera letra en mayúsculas)
-    // Ejemplo: _maxHealthPoints
-
-    private float _speed;
-    private Vector3 _finalPos;
+    private float _speed;  // velocidad de aumento
+    private Vector3 _finalPos;  // posición final
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
-
-    // Por defecto están los típicos (Update y Start) pero:
-    // - Hay que añadir todos los que sean necesarios
-    // - Hay que borrar los que no se usen 
-
     /// <summary>
     /// Update is called every frame, if the MonoBehaviour is enabled.
+    /// En cada frame se mueve al jugador
     /// </summary>
-    //void FixedUpdate()
-    //{
-    //    CircleActive(ref _end);
-    //}
-
     private void Update()
     {
+        // elegir entre los valores del círculo dependiendo si estamos caminando o corriendo
         SetNoiseValues();
+        // activa el círculo y se va moviendo frame a frame
         CircleActive(_finalPos, _speed);
     }
     #endregion
 
     // ---- MÉTODOS PÚBLICOS ----
     #region Métodos públicos
-    // Documentar cada método que aparece aquí con ///<summary>
-    // El convenio de nombres de Unity recomienda que estos métodos
-    // se nombren en formato PascalCase (palabras con primera letra
-    // mayúscula, incluida la primera letra)
-    // Ejemplo: GetPlayerController
-
-    public void SetNoiseValues()  // establece los valores para el círculo
+    /// <summary>
+    /// Busca si se está caminando o corriendo y dependiendo de ese establece unos valores
+    /// para _speed y _finalPos dependiendo de eso.
+    /// </summary>
+    public void SetNoiseValues()
     {
         PlayerMovement playerMovement = Player.GetComponent<PlayerMovement>();
         if (playerMovement != null )
         {
-            if (InputManager.Instance.RunIsPressed())
+            if (InputManager.Instance.RunIsPressed())  // si estamos corriendo
             {
                 _speed = RunSpeed;
                 _finalPos = FinalRunPos;
             }
-            else
+            else  // si no estamos corriendo es que estamos caminando
             {
                 _speed = WalkSpeed;
                 _finalPos = FinalWalkPos;
             }
-            //if (playerMovement.CurrentlyRunning())
-            //{
-            //    _speed = RunSpeed;
-            //    _finalPos = FinalRunPos;
-            //}
-            //else
-            //{
-            //    _speed = WalkSpeed;
-            //    _finalPos = FinalWalkPos;
-            //}
         } 
     }
     #endregion
     
     // ---- MÉTODOS PRIVADOS ----
     #region Métodos Privados
-    // Documentar cada método que aparece aquí
-    // El convenio de nombres de Unity recomienda que estos métodos
-    // se nombren en formato PascalCase (palabras con primera letra
-    // mayúscula, incluida la primera letra)
-
+    /// <summary>
+    /// Hace que el círculo de ruido vaya creciendo frame a frame y cuando llega a la
+    /// posición final se destruye.
+    /// </summary>
+    /// <param name="_finalPos"></param>
+    /// <param name="_speed"></param>
     private void CircleActive(Vector3 _finalPos, float _speed)
     {
+        // si todavía no ha llegado a la posición final
         if (transform.localScale.x < _finalPos.x &&
             transform.localScale.y < _finalPos.y)
         {
+            // se agranda progresivamente
             transform.localScale += new Vector3(1, 1, 0) * _speed * Time.deltaTime;
         }
-        else
+        else  // si ya llegó a la posición final
         {
-            Destroy(this.gameObject);
+            Destroy(this.gameObject);  // se destruye
         }
     }
     #endregion   
 
-} // class NoiseCircle 
-// namespace
+}
