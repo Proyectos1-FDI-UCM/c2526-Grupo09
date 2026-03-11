@@ -5,6 +5,7 @@
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
 
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 // Añadir aquí el resto de directivas using
 
@@ -46,6 +47,7 @@ public class PlayerMovement : MonoBehaviour
     /// booleano que se encarga de saber si es jugador esta escondido o no
     /// </summary>
     private bool _isHidden = false;
+    private Animator _animator;
 
     #endregion
 
@@ -60,10 +62,18 @@ public class PlayerMovement : MonoBehaviour
     /// Update is called every frame, if the MonoBehaviour is enabled.
     /// En cada frame se mueve al jugador
     /// </summary>
+    /// 
+    private void Start()
+    {
+        _animator = GetComponent<Animator>();
+    }
     void Update()
     {
+        
+
         if (!_isHidden)
         {
+           
             _posAnterior = transform.position;
             MovePlayer();
             _posActual = transform.position;
@@ -126,18 +136,78 @@ public class PlayerMovement : MonoBehaviour
 
         //Variable para guardar la velocidad que se usa en ese momento
         float currentSpeed = walkSpeed;
+        // ¿Hay input de movimiento?
+        bool isMoving = direction.magnitude > 0.1f;
+
+
+        int incrX = Mathf.RoundToInt(direction.x);
+        int incrY = Mathf.RoundToInt(direction.y);
+        
+        /*// Derecha-Arriba
+        else if (incrX > 0 && incrY > 0) rotZ = -45;
+        // Izquierda-Abajo
+        else if (incrX < 0 && incrY < 0) rotZ = 135;
+        // Derecha-Abajo
+        else if (incrX > 0 && incrY < 0) rotZ = -135;
+        // Izquierda-Arriba*/
 
         //Comprobamos si se pulsa el Shift
-        if (InputManager.Instance.RunIsPressed())
+        if (direction!=Vector2.zero)
         {
-            //Usamos la velocidad de correr
-            currentSpeed = runSpeed;
-            //_correr = true;
+            // Derecha
+            if (incrX > 0 && incrY == 0)
+            {
+                _animator.SetBool("WalkingRight", true);
+                _animator.SetBool("WalkingDown", false);
+                _animator.SetBool("WalkingUp", false);
+                _animator.SetBool("WalkingLeft", false);
+            }
+            // Abajo
+            else if (incrY < 0 && incrX == 0)
+            {
+                _animator.SetBool("WalkingDown", true);
+                _animator.SetBool("WalkingRight", false);
+                _animator.SetBool("WalkingUp", false);
+                _animator.SetBool("WalkingLeft", false);
+            }
+            // Izquierda
+            else if (incrX < 0 && incrY == 0)
+            {
+                _animator.SetBool("WalkingLeft", true);
+                _animator.SetBool("WalkingRight", false);
+                _animator.SetBool("WalkingUp", false);
+                _animator.SetBool("WalkingDown", false);
+            }
+            // Arriba
+            else if (incrY > 0 && incrX == 0)
+            {
+                _animator.SetBool("WalkingUp", true);
+                _animator.SetBool("WalkingDown", false);
+                _animator.SetBool("WalkingRight", false);
+                _animator.SetBool("WalkingLeft", false);
+            }
+
+            if (InputManager.Instance.RunIsPressed() && isMoving)
+            {
+
+                //Usamos la velocidad de correr
+                currentSpeed = runSpeed;
+                _animator.SetBool("Walking", false);
+                //_correr = true;
+            }/* else
+            {
+                currentSpeed = walkSpeed;
+                _animator.SetBool("Walking", true);
+            }*/
         }
         else
         {
+            _animator.SetBool("WalkingUp", false);
+            _animator.SetBool("WalkingDown", false);
+            _animator.SetBool("WalkingRight", false);
+            _animator.SetBool("WalkingLeft", false);
             //Usamos la velocidad de caminar
-            currentSpeed = walkSpeed;
+
             //_correr = false;
         }
 
