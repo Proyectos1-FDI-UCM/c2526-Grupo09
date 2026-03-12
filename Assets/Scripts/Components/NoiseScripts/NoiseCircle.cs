@@ -34,12 +34,23 @@ public class NoiseCircle : MonoBehaviour
     [SerializeField]
     // posición final del círculo si se está corriendo
     private Vector3 FinalRunPos = new Vector3(4, 4, 4);
+
+    [SerializeField]
+    // velocidad de aumento de tamaño del círculo cuando se cae un objeto
+    private float ObjectSpeed = 9f;
+
+    [SerializeField]
+    // posición final del círculo si se cae un objeto
+    private Vector3 FinalObjectPos = new Vector3(7, 7, 7);
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
     private float _speed;  // velocidad de aumento
     private Vector3 _finalPos;  // posición final
+
+    // indica si el ruido se ha generado por un objeto caido
+    private bool _fallenObject;
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -65,20 +76,37 @@ public class NoiseCircle : MonoBehaviour
     /// </summary>
     public void SetNoiseValues()
     {
-        PlayerMovement playerMovement = Player.GetComponent<PlayerMovement>();
-        if (playerMovement != null )
+        if (_fallenObject)  // si el ruido lo ha producido un objeto
         {
-            if (InputManager.Instance.RunIsPressed())  // si estamos corriendo
+            _speed = ObjectSpeed;
+            _finalPos = FinalObjectPos;
+        }
+        else
+        {
+            PlayerMovement playerMovement = Player.GetComponent<PlayerMovement>();
+            if (playerMovement != null)
             {
-                _speed = RunSpeed;
-                _finalPos = FinalRunPos;
+                if (InputManager.Instance.RunIsPressed())  // si estamos corriendo
+                {
+                    _speed = RunSpeed;
+                    _finalPos = FinalRunPos;
+                }
+                else  // si no estamos corriendo es que estamos caminando
+                {
+                    _speed = WalkSpeed;
+                    _finalPos = FinalWalkPos;
+                }
             }
-            else  // si no estamos corriendo es que estamos caminando
-            {
-                _speed = WalkSpeed;
-                _finalPos = FinalWalkPos;
-            }
-        } 
+        }
+    }
+
+    /// <summary>
+    /// método que se llama cuando se cae un objeto y pone la variable de _fallenObject
+    /// a true antes de generar el círculo de ruido y a false una vez ya se ha generado
+    /// </summary>
+    public void FallenObject(bool status)
+    {
+        _fallenObject = status;
     }
     #endregion
     

@@ -16,7 +16,7 @@ public class ObjectNoise : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
-    [SerializeField] private GameObject Circulo;  // círculo de ruido que se genera
+    [SerializeField] private GameObject Circle;  // círculo de ruido que se genera
     #endregion
     
     // ---- ATRIBUTOS PRIVADOS ----
@@ -25,31 +25,30 @@ public class ObjectNoise : MonoBehaviour
     
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
-
-    void Update()
-    {
-        
-    }
     #endregion
 
     // ---- MÉTODOS PÚBLICOS ----
     #region Métodos públicos
-    public void GenerateNoise()  // activa el sprite del círculo de ruido al caer un objeto
+    /// <summary>
+    /// método que se llama cuando se cae un objeto para generar el círculo de ruido
+    /// </summary>
+    public void GenerateNoise()
     {
-        Circulo.SetActive(true);
-        // poner aquí efectos de sonido
+        NoiseCircle noisecircle = Circle.GetComponent<NoiseCircle>();
+        if (noisecircle != null )
+        {
+            // antes de generar el círculo, indicamos que se ha caido un objeto
+            noisecircle.FallenObject(true);
+            // se instamcia el círculo
+            Instantiate(Circle, transform.position, transform.rotation);
+            // después de generarlo, indicamos que ya no se ha caido ningún objeto
+            noisecircle.FallenObject(false);
+        }
     }
-
-
     #endregion
     
     // ---- MÉTODOS PRIVADOS ----
     #region Métodos Privados
-    // Documentar cada método que aparece aquí
-    // El convenio de nombres de Unity recomienda que estos métodos
-    // se nombren en formato PascalCase (palabras con primera letra
-    // mayúscula, incluida la primera letra)
-
     #endregion   
 
 }
