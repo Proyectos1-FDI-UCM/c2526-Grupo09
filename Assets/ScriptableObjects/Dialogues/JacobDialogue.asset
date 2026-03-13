@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd1b51748c43e8043b83edef630f10d1, type: 3}
+  m_Name: JacobDialogue
+  m_EditorClassIdentifier: 
+  dialogueTurnsList:
+  - <Character>k__BackingField: {fileID: 11400000, guid: 995d4cde5a6a6c24693f5dc8b2d93076, type: 2}
+    dialogueLine: "Who are you, miss? It\u2019s been so long since I\u2019ve seen
+      someone here\u2026 I\u2019m scared."
+  - <Character>k__BackingField: {fileID: 11400000, guid: e0a40f19fedc87c479ad40ed52b02dd7, type: 2}
+    dialogueLine: "I'm Eve, child. What\u2019s your name?"
+  - <Character>k__BackingField: {fileID: 11400000, guid: 995d4cde5a6a6c24693f5dc8b2d93076, type: 2}
+    dialogueLine: My name is Jacob, miss. Why is the world like this? Why has God
+      chosen to forsake humanity?
+  - <Character>k__BackingField: {fileID: 11400000, guid: e0a40f19fedc87c479ad40ed52b02dd7, type: 2}
+    dialogueLine: "Jacob, this isn\u2019t God\u2019s doing. I can assure you of that."
+  - <Character>k__BackingField: {fileID: 11400000, guid: 995d4cde5a6a6c24693f5dc8b2d93076, type: 2}
+    dialogueLine: What? Then who caused this, if not God?
+  - <Character>k__BackingField: {fileID: 11400000, guid: e0a40f19fedc87c479ad40ed52b02dd7, type: 2}
+    dialogueLine: "An evil fiend trying to play God. You don\u2019t seem surprised
+      that you\u2019re here. Why?"
+  - <Character>k__BackingField: {fileID: 11400000, guid: 995d4cde5a6a6c24693f5dc8b2d93076, type: 2}
+    dialogueLine: "I know the weight of my actions. I know that what I\u2019ve done
+      until now has been immoral\u2026 even if it was for the sake of my family."
+  - <Character>k__BackingField: {fileID: 11400000, guid: e0a40f19fedc87c479ad40ed52b02dd7, type: 2}
+    dialogueLine: "It\u2019s surprising that someone as young as you understands
+      God and His principles so well. You must have been raised well."
+  - <Character>k__BackingField: {fileID: 11400000, guid: 995d4cde5a6a6c24693f5dc8b2d93076, type: 2}
+    dialogueLine: I was born into a very religious family. Those principles were
+      always present in our home.
+  - <Character>k__BackingField: {fileID: 11400000, guid: 995d4cde5a6a6c24693f5dc8b2d93076, type: 2}
+    dialogueLine: "My mother was sick and we were very poor. I always put my siblings\u2019
+      well-being above my own."
+  - <Character>k__BackingField: {fileID: 11400000, guid: 995d4cde5a6a6c24693f5dc8b2d93076, type: 2}
+    dialogueLine: I gave them my food, even when my stomach growled with hunger every
+      night as I went to sleep.
+  - <Character>k__BackingField: {fileID: 11400000, guid: 995d4cde5a6a6c24693f5dc8b2d93076, type: 2}
+    dialogueLine: I begged for work just to help, even if only a little.
+  - <Character>k__BackingField: {fileID: 11400000, guid: 995d4cde5a6a6c24693f5dc8b2d93076, type: 2}
+    dialogueLine: "But even that wasn\u2019t enough! I had to start stealing\u2026
+      hurting other people who were just as poor as us, just so we could survive!"
+  - <Character>k__BackingField: {fileID: 11400000, guid: e0a40f19fedc87c479ad40ed52b02dd7, type: 2}
+    dialogueLine: "Life hasn\u2019t been kind to you\u2026 Don\u2019t worry. This
+      will all end soon."
+  - <Character>k__BackingField: {fileID: 11400000, guid: 995d4cde5a6a6c24693f5dc8b2d93076, type: 2}
+    dialogueLine: What? What do you mean?
+  - <Character>k__BackingField: {fileID: 11400000, guid: e0a40f19fedc87c479ad40ed52b02dd7, type: 2}
+    dialogueLine: "Please don\u2019t blame me, child. I must do this to help God\u2026
+      and defeat the heathen who has stolen His power."
+  - <Character>k__BackingField: {fileID: 11400000, guid: 995d4cde5a6a6c24693f5dc8b2d93076, type: 2}
+    dialogueLine: "Oh\u2026 it\u2019s okay. I understand. If this will help humanity,
+      then I\u2019ll die happily, knowing that I contributed to the greater good."
+  - <Character>k__BackingField: {fileID: 11400000, guid: e0a40f19fedc87c479ad40ed52b02dd7, type: 2}
+    dialogueLine: "Oh, my child\u2026"
+  - <Character>k__BackingField: {fileID: 11400000, guid: 995d4cde5a6a6c24693f5dc8b2d93076, type: 2}
+    dialogueLine: Just do it, miss. Do it quickly, without hesitation. I know why
+      this has to be done.
+  - <Character>k__BackingField: {fileID: 11400000, guid: e0a40f19fedc87c479ad40ed52b02dd7, type: 2}
+    dialogueLine: "Rest peacefully\u2026"

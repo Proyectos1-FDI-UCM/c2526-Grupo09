@@ -6,6 +6,8 @@
 //---------------------------------------------------------
 
 using UnityEngine;
+using UnityEngine.Assertions.Must;
+using UnityEngine.Rendering;
 // Añadir aquí el resto de directivas using
 
 
@@ -33,6 +35,7 @@ public class FollowPlayer : MonoBehaviour
     /// </summary>
     [SerializeField] private Vector3 Offset = new Vector3(0, 0, -10);
 
+    [SerializeField] private float MaxDistance = 2f;
     /// <summary>
     /// Velocidad de interpolación cuando la cámara sigue al gameobject, Contola lo rápido que la cámara alcanza la posición del jugador
     /// valores bajos hace que el movimiento sea suave y con más delay, mientras que valores altos hace lo contrario.
@@ -45,6 +48,7 @@ public class FollowPlayer : MonoBehaviour
     /// </summary>
     [SerializeField] private float AlcanceMax = 1f;
 
+
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -55,7 +59,8 @@ public class FollowPlayer : MonoBehaviour
     // primera palabra en minúsculas y el resto con la 
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
-    private Vector3 panOffset;
+    private Vector3 _panOffset;
+    private Vector3 _lookOffset;
 
     #endregion
 
@@ -72,7 +77,7 @@ public class FollowPlayer : MonoBehaviour
     /// </summary>
     private void Start()
     {
-        transform.position=transform.position + Offset;
+        transform.position = transform.position + Offset;
     }
     /// <summary>
     /// Se ejecuta cada frame, después de que se han llamado todas las funciones.
@@ -80,17 +85,34 @@ public class FollowPlayer : MonoBehaviour
     /// </summary>
     private void LateUpdate()
     {
-        Vector2 dir = InputManager.Instance.PanVector;
+        Vector2 moveDir = InputManager.Instance.MovementVector;
+        Vector2 panDir = InputManager.Instance.PanVector;
+        Vector3 panOffset;
         Vector3 pos = Target.position + Offset;
-        Vector3 pan;
+        Vector3 targetOffset;
 
-        if (dir != Vector2.zero)
+        if(moveDir!=Vector2.zero)
         {
-            pan = new Vector3(dir.x, dir.y, 0).normalized * AlcanceMax;
+            targetOffset = new Vector3(moveDir.x, moveDir.y, 0).normalized * MaxDistance;
+            _lookOffset = Vector3.Lerp(_lookOffset, targetOffset, TimePaneo * Time.deltaTime);
         }
-        else pan=Vector3.zero;
-        panOffset =Vector3.Lerp(panOffset, pan, TimePaneo * Time.deltaTime);
-        transform.position = Vector3.Lerp(transform.position, pos + panOffset, TimeNormal * Time.deltaTime);
+        else
+        {
+            _lookOffset = Vector3.Lerp(_lookOffset, Vector3.zero, TimeNormal * Time.deltaTime);
+        }
+
+
+        if (panDir != Vector2.zero)
+        {
+            panOffset = new Vector3(panDir.x, panDir.y, 0).normalized * AlcanceMax;
+        }
+        else
+        {
+            panOffset = Vector3.zero;
+        }
+        _panOffset = Vector3.Lerp(_panOffset, panOffset, TimePaneo * Time.deltaTime);
+
+        transform.position = Vector3.Lerp(transform.position, pos + _panOffset + _lookOffset, TimeNormal * Time.deltaTime);
     }
     #endregion
 
