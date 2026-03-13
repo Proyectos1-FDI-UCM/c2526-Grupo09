@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd1b51748c43e8043b83edef630f10d1, type: 3}
+  m_Name: InitialDialogue4
+  m_EditorClassIdentifier: 
+  dialogueTurnsList:
+  - <Character>k__BackingField: {fileID: 11400000, guid: e0a40f19fedc87c479ad40ed52b02dd7, type: 2}
+    dialogueLine: I humbly beg for your forgiveness Lord.
+  - <Character>k__BackingField: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
+    dialogueLine: Most of my powers have been stolen from me.
+  - <Character>k__BackingField: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
+    dialogueLine: I really need your help Eve. Would you help me?
+  - <Character>k__BackingField: {fileID: 11400000, guid: e0a40f19fedc87c479ad40ed52b02dd7, type: 2}
+    dialogueLine: "I would do anything\u2026"
+  - <Character>k__BackingField: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
+    dialogueLine: "It\u2019s better if you know what really happened."
+  - <Character>k__BackingField: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
+    dialogueLine: " It is not me who is behind the apocalypse, behind all of this\u2026."
+  - <Character>k__BackingField: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
+    dialogueLine: It is Satan
+  - <Character>k__BackingField: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
+    dialogueLine: He managed to rebel against the divine forces and has been ruling
+      heaven since then.
+  - <Character>k__BackingField: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
+    dialogueLine: And now he intends to rule the earth too.
+  - <Character>k__BackingField: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
+    dialogueLine: You are the only one who can help me defeat him, Eve.
+  - <Character>k__BackingField: {fileID: 11400000, guid: e0a40f19fedc87c479ad40ed52b02dd7, type: 2}
+    dialogueLine: What is it that I gotta do?
+  - <Character>k__BackingField: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
+    dialogueLine: You gotta find the three flowers of Lilith. They are scattered
+      all around the forest.
+  - <Character>k__BackingField: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
+    dialogueLine: "There is a demon that protects every flower. Be careful though,
+      these demons don\u2019t seem like demons."
+  - <Character>k__BackingField: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
+    dialogueLine: But I assure you, they are.
+  - <Character>k__BackingField: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
+    dialogueLine: "After you find the flowers, you have to destroy them. And then
+      I will get my powers back.\r"
+  - <Character>k__BackingField: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
+    dialogueLine: "It\u2019s as simple as that."
+  - <Character>k__BackingField: {fileID: 11400000, guid: e0a40f19fedc87c479ad40ed52b02dd7, type: 2}
+    dialogueLine: I will do my best!
+  - <Character>k__BackingField: {fileID: 11400000, guid: e0a40f19fedc87c479ad40ed52b02dd7, type: 2}
+    dialogueLine: So we got a deal?
+  - <Character>k__BackingField: {fileID: 11400000, guid: e0a40f19fedc87c479ad40ed52b02dd7, type: 2}
+    dialogueLine: Deal.
