@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd1b51748c43e8043b83edef630f10d1, type: 3}
+  m_Name: InitialDialogue2
+  m_EditorClassIdentifier: 
+  dialogueTurnsList:
+  - <Character>k__BackingField: {fileID: 11400000, guid: e0a40f19fedc87c479ad40ed52b02dd7, type: 2}
+    dialogueLine: Our Father, who art in heaven,
+  - <Character>k__BackingField: {fileID: 11400000, guid: e0a40f19fedc87c479ad40ed52b02dd7, type: 2}
+    dialogueLine: hallowed be thy name;
+  - <Character>k__BackingField: {fileID: 11400000, guid: e0a40f19fedc87c479ad40ed52b02dd7, type: 2}
+    dialogueLine: hallowed be thy name;
+  - <Character>k__BackingField: {fileID: 11400000, guid: e0a40f19fedc87c479ad40ed52b02dd7, type: 2}
+    dialogueLine: thy kingdom come;
+  - <Character>k__BackingField: {fileID: 11400000, guid: e0a40f19fedc87c479ad40ed52b02dd7, type: 2}
+    dialogueLine: thy kingdom come;
+  - <Character>k__BackingField: {fileID: 11400000, guid: e0a40f19fedc87c479ad40ed52b02dd7, type: 2}
+    dialogueLine: thy will be done on earth as it is in heaven.
+  - <Character>k__BackingField: {fileID: 11400000, guid: e0a40f19fedc87c479ad40ed52b02dd7, type: 2}
+    dialogueLine: Give us this day our daily bread;
+  - <Character>k__BackingField: {fileID: 11400000, guid: e0a40f19fedc87c479ad40ed52b02dd7, type: 2}
+    dialogueLine: and forgive us our trespasses, as we forgive those who trespass
+      against us;
+  - <Character>k__BackingField: {fileID: 11400000, guid: e0a40f19fedc87c479ad40ed52b02dd7, type: 2}
+    dialogueLine: and lead us not into temptation,
+  - <Character>k__BackingField: {fileID: 11400000, guid: e0a40f19fedc87c479ad40ed52b02dd7, type: 2}
+    dialogueLine: but deliver us from evi-
+  - <Character>k__BackingField: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
+    dialogueLine: Amen
+  - <Character>k__BackingField: {fileID: 11400000, guid: e0a40f19fedc87c479ad40ed52b02dd7, type: 2}
+    dialogueLine: Wow you scared me there!
+  - <Character>k__BackingField: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
+    dialogueLine: Would you mind giving me a hand?
+  - <Character>k__BackingField: {fileID: 11400000, guid: e0a40f19fedc87c479ad40ed52b02dd7, type: 2}
+    dialogueLine: "Yeah\u2026 Of course"
+  - <Character>k__BackingField: {fileID: 11400000, guid: e0a40f19fedc87c479ad40ed52b02dd7, type: 2}
+    dialogueLine: We need to get out of here as soon as possible!

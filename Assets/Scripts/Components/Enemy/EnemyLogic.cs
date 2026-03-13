@@ -210,6 +210,7 @@ public class EnemyLogic : MonoBehaviour
         if (_isPlayerVisible && _playerPos.GetComponent<PlayerMovement>().GetIsHidden())
         {
             _isPlayerVisible = false;
+            _heardNoise = false;
         }
     }
 
@@ -226,9 +227,8 @@ public class EnemyLogic : MonoBehaviour
         {
             if(_isPlayerVisible) PerformChase(_playerPos.position);
             else if (_heardNoise) PerformChase(_noiseOrigin);
-
         }
-        else if (_isPlayerInRange)
+        if (_isPlayerInRange)
         {
             PerformAttack();
         }
