@@ -32,8 +32,8 @@ public class LevelManager : MonoBehaviour
     // públicos y de inspector se nombren en formato PascalCase
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
-    [SerializeField] GameObject Panel;
-    [SerializeField] TextMeshProUGUI Text;
+    [SerializeField] private GameObject Panel;
+    [SerializeField] private TextMeshProUGUI Text;
 
     #endregion
 
@@ -127,6 +127,7 @@ public class LevelManager : MonoBehaviour
             Text.text = "Has Ganado";
         }
     }
+
     private void Init()
     {
         // De momento no hay nada que inicializar
