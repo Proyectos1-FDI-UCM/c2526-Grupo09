@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: 4282019841891422192, guid: e7cf81659842cc24bb67fb6a05620a1c, type: 3}
+  m_Sprite: {fileID: 7895424287653189981, guid: 89064ee11d7879e4182934417f5d4256, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -106,6 +106,8 @@ MonoBehaviour:
   FinalWalkPos: {x: 0.5, y: 0.5, z: 1}
   RunSpeed: 3
   FinalRunPos: {x: 1, y: 1, z: 1}
+  ObjectSpeed: 9
+  FinalObjectPos: {x: 7, y: 7, z: 7}
 --- !u!58 &-3239305065866385635
 CircleCollider2D:
   m_ObjectHideFlags: 0
