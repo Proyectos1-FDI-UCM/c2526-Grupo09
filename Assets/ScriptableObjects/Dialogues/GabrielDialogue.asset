@@ -24,7 +24,7 @@ MonoBehaviour:
   - <Character>k__BackingField: {fileID: 11400000, guid: e0a40f19fedc87c479ad40ed52b02dd7, type: 2}
     dialogueLine: What is it that you're so eager to talk about?
   - <Character>k__BackingField: {fileID: 11400000, guid: ae30a27d2c67d3446b041b8dff996638, type: 2}
-    dialogueLine: Nothing in particular
+    dialogueLine: Nothing in particular.
   - <Character>k__BackingField: {fileID: 11400000, guid: e0a40f19fedc87c479ad40ed52b02dd7, type: 2}
     dialogueLine: ...
   - <Character>k__BackingField: {fileID: 11400000, guid: ae30a27d2c67d3446b041b8dff996638, type: 2}
@@ -71,17 +71,17 @@ MonoBehaviour:
   - <Character>k__BackingField: {fileID: 11400000, guid: e0a40f19fedc87c479ad40ed52b02dd7, type: 2}
     dialogueLine: ...
   - <Character>k__BackingField: {fileID: 11400000, guid: e0a40f19fedc87c479ad40ed52b02dd7, type: 2}
-    dialogueLine: I - I am so sorry
+    dialogueLine: I - I am so sorry.
   - <Character>k__BackingField: {fileID: 11400000, guid: e0a40f19fedc87c479ad40ed52b02dd7, type: 2}
-    dialogueLine: I had to do it trust me
+    dialogueLine: I had to do it trust me.
   - <Character>k__BackingField: {fileID: 11400000, guid: ae30a27d2c67d3446b041b8dff996638, type: 2}
     dialogueLine: "\u2026 you know what?"
   - <Character>k__BackingField: {fileID: 11400000, guid: ae30a27d2c67d3446b041b8dff996638, type: 2}
-    dialogueLine: "\u2026 although everything I \u2026 said"
+    dialogueLine: "\u2026 although everything I \u2026 said ..."
   - <Character>k__BackingField: {fileID: 11400000, guid: ae30a27d2c67d3446b041b8dff996638, type: 2}
     dialogueLine: '*cof*'
   - <Character>k__BackingField: {fileID: 11400000, guid: ae30a27d2c67d3446b041b8dff996638, type: 2}
-    dialogueLine: "I can\u2019t perceive any \u2026 evil \u2026 in your heart"
+    dialogueLine: "... I can\u2019t perceive any \u2026 evil \u2026 in your heart."
   - <Character>k__BackingField: {fileID: 11400000, guid: e0a40f19fedc87c479ad40ed52b02dd7, type: 2}
     dialogueLine: How can you say that?
   - <Character>k__BackingField: {fileID: 11400000, guid: e0a40f19fedc87c479ad40ed52b02dd7, type: 2}
@@ -96,7 +96,7 @@ MonoBehaviour:
     dialogueLine: "\u2026 Ga - Gabri - el \u2026"
   - <Character>k__BackingField: {fileID: 11400000, guid: e0a40f19fedc87c479ad40ed52b02dd7, type: 2}
     dialogueLine: Sorry?
-  - <Character>k__BackingField: {fileID: 11400000, guid: ae30a27d2c67d3446b041b8dff996638, type: 2}
+  - <Character>k__BackingField: {fileID: 11400000, guid: e50f0c479f3ee934c9479ae109a3669c, type: 2}
     dialogueLine: "It\u2019s my \u2026 name \u2026 farewell young lady \u2026"
   - <Character>k__BackingField: {fileID: 11400000, guid: e0a40f19fedc87c479ad40ed52b02dd7, type: 2}
     dialogueLine: ...

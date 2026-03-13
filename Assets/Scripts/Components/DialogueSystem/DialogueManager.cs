@@ -33,6 +33,7 @@ public class DialogueManager : MonoBehaviour
     /// <summary>
     /// Velocidad de la reproducción de las letras del texto.
     /// </summary>
+    
     [SerializeField] private float typingSpeed = 0.03f;
 
 
@@ -56,7 +57,7 @@ public class DialogueManager : MonoBehaviour
     /// <summary>
     /// Propiedad global de solo lectura para otros scripts.
     /// </summary>
-    public static DialogueManager Instance { get; private set; } 
+    public static DialogueManager Instance { get; private set; }
 
     /// <summary>
     /// Control de turnos entre las listas de diálogos.
@@ -67,6 +68,11 @@ public class DialogueManager : MonoBehaviour
     /// Bool para la separación entre carácteres en curso.
     /// </summary>
     private bool _isTyping = false;
+
+    /// <summary>
+    /// Bool para comprobar si muestra la línea de dialog entera
+    /// </summary>
+    private bool _skipTyping;
 
     /// <summary>
     /// Bool que espera al input (E)
@@ -94,7 +100,7 @@ public class DialogueManager : MonoBehaviour
     private void Awake()
     {
         //Esta es la instancia DialogueManager.
-
+        
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
@@ -141,40 +147,58 @@ public class DialogueManager : MonoBehaviour
     /// <param name="dialogTurn"></param>
 
     private IEnumerator TypeSentence(DialogueTurn dialogTurn)
-    {
-        //Método para reproducir texto carácter por carácter. Es una corrutina provisional.
-        var typingWaitSeconds = new WaitForSeconds(typingSpeed);
+    { 
+        //Está escribiendo caracteres
+        _isTyping = true;
+        //Inicializamos a false para que meustre poco a poco los caracteres
+        _skipTyping = false;
 
+        //Espera al input
+        _waitingForInput = true;
+
+        //Para cada letra en la línea del dialogTurn...
         foreach (char letter in dialogTurn.DialogueLine.ToCharArray())
         {
+            if (_skipTyping)
+            {
+                //Salta la corrutina
+                dialogueUI.AppendToDialogArea(letter);
+                continue;
+            }
+
             dialogueUI.AppendToDialogArea(letter);
-
-            //if (!char.IsWhiteSpace(letter))
-                //typingAudioSource.Play();
-
-            yield return typingWaitSeconds;
+            //Actualizar la speed de aparición de caracteres
+            yield return new WaitForSeconds(typingSpeed); 
         }
 
+        //Reset al terminar
         _isTyping = false;
-        _waitingForInput = true; // ahora esperamos input manualmente
+        _skipTyping = false;
+        Debug.Log("Terminó de escribir");
     }
-   
+
 
     /// <summary>
     /// En el Update() controlamos la interacción con el input.
     /// </summary>
     void Update()
     {
-        //Si no hay diálogo en proceso, sale inmediatamente de este método.
-        if (!_isDialogInProgress)
-            return;
+        //Si no hay dialogo en progreso,, no hace nada
+        if (!_isDialogInProgress) return;
 
-        // Espera del input.
-        if (_waitingForInput)
+        //Botón de interactuar
+        if (_waitingForInput && InputManager.Instance.InteractWasPressedThisFrame())
         {
-            if (InputManager.Instance.InteractWasPressedThisFrame())
+            if (_isTyping)
             {
+                //Si está escribiendo e interactuamos, muestra la línea completa
+                _skipTyping = true;
+            }
+            else
+            {
+                //Evitar problemas con la velocidad en plena transición
                 _waitingForInput = false;
+                //Pasar al siguiente turno (currentSpeed ya fue reseteado por la corrutina)
                 NextTurn();
             }
         }
