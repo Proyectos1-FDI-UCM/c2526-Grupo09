@@ -103,9 +103,9 @@ TextureImporter:
       name: stand_0
       rect:
         serializedVersion: 2
-        x: 5
+        x: 6
         y: 0
-        width: 23
+        width: 21
         height: 34
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 57a5171b27f0e6548a4b0c7f2c350388
     internalID: 0
     vertices: []
     indices: 
