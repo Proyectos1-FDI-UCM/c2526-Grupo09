@@ -20,10 +20,14 @@ public class ThrowingSystem : MonoBehaviour
     #region Atributos del Inspector (serialized fields)
 
     [SerializeField] private GetObject ObjectPrefab;
+    [SerializeField] private GameObject RockPrefab;
+    // [SerializeField] private GameObject VasePrefab;
     [SerializeField] private GameObject Cursor;
     [SerializeField] private float CursorSpeed;
     [SerializeField] private PlayerMovement Movement;
     [SerializeField] private FollowPlayer Camera;
+
+    [SerializeField] private float ObjectSpeed = 3f;
 
     #endregion
 
@@ -32,6 +36,10 @@ public class ThrowingSystem : MonoBehaviour
 
     private bool _inThrowingState = false;
     private bool _throwConfirmed = false;
+    private bool _objectIsMoving = false;
+
+    GameObject _obj;
+
 
     #endregion
 
@@ -40,7 +48,7 @@ public class ThrowingSystem : MonoBehaviour
 
     private void Start()
     {
-        // desactivamos la visibilidad del cursor 
+        // desactivamos la visibilidad del cursor
         Cursor.SetActive(false);
         // posición del cursor (con un pequeño offset a la derecha)
         Cursor.GetComponent<Transform>().position = Movement.GetComponent<Transform>().position + new Vector3(1, 0, 0);
@@ -56,13 +64,35 @@ public class ThrowingSystem : MonoBehaviour
             // si tiene un objeto, tienes la opción de entrar al modo lanzamiento
             if (InputManager.Instance.ThrowWasPressedThisFrame())
             {
-                // invertimos el valor del booleano para detectar si empieza o termina el estado de lanzamiento
-                _inThrowingState = !_inThrowingState;
+                // comprobamos si el objeto sigue en movimiento o si el movimiento acaba de empezar
+                if (_throwConfirmed && InputManager.Instance.ThrowWasPressedThisFrame())
+                {
+                    _objectIsMoving = true;
+                }
+                else if (_objectIsMoving)
+                {
+                    Debug.Log("detecta lanzar objeto");
+                    ThrowObject();
+                    // comprobamos si el objeto ha llegado a su destino
+                    if (_obj.transform.position == Cursor.transform.position)
+                    {
+                        Debug.Log("llegó al final negracas");
+                        _inThrowingState = false;
+                        _objectIsMoving = false;
+                    }
+                }
+                else
+                {
+                    // invertimos el valor del booleano para detectar si empieza o termina el estado de lanzamiento
+                    _inThrowingState = !_inThrowingState;
+                }
+                    
             }
 
             if (_inThrowingState)
             {
-                MovimientoCursor();
+                Debug.Log("muevo el booty");
+                CursorMovement();
             }
             else
             {
@@ -102,33 +132,47 @@ public class ThrowingSystem : MonoBehaviour
     /// <summary>
     /// descripción
     /// </summary>
-    private void MovimientoCursor()
+    private void CursorMovement()
     {
         // bloqueamos el movimiento del jugador y hacemos que el cursor aparezca
         Movement.enabled = false;
         Cursor.SetActive(true);
 
-            if (InputManager.Instance.ConfirmThrowWasPressedThisFrame())
-            {
-                // invertimos el valor
-                _throwConfirmed = !_throwConfirmed;
-            }
+        if (InputManager.Instance.ConfirmThrowWasPressedThisFrame())
+        {
+            // invertimos el valor
+            _throwConfirmed = !_throwConfirmed;
+        }
 
-            if (!_throwConfirmed)
-            {
-                //Obtenemos la dirección del InputManager
-                Vector2 direction = InputManager.Instance.MovementVector;
-                Vector3 cursorDir = new Vector3(direction.x, direction.y, Cursor.GetComponent<Transform>().position.z);
+        if (!_throwConfirmed)
+        {
+            //Obtenemos la dirección del InputManager
+            Vector2 direction = InputManager.Instance.MovementVector;
+            Vector3 cursorDir = new Vector3(direction.x, direction.y, Cursor.GetComponent<Transform>().position.z);
 
-                // movimiento del cursor
-                Cursor.transform.Translate(cursorDir * CursorSpeed * Time.deltaTime);
-            }
-            else
-            {
-                Debug.Log("polnito");
-            }
+            // movimiento del cursor
+            Cursor.transform.Translate(cursorDir * CursorSpeed * Time.deltaTime);
+        }
         
     } // MovimientoCursor
+
+    /// <summary>
+    /// 
+    /// </summary>
+    private void ThrowObject()
+    {
+        // creamos el throwable object con Instantiate al inicio del movimiento
+        if (!_objectIsMoving)
+        {
+            Debug.Log("creo el object");
+            _obj = Instantiate(RockPrefab, Movement.transform.position, Movement.transform.rotation);
+        }
+
+        // movemos el objeto de manera progresiva
+        _obj.transform.position = Vector3.MoveTowards(_obj.transform.position, Cursor.transform.position, ObjectSpeed * Time.deltaTime);
+        Debug.Log("NOS MOVEMOS NEGRAS");
+
+    } // ThrowObject
 
     #endregion
 
