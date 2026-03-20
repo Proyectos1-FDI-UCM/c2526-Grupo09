@@ -89,6 +89,15 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
+
+    //Colision con paredes
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("Colisionando");
+        if (collision.gameObject.CompareTag("Collision"))
+        {
+        }
+    }
     #endregion
 
     // ---- MÉTODOS PÚBLICOS ----
