@@ -407,8 +407,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Circle: {fileID: 765020465494509383, guid: b4d38215e91faa3419c9e621ab5ac5f3, type: 3}
-  PlayerSpeed: 2
-  PlayerFinalPos: {x: 2, y: 2, z: 2}
 --- !u!1 &1320586009
 GameObject:
   m_ObjectHideFlags: 0
@@ -605,7 +603,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.2017324, g: 0.8553459, b: 0.23328465, a: 0}
+  m_BackGroundColor: {r: 1, g: 1, b: 1, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0

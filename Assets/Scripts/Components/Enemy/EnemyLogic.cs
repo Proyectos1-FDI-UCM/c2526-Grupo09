@@ -155,8 +155,7 @@ public class EnemyLogic : MonoBehaviour
     /// </summary>
     public void KillThePlayer()
     {
-        Debug.Log("Kill the player");
-        _isPlayerInRange = true;
+        if (!_isPlayerInRange) _isPlayerInRange = true;
     }
 
     #endregion
@@ -207,10 +206,14 @@ public class EnemyLogic : MonoBehaviour
     private void PlayerIsHiding()
     {
         // Si el jugador se esconde mientras lo perseguíamos, perdemos la visibilidad
-        if (_isPlayerVisible && _playerPos.GetComponent<PlayerMovement>().GetIsHidden())
+        if (_playerPos != null)
         {
-            _isPlayerVisible = false;
-            _heardNoise = false;
+            if (_playerPos.GetComponent<PlayerMovement>().GetIsHidden())
+            {
+                _isPlayerInRange = false;
+                _isPlayerVisible = false;
+                _heardNoise = false;
+            }
         }
     }
 
@@ -219,18 +222,26 @@ public class EnemyLogic : MonoBehaviour
     /// </summary>
     private void UpdateEnemyState()
     {
-        if (!_heardNoise && !_isPlayerVisible && !_isPlayerInRange)
-        {
-            PerformPatrol();
-        }
-        else if (_heardNoise && !_isPlayerVisible && !_isPlayerInRange || _isPlayerVisible && !_isPlayerInRange)
-        {
-            if(_isPlayerVisible) PerformChase(_playerPos.position);
-            else if (_heardNoise) PerformChase(_noiseOrigin);
-        }
         if (_isPlayerInRange)
         {
             PerformAttack();
+        }
+        else if (_isPlayerVisible)
+        {
+            PerformChase(_playerPos.position);
+        }
+        else if (_heardNoise)
+        {
+            PerformChase(_noiseOrigin);
+
+            if (Vector3.Distance(transform.position, _noiseOrigin) < 0.2f)
+            {
+                _heardNoise = false;
+            }
+        }
+        else
+        {
+            PerformPatrol();
         }
     }
 
@@ -271,6 +282,7 @@ public class EnemyLogic : MonoBehaviour
         {
             _heardNoise = false;
             _isPlayerVisible = false;
+            _isPlayerInRange = false;
         }
     }
 
@@ -280,7 +292,6 @@ public class EnemyLogic : MonoBehaviour
     /// </summary>
     private void PerformAttack()
     {
-        Debug.Log("Mata al jugador");
         if (LevelManager.Instance != null)
         {
             LevelManager.Instance.EndGame(true);
