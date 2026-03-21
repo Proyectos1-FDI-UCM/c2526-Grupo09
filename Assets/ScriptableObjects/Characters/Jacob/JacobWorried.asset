@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 48e550eb3a4345a43b87fe27aa1f8eaf, type: 3}
-  m_Name: Jacob
+  m_Name: JacobWorried
   m_EditorClassIdentifier: 
-  characterName: 
-  profilePhoto: {fileID: 0}
+  characterName: Jacob
+  profilePhoto: {fileID: 4242178379103631058, guid: ac91ab64653f94a47a1394c3460b669a, type: 3}
