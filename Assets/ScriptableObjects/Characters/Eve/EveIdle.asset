@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: EveIdle
   m_EditorClassIdentifier: 
   characterName: Eve
-  profilePhoto: {fileID: 8793639957104055765, guid: 023aa5cc5376a8040ac17210f201eabc, type: 3}
+  profilePhoto: {fileID: 4723107735738678597, guid: ccb44609dcfaaa840b7cbc4277a7c8ce, type: 3}
