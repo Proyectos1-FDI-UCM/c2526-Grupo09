@@ -18,6 +18,7 @@ public class PlayerPos : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
+    [SerializeField] private GameObject cam;
     #endregion
     
     // ---- ATRIBUTOS PRIVADOS ----
@@ -33,6 +34,7 @@ public class PlayerPos : MonoBehaviour
     void Start()
     {
         transform.position = CheckPointSystem.Instance.GetLastCheck();
+        cam.transform.position = transform.position;
     }
     #endregion
 
