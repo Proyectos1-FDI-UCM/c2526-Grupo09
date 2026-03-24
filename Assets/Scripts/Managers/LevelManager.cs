@@ -105,12 +105,6 @@ public class LevelManager : MonoBehaviour
         return _instance != null;
     }
 
-    #endregion
-
-    // ---- MÉTODOS PRIVADOS ----
-
-    #region Métodos Privados
-
     /// <summary>
     /// Método que activa el panel de FinDeJuego y cambia el texto del panel dependiendo de si pierdes o ganas
     /// </summary>
@@ -121,12 +115,20 @@ public class LevelManager : MonoBehaviour
         if (loose == true)
         {
             Text.text = "Has perdido";
+            PauseManager.Instance.PauseGame();
         }
         else
         {
             Text.text = "Has Ganado";
+            PauseManager.Instance.PauseGame();
         }
     }
+    #endregion
+
+    // ---- MÉTODOS PRIVADOS ----
+
+    #region Métodos Privados
+
 
     private void Init()
     {

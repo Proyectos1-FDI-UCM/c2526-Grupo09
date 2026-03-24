@@ -69,24 +69,30 @@ public class PlayerMovement : MonoBehaviour
     }
     void Update()
     {
-        
-
-        if (!_isHidden)
+        if (PauseManager.Instance.Pause == false)
         {
-           
-            _posAnterior = transform.position;
-            MovePlayer();
-            _posActual = transform.position;
-
-            // Solo intentamos hacer ruido si nos hemos movido Y tenemos el script de ruido
-            if (_posAnterior != _posActual)
+            _animator.enabled = true;
+            if (!_isHidden)
             {
-                PlayerNoise playerNoise = GetComponent<PlayerNoise>();
-                if (playerNoise != null)
+
+                _posAnterior = transform.position;
+                MovePlayer();
+                _posActual = transform.position;
+
+                // Solo intentamos hacer ruido si nos hemos movido Y tenemos el script de ruido
+                if (_posAnterior != _posActual)
                 {
-                    playerNoise.PlayerMoving();
+                    PlayerNoise playerNoise = GetComponent<PlayerNoise>();
+                    if (playerNoise != null)
+                    {
+                        playerNoise.PlayerMoving();
+                    }
                 }
             }
+        }
+        else
+        {
+            _animator.enabled = false;
         }
     }
 
@@ -151,7 +157,7 @@ public class PlayerMovement : MonoBehaviour
 
         int incrX = Mathf.RoundToInt(direction.x);
         int incrY = Mathf.RoundToInt(direction.y);
-        
+
         /*// Derecha-Arriba
         else if (incrX > 0 && incrY > 0) rotZ = -45;
         // Izquierda-Abajo
@@ -161,7 +167,7 @@ public class PlayerMovement : MonoBehaviour
         // Izquierda-Arriba*/
 
         //Comprobamos si se pulsa el Shift
-        if (direction!=Vector2.zero)
+        if (direction != Vector2.zero)
         {
             // Derecha
             if (incrX > 0 && incrY == 0)

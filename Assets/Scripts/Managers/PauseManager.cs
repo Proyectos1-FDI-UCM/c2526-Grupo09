@@ -1,19 +1,20 @@
 //---------------------------------------------------------
-// Script que detecta al jugador si se encuentra en el campo de visión del enemigo.
-// Álvaro Sosa Rodríguez
+// Breve descripción del contenido del archivo
+// Responsable de la creación de este archivo
 // Bouquet Of Sins
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
 
 using UnityEngine;
+using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
 // Añadir aquí el resto de directivas using
 
 
 /// <summary>
-/// Script que comunica al script "EnemyLogic" si el jugador se encuentra en el campo de visión del enemigo y llama
-/// al metodo "SawThePlayer". Ademas, se encarga de modificar la escala del FOV del enemigo.
+/// Antes de cada class, descripción de qué es y para qué sirve,
+/// usando todas las líneas que sean necesarias.
 /// </summary>
-public class EnemyVision : MonoBehaviour
+public class PauseManager : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
@@ -22,6 +23,8 @@ public class EnemyVision : MonoBehaviour
     // públicos y de inspector se nombren en formato PascalCase
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
+    [SerializeField] GameObject PausePanel;
+    [SerializeField] GameObject EndPanel;
 
     #endregion
 
@@ -33,6 +36,11 @@ public class EnemyVision : MonoBehaviour
     // primera palabra en minúsculas y el resto con la 
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
+
+    /// <summary>
+    /// Instancia única de la clase (singleton).
+    /// </summary>
+    private static PauseManager _instance;
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -41,25 +49,31 @@ public class EnemyVision : MonoBehaviour
     // Por defecto están los típicos (Update y Start) pero:
     // - Hay que añadir todos los que sean necesarios
     // - Hay que borrar los que no se usen 
-
-    /// <summary>
-    /// Este metodo detecta si el jugador se encuentra en el rango de vision del enemigo y manda la posicion del jugador.
-    /// </summary>
-    /// <param name="collision"></param>
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void Awake()
     {
-        PlayerMovement PlayerScript = collision.gameObject.GetComponent<PlayerMovement>();
-        if (PlayerScript != null && !PlayerScript.GetIsHidden() && !PauseManager.Instance.Pause)
-        {
-            // Avisar a EnemyLogic que el player esta en el rango de vision
-            EnemyLogic enemyLogic = transform.parent.parent.GetComponent<EnemyLogic>();
-            if (enemyLogic != null )
-            {
-                enemyLogic.SawThePlayer(PlayerScript.gameObject.transform);
-            }
-        }
+        _instance = this;
+    }
+    /// <summary>
+    /// Start is called on the frame when a script is enabled just before 
+    /// any of the Update methods are called the first time.
+    /// </summary>
+    void Start()
+    {
+        PausePanel.SetActive(false);
+        Pause = false;
     }
 
+    /// <summary>
+    /// Update is called every frame, if the MonoBehaviour is enabled.
+    /// </summary>
+    void Update()
+    {
+        if (InputManager.Instance.PauseWasPressedThisFrame() && EndPanel.activeSelf==false) 
+        {
+            PausePanel.SetActive(true);
+            Pause = true;
+        }
+    }
     #endregion
 
     // ---- MÉTODOS PÚBLICOS ----
@@ -69,14 +83,25 @@ public class EnemyVision : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
+    public bool Pause { get; private set; }
 
-    /// <summary>
-    /// Metodo que recibe un Vector3 y segun este cambia la escala del FOV del enemigo.
-    /// </summary>
-    /// <param name="scale"></param>
-    public void ChangeConeScale(Vector3 scale)
+    public static PauseManager Instance
     {
-        gameObject.transform.localScale = scale;
+        get
+        {
+            Debug.Assert(_instance != null);
+            return _instance;
+        }
+    } // Instance
+
+    public void Resume()
+    {
+        Pause = false;
+        PausePanel.SetActive(false);
+    }
+    public void PauseGame()
+    {
+        Pause = true;
     }
 
     #endregion
@@ -88,8 +113,7 @@ public class EnemyVision : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
 
-
     #endregion
 
-} // class EnemyVision 
+} // class PauseManager 
 // namespace

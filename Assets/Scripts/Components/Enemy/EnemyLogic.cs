@@ -35,12 +35,12 @@ public class EnemyLogic : MonoBehaviour
     /// Escala del FOV del enemigo cuando esta patrullando
     /// </summary>
     [SerializeField]
-    private Vector3 ConeScale = new Vector3 (1, 1, 1);
+    private Vector3 ConeScale = new Vector3(1, 1, 1);
     /// <summary>
     /// Escala del FOV del enemigo cuando persigue al jugador o un sonido.
     /// </summary>
     [SerializeField]
-    private Vector3 AlertConeScale = new Vector3 (2, 2, 1);
+    private Vector3 AlertConeScale = new Vector3(2, 2, 1);
     /// <summary>
     /// Es el tiempo que tardara el enemigo en volver a su estado de patrullar si no pilla al jugador
     /// </summary>
@@ -96,7 +96,7 @@ public class EnemyLogic : MonoBehaviour
     /// Controla el tiempo en el que el enemigo persigue.
     /// </summary>
     private float _timer;
-    
+
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
@@ -111,7 +111,11 @@ public class EnemyLogic : MonoBehaviour
     void Update()
     {
         PlayerIsHiding();
-        UpdateEnemyState();
+        if (!PauseManager.Instance.Pause)
+        {
+            UpdateEnemyState();
+        }
+
     }
 
     /// <summary>
@@ -228,7 +232,8 @@ public class EnemyLogic : MonoBehaviour
         }
         else if (_isPlayerVisible)
         {
-            PerformChase(_playerPos.position);
+            if (_isPlayerVisible) PerformChase(_playerPos.position);
+            else if (_heardNoise) PerformChase(_noiseOrigin);
         }
         else if (_heardNoise)
         {
