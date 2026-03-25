@@ -1,5 +1,6 @@
 //---------------------------------------------------------
-// Este codigo lo que hace es que el tiempo vuelva a funcionar con normalidad al entrar en la escena de Home
+// Este codigo lo que hace es que el tiempo vuelva a funcionar con normalidad al entrar en la escena de Home,
+// y le vuelve a decir a LevelManager que sigue jugando
 // Inés de la Peña
 // Bouquet Of Sins
 // Proyectos 1 - Curso 2025-26
