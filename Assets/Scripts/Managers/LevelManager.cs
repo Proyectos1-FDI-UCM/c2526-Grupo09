@@ -8,6 +8,7 @@
 
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using static UnityEngine.Rendering.DebugUI;
 
 /// <summary>
@@ -133,6 +134,18 @@ public class LevelManager : MonoBehaviour
     {
         _levelStage = 2;
     }
+
+    public void RetryLevel()
+    {
+        LevelReset();
+        Time.timeScale = 1;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public static void LevelReset()
+    {
+        _levelStage = 0;
+    }
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----
@@ -173,8 +186,14 @@ public class LevelManager : MonoBehaviour
         switch (_levelStage)
         {
             case 0: return;
-            case 1: PanelWin.SetActive(true); break;
-            case 2: PanelLost.SetActive(true); break;
+            case 1:
+                PanelWin.SetActive(true);
+                EndGame(false);
+                break;
+            case 2: 
+                PanelLost.SetActive(true);
+                EndGame(true);
+                break;
         }
     }
 
