@@ -114,6 +114,7 @@ public class GameManager : MonoBehaviour
         } // if somos la instancia principal
     }
 
+
     #endregion
 
     // ---- MÉTODOS PÚBLICOS ----
