@@ -70,6 +70,11 @@ public class InputManager : MonoBehaviour
     /// </summary>
     private InputAction _pan;
 
+    /// <summary>
+    /// Accion para pausar el juego
+    /// </summary>
+    private InputAction _pause;
+
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -237,6 +242,11 @@ public class InputManager : MonoBehaviour
         return _interact.WasReleasedThisFrame();
     } 
 
+    public bool PauseWasPressedThisFrame()
+    {
+        return _pause.WasReleasedThisFrame();
+    }
+
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----
@@ -267,10 +277,11 @@ public class InputManager : MonoBehaviour
         _throw = _theController.Player.Throw;
         _confirmThrow = _theController.Player.ConfirmThrow;
 
-
         _pan = _theController.Player.Pan;
         _pan.performed += OnPan;
         _pan.canceled += OnPan;
+
+        _pause = _theController.Player.Pause;
     }
 
     /// <summary>

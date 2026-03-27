@@ -1,13 +1,14 @@
 //---------------------------------------------------------
 // Gestor de escena. Podemos crear uno diferente con un
 // nombre significativo para cada escena, si es necesario
-// Guillermo Jiménez Díaz, Pedro Pablo Gómez Martín
+// Guillermo Jiménez Díaz, Pedro Pablo Gómez Martín, Inés de la Peña
 // Template-P1
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
 
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using static UnityEngine.Rendering.DebugUI;
 
 /// <summary>
@@ -32,7 +33,8 @@ public class LevelManager : MonoBehaviour
     // públicos y de inspector se nombren en formato PascalCase
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
-    [SerializeField] private GameObject Panel;
+    [SerializeField] private GameObject PanelWin;
+    [SerializeField] private GameObject PanelLost;
     [SerializeField] private TextMeshProUGUI Text;
 
     #endregion
@@ -46,6 +48,14 @@ public class LevelManager : MonoBehaviour
     /// </summary>
     private static LevelManager _instance;
 
+    /// <summary>
+    /// Int para saber si el jugador se ha pasado el nivel o no,
+    /// 0 = esta jugando,
+    /// 1 = se ha pasado el nivel,
+    /// 2 = el jugador ha muerto
+    /// </summary>
+    private static int _levelStage = 0;
+    
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -71,9 +81,14 @@ public class LevelManager : MonoBehaviour
     /// </summary>
     private void Start()
     {
-        Panel.SetActive(false);
+        PanelWin.SetActive(false);
+        PanelLost.SetActive(false);
     }
 
+    void Update()
+    {
+        CheckLevelStage();
+    }
     #endregion
 
     // ---- MÉTODOS PÚBLICOS ----
@@ -105,6 +120,32 @@ public class LevelManager : MonoBehaviour
         return _instance != null;
     }
 
+    public static int LevelStage()
+    {
+        return _levelStage;
+    }
+
+    public static void LevelWon()
+    {
+        _levelStage = 1;
+    }
+
+    public static void LevelLost()
+    {
+        _levelStage = 2;
+    }
+
+    public void RetryLevel()
+    {
+        LevelReset();
+        Time.timeScale = 1;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public static void LevelReset()
+    {
+        _levelStage = 0;
+    }
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----
@@ -117,20 +158,43 @@ public class LevelManager : MonoBehaviour
     /// <param name="loose"></param>
     public void EndGame(bool loose)
     {
-        Panel.SetActive(true);
         if (loose == true)
         {
             Text.text = "Has perdido";
+            PauseManager.Instance.PauseGame();
         }
         else
         {
             Text.text = "Has Ganado";
+            PauseManager.Instance.PauseGame();
         }
     }
+    #endregion
+
+    // ---- MÉTODOS PRIVADOS ----
+
+    #region Métodos Privados
+
 
     private void Init()
     {
         // De momento no hay nada que inicializar
+    }
+
+    private void CheckLevelStage()
+    {
+        switch (_levelStage)
+        {
+            case 0: return;
+            case 1:
+                PanelWin.SetActive(true);
+                EndGame(false);
+                break;
+            case 2: 
+                PanelLost.SetActive(true);
+                EndGame(true);
+                break;
+        }
     }
 
     #endregion

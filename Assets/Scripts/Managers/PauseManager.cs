@@ -1,18 +1,20 @@
 //---------------------------------------------------------
-// Detectar si el jugador gana
-// Hao Zheng
+// Breve descripción del contenido del archivo
+// Responsable de la creación de este archivo
 // Bouquet Of Sins
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
 
 using UnityEngine;
+using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
 // Añadir aquí el resto de directivas using
 
 
 /// <summary>
-/// Detecta si el jugador entra en contacto con esta para ganar.
+/// Antes de cada class, descripción de qué es y para qué sirve,
+/// usando todas las líneas que sean necesarias.
 /// </summary>
-public class WinTriggerFlower : MonoBehaviour
+public class PauseManager : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
@@ -21,6 +23,8 @@ public class WinTriggerFlower : MonoBehaviour
     // públicos y de inspector se nombren en formato PascalCase
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
+    [SerializeField] GameObject PausePanel;
+    [SerializeField] GameObject EndPanel;
 
     #endregion
 
@@ -33,6 +37,10 @@ public class WinTriggerFlower : MonoBehaviour
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
 
+    /// <summary>
+    /// Instancia única de la clase (singleton).
+    /// </summary>
+    private static PauseManager _instance;
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -41,18 +49,29 @@ public class WinTriggerFlower : MonoBehaviour
     // Por defecto están los típicos (Update y Start) pero:
     // - Hay que añadir todos los que sean necesarios
     // - Hay que borrar los que no se usen 
+    private void Awake()
+    {
+        _instance = this;
+    }
+    /// <summary>
+    /// Start is called on the frame when a script is enabled just before 
+    /// any of the Update methods are called the first time.
+    /// </summary>
+    void Start()
+    {
+        PausePanel.SetActive(false);
+        Pause = false;
+    }
 
     /// <summary>
-    /// método para detectar si colisiona con un objeto con trigger que tenga el componente platermovement
+    /// Update is called every frame, if the MonoBehaviour is enabled.
     /// </summary>
-    /// <param name="collision"></param>
-    private void OnTriggerEnter2D(Collider2D collision)
+    void Update()
     {
-        PlayerMovement player = collision.GetComponent<PlayerMovement>();
-        if (player != null&&LevelManager.Instance!=null)
+        if (InputManager.Instance.PauseWasPressedThisFrame() && EndPanel.activeSelf==false) 
         {
-            LevelManager.LevelWon();
-            LevelManager.Instance.EndGame(false);
+            PausePanel.SetActive(true);
+            Pause = true;
         }
     }
     #endregion
@@ -64,6 +83,26 @@ public class WinTriggerFlower : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
+    public bool Pause { get; private set; }
+
+    public static PauseManager Instance
+    {
+        get
+        {
+            Debug.Assert(_instance != null);
+            return _instance;
+        }
+    } // Instance
+
+    public void Resume()
+    {
+        Pause = false;
+        PausePanel.SetActive(false);
+    }
+    public void PauseGame()
+    {
+        Pause = true;
+    }
 
     #endregion
 
@@ -76,5 +115,5 @@ public class WinTriggerFlower : MonoBehaviour
 
     #endregion
 
-} // class WinTriggerFlower 
+} // class PauseManager 
 // namespace

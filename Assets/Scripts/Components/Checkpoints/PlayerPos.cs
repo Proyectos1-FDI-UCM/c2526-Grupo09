@@ -18,21 +18,25 @@ public class PlayerPos : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
+    [SerializeField] private GameObject cam;
+
+    [SerializeField] private GameObject PanelLost;
     #endregion
-    
+
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
     #endregion
-    
+
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
     /// <summary>
     /// Start is called on the frame when a script is enabled just before 
     /// any of the Update methods are called the first time.
     /// </summary>
-    void Start()
+    private void Start()
     {
         transform.position = CheckPointSystem.Instance.GetLastCheck();
+        cam.transform.position = transform.position;
     }
     #endregion
 
@@ -40,6 +44,7 @@ public class PlayerPos : MonoBehaviour
     #region Métodos públicos
     public void Respawn()
     {
+        PanelLost.SetActive(false);
         Destroy(this.gameObject);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }

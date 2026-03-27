@@ -35,18 +35,18 @@ public class FollowPlayer : MonoBehaviour
     /// </summary>
     [SerializeField] private Vector3 Offset = new Vector3(0, 0, -10);
 
-    [SerializeField] private float MaxDistance = 2f;
+    [SerializeField] private float MaxDistanceMain = 2f;
     /// <summary>
     /// Velocidad de interpolación cuando la cámara sigue al gameobject, Contola lo rápido que la cámara alcanza la posición del jugador
     /// valores bajos hace que el movimiento sea suave y con más delay, mientras que valores altos hace lo contrario.
     /// </summary>
     [SerializeField] private float TimeNormal = 1f;
     [Header("Parámetros del paneo")]
-    [SerializeField] private float TimePaneo = 1f;
+    [SerializeField] private float TimePan = 1f;
     /// <summary>
     /// Es la distancia máxima que se puede desplazar la cámara respecto al jugador en el momento de hacer el paneo.
     /// </summary>
-    [SerializeField] private float AlcanceMax = 1f;
+    [SerializeField] private float MaxDistancePan = 1f;
 
 
     #endregion
@@ -91,28 +91,32 @@ public class FollowPlayer : MonoBehaviour
         Vector3 pos = Target.position + Offset;
         Vector3 targetOffset;
 
-        if(moveDir!=Vector2.zero)
+        if (!PauseManager.Instance.Pause)
         {
-            targetOffset = new Vector3(moveDir.x, moveDir.y, 0).normalized * MaxDistance;
-            _lookOffset = Vector3.Lerp(_lookOffset, targetOffset, TimePaneo * Time.deltaTime);
-        }
-        else
-        {
-            _lookOffset = Vector3.Lerp(_lookOffset, Vector3.zero, TimeNormal * Time.deltaTime);
+            if (moveDir != Vector2.zero)
+            {
+                targetOffset = new Vector3(moveDir.x, moveDir.y, 0).normalized * MaxDistanceMain;
+                _lookOffset = Vector3.Lerp(_lookOffset, targetOffset, TimePan * Time.deltaTime);
+            }
+            else
+            {
+                _lookOffset = Vector3.Lerp(_lookOffset, Vector3.zero, TimeNormal * Time.deltaTime);
+            }
+
+
+            if (panDir != Vector2.zero)
+            {
+                panOffset = new Vector3(panDir.x, panDir.y, 0).normalized * MaxDistancePan;
+            }
+            else
+            {
+                panOffset = Vector3.zero;
+            }
+            _panOffset = Vector3.Lerp(_panOffset, panOffset, TimePan * Time.deltaTime);
+            transform.position = Vector3.Lerp(transform.position, pos + _panOffset + _lookOffset, TimeNormal * Time.deltaTime);
         }
 
 
-        if (panDir != Vector2.zero)
-        {
-            panOffset = new Vector3(panDir.x, panDir.y, 0).normalized * AlcanceMax;
-        }
-        else
-        {
-            panOffset = Vector3.zero;
-        }
-        _panOffset = Vector3.Lerp(_panOffset, panOffset, TimePaneo * Time.deltaTime);
-
-        transform.position = Vector3.Lerp(transform.position, pos + _panOffset + _lookOffset, TimeNormal * Time.deltaTime);
     }
     #endregion
 

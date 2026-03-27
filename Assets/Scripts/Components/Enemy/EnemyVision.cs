@@ -49,11 +49,11 @@ public class EnemyVision : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         PlayerMovement PlayerScript = collision.gameObject.GetComponent<PlayerMovement>();
-        if (PlayerScript != null && !PlayerScript.GetIsHidden())
+        if (PlayerScript != null && !PlayerScript.GetIsHidden() && !PauseManager.Instance.Pause)
         {
             // Avisar a EnemyLogic que el player esta en el rango de vision
             EnemyLogic enemyLogic = transform.parent.parent.GetComponent<EnemyLogic>();
-            if (enemyLogic != null)
+            if (enemyLogic != null )
             {
                 enemyLogic.SawThePlayer(PlayerScript.gameObject.transform);
             }

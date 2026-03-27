@@ -1,6 +1,7 @@
 //---------------------------------------------------------
-// Detectar si el jugador gana
-// Hao Zheng
+// Este codigo lo que hace es que el tiempo vuelva a funcionar con normalidad al entrar en la escena de Home,
+// y le vuelve a decir a LevelManager que sigue jugando
+// Inés de la Peña
 // Bouquet Of Sins
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
@@ -10,9 +11,10 @@ using UnityEngine;
 
 
 /// <summary>
-/// Detecta si el jugador entra en contacto con esta para ganar.
+/// Antes de cada class, descripción de qué es y para qué sirve,
+/// usando todas las líneas que sean necesarias.
 /// </summary>
-public class WinTriggerFlower : MonoBehaviour
+public class Home : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
@@ -23,7 +25,7 @@ public class WinTriggerFlower : MonoBehaviour
     // Ejemplo: MaxHealthPoints
 
     #endregion
-
+    
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
     // Documentar cada atributo que aparece aquí.
@@ -34,26 +36,30 @@ public class WinTriggerFlower : MonoBehaviour
     // Ejemplo: _maxHealthPoints
 
     #endregion
-
+    
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
-
+    
     // Por defecto están los típicos (Update y Start) pero:
     // - Hay que añadir todos los que sean necesarios
     // - Hay que borrar los que no se usen 
+    
+    /// <summary>
+    /// Start is called on the frame when a script is enabled just before 
+    /// any of the Update methods are called the first time.
+    /// </summary>
+    void Start()
+    {
+        Time.timeScale = 1;
+        LevelManager.LevelReset();
+    }
 
     /// <summary>
-    /// método para detectar si colisiona con un objeto con trigger que tenga el componente platermovement
+    /// Update is called every frame, if the MonoBehaviour is enabled.
     /// </summary>
-    /// <param name="collision"></param>
-    private void OnTriggerEnter2D(Collider2D collision)
+    void Update()
     {
-        PlayerMovement player = collision.GetComponent<PlayerMovement>();
-        if (player != null&&LevelManager.Instance!=null)
-        {
-            LevelManager.LevelWon();
-            LevelManager.Instance.EndGame(false);
-        }
+        
     }
     #endregion
 
@@ -66,7 +72,7 @@ public class WinTriggerFlower : MonoBehaviour
     // Ejemplo: GetPlayerController
 
     #endregion
-
+    
     // ---- MÉTODOS PRIVADOS ----
     #region Métodos Privados
     // Documentar cada método que aparece aquí
@@ -74,7 +80,7 @@ public class WinTriggerFlower : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
 
-    #endregion
+    #endregion   
 
-} // class WinTriggerFlower 
+} // class Home 
 // namespace

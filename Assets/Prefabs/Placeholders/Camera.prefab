@@ -47,9 +47,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Target: {fileID: 2246988364955933717, guid: 522f76ecd2425fe4aa6d9911eb852ec3, type: 3}
   Offset: {x: 0, y: 0, z: -10}
-  TimeNormal: 1
-  TimePaneo: 25
-  AlcanceMax: 1
+  MaxDistanceMain: 1
+  TimeNormal: 4
+  TimePan: 1
+  MaxDistancePan: 1
 --- !u!1 &7705675025863625342
 GameObject:
   m_ObjectHideFlags: 0
