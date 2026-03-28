@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48e550eb3a4345a43b87fe27aa1f8eaf, type: 3}
   m_Name: GabrielAngry
   m_EditorClassIdentifier: 
-  characterName: 
-  profilePhoto: {fileID: 0}
+  characterName: Gabriel
+  profilePhoto: {fileID: -9082789242079819192, guid: fa2bf9886883e554fa97a291a6915327, type: 3}
