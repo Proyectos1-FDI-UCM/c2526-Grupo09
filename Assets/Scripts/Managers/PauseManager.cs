@@ -99,6 +99,7 @@ public class PauseManager : MonoBehaviour
         Pause = false;
         PausePanel.SetActive(false);
     }
+
     public void PauseGame()
     {
         Pause = true;

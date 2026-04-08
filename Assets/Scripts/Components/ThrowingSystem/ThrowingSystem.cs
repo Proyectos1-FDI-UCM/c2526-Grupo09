@@ -94,6 +94,16 @@ public class ThrowingSystem : MonoBehaviour
                     Debug.Log("llegó al final");
                     _inThrowingState = false;
                     _objectIsMoving = false;
+                    _objectInHand = false;
+                    _throwConfirmed = false;
+
+                    // volvemos a nuestro estado inicial (habilitamos el jugador y la cámara y escondemos el cursor)
+                    Movement.enabled = true;
+                    Camera.enabled = true;
+                    Cursor.SetActive(false);
+
+                    // posición del cursor (con un pequeño offset a la derecha)
+                    Cursor.transform.position = Movement.transform.position + new Vector3(1, 0, 0);
                     //SwitchPublicObjectController();
                 }
             }
