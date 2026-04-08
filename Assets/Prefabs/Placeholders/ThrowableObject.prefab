@@ -101,7 +101,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b3ec004a429af149acdf6f105375d89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Input: {fileID: 0}
+  canvasTemp: {fileID: 0}
+  PlayerInScene: {fileID: 6522229758989385404, guid: 522f76ecd2425fe4aa6d9911eb852ec3, type: 3}
 --- !u!61 &5821148763192666933
 BoxCollider2D:
   m_ObjectHideFlags: 0

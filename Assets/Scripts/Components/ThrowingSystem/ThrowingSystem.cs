@@ -19,14 +19,17 @@ public class ThrowingSystem : MonoBehaviour
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
 
-    [SerializeField] private GetObject ObjectPrefab;
+    [Header("Prefabs")]
     [SerializeField] private GameObject RockPrefab;
     // [SerializeField] private GameObject VasePrefab;
     [SerializeField] private GameObject Cursor;
-    [SerializeField] private float CursorSpeed;
+
+    [Header("Scripts")]
     [SerializeField] private PlayerMovement Movement;
     [SerializeField] private FollowPlayer Camera;
 
+    [Header("Atributos")]
+    [SerializeField] private float CursorSpeed;
     [SerializeField] private float ObjectSpeed = 3f;
 
     #endregion
@@ -34,11 +37,28 @@ public class ThrowingSystem : MonoBehaviour
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
 
+    /// <summary>
+    /// Detecta si se ha entrado en el modo lanzamiento o no
+    /// </summary>
     private bool _inThrowingState = false;
+
+    /// <summary>
+    /// Es True si se ha confirmado la posición del cursor, False en caso contrario
+    /// </summary>
     private bool _throwConfirmed = false;
+    
+    /// <summary>
+    /// Es True si el objeto lanzado está en movimiento, False en caso contrario
+    /// </summary>
     private bool _objectIsMoving = false;
 
-    GameObject _obj;
+    /// <summary>
+    /// Es True si el jugador ya tiene un objeto, False en caso contrario
+    /// </summary>
+    private bool _objectInHand = false;
+
+    private GetObject _objectPrefab;
+    private GameObject _object;
 
 
     #endregion
@@ -51,91 +71,111 @@ public class ThrowingSystem : MonoBehaviour
         // desactivamos la visibilidad del cursor
         Cursor.SetActive(false);
         // posición del cursor (con un pequeño offset a la derecha)
-        Cursor.GetComponent<Transform>().position = Movement.GetComponent<Transform>().position + new Vector3(1, 0, 0);
+        Cursor.transform.position = Movement.transform.position + new Vector3(1, 0, 0);
     } // Start
 
     /// <summary>
     /// Update is called every frame, if the MonoBehaviour is enabled.
     /// </summary>
-    void Update()
+    private void Update()
     {
-        if (ObjectPrefab._hasObject)
+        // si tiene un objeto, tienes la opción de entrar al modo lanzamiento
+        if (_objectInHand)
         {
-            // si tiene un objeto, tienes la opción de entrar al modo lanzamiento
-            if (InputManager.Instance.ThrowWasPressedThisFrame())
+            // primero comprobamos si el objeto está en movimiento (si ya se ha creado) para bloquear cualquier otro tipo
+            // de input por parte del usuario (movimiento del cursor, jugador, etc) y centrarnos sólo en el movimiento
+            // del objeto lanzado
+            if (_objectIsMoving)
             {
-                // comprobamos si el objeto sigue en movimiento o si el movimiento acaba de empezar
-                if (_throwConfirmed && InputManager.Instance.ThrowWasPressedThisFrame())
+                ThrowObject();
+                // comprobamos si el objeto ha llegado a su destino
+                if (_object.transform.position == Cursor.transform.position)
                 {
-                    _objectIsMoving = true;
+                    Debug.Log("llegó al final");
+                    _inThrowingState = false;
+                    _objectIsMoving = false;
+                    //SwitchPublicObjectController();
                 }
-                else if (_objectIsMoving)
-                {
-                    Debug.Log("detecta lanzar objeto");
-                    ThrowObject();
-                    // comprobamos si el objeto ha llegado a su destino
-                    if (_obj.transform.position == Cursor.transform.position)
-                    {
-                        Debug.Log("llegó al final negracas");
-                        _inThrowingState = false;
-                        _objectIsMoving = false;
-                    }
-                }
-                else
-                {
-                    // invertimos el valor del booleano para detectar si empieza o termina el estado de lanzamiento
-                    _inThrowingState = !_inThrowingState;
-                }
-                    
             }
-
-            if (_inThrowingState)
+            else if (InputManager.Instance.ThrowWasPressedThisFrame())
             {
+                if (_throwConfirmed)
+                {
+                    // comenzamos el movimiento del objeto
+                    ThrowObject();
+                }
+                // invertimos el valor del booleano para detectar si empieza o termina el estado de lanzamiento
+                _inThrowingState = !_inThrowingState;
+            }
+            else if (_inThrowingState)
+            {
+                // movimiento del cursor
                 Debug.Log("muevo el booty");
                 CursorMovement();
             }
             else
             {
-                // volvemos a nuestro estado inicial (movemos el jugador y escondemos el cursor)
+                // volvemos a nuestro estado inicial (habilitamos el jugador y la cámara y escondemos el cursor)
                 Movement.enabled = true;
+                Camera.enabled = true;
                 Cursor.SetActive(false);
-
+                
                 // posición del cursor (con un pequeño offset a la derecha)
-                Cursor.GetComponent<Transform>().position = Movement.GetComponent<Transform>().position + new Vector3(1, 0, 0);
+                Cursor.transform.position = Movement.transform.position + new Vector3(1, 0, 0);
             }
         }
-        else
+        // temporal
+        else if (_objectPrefab != null)
         {
-            Debug.Log("no tienes objeto pedazo de queer");
+            Debug.Log("no tienes objeto");
         }
+        
     } // Update
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        // comprobamos que entramos en el collider de un objeto y no cualquier otro
+        _objectPrefab = collision.GetComponent<GetObject>();
+    }
+
+    /*private void OnTriggerExit2D(Collider2D collision)
+    {
+        _objectPrefab = collision.GetComponent<GetObject>();
+    }*/
+
 
     #endregion
 
     // ---- MÉTODOS PÚBLICOS ----
     #region Métodos públicos
-    // Documentar cada método que aparece aquí con ///<summary>
-    // El convenio de nombres de Unity recomienda que estos métodos
-    // se nombren en formato PascalCase (palabras con primera letra
-    // mayúscula, incluida la primera letra)
-    // Ejemplo: GetPlayerController
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <returns></returns>
+    public bool PublicObjectController()
+    {
+        return _objectInHand;
+    }
+
+    public void SwitchPublicObjectController()
+    {
+        _objectInHand = !_objectInHand;
+    }
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----
     #region Métodos Privados
-    // Documentar cada método que aparece aquí
-    // El convenio de nombres de Unity recomienda que estos métodos
-    // se nombren en formato PascalCase (palabras con primera letra
-    // mayúscula, incluida la primera letra)
 
     /// <summary>
-    /// descripción
+    /// Método que gestiona el movimiento del cursor y la confirmación del mismo, para poder lanzar el objeto a una
+    /// posición determinada por el jugador
     /// </summary>
     private void CursorMovement()
     {
         // bloqueamos el movimiento del jugador y hacemos que el cursor aparezca
         Movement.enabled = false;
+        Camera.enabled = false;
         Cursor.SetActive(true);
 
         if (InputManager.Instance.ConfirmThrowWasPressedThisFrame())
@@ -148,7 +188,7 @@ public class ThrowingSystem : MonoBehaviour
         {
             //Obtenemos la dirección del InputManager
             Vector2 direction = InputManager.Instance.MovementVector;
-            Vector3 cursorDir = new Vector3(direction.x, direction.y, Cursor.GetComponent<Transform>().position.z);
+            Vector3 cursorDir = new Vector3(direction.x, direction.y, Cursor.transform.position.z);
 
             // movimiento del cursor
             Cursor.transform.Translate(cursorDir * CursorSpeed * Time.deltaTime);
@@ -157,7 +197,7 @@ public class ThrowingSystem : MonoBehaviour
     } // MovimientoCursor
 
     /// <summary>
-    /// 
+    /// Método para crear y mover el objeto lanzado desde la posición del jugador hasta la posición del cursor
     /// </summary>
     private void ThrowObject()
     {
@@ -165,14 +205,19 @@ public class ThrowingSystem : MonoBehaviour
         if (!_objectIsMoving)
         {
             Debug.Log("creo el object");
-            _obj = Instantiate(RockPrefab, Movement.transform.position, Movement.transform.rotation);
+            // if else para detectar si es roca o jarron
+            _object = Instantiate(RockPrefab, Movement.transform.position, Movement.transform.rotation);
+            _objectIsMoving = true;
         }
 
         // movemos el objeto de manera progresiva
-        _obj.transform.position = Vector3.MoveTowards(_obj.transform.position, Cursor.transform.position, ObjectSpeed * Time.deltaTime);
-        Debug.Log("NOS MOVEMOS NEGRAS");
+        _object.transform.position = Vector3.MoveTowards(_object.transform.position, Cursor.transform.position, 
+            ObjectSpeed * Time.deltaTime);
+        Debug.Log("NOS MOVEMOS");
 
-    } // ThrowObject
+    } // ThrowObject 
+
+
 
     #endregion
 
