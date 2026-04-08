@@ -56,6 +56,11 @@ public class EnemyLogic : MonoBehaviour
     /// </summary>
     [SerializeField]
     private float ChasingSpeed = 1;
+    /// <summary>
+    /// Player de la escena
+    /// </summary>
+    [SerializeField]
+    private GameObject Player;
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -299,9 +304,10 @@ public class EnemyLogic : MonoBehaviour
     /// </summary>
     private void PerformAttack()
     {
-        if (LevelManager.Instance != null)
+        PlayerPos playerPos = Player.GetComponent<PlayerPos>();
+        if (playerPos != null)
         {
-            LevelManager.Instance.EndGame(true);
+            playerPos.Respawn();
         }
     }
     #endregion   

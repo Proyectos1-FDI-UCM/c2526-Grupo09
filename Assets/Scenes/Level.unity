@@ -48721,6 +48721,10 @@ PrefabInstance:
       value: Enemy (1)
       objectReference: {fileID: 0}
     - target: {fileID: 6242393707636650598, guid: 8b98999a406ada243bc867fea6eee528, type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 650772922}
+    - target: {fileID: 6242393707636650598, guid: 8b98999a406ada243bc867fea6eee528, type: 3}
       propertyPath: ConeScale.x
       value: 1.5
       objectReference: {fileID: 0}
@@ -50809,6 +50813,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 6242393707636650598, guid: 8b98999a406ada243bc867fea6eee528, type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 650772922}
     - target: {fileID: 6242393707636650598, guid: 8b98999a406ada243bc867fea6eee528, type: 3}
       propertyPath: ConeScale.x
       value: 1.5

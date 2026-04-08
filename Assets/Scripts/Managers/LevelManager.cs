@@ -208,6 +208,8 @@ public class LevelManager : MonoBehaviour
     {
         CurrentDay.text = "";
         FlowerObtained.text = "";
+        Rock.SetActive(false);
+        Flower.SetActive(false);
         if (loose == true)
         {
             Text.text = "Has perdido";
