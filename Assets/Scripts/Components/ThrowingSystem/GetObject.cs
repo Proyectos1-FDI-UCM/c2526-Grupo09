@@ -84,6 +84,7 @@ public class GetObject : MonoBehaviour
             if (InputManager.Instance.InteractWasPressedThisFrame())
             {
                 _hasObject = true;
+                LevelManager.Instance.RockPicked(true);
                 // metemos el cambio de la variable individual a este objeto en la
                 // variable universal del ThrowingSystem (_objectInHand)
                 Debug.Log("has cogido el objeto yayyy");

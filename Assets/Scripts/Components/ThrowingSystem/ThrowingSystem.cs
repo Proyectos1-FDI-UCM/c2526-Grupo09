@@ -82,6 +82,7 @@ public class ThrowingSystem : MonoBehaviour
         // si tiene un objeto, tienes la opción de entrar al modo lanzamiento
         if (_objectInHand)
         {
+            
             // primero comprobamos si el objeto está en movimiento (si ya se ha creado) para bloquear cualquier otro tipo
             // de input por parte del usuario (movimiento del cursor, jugador, etc) y centrarnos sólo en el movimiento
             // del objeto lanzado
@@ -113,6 +114,7 @@ public class ThrowingSystem : MonoBehaviour
                 {
                     // comenzamos el movimiento del objeto
                     ThrowObject();
+                    LevelManager.Instance.RockPicked(false);
                 }
                 // invertimos el valor del booleano para detectar si empieza o termina el estado de lanzamiento
                 _inThrowingState = !_inThrowingState;

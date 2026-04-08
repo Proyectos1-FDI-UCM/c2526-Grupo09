@@ -17,6 +17,8 @@ public class CheckPointSystem : MonoBehaviour
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
     [SerializeField] private Transform Player;
+    [SerializeField] private Transform Camera;
+    [SerializeField] private Vector3 PlayerPos;
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -43,7 +45,9 @@ public class CheckPointSystem : MonoBehaviour
 
     private void Start()
     {
-        _lastCheck = Player.position;
+        Player.position = PlayerPos;
+        Camera.position = PlayerPos;
+        _lastCheck = PlayerPos;
     }
     #endregion
 
@@ -72,11 +76,6 @@ public class CheckPointSystem : MonoBehaviour
     
     // ---- MÉTODOS PRIVADOS ----
     #region Métodos Privados
-    // Documentar cada método que aparece aquí
-    // El convenio de nombres de Unity recomienda que estos métodos
-    // se nombren en formato PascalCase (palabras con primera letra
-    // mayúscula, incluida la primera letra)
-
     #endregion   
 
 } // class CheckpointsSystem 

@@ -1,7 +1,7 @@
 //---------------------------------------------------------
 // Gestor de escena. Podemos crear uno diferente con un
 // nombre significativo para cada escena, si es necesario
-// Guillermo Jiménez Díaz, Pedro Pablo Gómez Martín, Inés de la Peña
+// Guillermo Jiménez Díaz, Pedro Pablo Gómez Martín
 // Template-P1
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
@@ -36,6 +36,8 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private GameObject PanelWin;
     [SerializeField] private GameObject PanelLost;
     [SerializeField] private GameObject CheckpointObtained;
+    [SerializeField] private GameObject Rock;
+    [SerializeField] private GameObject Flower;
     [SerializeField] private TextMeshProUGUI Text;
     [SerializeField] private TextMeshProUGUI CurrentDay;
     [SerializeField] private TextMeshProUGUI FlowerObtained;
@@ -88,7 +90,8 @@ public class LevelManager : MonoBehaviour
         PanelWin.SetActive(false);
         PanelLost.SetActive(false);
         CheckpointObtained.SetActive(false);
-        FlowerObtained.text = "Flower not picked yet!";
+        Rock.SetActive(false);
+        FlowerObtained.text = "0/1";
         _flowerPicked = false;
     }
 
@@ -160,8 +163,18 @@ public class LevelManager : MonoBehaviour
     /// </summary>
     public void FlowerPicked()
     {
-        FlowerObtained.text = "Flower picked! Return to sleep";
+        FlowerObtained.text = "1/1";
         _flowerPicked = true;
+    }
+
+    public bool GetFlowerPicked()
+    {
+        return _flowerPicked;
+    }
+
+    public void RockPicked(bool picked)
+    {
+        Rock.SetActive(picked);
     }
 
     /// <summary>
@@ -177,17 +190,9 @@ public class LevelManager : MonoBehaviour
     /// Si se ha obtenido un checkpoint, aparece un mensaje en la esquina superior
     /// derecha durante dos segundos indicando que se ha cogido un checkpoint
     /// </summary>
-    public void CheckpointPicked()
+    public void CheckpointPicked(bool picked)
     {
-        float now = Time.time;
-        CheckpointObtained.SetActive(true);
-        // mientras no hayan pasado dos segundos
-        //while (Time.time < now + 2f)
-        //{
-        //    CheckpointObtained.SetActive(true);
-        //}
-        ////cuando hayan pasado los dos segundos, se quita el mensaje
-        //CheckpointObtained.SetActive(false);
+        CheckpointObtained.SetActive(picked);
     }
     #endregion
 
@@ -201,6 +206,8 @@ public class LevelManager : MonoBehaviour
     /// <param name="loose"></param>
     public void EndGame(bool loose)
     {
+        CurrentDay.text = "";
+        FlowerObtained.text = "";
         if (loose == true)
         {
             Text.text = "Has perdido";
@@ -211,6 +218,11 @@ public class LevelManager : MonoBehaviour
             Text.text = "Has Ganado";
             PauseManager.Instance.PauseGame();
         }
+    }
+
+    private void EndMessage(GameObject message)
+    {
+        message.SetActive(false);
     }
     #endregion
 

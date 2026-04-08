@@ -22,23 +22,12 @@ public class CheckPoint : MonoBehaviour
 
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
-    private CheckPointSystem _checkPointSystem;
-    private LevelManager _levelManager;
     // indica si el checkpoint se ha cogido ya o no
     private bool _checkPicked = false;
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
-    /// <summary>
-    /// Start is called on the frame when a script is enabled just before 
-    /// any of the Update methods are called the first time.
-    /// </summary>
-    private void Start()
-    {
-        _checkPointSystem = GetComponent<CheckPointSystem>();
-        _levelManager = GetComponent<LevelManager>();
-    }
 
     /// <summary>
     /// Cuando algún elemento colisiona con el checkpoint
@@ -53,13 +42,18 @@ public class CheckPoint : MonoBehaviour
             if (collision.gameObject.GetComponent<PlayerMovement>() != null)
             {
                 // se escribe el mensaje de que el checkpoint se ha obtenido
-                _levelManager.CheckpointPicked();
+                LevelManager.Instance.CheckpointPicked(true);
                 // se marca el checkpoint como obtenido
                 _checkPicked = true;
                 // se guarda la posición del checkpoint como última obtenida
-                _checkPointSystem.LastCheck(transform.position);
+                CheckPointSystem.Instance.LastCheck(transform.position);
             }
         }  
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        LevelManager.Instance.CheckpointPicked(false);
     }
     #endregion
 
