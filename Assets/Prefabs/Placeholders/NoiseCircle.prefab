@@ -102,10 +102,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 6522229758989385404, guid: 522f76ecd2425fe4aa6d9911eb852ec3, type: 3}
-  WalkSpeed: 0.75
-  FinalWalkPos: {x: 0.5, y: 0.5, z: 1}
-  RunSpeed: 3
-  FinalRunPos: {x: 1, y: 1, z: 1}
+  WalkSpeed: 2.5
+  FinalWalkPos: {x: 0.9, y: 0.9, z: 1}
+  RunSpeed: 5
+  FinalRunPos: {x: 1.75, y: 1.75, z: 1}
   ObjectSpeed: 9
   FinalObjectPos: {x: 7, y: 7, z: 7}
 --- !u!58 &-3239305065866385635
