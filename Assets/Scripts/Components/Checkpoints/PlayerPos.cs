@@ -19,8 +19,6 @@ public class PlayerPos : MonoBehaviour
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
     [SerializeField] private GameObject cam;
-
-    [SerializeField] private GameObject PanelLost;
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -44,7 +42,6 @@ public class PlayerPos : MonoBehaviour
     #region Métodos públicos
     public void Respawn()
     {
-        PanelLost.SetActive(false);
         Destroy(this.gameObject);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }

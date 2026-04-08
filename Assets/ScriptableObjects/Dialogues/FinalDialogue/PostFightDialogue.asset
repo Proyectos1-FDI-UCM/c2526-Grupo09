@@ -12,4 +12,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd1b51748c43e8043b83edef630f10d1, type: 3}
   m_Name: PostFightDialogue
   m_EditorClassIdentifier: 
-  dialogueTurnsList: []
+  dialogueTurnsList:
+  - <Character>k__BackingField: {fileID: 11400000, guid: e0a40f19fedc87c479ad40ed52b02dd7, type: 2}
+    dialogueLine: ...
+  - <Character>k__BackingField: {fileID: 11400000, guid: ef51b0dfb5d9b3c438d097e5a36f8e57, type: 2}
+    dialogueLine: "Eve\u2026"
+  - <Character>k__BackingField: {fileID: 11400000, guid: ef51b0dfb5d9b3c438d097e5a36f8e57, type: 2}
+    dialogueLine: "Don\u2019t be too hard on yourself."
+  - <Character>k__BackingField: {fileID: 11400000, guid: ef51b0dfb5d9b3c438d097e5a36f8e57, type: 2}
+    dialogueLine: You had no idea about all this!
+  - <Character>k__BackingField: {fileID: 11400000, guid: e0a40f19fedc87c479ad40ed52b02dd7, type: 2}
+    dialogueLine: This is not what I wanted. I just wanted to know why I ended up
+      here.
+  - <Character>k__BackingField: {fileID: 11400000, guid: e0a40f19fedc87c479ad40ed52b02dd7, type: 2}
+    dialogueLine: I spent my whole life thinking I had been a good christian.
+  - <Character>k__BackingField: {fileID: 11400000, guid: e0a40f19fedc87c479ad40ed52b02dd7, type: 2}
+    dialogueLine: But now I know the answer.
+  - <Character>k__BackingField: {fileID: 11400000, guid: e0a40f19fedc87c479ad40ed52b02dd7, type: 2}
+    dialogueLine: "\u2026 Lily \u2026 I \u2026"
+  - <Character>k__BackingField: {fileID: 11400000, guid: 2e06b29a3c59d044e8f356f988f846e2, type: 2}
+    dialogueLine: Eve.
+  - <Character>k__BackingField: {fileID: 11400000, guid: e0a40f19fedc87c479ad40ed52b02dd7, type: 2}
+    dialogueLine: ...
+  - <Character>k__BackingField: {fileID: 11400000, guid: 2e06b29a3c59d044e8f356f988f846e2, type: 2}
+    dialogueLine: You have fought bravely and defeated one of my worst enemies.
+  - <Character>k__BackingField: {fileID: 11400000, guid: 2e06b29a3c59d044e8f356f988f846e2, type: 2}
+    dialogueLine: I offer you divine salvation and acceptance in heaven.
+  - <Character>k__BackingField: {fileID: 11400000, guid: 2e06b29a3c59d044e8f356f988f846e2, type: 2}
+    dialogueLine: You only have to leave everything behind and come with me.
+  - <Character>k__BackingField: {fileID: 11400000, guid: e0a40f19fedc87c479ad40ed52b02dd7, type: 2}
+    dialogueLine: "Everything \u2026"
+  - <Character>k__BackingField: {fileID: 11400000, guid: e0a40f19fedc87c479ad40ed52b02dd7, type: 2}
+    dialogueLine: Will I have to leave her too?
+  - <Character>k__BackingField: {fileID: 11400000, guid: 2e06b29a3c59d044e8f356f988f846e2, type: 2}
+    dialogueLine: Naturally, you can only come alone.
+  - <Character>k__BackingField: {fileID: 11400000, guid: e0a40f19fedc87c479ad40ed52b02dd7, type: 2}
+    dialogueLine: ...

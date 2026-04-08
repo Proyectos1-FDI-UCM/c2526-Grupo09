@@ -16,6 +16,7 @@ public class CheckPointSystem : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
+    [SerializeField] private Transform Player;
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -38,6 +39,11 @@ public class CheckPointSystem : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+    }
+
+    private void Start()
+    {
+        _lastCheck = Player.position;
     }
     #endregion
 

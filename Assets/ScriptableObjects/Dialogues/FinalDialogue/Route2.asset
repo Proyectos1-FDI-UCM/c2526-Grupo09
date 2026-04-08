@@ -12,4 +12,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd1b51748c43e8043b83edef630f10d1, type: 3}
   m_Name: Route2
   m_EditorClassIdentifier: 
-  dialogueTurnsList: []
+  dialogueTurnsList:
+  - <Character>k__BackingField: {fileID: 11400000, guid: 2e06b29a3c59d044e8f356f988f846e2, type: 2}
+    dialogueLine: I doubt you made the correct decision, albeit I will accept it.
+  - <Character>k__BackingField: {fileID: 11400000, guid: 2e06b29a3c59d044e8f356f988f846e2, type: 2}
+    dialogueLine: I hope you are capable of finding peace in death.
+  - <Character>k__BackingField: {fileID: 11400000, guid: 2e06b29a3c59d044e8f356f988f846e2, type: 2}
+    dialogueLine: So long, ladies.
+  - <Character>k__BackingField: {fileID: 11400000, guid: e0a40f19fedc87c479ad40ed52b02dd7, type: 2}
+    dialogueLine: ...
+  - <Character>k__BackingField: {fileID: 11400000, guid: ef51b0dfb5d9b3c438d097e5a36f8e57, type: 2}
+    dialogueLine: Eve! Why did you do that?
+  - <Character>k__BackingField: {fileID: 11400000, guid: ef51b0dfb5d9b3c438d097e5a36f8e57, type: 2}
+    dialogueLine: You had the opportunity to have your sins forgiven.
+  - <Character>k__BackingField: {fileID: 11400000, guid: ef51b0dfb5d9b3c438d097e5a36f8e57, type: 2}
+    dialogueLine: Why did you waste it?
+  - <Character>k__BackingField: {fileID: 11400000, guid: e0a40f19fedc87c479ad40ed52b02dd7, type: 2}
+    dialogueLine: "Because\u2026"
+  - <Character>k__BackingField: {fileID: 11400000, guid: e0a40f19fedc87c479ad40ed52b02dd7, type: 2}
+    dialogueLine: "I realised I didn\u2019t want my sin to be forgiven."
+  - <Character>k__BackingField: {fileID: 11400000, guid: e0a40f19fedc87c479ad40ed52b02dd7, type: 2}
+    dialogueLine: "I\u2026 I realised I\u2026 wanted to be with you."
+  - <Character>k__BackingField: {fileID: 11400000, guid: e0a40f19fedc87c479ad40ed52b02dd7, type: 2}
+    dialogueLine: "Lily I\u2026 I love you."
+  - <Character>k__BackingField: {fileID: 11400000, guid: ef51b0dfb5d9b3c438d097e5a36f8e57, type: 2}
+    dialogueLine: Oh Eve I love you too.
+  - <Character>k__BackingField: {fileID: 11400000, guid: ef51b0dfb5d9b3c438d097e5a36f8e57, type: 2}
+    dialogueLine: I love you so much.
+  - <Character>k__BackingField: {fileID: 11400000, guid: e0a40f19fedc87c479ad40ed52b02dd7, type: 2}
+    dialogueLine: I just wish to spend the rest of my days with you.
+  - <Character>k__BackingField: {fileID: 11400000, guid: ef51b0dfb5d9b3c438d097e5a36f8e57, type: 2}
+    dialogueLine: "Death is not that scary if I\u2019m dying with you."

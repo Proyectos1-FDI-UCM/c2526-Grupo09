@@ -48,6 +48,7 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     private bool _isHidden = false;
     private Animator _animator;
+    private PlayerNoise _playerNoise;
 
     #endregion
 
@@ -66,6 +67,7 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         _animator = GetComponent<Animator>();
+        _playerNoise = GetComponent<PlayerNoise>();
     }
     void Update()
     {
@@ -77,15 +79,12 @@ public class PlayerMovement : MonoBehaviour
 
                 _posAnterior = transform.position;
                 MovePlayer();
-                _posActual = transform.position;
-
                 // Solo intentamos hacer ruido si nos hemos movido Y tenemos el script de ruido
-                if (_posAnterior != _posActual)
+                if (_posAnterior != transform.position)
                 {
-                    PlayerNoise playerNoise = GetComponent<PlayerNoise>();
-                    if (playerNoise != null)
+                    if (_playerNoise != null)
                     {
-                        playerNoise.PlayerMoving();
+                        _playerNoise.PlayerMoving();
                     }
                 }
             }

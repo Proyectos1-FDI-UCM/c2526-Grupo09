@@ -35,12 +35,13 @@ public class LevelManager : MonoBehaviour
     // Ejemplo: MaxHealthPoints
     [SerializeField] private GameObject PanelWin;
     [SerializeField] private GameObject PanelLost;
+    [SerializeField] private GameObject CheckpointObtained;
     [SerializeField] private TextMeshProUGUI Text;
-
+    [SerializeField] private TextMeshProUGUI CurrentDay;
+    [SerializeField] private TextMeshProUGUI FlowerObtained;
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
-
     #region Atributos Privados (private fields)
 
     /// <summary>
@@ -55,6 +56,8 @@ public class LevelManager : MonoBehaviour
     /// 2 = el jugador ha muerto
     /// </summary>
     private static int _levelStage = 0;
+    // para luego acceder al game manager mediante duck typing
+    private GameManager _gameManager;
     
     #endregion
 
@@ -72,7 +75,6 @@ public class LevelManager : MonoBehaviour
             _instance = this;
             Init();
         }
-
     }
 
     /// <summary>
@@ -81,8 +83,11 @@ public class LevelManager : MonoBehaviour
     /// </summary>
     private void Start()
     {
+        _gameManager = GetComponent<GameManager>();
         PanelWin.SetActive(false);
         PanelLost.SetActive(false);
+        CheckpointObtained.SetActive(false);
+        FlowerObtained.text = "Flower not picked yet!";
     }
 
     void Update()
@@ -145,6 +150,41 @@ public class LevelManager : MonoBehaviour
     public static void LevelReset()
     {
         _levelStage = 0;
+    }
+
+    /// <summary>
+    /// Se llama cuando la flor se ha cogido para cambiar el mensaje de que la
+    /// flor se ha cogido.
+    /// </summary>
+    public void FlowerPicked()
+    {
+        FlowerObtained.text = "Flower picked! Return to sleep";
+    }
+
+    /// <summary>
+    /// Muestra en la esquina superior izquierda del HUD el día actual
+    /// </summary>
+    public void Day()
+    {
+        int day = _gameManager.GetCurrentDay();
+        CurrentDay.text = "Day " + day;
+    }
+
+    /// <summary>
+    /// Si se ha obtenido un checkpoint, aparece un mensaje en la esquina superior
+    /// derecha durante dos segundos indicando que se ha cogido un checkpoint
+    /// </summary>
+    public void CheckpointPicked()
+    {
+        float now = Time.time;
+        CheckpointObtained.SetActive(true);
+        // mientras no hayan pasado dos segundos
+        //while (Time.time < now + 2f)
+        //{
+        //    CheckpointObtained.SetActive(true);
+        //}
+        ////cuando hayan pasado los dos segundos, se quita el mensaje
+        //CheckpointObtained.SetActive(false);
     }
     #endregion
 
