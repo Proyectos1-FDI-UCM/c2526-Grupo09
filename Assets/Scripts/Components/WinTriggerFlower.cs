@@ -16,32 +16,14 @@ public class WinTriggerFlower : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
-    // Documentar cada atributo que aparece aquí.
-    // El convenio de nombres de Unity recomienda que los atributos
-    // públicos y de inspector se nombren en formato PascalCase
-    // (palabras con primera letra mayúscula, incluida la primera letra)
-    // Ejemplo: MaxHealthPoints
-
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
-    // Documentar cada atributo que aparece aquí.
-    // El convenio de nombres de Unity recomienda que los atributos
-    // privados se nombren en formato _camelCase (comienza con _, 
-    // primera palabra en minúsculas y el resto con la 
-    // primera letra en mayúsculas)
-    // Ejemplo: _maxHealthPoints
-
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
-
-    // Por defecto están los típicos (Update y Start) pero:
-    // - Hay que añadir todos los que sean necesarios
-    // - Hay que borrar los que no se usen 
-
     /// <summary>
     /// método para detectar si colisiona con un objeto con trigger que tenga el componente platermovement
     /// </summary>
@@ -49,10 +31,10 @@ public class WinTriggerFlower : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         PlayerMovement player = collision.GetComponent<PlayerMovement>();
-        if (player != null&&LevelManager.Instance!=null)
+        if (player != null && LevelManager.Instance != null)
         {
-            LevelManager.LevelWon();
-            LevelManager.Instance.EndGame(false);
+            LevelManager.Instance.FlowerPicked();
+            Destroy(this.gameObject);
         }
     }
     #endregion

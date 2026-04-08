@@ -48,6 +48,8 @@ public class LevelManager : MonoBehaviour
     /// Instancia única de la clase (singleton).
     /// </summary>
     private static LevelManager _instance;
+    // para luego acceder al game manager mediante duck typing
+    private GameManager _gameManager;
 
     /// <summary>
     /// Int para saber si el jugador se ha pasado el nivel o no,
@@ -56,9 +58,8 @@ public class LevelManager : MonoBehaviour
     /// 2 = el jugador ha muerto
     /// </summary>
     private static int _levelStage = 0;
-    // para luego acceder al game manager mediante duck typing
-    private GameManager _gameManager;
-    
+
+    private bool _flowerPicked;
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -88,6 +89,7 @@ public class LevelManager : MonoBehaviour
         PanelLost.SetActive(false);
         CheckpointObtained.SetActive(false);
         FlowerObtained.text = "Flower not picked yet!";
+        _flowerPicked = false;
     }
 
     void Update()
@@ -159,6 +161,7 @@ public class LevelManager : MonoBehaviour
     public void FlowerPicked()
     {
         FlowerObtained.text = "Flower picked! Return to sleep";
+        _flowerPicked = true;
     }
 
     /// <summary>
