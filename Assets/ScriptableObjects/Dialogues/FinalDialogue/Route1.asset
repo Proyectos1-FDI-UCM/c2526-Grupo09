@@ -12,4 +12,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd1b51748c43e8043b83edef630f10d1, type: 3}
   m_Name: Route1
   m_EditorClassIdentifier: 
-  dialogueTurnsList: []
+  dialogueTurnsList:
+  - <Character>k__BackingField: {fileID: 11400000, guid: 2e06b29a3c59d044e8f356f988f846e2, type: 2}
+    dialogueLine: Good.
+  - <Character>k__BackingField: {fileID: 11400000, guid: 2e06b29a3c59d044e8f356f988f846e2, type: 2}
+    dialogueLine: Welcome my dear child to the sacred land.
+  - <Character>k__BackingField: {fileID: 11400000, guid: e0a40f19fedc87c479ad40ed52b02dd7, type: 2}
+    dialogueLine: ...
+  - <Character>k__BackingField: {fileID: 11400000, guid: e0a40f19fedc87c479ad40ed52b02dd7, type: 2}
+    dialogueLine: Thank you for everything Lily.
+  - <Character>k__BackingField: {fileID: 11400000, guid: e0a40f19fedc87c479ad40ed52b02dd7, type: 2}
+    dialogueLine: "Though our paths must diverge now, I\u2019ll always remember you."
+  - <Character>k__BackingField: {fileID: 11400000, guid: e0a40f19fedc87c479ad40ed52b02dd7, type: 2}
+    dialogueLine: "I\u2019ll miss you so much."
+  - <Character>k__BackingField: {fileID: 11400000, guid: ef51b0dfb5d9b3c438d097e5a36f8e57, type: 2}
+    dialogueLine: "Don\u2019t worry Eve, I\u2019ll be fine. After all, death is my
+      only salvation now, the only way in which I could be redeemed."
+  - <Character>k__BackingField: {fileID: 11400000, guid: ef51b0dfb5d9b3c438d097e5a36f8e57, type: 2}
+    dialogueLine: Take care of yourself.
+  - <Character>k__BackingField: {fileID: 11400000, guid: ef51b0dfb5d9b3c438d097e5a36f8e57, type: 2}
+    dialogueLine: I love you Eve.
+  - <Character>k__BackingField: {fileID: 11400000, guid: e0a40f19fedc87c479ad40ed52b02dd7, type: 2}
+    dialogueLine: ...
+  - <Character>k__BackingField: {fileID: 11400000, guid: e0a40f19fedc87c479ad40ed52b02dd7, type: 2}
+    dialogueLine: Farewell, Lily.

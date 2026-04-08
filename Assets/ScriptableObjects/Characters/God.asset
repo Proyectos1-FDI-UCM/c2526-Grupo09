@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48e550eb3a4345a43b87fe27aa1f8eaf, type: 3}
   m_Name: God
   m_EditorClassIdentifier: 
-  characterName: 
+  characterName: God
   profilePhoto: {fileID: 0}

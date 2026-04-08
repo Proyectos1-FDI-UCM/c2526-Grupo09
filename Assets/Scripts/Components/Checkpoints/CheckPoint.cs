@@ -18,48 +18,57 @@ public class CheckPoint : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
-    // Documentar cada atributo que aparece aquí.
-    // El convenio de nombres de Unity recomienda que los atributos
-    // públicos y de inspector se nombren en formato PascalCase
-    // (palabras con primera letra mayúscula, incluida la primera letra)
-    // Ejemplo: MaxHealthPoints
-
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
-    private CheckPointSystem logic;
+    private CheckPointSystem _checkPointSystem;
+    private LevelManager _levelManager;
+    // indica si el checkpoint se ha cogido ya o no
+    private bool _checkPicked = false;
     #endregion
-    
+
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
+    /// <summary>
+    /// Start is called on the frame when a script is enabled just before 
+    /// any of the Update methods are called the first time.
+    /// </summary>
+    private void Start()
+    {
+        _checkPointSystem = GetComponent<CheckPointSystem>();
+        _levelManager = GetComponent<LevelManager>();
+    }
+
+    /// <summary>
+    /// Cuando algún elemento colisiona con el checkpoint
+    /// </summary>
+    /// <param name="collision"></param>
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // si lo que ha colisionado con el checkpoint es el jugador
-        if (collision.gameObject.GetComponent<PlayerMovement>() != null)
+        // si todavía el checkpoint no se ha obtenido
+        if (!_checkPicked)
         {
-            CheckPointSystem.Instance.LastCheck(transform.position);
-        }
+            // si lo que ha colisionado con el checkpoint es el jugador
+            if (collision.gameObject.GetComponent<PlayerMovement>() != null)
+            {
+                // se escribe el mensaje de que el checkpoint se ha obtenido
+                _levelManager.CheckpointPicked();
+                // se marca el checkpoint como obtenido
+                _checkPicked = true;
+                // se guarda la posición del checkpoint como última obtenida
+                _checkPointSystem.LastCheck(transform.position);
+            }
+        }  
     }
     #endregion
 
     // ---- MÉTODOS PÚBLICOS ----
     #region Métodos públicos
-    // Documentar cada método que aparece aquí con ///<summary>
-    // El convenio de nombres de Unity recomienda que estos métodos
-    // se nombren en formato PascalCase (palabras con primera letra
-    // mayúscula, incluida la primera letra)
-    // Ejemplo: GetPlayerController
-
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----
     #region Métodos Privados
-    // Documentar cada método que aparece aquí
-    // El convenio de nombres de Unity recomienda que estos métodos
-    // se nombren en formato PascalCase (palabras con primera letra
-    // mayúscula, incluida la primera letra)
-
     #endregion
 
 } // class CheckPoint 
