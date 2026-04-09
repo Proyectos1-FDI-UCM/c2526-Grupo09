@@ -92,6 +92,12 @@ public class ThrowingSystem : MonoBehaviour
                 // comprobamos si el objeto ha llegado a su destino
                 if (_object.transform.position == Cursor.transform.position)
                 {
+                    ObjectNoise noise = _object.GetComponent<ObjectNoise>();
+                    if (noise != null)
+                    {
+                        noise.GenerateNoise();
+                    }
+
                     Debug.Log("llegó al final");
                     _inThrowingState = false;
                     _objectIsMoving = false;
