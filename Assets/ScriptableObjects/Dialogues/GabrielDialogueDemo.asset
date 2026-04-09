@@ -1,0 +1,81 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd1b51748c43e8043b83edef630f10d1, type: 3}
+  m_Name: GabrielDialogueDemo
+  m_EditorClassIdentifier: 
+  dialogueTurnsList:
+  - <Character>k__BackingField: {fileID: 11400000, guid: 1ae0bcb86368dac4bb15b695d78e6684, type: 2}
+    dialogueLine: "Finally!! It\u2019s been ages since I\u2019ve come across a living
+      soul"
+  - <Character>k__BackingField: {fileID: 11400000, guid: 7bd2146755de1cd40a43e1f48fc82523, type: 2}
+    dialogueLine: ...
+  - <Character>k__BackingField: {fileID: 11400000, guid: ccc7ac3c515b0fa4fa31efea47315f39, type: 2}
+    dialogueLine: "To be honest, I\u2019ve already lost hope in humanity, but this
+      horrid situation has me begging for someone to have a conversation with."
+  - <Character>k__BackingField: {fileID: 11400000, guid: bb224bbb551a96f4c8b1d7b7b7f3c839, type: 2}
+    dialogueLine: What is it that you're so eager to talk about?
+  - <Character>k__BackingField: {fileID: 11400000, guid: 58772c55c468999489782c9cba8864bb, type: 2}
+    dialogueLine: Nothing in particular.
+  - <Character>k__BackingField: {fileID: 11400000, guid: 7bd2146755de1cd40a43e1f48fc82523, type: 2}
+    dialogueLine: ...
+  - <Character>k__BackingField: {fileID: 11400000, guid: 58772c55c468999489782c9cba8864bb, type: 2}
+    dialogueLine: ...
+  - <Character>k__BackingField: {fileID: 11400000, guid: e50f0c479f3ee934c9479ae109a3669c, type: 2}
+    dialogueLine: "Well maybe I do have something I\u2019d like to mention before
+      I die here."
+  - <Character>k__BackingField: {fileID: 11400000, guid: bb224bbb551a96f4c8b1d7b7b7f3c839, type: 2}
+    dialogueLine: What is it then?
+  - <Character>k__BackingField: {fileID: 11400000, guid: ccc7ac3c515b0fa4fa31efea47315f39, type: 2}
+    dialogueLine: When I was younger, I thought humanity was the most beautiful thing
+      that could have been created ever.
+  - <Character>k__BackingField: {fileID: 11400000, guid: ccc7ac3c515b0fa4fa31efea47315f39, type: 2}
+    dialogueLine: "Despite my parents\u2019 lack of attention towards me and the
+      hateful stares of my classmates when I walked in I really loved people."
+  - <Character>k__BackingField: {fileID: 11400000, guid: 1ae0bcb86368dac4bb15b695d78e6684, type: 2}
+    dialogueLine: I believed that they were not evil at heart, they were just acting
+      the way their circumstances forced them.
+  - <Character>k__BackingField: {fileID: 11400000, guid: 4ab4bcf82dd93a2499f2bfc431c4ff6d, type: 2}
+    dialogueLine: I even designed a divine plan of redemption for humanity to prove
+      that everyone shelters purity in their heart and can be redeemed of their sinfulness.
+  - <Character>k__BackingField: {fileID: 11400000, guid: 4ab4bcf82dd93a2499f2bfc431c4ff6d, type: 2}
+    dialogueLine: ...
+  - <Character>k__BackingField: {fileID: 11400000, guid: 26db597e1a17b634fa386a30157baa47, type: 2}
+    dialogueLine: Alas, how wrong I was!
+  - <Character>k__BackingField: {fileID: 11400000, guid: 79fc4aa1701d5f04fb796e5f305ec776, type: 2}
+    dialogueLine: I was so naive and unable to think clearly.
+  - <Character>k__BackingField: {fileID: 11400000, guid: 58772c55c468999489782c9cba8864bb, type: 2}
+    dialogueLine: "Reality is such a cruel place, isn\u2019t it?"
+  - <Character>k__BackingField: {fileID: 11400000, guid: 26db597e1a17b634fa386a30157baa47, type: 2}
+    dialogueLine: Oh indeed it is!
+  - <Character>k__BackingField: {fileID: 11400000, guid: 79fc4aa1701d5f04fb796e5f305ec776, type: 2}
+    dialogueLine: Humans are so full of hate!
+  - <Character>k__BackingField: {fileID: 11400000, guid: 79fc4aa1701d5f04fb796e5f305ec776, type: 2}
+    dialogueLine: I HOPE THEY ALL SUFFER AS I HAVE SUFFERED!!!
+  - <Character>k__BackingField: {fileID: 11400000, guid: 463fc10d7c6bbde45848383bf1128c73, type: 2}
+    dialogueLine: "Don\u2019t fret, everything is going to end soon."
+  - <Character>k__BackingField: {fileID: 11400000, guid: b0515a637addc26428dc0bb0046873b4, type: 2}
+    dialogueLine: We only need to wait patiently for it.
+  - <Character>k__BackingField: {fileID: 11400000, guid: ccc7ac3c515b0fa4fa31efea47315f39, type: 2}
+    dialogueLine: Don't cry, girl.
+  - <Character>k__BackingField: {fileID: 11400000, guid: ccc7ac3c515b0fa4fa31efea47315f39, type: 2}
+    dialogueLine: Who were you talking with back there?
+  - <Character>k__BackingField: {fileID: 11400000, guid: fcf41119740863649a888151640fd2bb, type: 2}
+    dialogueLine: None of your business.
+  - <Character>k__BackingField: {fileID: 11400000, guid: ccc7ac3c515b0fa4fa31efea47315f39, type: 2}
+    dialogueLine: Ooh. Well, inside such an horrible place, I've liked talking to
+      you.
+  - <Character>k__BackingField: {fileID: 11400000, guid: 1ae0bcb86368dac4bb15b695d78e6684, type: 2}
+    dialogueLine: Hope to see you again.
+  - <Character>k__BackingField: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
+    dialogueLine: C'mon, Eve. Hurry up.
+  - <Character>k__BackingField: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
+    dialogueLine: Just stab him already.

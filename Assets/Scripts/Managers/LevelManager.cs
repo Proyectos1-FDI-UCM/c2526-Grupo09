@@ -34,6 +34,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private GameObject FlowerImage;
     [SerializeField] private TextMeshProUGUI CurrentDay;
     [SerializeField] private TextMeshProUGUI FlowerObtained;
+    [SerializeField] private GameObject HUD;
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -193,12 +194,7 @@ public class LevelManager : MonoBehaviour
     /// <param name="loose"></param>
     public void EndGame()
     {
-        CurrentDay.text = "";
-        FlowerObtained.text = "";
-        Rock.SetActive(false);
-        Flower.SetActive(false);
-        FlowerImage.SetActive(false);
-        // PauseManager.Instance.PauseGame();
+        Destroy(HUD);
     }
 
     private void EndMessage(GameObject message)

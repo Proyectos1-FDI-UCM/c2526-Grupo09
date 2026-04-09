@@ -13,7 +13,38 @@ MonoBehaviour:
   m_Name: DialogueLevelBeta2
   m_EditorClassIdentifier: 
   dialogueTurnsList:
-  - <Character>k__BackingField: {fileID: 11400000, guid: 8aa8f9a0e02c41448ae3fef161701cc8, type: 2}
+  - <Character>k__BackingField: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
     dialogueLine: THERE IS IT!!!
-  - <Character>k__BackingField: {fileID: 11400000, guid: 307c3938c89089446b5e14d45f66cfb0, type: 2}
-    dialogueLine: Bring it to me! Quickly!
+  - <Character>k__BackingField: {fileID: 11400000, guid: 463fc10d7c6bbde45848383bf1128c73, type: 2}
+    dialogueLine: What do you mean?
+  - <Character>k__BackingField: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
+    dialogueLine: The flower, dummy.
+  - <Character>k__BackingField: {fileID: 11400000, guid: 463fc10d7c6bbde45848383bf1128c73, type: 2}
+    dialogueLine: There is no flower there, you blind!
+  - <Character>k__BackingField: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
+    dialogueLine: 'Oh, darling. '
+  - <Character>k__BackingField: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
+    dialogueLine: Yes, there is. Inside that boy.
+  - <Character>k__BackingField: {fileID: 11400000, guid: b84bc399ccd85c047a921a5d9bf97124, type: 2}
+    dialogueLine: W-what?
+  - <Character>k__BackingField: {fileID: 11400000, guid: fcf41119740863649a888151640fd2bb, type: 2}
+    dialogueLine: WHAT?
+  - <Character>k__BackingField: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
+    dialogueLine: 'He''s evil. He deserves death. '
+  - <Character>k__BackingField: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
+    dialogueLine: I deserve those flowers.
+  - <Character>k__BackingField: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
+    dialogueLine: Humanity deserves freedom.
+  - <Character>k__BackingField: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
+    dialogueLine: He. is. hell.
+  - <Character>k__BackingField: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
+    dialogueLine: Its fair. Trust me!
+  - <Character>k__BackingField: {fileID: 11400000, guid: 7bd2146755de1cd40a43e1f48fc82523, type: 2}
+    dialogueLine: Y-you want me to kill him?
+  - <Character>k__BackingField: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
+    dialogueLine: He is just a sinner. You'll live. Killing a sinner is such a well-paid
+      miracle.
+  - <Character>k__BackingField: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
+    dialogueLine: Remember, you are here to help me so I can help you.
+  - <Character>k__BackingField: {fileID: 11400000, guid: fcf41119740863649a888151640fd2bb, type: 2}
+    dialogueLine: ...

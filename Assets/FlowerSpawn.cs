@@ -18,6 +18,8 @@ public class FlowerSpawn : MonoBehaviour
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
     [SerializeField] private GameObject Flower;
+    [SerializeField] private GameObject Gabriel;
+    [SerializeField] private GameObject DeadGabriel;
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -33,6 +35,8 @@ public class FlowerSpawn : MonoBehaviour
     /// </summary>
     void Start()
     {
+        Flower.SetActive(false);
+        DeadGabriel.SetActive(false);
         _insideCollider = false;
     }
 
@@ -44,6 +48,9 @@ public class FlowerSpawn : MonoBehaviour
         if (_insideCollider && !DialogueManager.Instance.GetIsDialogueInProgress())
         {
             Flower.SetActive(true);
+            
+            DeadGabriel.SetActive(true);
+            Gabriel.SetActive(false);
         }
     }
 
