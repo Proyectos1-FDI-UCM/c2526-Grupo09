@@ -136,7 +136,6 @@ public class LevelManager : MonoBehaviour
     public void RetryLevel()
     {
         LevelReset();
-        Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
@@ -199,7 +198,7 @@ public class LevelManager : MonoBehaviour
         Rock.SetActive(false);
         Flower.SetActive(false);
         FlowerImage.SetActive(false);
-        PauseManager.Instance.PauseGame();
+        // PauseManager.Instance.PauseGame();
     }
 
     private void EndMessage(GameObject message)

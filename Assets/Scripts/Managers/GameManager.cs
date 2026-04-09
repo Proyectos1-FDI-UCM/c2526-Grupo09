@@ -185,6 +185,14 @@ public class GameManager : MonoBehaviour
         return 0; // Error o volver al menú
     }
 
+    /// <summary>
+    /// carga la escena de la cabaña cuando se supera el nivel
+    /// </summary>
+    public void ReturnToHut()
+    {
+        SceneManager.LoadScene(9);  // 9 - escena de la cabaña
+    }
+
 
     /// <summary>
     /// Permite a otros scripts consultar si el jugador ha dormido hoy.

@@ -50,7 +50,6 @@ public class Home : MonoBehaviour
     /// </summary>
     void Start()
     {
-        Time.timeScale = 1;
         LevelManager.LevelReset();
     }
 
