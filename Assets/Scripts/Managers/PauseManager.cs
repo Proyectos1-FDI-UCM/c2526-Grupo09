@@ -101,6 +101,7 @@ public class PauseManager : MonoBehaviour
     {
         Pause = false;
         PausePanel.SetActive(false);
+        HUD.SetActive(true);
     }
 
     public void PauseGame()
