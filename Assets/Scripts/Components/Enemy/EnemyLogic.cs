@@ -101,6 +101,11 @@ public class EnemyLogic : MonoBehaviour
     /// Controla el tiempo en el que el enemigo persigue.
     /// </summary>
     private float _timer;
+    /// <summary>
+    /// Referencia al script EnemyVision
+    /// </summary>
+    private EnemyVision _enemyVision = null;
+
 
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -109,6 +114,11 @@ public class EnemyLogic : MonoBehaviour
     // Por defecto están los típicos (Update y Start) pero:
     // - Hay que añadir todos los que sean necesarios
     // - Hay que borrar los que no se usen 
+
+    private void Start()
+    {
+        _enemyVision = transform.gameObject.GetComponentInChildren<EnemyVision>();
+    }
 
     /// <summary>
     /// Detecta si el jugador se esta escondiendo y cambia el estado del enemigo.
@@ -206,8 +216,7 @@ public class EnemyLogic : MonoBehaviour
         else if (incrX > 0 && incrY < 0) rotZ = -135;
         // Izquierda-Arriba
         else if (incrX < 0 && incrY > 0) rotZ = 45;
-        EnemyVision enemyVision = transform.gameObject.GetComponentInChildren<EnemyVision>();
-        Transform enemyRotate = enemyVision.transform.parent;
+        Transform enemyRotate = _enemyVision.transform.parent;
         enemyRotate.rotation = Quaternion.Euler(0, 0, rotZ);
     }
 
@@ -265,10 +274,9 @@ public class EnemyLogic : MonoBehaviour
         if (_posIndex < Positions.Length)
         {
             MoveEnemy(Positions[_posIndex].position, PatrolSpeed);
-            EnemyVision enemyVision = transform.gameObject.GetComponentInChildren<EnemyVision>();
-            if (enemyVision != null)
+            if (_enemyVision != null)
             {
-                enemyVision.ChangeConeScale(ConeScale);
+                _enemyVision.ChangeConeScale(ConeScale);
             }
             if (Vector3.Distance(transform.position, Positions[_posIndex].position) < 0.1f)
             {
@@ -284,10 +292,9 @@ public class EnemyLogic : MonoBehaviour
     {
         _timer += Time.deltaTime;
         MoveEnemy(positionToGo, ChasingSpeed);
-        EnemyVision enemyVision = transform.gameObject.GetComponentInChildren<EnemyVision>();
-        if (enemyVision != null)
+        if (_enemyVision != null)
         {
-            enemyVision.ChangeConeScale(AlertConeScale);
+            _enemyVision.ChangeConeScale(AlertConeScale);
         }
         else Debug.Log("enemyVision no encontrado");
         if (_timer >= ChasingTime)
