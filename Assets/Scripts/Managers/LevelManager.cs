@@ -27,14 +27,6 @@ public class LevelManager : MonoBehaviour
     // ---- ATRIBUTOS DEL INSPECTOR ----
 
     #region Atributos del Inspector (serialized fields)
-
-    // Documentar cada atributo que aparece aquí.
-    // El convenio de nombres de Unity recomienda que los atributos
-    // públicos y de inspector se nombren en formato PascalCase
-    // (palabras con primera letra mayúscula, incluida la primera letra)
-    // Ejemplo: MaxHealthPoints
-    [SerializeField] private GameObject PanelWin;
-    [SerializeField] private GameObject PanelLost;
     [SerializeField] private GameObject CheckpointObtained;
     [SerializeField] private GameObject Rock;
     [SerializeField] private GameObject Flower;
@@ -50,8 +42,6 @@ public class LevelManager : MonoBehaviour
     /// Instancia única de la clase (singleton).
     /// </summary>
     private static LevelManager _instance;
-    // para luego acceder al game manager mediante duck typing
-    private GameManager _gameManager;
 
     /// <summary>
     /// Int para saber si el jugador se ha pasado el nivel o no,
@@ -86,12 +76,8 @@ public class LevelManager : MonoBehaviour
     /// </summary>
     private void Start()
     {
-        _gameManager = GetComponent<GameManager>();
-        PanelWin.SetActive(false);
-        PanelLost.SetActive(false);
         CheckpointObtained.SetActive(false);
         Rock.SetActive(false);
-        FlowerObtained.text = "0/1";
         _flowerPicked = false;
     }
 
@@ -182,7 +168,7 @@ public class LevelManager : MonoBehaviour
     /// </summary>
     public void Day()
     {
-        int day = _gameManager.GetCurrentDay();
+        int day = GameManager.Instance.GetCurrentDay();
         CurrentDay.text = "Day " + day;
     }
 
