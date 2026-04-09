@@ -191,7 +191,7 @@ public class LevelManager : MonoBehaviour
     /// Método que activa el panel de FinDeJuego y cambia el texto del panel dependiendo de si pierdes o ganas
     /// </summary>
     /// <param name="loose"></param>
-    public void EndGame(bool loose)
+    public void EndGame()
     {
         CurrentDay.text = "";
         FlowerObtained.text = "";
@@ -224,10 +224,10 @@ public class LevelManager : MonoBehaviour
             case 0: return;
             case 1:
                 PanelWin.SetActive(true);
-                EndGame(false);
+                EndGame();
                 break;
             case 2: 
-                EndGame(true);
+                EndGame();
                 break;
         }
     }

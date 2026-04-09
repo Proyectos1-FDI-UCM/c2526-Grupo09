@@ -1,6 +1,6 @@
 //---------------------------------------------------------
-// Salida del nivel
-// Carmen Rosino Vílchez
+// Breve descripción del contenido del archivo
+// Responsable de la creación de este archivo
 // Bouquet Of Sins
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
@@ -13,17 +13,18 @@ using UnityEngine;
 /// Antes de cada class, descripción de qué es y para qué sirve,
 /// usando todas las líneas que sean necesarias.
 /// </summary>
-public class LevelExit : MonoBehaviour
+public class FlowerSpawn : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
-    [SerializeField] private GameObject WarningMessage;
+    [SerializeField] private GameObject Flower;
     #endregion
-    
+
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
+    private bool _insideCollider;
     #endregion
-    
+
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
     /// <summary>
@@ -32,7 +33,7 @@ public class LevelExit : MonoBehaviour
     /// </summary>
     void Start()
     {
-        WarningMessage.SetActive(false);
+        _insideCollider = false;
     }
 
     /// <summary>
@@ -40,23 +41,35 @@ public class LevelExit : MonoBehaviour
     /// </summary>
     void Update()
     {
-        
+        if (_insideCollider && !DialogueManager.Instance.GetIsDialogueInProgress())
+        {
+            Flower.SetActive(true);
+        }
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
+    /// <summary>
+    /// detecta cuando el jugador entra al collider y lo guarda en la variable
+    /// </summary>
+    /// <param name="collision"></param>
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        PlayerMovement player = collision.GetComponent<PlayerMovement>();
-        if (player != null)
+        PlayerMovement playerMovement = collision.gameObject.GetComponent<PlayerMovement>();
+        if (playerMovement != null)
         {
-            if (LevelManager.Instance.GetFlowerPicked())
-            {
-                LevelManager.LevelWon();
-                LevelManager.Instance.EndGame();
-            }
-            else
-            {
-                WarningMessage.SetActive(true);
-            }
+            _insideCollider = true;
+        }
+    }
+
+    /// <summary>
+    /// detecta cuando el jugador sale del collider y lo guarda en la variable
+    /// </summary>
+    /// <param name="collision"></param>
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        PlayerMovement playerMovement = collision.gameObject.GetComponent<PlayerMovement>();
+        if (playerMovement != null)
+        {
+            _insideCollider = false;
         }
     }
     #endregion
@@ -70,7 +83,7 @@ public class LevelExit : MonoBehaviour
     // Ejemplo: GetPlayerController
 
     #endregion
-    
+
     // ---- MÉTODOS PRIVADOS ----
     #region Métodos Privados
     // Documentar cada método que aparece aquí
@@ -78,7 +91,7 @@ public class LevelExit : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
 
-    #endregion   
+    #endregion
 
-} // class LevelExit 
+} // class FlowerSpawn
 // namespace

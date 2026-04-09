@@ -213,6 +213,11 @@ public class DialogueManager : MonoBehaviour
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
 
+    public bool GetIsDialogueInProgress()
+    {
+        return _isDialogInProgress;
+    }
+
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----
