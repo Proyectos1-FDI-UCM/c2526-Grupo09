@@ -27,10 +27,11 @@ public class LevelManager : MonoBehaviour
     // ---- ATRIBUTOS DEL INSPECTOR ----
 
     #region Atributos del Inspector (serialized fields)
+    [SerializeField] private GameObject PanelWin;
     [SerializeField] private GameObject CheckpointObtained;
     [SerializeField] private GameObject Rock;
     [SerializeField] private GameObject Flower;
-    [SerializeField] private TextMeshProUGUI Text;
+    [SerializeField] private GameObject FlowerImage;
     [SerializeField] private TextMeshProUGUI CurrentDay;
     [SerializeField] private TextMeshProUGUI FlowerObtained;
     #endregion
@@ -76,6 +77,7 @@ public class LevelManager : MonoBehaviour
     /// </summary>
     private void Start()
     {
+        PanelWin.SetActive(false);
         CheckpointObtained.SetActive(false);
         Rock.SetActive(false);
         _flowerPicked = false;
@@ -196,16 +198,8 @@ public class LevelManager : MonoBehaviour
         FlowerObtained.text = "";
         Rock.SetActive(false);
         Flower.SetActive(false);
-        if (loose == true)
-        {
-            Text.text = "Has perdido";
-            PauseManager.Instance.PauseGame();
-        }
-        else
-        {
-            Text.text = "Has Ganado";
-            PauseManager.Instance.PauseGame();
-        }
+        FlowerImage.SetActive(false);
+        PauseManager.Instance.PauseGame();
     }
 
     private void EndMessage(GameObject message)
@@ -234,7 +228,6 @@ public class LevelManager : MonoBehaviour
                 EndGame(false);
                 break;
             case 2: 
-                PanelLost.SetActive(true);
                 EndGame(true);
                 break;
         }

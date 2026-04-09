@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueTurnsList:
   - <Character>k__BackingField: {fileID: 11400000, guid: 8aa8f9a0e02c41448ae3fef161701cc8, type: 2}
-    dialogueLine: "\xA1Ah\xED est\xE1!"
+    dialogueLine: THERE IS IT!!!
   - <Character>k__BackingField: {fileID: 11400000, guid: 307c3938c89089446b5e14d45f66cfb0, type: 2}
-    dialogueLine: "\xA1Tr\xE1emela. corre!"
+    dialogueLine: Bring it to me! Quickly!

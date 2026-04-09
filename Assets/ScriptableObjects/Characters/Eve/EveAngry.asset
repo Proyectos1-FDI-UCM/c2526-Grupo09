@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd1b51748c43e8043b83edef630f10d1, type: 3}
-  m_Name: EarlyExitWarning
+  m_Script: {fileID: 11500000, guid: 48e550eb3a4345a43b87fe27aa1f8eaf, type: 3}
+  m_Name: EveAngry
   m_EditorClassIdentifier: 
-  dialogueTurnsList:
-  - <Character>k__BackingField: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
-    dialogueLine: You have to pick up the flower before you leave!
+  characterName: Eve
+  profilePhoto: {fileID: -9082789242079819192, guid: aa996c00cbda3fd47b84a4dd8dc66bcc, type: 3}
