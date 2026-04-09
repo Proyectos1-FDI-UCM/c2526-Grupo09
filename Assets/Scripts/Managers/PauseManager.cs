@@ -25,6 +25,7 @@ public class PauseManager : MonoBehaviour
     // Ejemplo: MaxHealthPoints
     [SerializeField] GameObject PausePanel;
     [SerializeField] GameObject EndPanel;
+    [SerializeField] GameObject HUD;
 
     #endregion
 
@@ -61,6 +62,7 @@ public class PauseManager : MonoBehaviour
     {
         PausePanel.SetActive(false);
         Pause = false;
+        HUD.SetActive(true);
     }
 
     /// <summary>
@@ -70,8 +72,9 @@ public class PauseManager : MonoBehaviour
     {
         if (InputManager.Instance.PauseWasPressedThisFrame() && EndPanel.activeSelf==false) 
         {
-            PausePanel.SetActive(true);
-            Pause = true;
+            Pause = !Pause;
+            PausePanel.SetActive(Pause);
+            HUD.SetActive(!Pause);
         }
     }
     #endregion

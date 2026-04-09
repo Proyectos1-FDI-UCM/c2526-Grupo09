@@ -187,7 +187,7 @@ public class EnemyLogic : MonoBehaviour
     {
         Debug.Log("Kill the player");
         _isPlayerInRange = true;
-        LevelManager.LevelLost();
+
     }
 
     #endregion
