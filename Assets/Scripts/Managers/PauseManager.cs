@@ -6,7 +6,6 @@
 //---------------------------------------------------------
 
 using UnityEngine;
-using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
 // Añadir aquí el resto de directivas using
 
 

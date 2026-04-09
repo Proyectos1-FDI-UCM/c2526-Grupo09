@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueTurnsList:
   - <Character>k__BackingField: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
-    dialogueLine: THERE IS IT!!!
+    dialogueLine: THERE IT IS!!!
   - <Character>k__BackingField: {fileID: 11400000, guid: 463fc10d7c6bbde45848383bf1128c73, type: 2}
     dialogueLine: What do you mean?
   - <Character>k__BackingField: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
