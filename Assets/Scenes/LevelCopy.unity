@@ -48420,6 +48420,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bdaeee04a68fe4283b8789c48055f778, type: 3}
+--- !u!1 &383308559 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 261005647062260998, guid: 4f8ff53be8d04084c897f83417641e53, type: 3}
+  m_PrefabInstance: {fileID: 4322569085587026847}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &474350500
 GameObject:
   m_ObjectHideFlags: 0
@@ -51722,10 +51727,10 @@ PrefabInstance:
     - target: {fileID: 8367459987240929699, guid: bdaeee04a68fe4283b8789c48055f778, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 383308559}
     - target: {fileID: 8367459987240929699, guid: bdaeee04a68fe4283b8789c48055f778, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Resume
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8367459987240929699, guid: bdaeee04a68fe4283b8789c48055f778, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
