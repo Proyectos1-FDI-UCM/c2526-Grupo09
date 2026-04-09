@@ -21,27 +21,27 @@ public class NoiseCircle : MonoBehaviour
 
     [SerializeField]
     // velocidad de aumento de tamaño del círculo cuando camina
-    private float WalkSpeed = 3f;  
+    private float WalkSpeed;  
 
     [SerializeField]
     // posición final del círculo si se está caminando
-    private Vector3 FinalWalkPos = new Vector3(2, 2, 2);
+    private Vector3 FinalWalkPos;
 
     [SerializeField]
     // velocidad de aumento de tamaño del círculo cuando corre
-    private float RunSpeed = 6f;
+    private float RunSpeed;
 
     [SerializeField]
     // posición final del círculo si se está corriendo
-    private Vector3 FinalRunPos = new Vector3(4, 4, 4);
+    private Vector3 FinalRunPos;
 
     [SerializeField]
     // velocidad de aumento de tamaño del círculo cuando se cae un objeto
-    private float ObjectSpeed = 9f;
+    private float ObjectSpeed;
 
     [SerializeField]
     // posición final del círculo si se cae un objeto
-    private Vector3 FinalObjectPos = new Vector3(7, 7, 7);
+    private Vector3 FinalObjectPos;
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----

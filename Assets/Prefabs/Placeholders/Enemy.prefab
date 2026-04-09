@@ -161,7 +161,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: -1
   m_Sprite: {fileID: -3807012636550530861, guid: 8999ee5dfc19a3d46be3d90c35f7aa00, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -194,6 +194,7 @@ MonoBehaviour:
   ChasingTime: 10
   PatrolSpeed: 1
   ChasingSpeed: 1
+  Player: {fileID: 0}
 --- !u!61 &8071511312614493079
 BoxCollider2D:
   m_ObjectHideFlags: 0
