@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DialogueTest
   m_EditorClassIdentifier: 
   dialogueTurnsList:
-  - <Character>k__BackingField: {fileID: 11400000, guid: 90e5788fb1aa2ad4e9f951968073da64, type: 2}
+  - <Character>k__BackingField: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
     dialogueLine: Hello. I'm a hiding spot.
-  - <Character>k__BackingField: {fileID: 11400000, guid: 90e5788fb1aa2ad4e9f951968073da64, type: 2}
+  - <Character>k__BackingField: {fileID: 11400000, guid: e0a40f19fedc87c479ad40ed52b02dd7, type: 2}
     dialogueLine: I'll protect you from all enemies.

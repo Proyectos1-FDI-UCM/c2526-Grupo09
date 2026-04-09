@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Agnus
   m_EditorClassIdentifier: 
   characterName: Agnus
-  profilePhoto: {fileID: 8957324059118975939, guid: a3a45c06480278b4782706e0bfec03ad, type: 3}
+  profilePhoto: {fileID: -8586315232568132594, guid: 694e2f1bb27dc5e4e88b2aae83b56458, type: 3}
