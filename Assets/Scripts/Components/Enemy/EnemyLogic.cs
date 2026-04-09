@@ -77,6 +77,7 @@ public class EnemyLogic : MonoBehaviour
     /// </summary>
     #endregion
     private int _posIndex = 0;
+    private Animator _animator;
     /// <summary>
     /// Determina si el enemigo ha entrado en contacto con un sonido.
     /// </summary>
@@ -117,6 +118,7 @@ public class EnemyLogic : MonoBehaviour
 
     private void Start()
     {
+        _animator = GetComponent<Animator>();
         _enemyVision = transform.gameObject.GetComponentInChildren<EnemyVision>();
     }
 
@@ -125,6 +127,15 @@ public class EnemyLogic : MonoBehaviour
     /// </summary>
     void Update()
     {
+        if (PauseManager.Instance.Pause == false)
+        {
+            _animator.enabled = true;
+        }
+        else
+        {
+            _animator.enabled = false;
+        }
+
         PlayerIsHiding();
         if (!PauseManager.Instance.Pause)
         {
@@ -201,21 +212,85 @@ public class EnemyLogic : MonoBehaviour
         int incrX = Mathf.RoundToInt(dir.x);
         int incrY = Mathf.RoundToInt(dir.y);
         // Derecha
-        if (incrX > 0 && incrY == 0) rotZ = -90;
+        if (incrX > 0 && incrY == 0)
+        {
+            rotZ = -90;
+            _animator.SetBool("WalkingRight", true);
+            _animator.SetBool("WalkingDown", false);
+            _animator.SetBool("WalkingUp", false);
+            _animator.SetBool("WalkingLeft", false);
+        }
         // Abajo
-        else if (incrY < 0 && incrX == 0) rotZ = -180;
+        else if (incrY < 0 && incrX == 0)
+        {
+            rotZ = -180;
+            _animator.SetBool("WalkingDown", true);
+            _animator.SetBool("WalkingRight", false);
+            _animator.SetBool("WalkingUp", false);
+            _animator.SetBool("WalkingLeft", false);
+        }
         // Izquierda
-        else if (incrX < 0 && incrY == 0) rotZ = 90;
+        else if (incrX < 0 && incrY == 0)
+        {
+            rotZ = 90;
+            _animator.SetBool("WalkingLeft", true);
+            _animator.SetBool("WalkingRight", false);
+            _animator.SetBool("WalkingUp", false);
+            _animator.SetBool("WalkingDown", false);
+        }
         // Arriba
-        else if (incrY > 0 && incrX == 0) rotZ = 0;
+        else if (incrY > 0 && incrX == 0)
+        {
+            rotZ = 0;
+            _animator.SetBool("WalkingUp", true);
+            _animator.SetBool("WalkingDown", false);
+            _animator.SetBool("WalkingRight", false);
+            _animator.SetBool("WalkingLeft", false);
+        }
         // Derecha-Arriba
-        else if (incrX > 0 && incrY > 0) rotZ = -45;
+        else if (incrX > 0 && incrY > 0)
+        {
+            rotZ = -45;
+            _animator.SetBool("WalkingUp", true);
+            _animator.SetBool("WalkingDown", false);
+            _animator.SetBool("WalkingRight", false);
+            _animator.SetBool("WalkingLeft", false);
+        }
         // Izquierda-Abajo
-        else if (incrX < 0 && incrY < 0) rotZ = 135;
+        else if (incrX < 0 && incrY < 0)
+        {
+            rotZ = 135;
+            _animator.SetBool("WalkingDown", true);
+            _animator.SetBool("WalkingRight", false);
+            _animator.SetBool("WalkingUp", false);
+            _animator.SetBool("WalkingLeft", false);
+        }
         // Derecha-Abajo
-        else if (incrX > 0 && incrY < 0) rotZ = -135;
+        else if (incrX > 0 && incrY < 0)
+        {
+            rotZ = -135;
+            _animator.SetBool("WalkingDown", true);
+            _animator.SetBool("WalkingRight", false);
+            _animator.SetBool("WalkingUp", false);
+            _animator.SetBool("WalkingLeft", false);
+        }
         // Izquierda-Arriba
-        else if (incrX < 0 && incrY > 0) rotZ = 45;
+        else if (incrX < 0 && incrY > 0)
+        {
+            rotZ = 45;
+            _animator.SetBool("WalkingUp", true);
+            _animator.SetBool("WalkingDown", false);
+            _animator.SetBool("WalkingRight", false);
+            _animator.SetBool("WalkingLeft", false);
+        } else
+        {
+            _animator.SetBool("WalkingUp", false);
+            _animator.SetBool("WalkingDown", false);
+            _animator.SetBool("WalkingRight", false);
+            _animator.SetBool("WalkingLeft", false);
+            
+        }
+       
         Transform enemyRotate = _enemyVision.transform.parent;
         enemyRotate.rotation = Quaternion.Euler(0, 0, rotZ);
     }
