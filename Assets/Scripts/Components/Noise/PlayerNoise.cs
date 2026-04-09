@@ -46,7 +46,11 @@ public class PlayerNoise : MonoBehaviour
         else
         {
             // se instancia un círculo de ruido
-            Instantiate(Circle, transform.position, transform.rotation);
+            GameObject NewCircle = Instantiate(Circle, transform.position, transform.rotation);
+
+            // ponemos los valores del círculo a los del círculo del editor
+            NoiseCircle Noise = NewCircle.GetComponent<NoiseCircle>();
+            Noise.CheckIfFallenObject(false);
             _lastCircle = Time.time;
         }
     }

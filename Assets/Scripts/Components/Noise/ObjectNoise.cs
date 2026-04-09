@@ -34,16 +34,12 @@ public class ObjectNoise : MonoBehaviour
     /// </summary>
     public void GenerateNoise()
     {
-        NoiseCircle noisecircle = Circle.GetComponent<NoiseCircle>();
-        if (noisecircle != null )
-        {
-            // antes de generar el círculo, indicamos que se ha caido un objeto
-            noisecircle.FallenObject(true);
-            // se instamcia el círculo
-            Instantiate(Circle, transform.position, transform.rotation);
-            // después de generarlo, indicamos que ya no se ha caido ningún objeto
-            noisecircle.FallenObject(false);
-        }
+        // se instancia el círculo
+        GameObject NewCircle = Instantiate(Circle, transform.position, transform.rotation);
+        NoiseCircle noisecircle = NewCircle.GetComponent<NoiseCircle>();
+        noisecircle.CheckIfFallenObject(true);
+        // después de generarlo, indicamos que ya no se ha caido ningún objeto
+        // noisecircle.CheckIfFallenObject(false);
     }
     #endregion
     

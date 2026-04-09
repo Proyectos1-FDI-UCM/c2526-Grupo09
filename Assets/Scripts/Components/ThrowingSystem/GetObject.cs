@@ -62,8 +62,6 @@ public class GetObject : MonoBehaviour
     void Start()
     {
         _throwingSystem = PlayerInScene.GetComponent<ThrowingSystem>();
-        // COSAS TEMPORALES
-        if (_throwingSystem != null) Debug.Log("polnito");
         // comprobamos que el componente está bien configurado desde el editor y que la escena esté bien montada
         if (InputManager.Instance == null) 
         {
@@ -80,14 +78,12 @@ public class GetObject : MonoBehaviour
         // si el jugador está dentro del collider y no tiene objeto, entra en el if
         if (_insideCollider && !_hasObject) 
         { 
-            Debug.Log("no tiene objeto, puedes cogerlo");
             if (InputManager.Instance.InteractWasPressedThisFrame())
             {
                 _hasObject = true;
                 LevelManager.Instance.RockPicked(true);
                 // metemos el cambio de la variable individual a este objeto en la
                 // variable universal del ThrowingSystem (_objectInHand)
-                Debug.Log("has cogido el objeto yayyy");
                 _throwingSystem.SwitchPublicObjectController();
             }
         }
@@ -122,12 +118,6 @@ public class GetObject : MonoBehaviour
 
     // ---- MÉTODOS PÚBLICOS ----
     #region Métodos públicos
-
-    /*public bool IndividualObjectController()
-    {
-        return _hasObject;
-    }*/
-
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----

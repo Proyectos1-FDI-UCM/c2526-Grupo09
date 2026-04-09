@@ -82,7 +82,6 @@ public class ThrowingSystem : MonoBehaviour
         // si tiene un objeto, tienes la opción de entrar al modo lanzamiento
         if (_objectInHand)
         {
-            
             // primero comprobamos si el objeto está en movimiento (si ya se ha creado) para bloquear cualquier otro tipo
             // de input por parte del usuario (movimiento del cursor, jugador, etc) y centrarnos sólo en el movimiento
             // del objeto lanzado
@@ -92,12 +91,14 @@ public class ThrowingSystem : MonoBehaviour
                 // comprobamos si el objeto ha llegado a su destino
                 if (_object.transform.position == Cursor.transform.position)
                 {
+                    // creamos el círculo de sonido cuando el objeto llega a su destino
                     ObjectNoise noise = _object.GetComponent<ObjectNoise>();
                     if (noise != null)
                     {
                         noise.GenerateNoise();
                     }
 
+                    // reseteamos todas las variables a sus estados iniciales
                     Debug.Log("llegó al final");
                     _inThrowingState = false;
                     _objectIsMoving = false;
@@ -116,6 +117,7 @@ public class ThrowingSystem : MonoBehaviour
             }
             else if (InputManager.Instance.ThrowWasPressedThisFrame())
             {
+                // comprobamos si el jugador tiene seleccionada la posición para lanzar el objeto o si quiere salir/entrar en el estado de lanzamiento
                 if (_throwConfirmed)
                 {
                     // comenzamos el movimiento del objeto
@@ -128,7 +130,6 @@ public class ThrowingSystem : MonoBehaviour
             else if (_inThrowingState)
             {
                 // movimiento del cursor
-                Debug.Log("muevo el booty");
                 CursorMovement();
             }
             else
@@ -142,12 +143,6 @@ public class ThrowingSystem : MonoBehaviour
                 Cursor.transform.position = Movement.transform.position + new Vector3(1, 0, 0);
             }
         }
-        // temporal
-        else if (_objectPrefab != null)
-        {
-            Debug.Log("no tienes objeto");
-        }
-        
     } // Update
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -204,7 +199,7 @@ public class ThrowingSystem : MonoBehaviour
 
         if (!_throwConfirmed)
         {
-            //Obtenemos la dirección del InputManager
+            // obtenemos la dirección del InputManager
             Vector2 direction = InputManager.Instance.MovementVector;
             Vector3 cursorDir = new Vector3(direction.x, direction.y, Cursor.transform.position.z);
 
@@ -234,11 +229,7 @@ public class ThrowingSystem : MonoBehaviour
         Debug.Log("NOS MOVEMOS");
 
     } // ThrowObject 
-
-
-
     #endregion
-
 
 } // class ThrowingSystem 
 // namespace

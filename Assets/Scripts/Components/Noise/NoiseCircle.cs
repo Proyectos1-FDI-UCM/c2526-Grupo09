@@ -47,6 +47,7 @@ public class NoiseCircle : MonoBehaviour
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
     private float _speed;  // velocidad de aumento
+    private bool _valuesSet = false; // detecta si los valores del círculo se han establecido ya o no
     private Vector3 _finalPos;  // posición final
 
     // indica si el ruido se ha generado por un objeto caido
@@ -62,17 +63,20 @@ public class NoiseCircle : MonoBehaviour
     private void Update()
     {
         // elegir entre los valores del círculo dependiendo si estamos caminando o corriendo
-        SetNoiseValues();
-        // activa el círculo y se va moviendo frame a frame
-        CircleActive(_finalPos, _speed);
+        // SetNoiseValues();
+        if (_valuesSet)
+        {
+            // activa el círculo y se va moviendo frame a frame
+            CircleActive(_finalPos, _speed);
+        }
     }
     #endregion
 
     // ---- MÉTODOS PÚBLICOS ----
     #region Métodos públicos
     /// <summary>
-    /// Busca si se está caminando o corriendo y dependiendo de ese establece unos valores
-    /// para _speed y _finalPos dependiendo de eso.
+    /// Busca si se está caminando/corriendo o si se ha lanzado un objeto y dependiendo de ese establece unos valores
+    /// para _speed y _finalPos.
     /// </summary>
     public void SetNoiseValues()
     {
@@ -80,6 +84,7 @@ public class NoiseCircle : MonoBehaviour
         {
             _speed = ObjectSpeed;
             _finalPos = FinalObjectPos;
+            _valuesSet = true;
         }
         else
         {
@@ -90,23 +95,26 @@ public class NoiseCircle : MonoBehaviour
                 {
                     _speed = RunSpeed;
                     _finalPos = FinalRunPos;
+                    _valuesSet = true;
                 }
                 else  // si no estamos corriendo es que estamos caminando
                 {
                     _speed = WalkSpeed;
                     _finalPos = FinalWalkPos;
+                    _valuesSet = true;
                 }
             }
         }
     }
 
     /// <summary>
-    /// método que se llama cuando se cae un objeto y pone la variable de _fallenObject
-    /// a true antes de generar el círculo de ruido y a false una vez ya se ha generado
+    /// Método que se llama cuando se crea un círculo de sonido, si el círculo proviene de un objeto lanzado, status es True, else False.
+    /// Llama al método SetNoiseValues() en su ejecución.
     /// </summary>
-    public void FallenObject(bool status)
+    public void CheckIfFallenObject(bool status)
     {
         _fallenObject = status;
+        SetNoiseValues();
     }
     #endregion
     
