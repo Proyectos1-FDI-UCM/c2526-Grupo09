@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: b789f8f4a4718694da72fc24ab17e7c9
+guid: 82e6ca1d87dd90c43b7d13998ffd9be8
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1250542065175253887
-    second: Lily_0
+      213: -9207865744927438494
+    second: idle1halfclosed_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Lily_0
+      name: idle1halfclosed_0
       rect:
         serializedVersion: 2
         x: 3
         y: 0
         width: 26
-        height: 31
+        height: 30
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 18cab8c0e9e25aee0800000000000000
-      internalID: -1250542065175253887
+      spriteID: 269cc1ee3e6173080800000000000000
+      internalID: -9207865744927438494
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Lily_0: -1250542065175253887
+      idle1halfclosed_0: -9207865744927438494
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
