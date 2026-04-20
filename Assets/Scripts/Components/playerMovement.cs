@@ -5,6 +5,7 @@
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
 
+using System;
 using UnityEngine;
 // Añadir aquí el resto de directivas using
 
@@ -33,6 +34,12 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     [SerializeField]
     private float runSpeed = 3.5f;
+
+    /// <summary>
+    /// audio que suena al caminar/correr
+    /// </summary>
+    [SerializeField]
+    private AudioSource walkSound;
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -220,6 +227,31 @@ public class PlayerMovement : MonoBehaviour
         //Aplicamos el movimiento
         //Multiplicamos la dirección por la velocidad y el tiempo
         transform.Translate(direction * currentSpeed * Time.deltaTime);
+
+        if (isMoving && !_isHidden)
+        {
+            if (currentSpeed == runSpeed)
+            {
+                walkSound.volume = 1.0f; // Volumen máximo al correr
+                walkSound.pitch = 1.2f;  // Opcional: un poco más agudo al correr suena más realista
+            }
+            else
+            {
+                walkSound.volume = 0.5f; // Volumen medio al caminar
+                walkSound.pitch = 1.0f;  // Pitch normal
+            }
+
+            // Si no estaba sonando, lo activamos
+            if (!walkSound.isPlaying)
+            {
+                walkSound.Play();
+            }
+        }
+        else
+        {
+            // Si nos detenemos, paramos el sonido
+            walkSound.Stop();
+        }
     }
     #endregion
 

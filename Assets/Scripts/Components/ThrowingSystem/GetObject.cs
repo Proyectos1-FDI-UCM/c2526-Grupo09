@@ -23,6 +23,8 @@ public class GetObject : MonoBehaviour
 
     [SerializeField] GameObject PlayerInScene;
 
+    [SerializeField] private AudioSource rockSound;
+
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -82,6 +84,11 @@ public class GetObject : MonoBehaviour
             {
                 _hasObject = true;
                 LevelManager.Instance.RockPicked(true);
+
+                if (rockSound != null)
+                {
+                    rockSound.Play();
+                }
                 // metemos el cambio de la variable individual a este objeto en la
                 // variable universal del ThrowingSystem (_objectInHand)
                 _throwingSystem.SwitchPublicObjectController();
