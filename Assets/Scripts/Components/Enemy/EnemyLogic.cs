@@ -61,6 +61,16 @@ public class EnemyLogic : MonoBehaviour
     /// </summary>
     [SerializeField]
     private GameObject Player;
+
+    /// <summary>
+    /// audio cuando el jugador entra en el campo de vision
+    /// </summary>
+    [SerializeField] private AudioSource seenSound;
+
+    /// <summary>
+    /// audio cuando el enemigo mata al jugador
+    /// </summary>
+    [SerializeField] private AudioSource attackSound;
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -106,6 +116,8 @@ public class EnemyLogic : MonoBehaviour
     /// Referencia al script EnemyVision
     /// </summary>
     private EnemyVision _enemyVision = null;
+
+    private bool _isAttacking = false;
 
 
 
@@ -154,6 +166,10 @@ public class EnemyLogic : MonoBehaviour
         NoiseCircle noiseCircle = collision.gameObject.GetComponent<NoiseCircle>();
         if (noiseCircle != null && !_heardNoise)
         {
+            if (seenSound != null)
+            {
+                seenSound.Play();
+            }
             _noiseOrigin = noiseCircle.gameObject.transform.position;
             _heardNoise = true;
             _timer = 0;
@@ -176,6 +192,13 @@ public class EnemyLogic : MonoBehaviour
     /// <param name="playerPos"></param>
     public void SawThePlayer(Transform playerPos)
     {
+        if (!_isPlayerVisible)
+        {
+            if (seenSound != null)
+            {
+                seenSound.Play();
+            }
+        }
         _playerPos = playerPos;
         _isPlayerVisible = true;
         _timer = 0;
@@ -185,8 +208,10 @@ public class EnemyLogic : MonoBehaviour
     /// </summary>
     public void KillThePlayer()
     {
-        Debug.Log("Kill the player");
-        _isPlayerInRange = true;
+        if (_isAttacking) return;
+
+        Debug.Log("KillThePlayer llamado: Iniciando secuencia de muerte.");
+        StartCoroutine(PerformAttack());
 
     }
 
@@ -317,9 +342,10 @@ public class EnemyLogic : MonoBehaviour
     /// </summary>
     private void UpdateEnemyState()
     {
-        if (_isPlayerInRange)
+        if (_isPlayerInRange && !_isAttacking)
         {
-            PerformAttack();
+            _isAttacking = true;
+            StartCoroutine(PerformAttack());
         }
         else if (_isPlayerVisible)
         {
@@ -384,13 +410,42 @@ public class EnemyLogic : MonoBehaviour
     /// <summary>
     /// Metodo que se encarga de llamar a EndGame del Level Manager.
     /// </summary>
-    private void PerformAttack()
+    private IEnumerator PerformAttack()
     {
-        PlayerPos playerPos = Player.GetComponent<PlayerPos>();
-        if (playerPos != null)
+        if (_isAttacking) yield break; // Seguridad extra
+        _isAttacking = true;
+
+        Debug.Log("Iniciando Corrutina de Ataque...");
+
+        // 1. Sonido (Usamos PlayClipAtPoint para que no dependa del objeto)
+        if (attackSound != null && attackSound.clip != null)
         {
-            playerPos.Respawn();
+            attackSound.Play();
         }
+
+        // 2. Parar al jugador (para que no se escape durante la espera)
+        PlayerMovement pm = Player.GetComponent<PlayerMovement>();
+        if (pm != null) pm.enabled = false;
+
+        // 3. ESPERA (2 segundos)
+        yield return new WaitForSeconds(2.0f);
+
+        // 4. RESPAWN
+        PlayerPos playerPosScript = Player.GetComponent<PlayerPos>();
+        if (playerPosScript != null)
+        {
+            Debug.Log("Ejecutando Respawn ahora");
+            playerPosScript.Respawn();
+        }
+        else
+        {
+            Debug.LogError("ERROR: No se encuentra el componente PlayerPos en el objeto Player");
+        }
+
+        // 5. Reactivar todo
+        if (pm != null) pm.enabled = true;
+        _isAttacking = false;
+        _isPlayerInRange = false;
     }
     #endregion   
 
