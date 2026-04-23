@@ -77,6 +77,9 @@ public class GetObject : MonoBehaviour
     /// </summary>
     void Update()
     {
+        // IMPORTANTE: la variable _hasObject es para que solo puedas pillar una piedra a la vez, esta variable
+        // habría que ignorarla si es una flor, x lo q hay q identificar que tipo de objeto es
+
         // si el jugador está dentro del collider y no tiene objeto, entra en el if
         if (_insideCollider && !_hasObject) 
         { 
@@ -85,6 +88,7 @@ public class GetObject : MonoBehaviour
                 _hasObject = true;
                 LevelManager.Instance.RockPicked(true);
 
+                // aquí diferenciar entre roca y flor, para poner un audio u otro
                 if (rockSound != null)
                 {
                     rockSound.Play();
@@ -129,12 +133,6 @@ public class GetObject : MonoBehaviour
 
     // ---- MÉTODOS PRIVADOS ----
     #region Métodos Privados
-
-    private void GetPublicObjectController()
-    {
-        _hasObject = _throwingSystem.PublicObjectController();
-    }
-
     #endregion
 
 } // class GetObject 
