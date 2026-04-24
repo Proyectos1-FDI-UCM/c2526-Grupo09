@@ -40,7 +40,12 @@ public class DialogueManager : MonoBehaviour
     /// Necesitamos de un player para frenar su movimiento.
     /// </summary>
     [SerializeField] private GameObject player;
-    //[SerializeField] private AudioSource typingAudioSource;
+
+
+    /// <summary>
+    /// Audio que suena mientras el dialogo habla
+    /// </summary>
+    [SerializeField] private AudioSource dialogSound;
 
     #endregion
 
@@ -174,7 +179,10 @@ public class DialogueManager : MonoBehaviour
             if (_currentCharIndex >= _pendingLine.Length)
             {
                 _isTyping = false;
-                Debug.Log("Terminó de escribir");
+                if (dialogSound != null)
+                {
+                    dialogSound.Stop();
+                }
             }
         }
 
@@ -187,6 +195,11 @@ public class DialogueManager : MonoBehaviour
             _isTyping = false;
             _skipTyping = false;
             Debug.Log("Terminó de escribir (skip)");
+
+            if (dialogSound != null)
+            {
+                dialogSound.Stop();
+            }
         }
 
         // Input
@@ -237,6 +250,10 @@ public class DialogueManager : MonoBehaviour
         _waitingForInput = true;
         dialogueUI.ClearDialogArea();
 
+        if (dialogSound != null)
+        {
+            dialogSound.Play();
+        }
     }
 
     /// <summary>
@@ -276,6 +293,16 @@ public class DialogueManager : MonoBehaviour
 
         //Retomamos el input del player.
         player.GetComponent<PlayerMovement>().enabled = true;
+
+        if (dialogSound != null)
+        {
+            dialogSound.Stop();
+        }
+    }
+
+    private void SoundLogic()
+    {
+        
     }
     #endregion   
 

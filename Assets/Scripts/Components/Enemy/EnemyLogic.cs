@@ -5,7 +5,6 @@
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
 
-using System.Collections;
 using UnityEngine;
 using UnityEngine.UIElements;
 // Añadir aquí el resto de directivas using
@@ -118,6 +117,8 @@ public class EnemyLogic : MonoBehaviour
     private EnemyVision _enemyVision = null;
 
     private bool _isAttacking = false;
+    private float _attackTimer = 0f;
+    private const float _attackDelay = 2.0f;
 
 
 
@@ -208,11 +209,24 @@ public class EnemyLogic : MonoBehaviour
     /// </summary>
     public void KillThePlayer()
     {
-        if (_isAttacking) return;
+        if (_isAttacking)
+        {
+            return;
+        }
 
-        Debug.Log("KillThePlayer llamado: Iniciando secuencia de muerte.");
-        StartCoroutine(PerformAttack());
+        _isAttacking = true;
+        _attackTimer = 0f;
 
+        transform.position = new Vector3(Player.transform.position.x, Player.transform.position.y, transform.position.z);
+
+        if (attackSound != null) attackSound.Play();
+
+        // Bloquear al jugador
+        if (Player != null)
+        {
+            PlayerMovement pm = Player.GetComponent<PlayerMovement>();
+            if (pm != null) pm.enabled = false;
+        }
     }
 
     #endregion
@@ -342,20 +356,24 @@ public class EnemyLogic : MonoBehaviour
     /// </summary>
     private void UpdateEnemyState()
     {
-        if (_isPlayerInRange && !_isAttacking)
+        if (_isAttacking)
         {
-            _isAttacking = true;
-            StartCoroutine(PerformAttack());
+            _attackTimer += Time.deltaTime;
+
+            if (_attackTimer >= _attackDelay)
+            {
+                ExecuteRespawn();
+            }
+            return;
         }
-        else if (_isPlayerVisible)
+
+        if (_isPlayerVisible)
         {
-            if (_isPlayerVisible) PerformChase(_playerPos.position);
-            else if (_heardNoise) PerformChase(_noiseOrigin);
+            PerformChase(_playerPos.position);
         }
         else if (_heardNoise)
         {
             PerformChase(_noiseOrigin);
-
             if (Vector3.Distance(transform.position, _noiseOrigin) < 0.2f)
             {
                 _heardNoise = false;
@@ -408,44 +426,26 @@ public class EnemyLogic : MonoBehaviour
 
 
     /// <summary>
-    /// Metodo que se encarga de llamar a EndGame del Level Manager.
+    /// Despues de esperar los 2 segundos, hacemos respawn del jugador
     /// </summary>
-    private IEnumerator PerformAttack()
+    private void ExecuteRespawn()
     {
-        if (_isAttacking) yield break; // Seguridad extra
-        _isAttacking = true;
 
-        Debug.Log("Iniciando Corrutina de Ataque...");
-
-        // 1. Sonido (Usamos PlayClipAtPoint para que no dependa del objeto)
-        if (attackSound != null && attackSound.clip != null)
-        {
-            attackSound.Play();
-        }
-
-        // 2. Parar al jugador (para que no se escape durante la espera)
-        PlayerMovement pm = Player.GetComponent<PlayerMovement>();
-        if (pm != null) pm.enabled = false;
-
-        // 3. ESPERA (2 segundos)
-        yield return new WaitForSeconds(2.0f);
-
-        // 4. RESPAWN
         PlayerPos playerPosScript = Player.GetComponent<PlayerPos>();
         if (playerPosScript != null)
         {
-            Debug.Log("Ejecutando Respawn ahora");
             playerPosScript.Respawn();
         }
-        else
-        {
-            Debug.LogError("ERROR: No se encuentra el componente PlayerPos en el objeto Player");
-        }
 
-        // 5. Reactivar todo
-        if (pm != null) pm.enabled = true;
         _isAttacking = false;
-        _isPlayerInRange = false;
+        _attackTimer = 0f;
+
+        // Reactivamos el movimiento del jugador
+        PlayerMovement pm = Player.GetComponent<PlayerMovement>();
+        if (pm != null) pm.enabled = true;
+
+        _isPlayerVisible = false;
+        _heardNoise = false;
     }
     #endregion   
 
