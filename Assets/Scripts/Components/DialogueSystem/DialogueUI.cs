@@ -120,21 +120,20 @@ namespace DialogueSystem
         /// Establecer texto en caja de diálogo.
         /// </summary>
         /// <param name="text"></param>
-        public void SetDialogArea(string text) 
+        /*public void SetDialogArea(string text) 
         {
             //Remplaza el texto.
             dialogArea.text = text; 
         }
-
+        */
 
         /// <summary>
         /// Secuencia de carácteres uno por uno en el texto del diálogo.
         /// </summary>
         /// <param name="letter"></param>
-        public void AppendToDialogArea(char letter)
+        public void AppendToDialogArea(string text)
         {
-            //Le pasamos el caracter y se va a ir encadenando.
-            dialogArea.text += letter; 
+            dialogArea.text += text;
         }
 
         #endregion

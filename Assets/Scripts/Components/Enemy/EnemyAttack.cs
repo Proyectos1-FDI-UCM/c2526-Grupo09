@@ -52,7 +52,9 @@ public class EnemyAttack : MonoBehaviour
         PlayerMovement playerMovement = collision.GetComponent<PlayerMovement>();
         if (playerMovement != null && !playerMovement.GetIsHidden())
         {
-            if (enemyLogic != null) 
+            EnemyLogic enemyLogic = transform.parent.GetComponent<EnemyLogic>();
+            if (enemyLogic != null)
+                Debug.Log("LLamando a killThePlayer");
                 enemyLogic.KillThePlayer();
         }
     }

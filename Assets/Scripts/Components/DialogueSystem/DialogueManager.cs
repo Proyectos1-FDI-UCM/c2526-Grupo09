@@ -5,7 +5,6 @@
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
 
-using System.Collections;
 using System.Collections.Generic;
 using DialogueSystem;
 using UnityEngine;
@@ -41,7 +40,12 @@ public class DialogueManager : MonoBehaviour
     /// Necesitamos de un player para frenar su movimiento.
     /// </summary>
     [SerializeField] private GameObject player;
-    //[SerializeField] private AudioSource typingAudioSource;
+
+
+    /// <summary>
+    /// Audio que suena mientras el dialogo habla
+    /// </summary>
+    [SerializeField] private AudioSource dialogSound;
 
     #endregion
 
@@ -87,7 +91,15 @@ public class DialogueManager : MonoBehaviour
     /// <summary>
     /// Cola de turnos de dialogo,, el primero qe entra es el primero qe sale.
     /// </summary>
-    private Queue<DialogueTurn> _dialogueTurnQueue; 
+    private List<DialogueTurn> _dialogueTurnList;
+    private int _currentTurnIndex = 0;
+
+    /// <summary>
+    /// Atributos para la aparición de caracteres uno por uno.
+    /// </summary>
+    private string _pendingLine = "";
+    private int _currentCharIndex = 0;
+    private float _typingTimer = 0f;
 
     #endregion
 
@@ -118,6 +130,10 @@ public class DialogueManager : MonoBehaviour
     /// <param name="dialogue"></param>
     public void StartDialogue(DialogueRound dialogue)
     {
+        //Inicializamos los turnos de diálogo
+        _dialogueTurnList = dialogue.DialogueTurnsList;
+        _currentTurnIndex = 0;
+
         //Impedir que se reproduzcan dos dialogos simultáneamente.
         if (_isDialogInProgress)
         {
@@ -127,9 +143,6 @@ public class DialogueManager : MonoBehaviour
 
         //Diálogo en proceso.
         _isDialogInProgress = true;
-
-        //Agarramos la lista de turnos y lo convertimos en la cola de dialogo tipo Queue.
-        _dialogueTurnQueue = new Queue<DialogueTurn>(dialogue.DialogueTurnsList); 
 
         //Desactivamos el input del player.
         player.GetComponent<PlayerMovement>().enabled = false;
@@ -141,41 +154,7 @@ public class DialogueManager : MonoBehaviour
         NextTurn();
     }
 
-    /// <summary>
-    /// Corrutina provisional para la aparición de carácteres en el texto de diálogo.
-    /// </summary>
-    /// <param name="dialogTurn"></param>
-
-    private IEnumerator TypeSentence(DialogueTurn dialogTurn)
-    { 
-        //Está escribiendo caracteres
-        _isTyping = true;
-        //Inicializamos a false para que meustre poco a poco los caracteres
-        _skipTyping = false;
-
-        //Espera al input
-        _waitingForInput = true;
-
-        //Para cada letra en la línea del dialogTurn...
-        foreach (char letter in dialogTurn.DialogueLine.ToCharArray())
-        {
-            if (_skipTyping)
-            {
-                //Salta la corrutina
-                dialogueUI.AppendToDialogArea(letter);
-                continue;
-            }
-
-            dialogueUI.AppendToDialogArea(letter);
-            //Actualizar la speed de aparición de caracteres
-            yield return new WaitForSeconds(typingSpeed); 
-        }
-
-        //Reset al terminar
-        _isTyping = false;
-        _skipTyping = false;
-        Debug.Log("Terminó de escribir");
-    }
+  
 
 
     /// <summary>
@@ -186,19 +165,53 @@ public class DialogueManager : MonoBehaviour
         //Si no hay dialogo en progreso,, no hace nada
         if (!_isDialogInProgress) return;
 
-        //Botón de interactuar
+        //Tipeo letra a letra
+        if (_isTyping && !_skipTyping)
+        {
+            _typingTimer += Time.deltaTime;
+            while (_typingTimer >= typingSpeed && _currentCharIndex < _pendingLine.Length)
+            {
+                dialogueUI.AppendToDialogArea(_pendingLine[_currentCharIndex].ToString());
+                _currentCharIndex++;
+                _typingTimer -= typingSpeed;
+            }
+
+            if (_currentCharIndex >= _pendingLine.Length)
+            {
+                _isTyping = false;
+                if (dialogSound != null)
+                {
+                    dialogSound.Stop();
+                }
+            }
+        }
+
+        //Skipear tipeo
+        if (_isTyping && _skipTyping)
+        {
+            //Pasamos el resto del texto que queda, usando substring.
+            string remaining = _pendingLine.Substring(_currentCharIndex);
+            dialogueUI.AppendToDialogArea(remaining);
+            _isTyping = false;
+            _skipTyping = false;
+            Debug.Log("Terminó de escribir (skip)");
+
+            if (dialogSound != null)
+            {
+                dialogSound.Stop();
+            }
+        }
+
+        // Input
         if (_waitingForInput && InputManager.Instance.InteractWasPressedThisFrame())
         {
             if (_isTyping)
             {
-                //Si está escribiendo e interactuamos, muestra la línea completa
                 _skipTyping = true;
             }
             else
             {
-                //Evitar problemas con la velocidad en plena transición
                 _waitingForInput = false;
-                //Pasar al siguiente turno (currentSpeed ya fue reseteado por la corrutina)
                 NextTurn();
             }
         }
@@ -227,30 +240,47 @@ public class DialogueManager : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
 
+    private void StartTyping(DialogueTurn dialogTurn)
+    {
+        _pendingLine = dialogTurn.DialogueLine;
+        _currentCharIndex = 0;
+        _typingTimer = 0f;
+        _isTyping = true;
+        _skipTyping = false;
+        _waitingForInput = true;
+        dialogueUI.ClearDialogArea();
+
+        if (dialogSound != null)
+        {
+            dialogSound.Play();
+        }
+    }
+
     /// <summary>
     /// Método para reproducir el siguiente turno de la lista en Queue.
     /// </summary>
     private void NextTurn()
     {
         //Si no hay mas turnos en la Queue = diálogo terminado.
-        if (_dialogueTurnQueue.Count == 0)
+        if (_currentTurnIndex >= _dialogueTurnList.Count)
         {
             EndDialogue();
             return;
         }
 
-
-        currentTurn = _dialogueTurnQueue.Dequeue();
+        currentTurn = _dialogueTurnList[_currentTurnIndex];
+        _currentTurnIndex++;
 
         //Adjuntamos información de los scriptableObjects en la caja de diálogo.
-        dialogueUI.setCharacterInfo(currentTurn.Character);
+        dialogueUI.setCharacterInfo(currentTurn.GetCharacter());
         dialogueUI.ClearDialogArea();
 
-        //Corrutina para la reproducción por carácteres.
-        StartCoroutine(TypeSentence(currentTurn)); 
+        //Reproducción por carácteres.
+        StartTyping(currentTurn);
 
         //Mientras escribe, no podemos pasar al siguiente turno.
         _isTyping = true;
+        
     }
 
     /// <summary>
@@ -263,6 +293,16 @@ public class DialogueManager : MonoBehaviour
 
         //Retomamos el input del player.
         player.GetComponent<PlayerMovement>().enabled = true;
+
+        if (dialogSound != null)
+        {
+            dialogSound.Stop();
+        }
+    }
+
+    private void SoundLogic()
+    {
+        
     }
     #endregion   
 

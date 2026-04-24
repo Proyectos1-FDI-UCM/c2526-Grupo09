@@ -17,18 +17,18 @@ MonoBehaviour:
     dialogueLine: Lily?
   - <Character>k__BackingField: {fileID: 11400000, guid: e0a40f19fedc87c479ad40ed52b02dd7, type: 2}
     dialogueLine: What are you doing here!?
-  - <Character>k__BackingField: {fileID: 11400000, guid: ef51b0dfb5d9b3c438d097e5a36f8e57, type: 2}
+  - <Character>k__BackingField: {fileID: 11400000, guid: e87ed0745fc98bd4b898847d672cbb01, type: 2}
     dialogueLine: "Oh you know\u2026"
-  - <Character>k__BackingField: {fileID: 11400000, guid: ef51b0dfb5d9b3c438d097e5a36f8e57, type: 2}
+  - <Character>k__BackingField: {fileID: 11400000, guid: e87ed0745fc98bd4b898847d672cbb01, type: 2}
     dialogueLine: "I\u2026 I just wanted to smell the scent of flowers for our last
       day here\u2026"
-  - <Character>k__BackingField: {fileID: 11400000, guid: ef51b0dfb5d9b3c438d097e5a36f8e57, type: 2}
+  - <Character>k__BackingField: {fileID: 11400000, guid: 93c580ac30e7bd54b84db33920e85a6f, type: 2}
     dialogueLine: "But I haven\u2019t found anyone yet."
   - <Character>k__BackingField: {fileID: 11400000, guid: e0a40f19fedc87c479ad40ed52b02dd7, type: 2}
     dialogueLine: "This can\u2019t be\u2026"
   - <Character>k__BackingField: {fileID: 11400000, guid: e0a40f19fedc87c479ad40ed52b02dd7, type: 2}
     dialogueLine: "THIS CAN\u2019T BE HAPPENING"
-  - <Character>k__BackingField: {fileID: 11400000, guid: ef51b0dfb5d9b3c438d097e5a36f8e57, type: 2}
+  - <Character>k__BackingField: {fileID: 11400000, guid: a1580e768646a4d4cb7e106bba431d0b, type: 2}
     dialogueLine: What? What 's wrong?
   - <Character>k__BackingField: {fileID: 11400000, guid: e0a40f19fedc87c479ad40ed52b02dd7, type: 2}
     dialogueLine: You are the last one.
@@ -36,23 +36,23 @@ MonoBehaviour:
     dialogueLine: "I CAN\u2019T DO THIS ANYMORE"
   - <Character>k__BackingField: {fileID: 11400000, guid: e0a40f19fedc87c479ad40ed52b02dd7, type: 2}
     dialogueLine: "I\u2019m so tired\u2026"
-  - <Character>k__BackingField: {fileID: 11400000, guid: ef51b0dfb5d9b3c438d097e5a36f8e57, type: 2}
+  - <Character>k__BackingField: {fileID: 11400000, guid: a1580e768646a4d4cb7e106bba431d0b, type: 2}
     dialogueLine: "Oh\u2026 I see\u2026"
-  - <Character>k__BackingField: {fileID: 11400000, guid: ef51b0dfb5d9b3c438d097e5a36f8e57, type: 2}
+  - <Character>k__BackingField: {fileID: 11400000, guid: a1580e768646a4d4cb7e106bba431d0b, type: 2}
     dialogueLine: "Well\u2026"
-  - <Character>k__BackingField: {fileID: 11400000, guid: ef51b0dfb5d9b3c438d097e5a36f8e57, type: 2}
+  - <Character>k__BackingField: {fileID: 11400000, guid: 1e845b191a59137458fd74ddf8544cf4, type: 2}
     dialogueLine: You have to do it!
-  - <Character>k__BackingField: {fileID: 11400000, guid: ef51b0dfb5d9b3c438d097e5a36f8e57, type: 2}
+  - <Character>k__BackingField: {fileID: 11400000, guid: 1e845b191a59137458fd74ddf8544cf4, type: 2}
     dialogueLine: "You have come so far. You can\u2019t back out now."
-  - <Character>k__BackingField: {fileID: 11400000, guid: e0a40f19fedc87c479ad40ed52b02dd7, type: 2}
+  - <Character>k__BackingField: {fileID: 11400000, guid: fcf41119740863649a888151640fd2bb, type: 2}
     dialogueLine: "I can\u2019t do this Lily, not to you."
-  - <Character>k__BackingField: {fileID: 11400000, guid: ef51b0dfb5d9b3c438d097e5a36f8e57, type: 2}
+  - <Character>k__BackingField: {fileID: 11400000, guid: a1580e768646a4d4cb7e106bba431d0b, type: 2}
     dialogueLine: I will die anyway.
-  - <Character>k__BackingField: {fileID: 11400000, guid: ef51b0dfb5d9b3c438d097e5a36f8e57, type: 2}
+  - <Character>k__BackingField: {fileID: 11400000, guid: 1e845b191a59137458fd74ddf8544cf4, type: 2}
     dialogueLine: "If it isn\u2019t by your hand it would be by the end of the apocalypse."
   - <Character>k__BackingField: {fileID: 11400000, guid: e0a40f19fedc87c479ad40ed52b02dd7, type: 2}
     dialogueLine: "I can\u2019t! I\u2019m not ready to live without you."
-  - <Character>k__BackingField: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
+  - <Character>k__BackingField: {fileID: 11400000, guid: 1e845b191a59137458fd74ddf8544cf4, type: 2}
     dialogueLine: You have to do it Eve.
   - <Character>k__BackingField: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
     dialogueLine: Your heart must not harbor any doubt.

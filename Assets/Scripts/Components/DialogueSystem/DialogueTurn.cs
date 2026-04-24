@@ -23,8 +23,9 @@ namespace DialogueSystem
         /// Ya que usamos este script en una lista, añadimos esta línea para que salga en el inspector del scriptableObject.
         /// </summary>
 
-        [field: SerializeField]
-        public DialogueCharacter Character { get; private set; }
+        [SerializeField] private DialogueCharacter character;
+
+        public DialogueCharacter GetCharacter() { return character; }
 
         /// <summary>
         /// Línea de diálogo que dirá el personaje.
@@ -40,5 +41,11 @@ namespace DialogueSystem
         /// </summary>
         /// 
         public string DialogueLine => dialogueLine;
+        /*  seria como escribir:
+         public string GetDialogueLine()
+              {
+                   return dialogueLine;
+              }   de manera abreviada (cambiar esto implica reescribir todos los diálogos)
+        */
     }
 }

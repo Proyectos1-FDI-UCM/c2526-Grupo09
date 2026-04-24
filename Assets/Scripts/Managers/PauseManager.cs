@@ -5,6 +5,7 @@
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
 
+using TMPro;
 using UnityEngine;
 // Añadir aquí el resto de directivas using
 
@@ -22,9 +23,10 @@ public class PauseManager : MonoBehaviour
     // públicos y de inspector se nombren en formato PascalCase
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
-    [SerializeField] GameObject PausePanel;
-    [SerializeField] GameObject EndPanel;
-    [SerializeField] GameObject HUD;
+    [SerializeField] private GameObject PausePanel;
+    [SerializeField] private TextMeshProUGUI CheatsText;
+    [SerializeField] private GameObject EndPanel;
+    [SerializeField] private GameObject HUD;
 
     #endregion
 
@@ -74,6 +76,14 @@ public class PauseManager : MonoBehaviour
             Pause = !Pause;
             PausePanel.SetActive(Pause);
             HUD.SetActive(!Pause);
+            if (GameManager.Instance.GetActiveCheats())
+            {
+                CheatsText.text = "Deactivate Cheats";
+            }
+            else
+            {
+                CheatsText.text = "Activate Cheats";
+            }
         }
     }
     #endregion
@@ -85,6 +95,12 @@ public class PauseManager : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
+
+    public TextMeshProUGUI CheatsEnabledText
+    {
+        get { return CheatsText; }
+    }
+
     public bool Pause { get; private set; }
 
     public static PauseManager Instance
@@ -101,11 +117,6 @@ public class PauseManager : MonoBehaviour
         Pause = false;
         PausePanel.SetActive(false);
         HUD.SetActive(true);
-    }
-
-    public void PauseGame()
-    {
-        Pause = true;
     }
 
     #endregion

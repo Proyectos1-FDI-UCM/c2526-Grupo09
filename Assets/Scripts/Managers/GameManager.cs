@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
     // ---- ATRIBUTOS DEL INSPECTOR ----
 
     #region Atributos del Inspector (serialized fields)
-    
+    [SerializeField] private GameObject player;  // jugador de la escena
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -53,6 +53,10 @@ public class GameManager : MonoBehaviour
     /// </summary>
     private bool _haDormido = false;
 
+    // variables que gestionan la activación / desactivación de cheats
+    private PlayerNoise _playerNoise;
+    private PlayerMovement _playerMovement;
+    private bool _activateCheats;
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -93,6 +97,19 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(this.gameObject);
             Init();
         } // if-else somos instancia nueva o no.
+    }
+
+    /// <summary>
+    /// Start is called on the frame when a script is enabled just before 
+    /// any of the Update methods are called the first time.
+    /// </summary>
+    void Start()
+    {
+        if (player != null)
+        {
+            _playerNoise = player.GetComponent<PlayerNoise>();
+            _playerMovement = player.GetComponent<PlayerMovement>();
+        }
     }
 
     /// <summary>
@@ -214,6 +231,40 @@ public class GameManager : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    public void SetCheats()
+    {
+        // si los cheats no están activos
+        if (!_activateCheats)
+        {
+            // se desactiva el script del círculo de ruido
+            _playerNoise.enabled = false;
+            // se duplica la velocidad de caminar
+            float walkSpeed = _playerMovement.GetWalkSpeed();
+            _playerMovement.SetWalkSpeed(walkSpeed * 2);
+            // se duplica la velocidad de correr
+            float runSpeed = _playerMovement.GetRunSpeed();
+            _playerMovement.SetRunSpeed(runSpeed * 2);
+            _activateCheats = true;
+        }
+        else
+        {
+            // se activa el script del círculo de ruido
+            _playerNoise.enabled = true;
+            // se reduce la velocidad de caminar a la original
+            float walkSpeed = _playerMovement.GetWalkSpeed();
+            _playerMovement.SetWalkSpeed(walkSpeed / 2);
+            // se reduce la velocidad de correr a la original
+            float runSpeed = _playerMovement.GetRunSpeed();
+            _playerMovement.SetRunSpeed(runSpeed / 2);
+            _activateCheats = false;
+        }
+    }
+
+    public bool GetActiveCheats()
+    {
+        return _activateCheats;
     }
     #endregion
 
