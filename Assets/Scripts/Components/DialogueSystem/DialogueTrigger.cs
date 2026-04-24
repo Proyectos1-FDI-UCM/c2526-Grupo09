@@ -42,11 +42,7 @@ namespace DialogueSystem {
         // primera letra en mayúsculas)
         // Ejemplo: _maxHealthPoints
 
-        ///<summary>
-        /// Porpiedad de player para detectarlo en el collider del trigger.
-        ///</summary>
-        
-        private PlayerMovement _player;
+   
 
 
         #endregion
@@ -97,8 +93,8 @@ namespace DialogueSystem {
         private void OnTriggerEnter2D(Collider2D collision) 
         {
 
-            _player = collision.gameObject.GetComponent<PlayerMovement>();
-            if (_player != null)
+            PlayerMovement player = collision.gameObject.GetComponent<PlayerMovement>();
+            if (player != null)
             {
                 TriggerDialogue();
             }
