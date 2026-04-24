@@ -38,6 +38,12 @@ public class FlowerTypes : MonoBehaviour
 
     // ---- MÉTODOS PÚBLICOS ----
     #region Métodos públicos
+    public int NumPetals
+    {
+        get { return _nPetals; }
+    }
+
+
 
     public void DefineType(int index)
     {

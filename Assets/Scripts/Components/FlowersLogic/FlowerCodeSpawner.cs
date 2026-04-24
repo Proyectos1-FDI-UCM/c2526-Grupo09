@@ -34,6 +34,9 @@ public class FlowerCodeSpawner : MonoBehaviour
     [SerializeField]
     private GameObject FlowerCodePrefab;
 
+    [SerializeField]
+    private Padlock Padlock = null;
+
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -83,6 +86,14 @@ public class FlowerCodeSpawner : MonoBehaviour
 
     // ---- MÉTODOS PÚBLICOS ----
     #region Métodos públicos
+    /// <summary>
+    /// Metodo utilizado para coger el array de flores en el script PadLock y generar el codigo.
+    /// </summary>
+    /// <returns></returns>
+    public FlowerTypes[] GetFlowersArray()
+    {
+        return _flowers;
+    }
 
     #endregion
 
@@ -140,7 +151,10 @@ public class FlowerCodeSpawner : MonoBehaviour
             _flowers[i] = _singleFlower.GetComponent<FlowerTypes>();
             _flowers[i].DefineType(index);
         }
-
+        if (Padlock != null)
+        {
+            Padlock.CreatePadlockCode();
+        }
         Destroy(this);
     } // GenerateFlowers
     #endregion
