@@ -34,6 +34,11 @@ public class HidingSpot : MonoBehaviour
     /// </summary>
     [SerializeField] private int hidingSortingOrder = 10;
 
+    /// <summary>
+    /// Audio que suena el esconderse
+    /// </summary>
+    [SerializeField] private AudioSource hidingSound;
+
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -147,6 +152,11 @@ public class HidingSpot : MonoBehaviour
 
         hidingSprite.sortingOrder = hidingSortingOrder;
 
+        if (hidingSound != null)
+        {
+            hidingSound.Play();
+        }
+
         //EnemyVision.IsPlayerHidden = true; Provisional hasta qe sepamos como funciona el enemigo
         //Igualmente, desactivando al player no debería detectarlo.
         Debug.Log("Jugador escondido");
@@ -166,6 +176,11 @@ public class HidingSpot : MonoBehaviour
         _player.SetHidden(false);
 
         hidingSprite.sortingOrder = 0;
+
+        if (hidingSound != null)
+        {
+            hidingSound.Play();
+        }
 
         //EnemyVision.IsPlayerHidden = false; Provisional hasta qe sepamos como funciona el enemigo
         Debug.Log("Jugador salió del escondite");

@@ -210,6 +210,11 @@ public class GameManager : MonoBehaviour
     {
         return _diaActual;
     }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----
@@ -229,7 +234,6 @@ public class GameManager : MonoBehaviour
         // De momento no hay que transferir ningún setup
         // a otro manager
     }
-
 
     #endregion
 } // class GameManager 

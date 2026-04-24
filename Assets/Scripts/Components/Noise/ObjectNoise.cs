@@ -17,12 +17,14 @@ public class ObjectNoise : MonoBehaviour
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
     [SerializeField] private GameObject Circle;  // círculo de ruido que se genera
+
+    [SerializeField] private AudioSource throwSound;
     #endregion
-    
+
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
     #endregion
-    
+
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
     #endregion
@@ -34,6 +36,12 @@ public class ObjectNoise : MonoBehaviour
     /// </summary>
     public void GenerateNoise()
     {
+        //reproduce el sonido
+        if (throwSound != null)
+        {
+            throwSound.Play();
+        }
+
         // se instancia el círculo
         GameObject NewCircle = Instantiate(Circle, transform.position, transform.rotation);
         NoiseCircle noisecircle = NewCircle.GetComponent<NoiseCircle>();

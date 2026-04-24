@@ -98,8 +98,7 @@ public class ThrowingSystem : MonoBehaviour
                         noise.GenerateNoise();
                     }
 
-                    // reseteamos todas las variables a sus estados iniciales
-                    Debug.Log("llegó al final");
+                    // cambiamos todas las variables a sus estados iniciales
                     _inThrowingState = false;
                     _objectIsMoving = false;
                     _objectInHand = false;
@@ -112,7 +111,6 @@ public class ThrowingSystem : MonoBehaviour
 
                     // posición del cursor (con un pequeño offset a la derecha)
                     Cursor.transform.position = Movement.transform.position + new Vector3(1, 0, 0);
-                    //SwitchPublicObjectController();
                 }
             }
             else if (InputManager.Instance.ThrowWasPressedThisFrame())
@@ -151,19 +149,14 @@ public class ThrowingSystem : MonoBehaviour
         _objectPrefab = collision.GetComponent<GetObject>();
     }
 
-    /*private void OnTriggerExit2D(Collider2D collision)
-    {
-        _objectPrefab = collision.GetComponent<GetObject>();
-    }*/
-
-
     #endregion
 
     // ---- MÉTODOS PÚBLICOS ----
     #region Métodos públicos
 
     /// <summary>
-    /// 
+    /// Devuelve el valor de la variable global del objeto en mano al script GetObject del objeto 
+    /// al que el jugador se acerca
     /// </summary>
     /// <returns></returns>
     public bool PublicObjectController()
@@ -171,6 +164,9 @@ public class ThrowingSystem : MonoBehaviour
         return _objectInHand;
     }
 
+    /// <summary>
+    /// Cambia el valor de la variable _objectInHand
+    /// </summary>
     public void SwitchPublicObjectController()
     {
         _objectInHand = !_objectInHand;
@@ -217,7 +213,6 @@ public class ThrowingSystem : MonoBehaviour
         // creamos el throwable object con Instantiate al inicio del movimiento
         if (!_objectIsMoving)
         {
-            Debug.Log("creo el object");
             // if else para detectar si es roca o jarron
             _object = Instantiate(RockPrefab, Movement.transform.position, Movement.transform.rotation);
             _objectIsMoving = true;
@@ -226,7 +221,6 @@ public class ThrowingSystem : MonoBehaviour
         // movemos el objeto de manera progresiva
         _object.transform.position = Vector3.MoveTowards(_object.transform.position, Cursor.transform.position, 
             ObjectSpeed * Time.deltaTime);
-        Debug.Log("NOS MOVEMOS");
 
     } // ThrowObject 
     #endregion
