@@ -196,11 +196,6 @@ public class LevelManager : MonoBehaviour
     {
         Destroy(HUD);
     }
-
-    private void EndMessage(GameObject message)
-    {
-        message.SetActive(false);
-    }
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----

@@ -28,12 +28,12 @@ public class PlayerMovement : MonoBehaviour
     /// velocidad del jugador al caminar
     /// </summary>
     [SerializeField]
-    private float walkSpeed = 2.0f;
+    private float WalkSpeed = 2.0f;
     /// <summary>
     /// velocidad del jugador al correr
     /// </summary>
     [SerializeField]
-    private float runSpeed = 3.5f;
+    private float RunSpeed = 3.5f;
 
     /// <summary>
     /// audio que suena al caminar/correr
@@ -129,6 +129,25 @@ public class PlayerMovement : MonoBehaviour
         Debug.Log("se ha cambiado isHiden a: " + GetIsHidden());
     }
 
+    public float GetWalkSpeed()
+    {
+        return WalkSpeed;
+    }
+
+    public void SetWalkSpeed(float value)
+    {
+        WalkSpeed = value;
+    }
+
+    public float GetRunSpeed()
+    {
+        return RunSpeed;
+    }
+
+    public void SetRunSpeed(float value)
+    {
+        RunSpeed = value;
+    }
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----
@@ -148,7 +167,7 @@ public class PlayerMovement : MonoBehaviour
         //Debug.Log(direction);
 
         //Variable para guardar la velocidad que se usa en ese momento
-        float currentSpeed = walkSpeed;
+        float currentSpeed = WalkSpeed;
         // ¿Hay input de movimiento?
         bool isMoving = direction.magnitude > 0.1f;
 
@@ -204,7 +223,7 @@ public class PlayerMovement : MonoBehaviour
             {
 
                 //Usamos la velocidad de correr
-                currentSpeed = runSpeed;
+                currentSpeed = RunSpeed;
                 _animator.SetBool("Walking", false);
                 //_correr = true;
             }/* else
@@ -230,7 +249,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (isMoving && !_isHidden)
         {
-            if (currentSpeed == runSpeed)
+            if (currentSpeed == RunSpeed)
             {
                 walkSound.volume = 1.0f; // Volumen máximo al correr
                 walkSound.pitch = 1.2f;  // Opcional: un poco más agudo al correr suena más realista
