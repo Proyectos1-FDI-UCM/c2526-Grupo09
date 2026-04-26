@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Map
   - Collision
+  - Checkpoint
   layers:
   - Default
   - TransparentFX

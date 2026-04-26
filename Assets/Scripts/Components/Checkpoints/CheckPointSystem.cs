@@ -45,14 +45,16 @@ public class CheckPointSystem : MonoBehaviour
 
     private void Start()
     {
-        Player.position = PlayerPos;
-        Camera.position = PlayerPos;
-        _lastCheck = PlayerPos;
+        RestartPlayerPos();
     }
     #endregion
 
     // ---- MÉTODOS PÚBLICOS ----
     #region Métodos públicos
+    /// <summary>
+    /// Marca el manager de checkpoints como singleton porque no puede haber más de un
+    /// mangaer de checkpoints
+    /// </summary>
     public static CheckPointSystem Instance
     {
         get
@@ -62,11 +64,38 @@ public class CheckPointSystem : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Reinicia la posición del jugador a la del inicio del nivel
+    /// </summary>
+    public void RestartPlayerPos()
+    {
+        if (Player != null)
+        {
+            Player.position = PlayerPos;
+            Camera.position = PlayerPos;
+            _lastCheck = PlayerPos;
+            GameObject[] checks = GameObject.FindGameObjectsWithTag("Checkpoint");
+            for (int i = 0; i < checks.Length; i++)
+            {
+                CheckPoint checkpoint = checks[i].GetComponent<CheckPoint>();
+                checkpoint.RestartCheckpoint();
+            }
+        }
+    }
+
+    /// <summary>
+    /// Guarda la posición del último checkpoint que se ha recogido
+    /// </summary>
+    /// <param name="pos"></param>
     public void LastCheck(Vector2 pos)
     {
         _lastCheck = pos;
     }
 
+    /// <summary>
+    /// Devuelve la posición dle último checkpoint que se ha cogido
+    /// </summary>
+    /// <returns></returns>
     public Vector2 GetLastCheck()
     {
         return _lastCheck;

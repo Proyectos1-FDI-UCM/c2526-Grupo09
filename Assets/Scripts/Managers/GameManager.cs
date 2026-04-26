@@ -56,7 +56,7 @@ public class GameManager : MonoBehaviour
     // variables que gestionan la activación / desactivación de cheats
     private PlayerNoise _playerNoise;
     private PlayerMovement _playerMovement;
-    private bool _activateCheats;
+    private bool _activeCheats;
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -178,6 +178,7 @@ public class GameManager : MonoBehaviour
         System.GC.Collect();
         UnityEngine.SceneManagement.SceneManager.LoadScene(index);
         System.GC.Collect();
+        CheckPointSystem.Instance.RestartPlayerPos();
     } // ChangeScene
 
     //Metodo para pasar dia
@@ -236,7 +237,7 @@ public class GameManager : MonoBehaviour
     public void SetCheats()
     {
         // si los cheats no están activos
-        if (!_activateCheats)
+        if (!_activeCheats)
         {
             // se desactiva el script del círculo de ruido
             _playerNoise.enabled = false;
@@ -246,7 +247,7 @@ public class GameManager : MonoBehaviour
             // se duplica la velocidad de correr
             float runSpeed = _playerMovement.GetRunSpeed();
             _playerMovement.SetRunSpeed(runSpeed * 2);
-            _activateCheats = true;
+            _activeCheats = true;
         }
         else
         {
@@ -258,13 +259,9 @@ public class GameManager : MonoBehaviour
             // se reduce la velocidad de correr a la original
             float runSpeed = _playerMovement.GetRunSpeed();
             _playerMovement.SetRunSpeed(runSpeed / 2);
-            _activateCheats = false;
+            _activeCheats = false;
         }
-    }
-
-    public bool GetActiveCheats()
-    {
-        return _activateCheats;
+        PauseManager.Instance.ChangeCheatsText(_activeCheats);
     }
     #endregion
 

@@ -76,14 +76,6 @@ public class PauseManager : MonoBehaviour
             Pause = !Pause;
             PausePanel.SetActive(Pause);
             HUD.SetActive(!Pause);
-            if (GameManager.Instance.GetActiveCheats())
-            {
-                CheatsText.text = "Deactivate Cheats";
-            }
-            else
-            {
-                CheatsText.text = "Activate Cheats";
-            }
         }
     }
     #endregion
@@ -117,6 +109,18 @@ public class PauseManager : MonoBehaviour
         Pause = false;
         PausePanel.SetActive(false);
         HUD.SetActive(true);
+    }
+
+    public void ChangeCheatsText(bool cheats)
+    {
+        if (cheats)
+        {
+            CheatsText.text = "Deactivate Cheats";
+        }
+        else
+        {
+            CheatsText.text = "Activate Cheats";
+        }
     }
 
     #endregion

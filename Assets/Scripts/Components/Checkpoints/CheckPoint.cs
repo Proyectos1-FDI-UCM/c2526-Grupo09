@@ -59,6 +59,10 @@ public class CheckPoint : MonoBehaviour
 
     // ---- MÉTODOS PÚBLICOS ----
     #region Métodos públicos
+    public void RestartCheckpoint()
+    {
+        _checkPicked = false;
+    }
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----
