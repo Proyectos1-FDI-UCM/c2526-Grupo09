@@ -137,6 +137,8 @@ public class ThrowingSystem : MonoBehaviour
                 Movement.enabled = true;
                 Camera.enabled = true;
                 Cursor.SetActive(false);
+                // posición del cursor (con un pequeño offset a la derecha)
+                Cursor.transform.position = Movement.transform.position + new Vector3(1, 0, 0);
             }
         }
     } // Update
