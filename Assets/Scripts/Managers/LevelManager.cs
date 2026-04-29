@@ -35,8 +35,6 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI CurrentDay;
     [SerializeField] private TextMeshProUGUI FlowerObtained;
     [SerializeField] private GameObject HUD;
-    [SerializeField] private GameObject PanelControls;
-    [SerializeField] private GameObject PanelPause;
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -183,16 +181,6 @@ public class LevelManager : MonoBehaviour
     public void CheckpointPicked(bool picked)
     {
         CheckpointObtained.SetActive(picked);
-    }
-    public void ShowControls()
-    {
-        PanelControls.SetActive(true);
-        PanelPause.SetActive(false);
-    }
-    public void HideControls()
-    {
-        PanelControls.SetActive(false);
-        PanelPause.SetActive(true);
     }
     #endregion
 

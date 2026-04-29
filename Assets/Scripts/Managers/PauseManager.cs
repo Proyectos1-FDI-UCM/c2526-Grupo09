@@ -24,6 +24,7 @@ public class PauseManager : MonoBehaviour
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
     [SerializeField] private GameObject PausePanel;
+    [SerializeField] private GameObject ControlsPanel;
     [SerializeField] private TextMeshProUGUI CheatsText;
     [SerializeField] private GameObject EndPanel;
     [SerializeField] private GameObject HUD;
@@ -62,6 +63,7 @@ public class PauseManager : MonoBehaviour
     void Start()
     {
         PausePanel.SetActive(false);
+        ControlsPanel.SetActive(false);
         Pause = false;
         HUD.SetActive(true);
     }
@@ -73,9 +75,12 @@ public class PauseManager : MonoBehaviour
     {
         if (InputManager.Instance.PauseWasPressedThisFrame() && EndPanel.activeSelf==false) 
         {
-            Pause = !Pause;
-            PausePanel.SetActive(Pause);
-            HUD.SetActive(!Pause);
+            if (!ControlsPanel.activeSelf)
+            {
+                Pause = !Pause;
+                PausePanel.SetActive(Pause);
+                HUD.SetActive(!Pause);
+            }
         }
     }
     #endregion
@@ -125,6 +130,25 @@ public class PauseManager : MonoBehaviour
             CheatsText.text = "Activate Cheats";
         }
     }
+
+    /// <summary>
+    /// Muestra el panel de controles y oculta el de pausa. 
+    /// </summary>
+    public void ShowControls()
+    {
+        if (PausePanel != null) PausePanel.SetActive(false);
+        if (ControlsPanel != null) ControlsPanel.SetActive(true);
+    }
+
+    /// <summary>
+    /// Oculta el panel de controles y vuelve al de pausa.
+    /// </summary>
+    public void HideControls()
+    {
+        if (ControlsPanel != null) ControlsPanel.SetActive(false);
+        if (PausePanel != null) PausePanel.SetActive(true);
+    }
+
 
     #endregion
 

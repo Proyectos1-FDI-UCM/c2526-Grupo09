@@ -8,6 +8,7 @@
 
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using static UnityEngine.Rendering.DebugUI;
 
@@ -29,6 +30,8 @@ public class GameManager : MonoBehaviour
 
     #region Atributos del Inspector (serialized fields)
     [SerializeField] private GameObject player;  // jugador de la escena
+    [SerializeField] private AudioSource uiAudioSource;
+    [SerializeField] private AudioClip clickSound;
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -262,6 +265,17 @@ public class GameManager : MonoBehaviour
             _activeCheats = false;
         }
         PauseManager.Instance.ChangeCheatsText(_activeCheats);
+    }
+    /// <summary>
+    /// Metodo al que llamaran todos los botones del juegos al ser pulsados para repodrucir un sonido
+    /// </summary>
+    public void PlayClickSound()
+    {
+        if (uiAudioSource != null && clickSound != null)
+        {
+            // PlayOneShot permite que el sonido se solape 
+            uiAudioSource.PlayOneShot(clickSound);
+        }
     }
     #endregion
 
