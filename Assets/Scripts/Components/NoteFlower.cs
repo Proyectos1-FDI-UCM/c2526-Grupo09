@@ -5,8 +5,9 @@
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
 
-using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 // Añadir aquí el resto de directivas using
 
 
@@ -14,7 +15,7 @@ using UnityEngine;
 /// Antes de cada class, descripción de qué es y para qué sirve,
 /// usando todas las líneas que sean necesarias.
 /// </summary>
-public class PauseManager : MonoBehaviour
+public class NoteFlower : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
@@ -23,10 +24,10 @@ public class PauseManager : MonoBehaviour
     // públicos y de inspector se nombren en formato PascalCase
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
-    [SerializeField] private GameObject PausePanel;
-    [SerializeField] private TextMeshProUGUI CheatsText;
-    [SerializeField] private GameObject EndPanel;
-    [SerializeField] private GameObject HUD;
+    [SerializeField] private FlowerCodeSpawner Spawner;
+    [SerializeField] private Image[] ImagesFlower;
+    [SerializeField] private GameObject NotePanel;
+    [SerializeField] private TextMeshProUGUI TextNote;
 
     #endregion
 
@@ -39,10 +40,9 @@ public class PauseManager : MonoBehaviour
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
 
-    /// <summary>
-    /// Instancia única de la clase (singleton).
-    /// </summary>
-    private static PauseManager _instance;
+    private bool _nearNote;
+    private bool _openNote;
+
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -51,19 +51,15 @@ public class PauseManager : MonoBehaviour
     // Por defecto están los típicos (Update y Start) pero:
     // - Hay que añadir todos los que sean necesarios
     // - Hay que borrar los que no se usen 
-    private void Awake()
-    {
-        _instance = this;
-    }
+
     /// <summary>
     /// Start is called on the frame when a script is enabled just before 
     /// any of the Update methods are called the first time.
     /// </summary>
     void Start()
     {
-        PausePanel.SetActive(false);
-        Pause = false;
-        HUD.SetActive(true);
+        NotePanel.SetActive(false);
+        _openNote = false;
     }
 
     /// <summary>
@@ -71,12 +67,56 @@ public class PauseManager : MonoBehaviour
     /// </summary>
     void Update()
     {
-        if (InputManager.Instance.PauseWasPressedThisFrame() && EndPanel.activeSelf==false) 
+        //solo si esta tocando la nota y presionando E se ejecutara
+        if (_nearNote && InputManager.Instance.InteractWasPressedThisFrame())
         {
-            Pause = !Pause;
-            PausePanel.SetActive(Pause);
-            HUD.SetActive(!Pause);
+            if (_openNote)
+            {
+                HideNote();
+            }
+            else ShowNote();
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.GetComponent<PlayerMovement>() != null)
+        {
+            _nearNote = true;
+        }
+
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.GetComponent<PlayerMovement>() != null)
+        {
+            _nearNote = false;
+        }
+    }
+
+    /// <summary>
+    /// enseña la nota que contiene el código
+    /// </summary>
+    public void ShowNote()
+    {
+        //recorre el array de las 4 flores y coge sus sprites
+        FlowerTypes[] flowers = Spawner.GetFlowersArray();
+        for (int i = 0; i < flowers.Length; i++)
+        {
+            SpriteRenderer sprite = flowers[i].GetComponent<SpriteRenderer>();
+            ImagesFlower[i].sprite = sprite.sprite;
+        }
+
+        NotePanel.SetActive(true);
+        _openNote = true;
+        TextNote.text = "Pray thy God may save us, for this world is doomed. \nIf you still harbour hope in your heart, may these four flowers guide you to its heart\n Might this be the only way out of this apocalypse";
+    }
+    public void HideNote()
+    {
+
+        NotePanel.SetActive(false);
+        _openNote = false;
+
     }
     #endregion
 
@@ -87,44 +127,6 @@ public class PauseManager : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
-
-    public TextMeshProUGUI CheatsEnabledText
-    {
-        get { return CheatsText; }
-    }
-
-    public bool Pause { get; private set; }
-
-    public static PauseManager Instance
-    {
-        get
-        {
-            Debug.Assert(_instance != null);
-            return _instance;
-        }
-    } // Instance
-
-    /// <summary>
-    /// Restaura el juego al estado al que estaba
-    /// </summary>
-    public void Resume()
-    {
-        Pause = false;
-        PausePanel.SetActive(false);
-        HUD.SetActive(true);
-    }
-
-    public void ChangeCheatsText(bool cheats)
-    {
-        if (cheats)
-        {
-            CheatsText.text = "Deactivate Cheats";
-        }
-        else
-        {
-            CheatsText.text = "Activate Cheats";
-        }
-    }
 
     #endregion
 
@@ -137,5 +139,5 @@ public class PauseManager : MonoBehaviour
 
     #endregion
 
-} // class PauseManager 
+} // class NoteFlower 
 // namespace

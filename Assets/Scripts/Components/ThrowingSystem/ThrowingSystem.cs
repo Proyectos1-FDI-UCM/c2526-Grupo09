@@ -1,5 +1,6 @@
 //---------------------------------------------------------
-// Breve descripción del contenido del archivo
+// Script que contiene todo aquello relacionado con lanzar objetos por el mundo: tiene en cuenta la lógica entre los distintos
+// objetos del mundo, los controles, junto a el lanzamiento del objeto y el cursor. 
 // Diego Martín
 // Bouquet Of Sins
 // Proyectos 1 - Curso 2025-26
@@ -11,8 +12,14 @@ using UnityEngine.Timeline;
 
 
 /// <summary>
-/// Antes de cada class, descripción de qué es y para qué sirve,
-/// usando todas las líneas que sean necesarias.
+/// Clase que gestiona el sistema de lanzamiento de objetos arrojadizos. En esta se encuentra toda la lógica entre los objetos
+/// del mundo, es decir, tiene una variable global para todos ellos la cual le dice a los montones de piedras (objetos)
+/// si el jugador ya tiene un objeto en mano o no, ya que sólo puede tener uno a la vez. Además, se encarga de entrar/salir del
+/// nuevo modo (lanzamiento) y del movimiento del cursor en dicho modo.
+/// Esta clase consta de dos métodos públicos, que ayudan con la gestión de la variable global _objectInHand:
+/// PublicObjectController(): devuelve el valor de dicha variable.
+/// SwitchPublicObjectController(): cambia el valor de la variable global, útil para cambiar el valor de manera indirecta
+/// desde otro script (GetObject.cs).
 /// </summary>
 public class ThrowingSystem : MonoBehaviour
 {
@@ -21,7 +28,6 @@ public class ThrowingSystem : MonoBehaviour
 
     [Header("Prefabs")]
     [SerializeField] private GameObject RockPrefab;
-    // [SerializeField] private GameObject VasePrefab;
     [SerializeField] private GameObject Cursor;
 
     [Header("Scripts")]
@@ -36,16 +42,6 @@ public class ThrowingSystem : MonoBehaviour
 
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
-
-    /// <summary>
-    /// Detecta si se ha entrado en el modo lanzamiento o no
-    /// </summary>
-    private bool _inThrowingState = false;
-
-    /// <summary>
-    /// Es True si se ha confirmado la posición del cursor, False en caso contrario
-    /// </summary>
-    private bool _throwConfirmed = false;
     
     /// <summary>
     /// Es True si el objeto lanzado está en movimiento, False en caso contrario
@@ -56,6 +52,8 @@ public class ThrowingSystem : MonoBehaviour
     /// Es True si el jugador ya tiene un objeto, False en caso contrario
     /// </summary>
     private bool _objectInHand = false;
+
+    private bool _inThrowingState = false;
 
     private GetObject _objectPrefab;
     private GameObject _object;
@@ -97,12 +95,12 @@ public class ThrowingSystem : MonoBehaviour
                     {
                         noise.GenerateNoise();
                     }
+                    Destroy(_object);
 
                     // cambiamos todas las variables a sus estados iniciales
-                    _inThrowingState = false;
                     _objectIsMoving = false;
                     _objectInHand = false;
-                    _throwConfirmed = false;
+                    _inThrowingState = false;
 
                     // volvemos a nuestro estado inicial (habilitamos el jugador y la cámara y escondemos el cursor)
                     Movement.enabled = true;
@@ -115,20 +113,23 @@ public class ThrowingSystem : MonoBehaviour
             }
             else if (InputManager.Instance.ThrowWasPressedThisFrame())
             {
+                // invertimos el valor del booleano
+                _inThrowingState = !_inThrowingState;
+            }
+            else if (_inThrowingState)
+            {
                 // comprobamos si el jugador tiene seleccionada la posición para lanzar el objeto o si quiere salir/entrar en el estado de lanzamiento
-                if (_throwConfirmed)
+                if (InputManager.Instance.ConfirmThrowWasPressedThisFrame())
                 {
                     // comenzamos el movimiento del objeto
                     ThrowObject();
                     LevelManager.Instance.RockPicked(false);
                 }
-                // invertimos el valor del booleano para detectar si empieza o termina el estado de lanzamiento
-                _inThrowingState = !_inThrowingState;
-            }
-            else if (_inThrowingState)
-            {
-                // movimiento del cursor
-                CursorMovement();
+                else
+                {
+                    // movimiento del cursor
+                    CursorMovement();
+                }
             }
             else
             {
@@ -136,9 +137,6 @@ public class ThrowingSystem : MonoBehaviour
                 Movement.enabled = true;
                 Camera.enabled = true;
                 Cursor.SetActive(false);
-                
-                // posición del cursor (con un pequeño offset a la derecha)
-                Cursor.transform.position = Movement.transform.position + new Vector3(1, 0, 0);
             }
         }
     } // Update
@@ -187,21 +185,12 @@ public class ThrowingSystem : MonoBehaviour
         Camera.enabled = false;
         Cursor.SetActive(true);
 
-        if (InputManager.Instance.ConfirmThrowWasPressedThisFrame())
-        {
-            // invertimos el valor
-            _throwConfirmed = !_throwConfirmed;
-        }
+        // obtenemos la dirección del InputManager
+        Vector2 direction = InputManager.Instance.MovementVector;
+        Vector3 cursorDir = new Vector3(direction.x, direction.y, Cursor.transform.position.z);
 
-        if (!_throwConfirmed)
-        {
-            // obtenemos la dirección del InputManager
-            Vector2 direction = InputManager.Instance.MovementVector;
-            Vector3 cursorDir = new Vector3(direction.x, direction.y, Cursor.transform.position.z);
-
-            // movimiento del cursor
-            Cursor.transform.Translate(cursorDir * CursorSpeed * Time.deltaTime);
-        }
+        // movimiento del cursor
+        Cursor.transform.Translate(cursorDir * CursorSpeed * Time.deltaTime);
         
     } // MovimientoCursor
 
