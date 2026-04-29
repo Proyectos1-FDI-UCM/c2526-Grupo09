@@ -364,7 +364,6 @@ public class EnemyLogic : MonoBehaviour
             {
                 ExecuteRespawn();
             }
-            return;
         }
 
         if (_isPlayerVisible)
