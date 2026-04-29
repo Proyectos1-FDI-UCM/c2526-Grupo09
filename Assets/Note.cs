@@ -5,7 +5,6 @@
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
 
-using TMPro;
 using UnityEngine;
 // Añadir aquí el resto de directivas using
 
@@ -14,7 +13,7 @@ using UnityEngine;
 /// Antes de cada class, descripción de qué es y para qué sirve,
 /// usando todas las líneas que sean necesarias.
 /// </summary>
-public class PauseManager : MonoBehaviour
+public class Note : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
@@ -23,13 +22,10 @@ public class PauseManager : MonoBehaviour
     // públicos y de inspector se nombren en formato PascalCase
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
-    [SerializeField] private GameObject PausePanel;
-    [SerializeField] private TextMeshProUGUI CheatsText;
-    [SerializeField] private GameObject EndPanel;
-    [SerializeField] private GameObject HUD;
-
+    [SerializeField] FlowerCodeSpawner spawner;
+    [SerializeField]
     #endregion
-
+    
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
     // Documentar cada atributo que aparece aquí.
@@ -39,31 +35,22 @@ public class PauseManager : MonoBehaviour
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
 
-    /// <summary>
-    /// Instancia única de la clase (singleton).
-    /// </summary>
-    private static PauseManager _instance;
     #endregion
-
+    
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
-
+    
     // Por defecto están los típicos (Update y Start) pero:
     // - Hay que añadir todos los que sean necesarios
     // - Hay que borrar los que no se usen 
-    private void Awake()
-    {
-        _instance = this;
-    }
+    
     /// <summary>
     /// Start is called on the frame when a script is enabled just before 
     /// any of the Update methods are called the first time.
     /// </summary>
     void Start()
     {
-        PausePanel.SetActive(false);
-        Pause = false;
-        HUD.SetActive(true);
+        
     }
 
     /// <summary>
@@ -71,12 +58,7 @@ public class PauseManager : MonoBehaviour
     /// </summary>
     void Update()
     {
-        if (InputManager.Instance.PauseWasPressedThisFrame() && EndPanel.activeSelf==false) 
-        {
-            Pause = !Pause;
-            PausePanel.SetActive(Pause);
-            HUD.SetActive(!Pause);
-        }
+        
     }
     #endregion
 
@@ -88,46 +70,8 @@ public class PauseManager : MonoBehaviour
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
 
-    public TextMeshProUGUI CheatsEnabledText
-    {
-        get { return CheatsText; }
-    }
-
-    public bool Pause { get; private set; }
-
-    public static PauseManager Instance
-    {
-        get
-        {
-            Debug.Assert(_instance != null);
-            return _instance;
-        }
-    } // Instance
-
-    /// <summary>
-    /// Restaura el juego al estado al que estaba
-    /// </summary>
-    public void Resume()
-    {
-        Pause = false;
-        PausePanel.SetActive(false);
-        HUD.SetActive(true);
-    }
-
-    public void ChangeCheatsText(bool cheats)
-    {
-        if (cheats)
-        {
-            CheatsText.text = "Deactivate Cheats";
-        }
-        else
-        {
-            CheatsText.text = "Activate Cheats";
-        }
-    }
-
     #endregion
-
+    
     // ---- MÉTODOS PRIVADOS ----
     #region Métodos Privados
     // Documentar cada método que aparece aquí
@@ -135,7 +79,7 @@ public class PauseManager : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
 
-    #endregion
+    #endregion   
 
-} // class PauseManager 
+} // class Note 
 // namespace
