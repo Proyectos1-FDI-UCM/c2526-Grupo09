@@ -88,7 +88,7 @@ public class PlayerMovement : MonoBehaviour
                 // Solo intentamos hacer ruido si nos hemos movido Y tenemos el script de ruido
                 if (_posAnterior != transform.position)
                 {
-                    if (_playerNoise != null)
+                    if (_playerNoise != null && !GameManager.Instance.GetActiveCheats())
                     {
                         _playerNoise.PlayerMoving();
                     }
