@@ -180,10 +180,7 @@ public class LevelManager : MonoBehaviour
     /// </summary>
     public void CheckpointPicked(bool picked)
     {
-        if (CheckpointObtained  != null)
-        {
-            CheckpointObtained.SetActive(picked);
-        }
+        CheckpointObtained.SetActive(picked);
     }
     #endregion
 

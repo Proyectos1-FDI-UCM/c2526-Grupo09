@@ -1,6 +1,6 @@
 //---------------------------------------------------------
-// Hace que la flor spawnee cuando el jugador mata a un NPC
-// Carmen Rosino Vílchez
+// Breve descripción del contenido del archivo
+// Responsable de la creación de este archivo
 // Bouquet Of Sins
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
@@ -18,8 +18,8 @@ public class FlowerSpawn : MonoBehaviour
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
     [SerializeField] private GameObject Flower;
-    [SerializeField] private GameObject Character;
-    [SerializeField] private GameObject DeadCharacter;
+    [SerializeField] private GameObject Gabriel;
+    [SerializeField] private GameObject DeadGabriel;
 
     [SerializeField] private AudioSource killSound;
     #endregion
@@ -41,7 +41,7 @@ public class FlowerSpawn : MonoBehaviour
     void Start()
     {
         Flower.SetActive(false);
-        DeadCharacter.SetActive(false);
+        DeadGabriel.SetActive(false);
         _insideCollider = false;
     }
 
@@ -53,7 +53,7 @@ public class FlowerSpawn : MonoBehaviour
         // Solo actuamos si el jugador está dentro Y NO hay diálogo activo
         if (_insideCollider && !DialogueManager.Instance.GetIsDialogueInProgress())
         {
-            if (!_hasPlayedSound && Character != null && Character.activeSelf)
+            if (!_hasPlayedSound && Gabriel != null && Gabriel.activeSelf)
             {
                 _hasPlayedSound = true; // Lo primero es bloquear futuras ejecuciones
 
@@ -68,8 +68,8 @@ public class FlowerSpawn : MonoBehaviour
 
                 // Cambios de estado
                 Flower.SetActive(true);
-                DeadCharacter.SetActive(true);
-                Character.SetActive(false);
+                DeadGabriel.SetActive(true);
+                Gabriel.SetActive(false);
             }
         }
     }

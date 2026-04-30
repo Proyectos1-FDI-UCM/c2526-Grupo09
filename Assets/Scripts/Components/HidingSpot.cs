@@ -6,7 +6,6 @@
 //---------------------------------------------------------
 
 using UnityEngine;
-using UnityEngine.Rendering.Universal;
 // Añadir aquí el resto de directivas using
 
 
@@ -59,25 +58,12 @@ public class HidingSpot : MonoBehaviour
     /// Bool que comprueba si ya está escondido o no.
     /// </summary>
     private bool _isHiding;
-
-    private GameObject _bush;
-    private Light2D _light;
-    private SpriteRenderer _sprite;
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
 
-    void Start()
-    {
-        _bush = transform.Find("Bush").gameObject;
-        if (_bush  != null )
-        {
-            Debug.Log("Existe el arbusto");
-            _light = _bush.GetComponent<Light2D>();
-            _sprite = _bush.GetComponent<SpriteRenderer>();
-        }
-    }
+
 
     
     /// En el Update() va a controlar si está adentro del collider;
@@ -90,16 +76,12 @@ public class HidingSpot : MonoBehaviour
             if (InputManager.Instance.InteractWasPressedThisFrame())
             {
                 ExitHiding();
-                _light.enabled = true;
-                _sprite.color = Color.white;
             }
         }
         // Si no estás escondido, necesitas estar dentro del collider
         else if (_insideCollider && InputManager.Instance.InteractWasPressedThisFrame())
         {
             EnterHiding();
-            _light.enabled = false;
-            _sprite.color = new Color32(170, 170, 170, 255);
         }
     }
 

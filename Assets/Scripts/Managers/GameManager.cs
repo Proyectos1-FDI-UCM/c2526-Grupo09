@@ -242,6 +242,8 @@ public class GameManager : MonoBehaviour
         // si los cheats no están activos
         if (!_activeCheats)
         {
+            // se desactiva el script del círculo de ruido
+            _playerNoise.enabled = false;
             // se duplica la velocidad de caminar
             float walkSpeed = _playerMovement.GetWalkSpeed();
             _playerMovement.SetWalkSpeed(walkSpeed * 2);
@@ -252,6 +254,8 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            // se activa el script del círculo de ruido
+            _playerNoise.enabled = true;
             // se reduce la velocidad de caminar a la original
             float walkSpeed = _playerMovement.GetWalkSpeed();
             _playerMovement.SetWalkSpeed(walkSpeed / 2);
@@ -272,11 +276,6 @@ public class GameManager : MonoBehaviour
             // PlayOneShot permite que el sonido se solape 
             uiAudioSource.PlayOneShot(clickSound);
         }
-    }
-
-    public bool GetActiveCheats()
-    {
-        return _activeCheats;
     }
     #endregion
 
