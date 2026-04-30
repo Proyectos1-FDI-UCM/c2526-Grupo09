@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterName: Gabriel
   profilePhoto: {fileID: 2649303319529882883, guid: dfedf569182779644b3b030c8eb52a2b, type: 3}
+  typingSound: {fileID: 8300000, guid: 540d9dcbad61f5943aa207ab388d24ca, type: 3}

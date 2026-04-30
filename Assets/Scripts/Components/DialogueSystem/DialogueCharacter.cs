@@ -17,15 +17,21 @@ namespace DialogueSystem
     ///</summary>
     public class DialogueCharacter : ScriptableObject 
     {
-        //Para el inspector
+        // Para el inspector.
 
-        //Tener la info del personaje en el inspector
+        // Tener la info del personaje en el inspector.
         [Header("Character Info")] 
         [SerializeField] private string characterName;
         [SerializeField] private Sprite profilePhoto;
 
+        // Tener una voz única.
+        [Header("Dialogue Sound")]
+        [SerializeField] private AudioClip typingSound;
+
+        // => Es una abreviación para cuando un método devuelva algo concreto y quede más elegante.
         public string Name => characterName;
         public Sprite ProfilePhoto => profilePhoto;
+        public AudioClip TypingSound => typingSound;
     }
 
 

@@ -13,29 +13,28 @@ MonoBehaviour:
   m_Name: DialogueLevelBeta
   m_EditorClassIdentifier: 
   dialogueTurnsList:
-  - <Character>k__BackingField: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
+  - character: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
     dialogueLine: Beware!
-  - <Character>k__BackingField: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
+  - character: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
     dialogueLine: An enemy is walking nearby.
-  - <Character>k__BackingField: {fileID: 11400000, guid: 463fc10d7c6bbde45848383bf1128c73, type: 2}
+  - character: {fileID: 11400000, guid: 463fc10d7c6bbde45848383bf1128c73, type: 2}
     dialogueLine: E-enemy?
-  - <Character>k__BackingField: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
-    dialogueLine: 'These creatures lose control when they hear the slighest noise. '
-  - <Character>k__BackingField: {fileID: 11400000, guid: 7bd2146755de1cd40a43e1f48fc82523, type: 2}
-    dialogueLine: No way.
-  - <Character>k__BackingField: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
+  - character: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
+    dialogueLine: 'As Lily said, these creatures lose control when they hear the
+      slighest noise. '
+  - character: {fileID: 11400000, guid: b84bc399ccd85c047a921a5d9bf97124, type: 2}
+    dialogueLine: hum...
+  - character: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
     dialogueLine: Don't be too loud around them.
-  - <Character>k__BackingField: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
-    dialogueLine: There may be some stones dropped around.
-  - <Character>k__BackingField: {fileID: 11400000, guid: bb224bbb551a96f4c8b1d7b7b7f3c839, type: 2}
-    dialogueLine: Why would I need those?
-  - <Character>k__BackingField: {fileID: 11400000, guid: 67ed60f38af4b474e8fb39bb24c7b0af, type: 2}
-    dialogueLine: Do they eat them or what...
-  - <Character>k__BackingField: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
+  - character: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
+    dialogueLine: And you know, there are bushes around.
+  - character: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
+    dialogueLine: They can't see as much, but they are not blind!
+  - character: {fileID: 11400000, guid: b0515a637addc26428dc0bb0046873b4, type: 2}
+    dialogueLine: I don't see myself doing this, Agnus.
+  - character: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
     dialogueLine: No, silly!
-  - <Character>k__BackingField: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
-    dialogueLine: You can drop them loudly and they'll go wherever they fall.
-  - <Character>k__BackingField: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
-    dialogueLine: And remember to bring me the flower before you get killed.
-  - <Character>k__BackingField: {fileID: 11400000, guid: b84bc399ccd85c047a921a5d9bf97124, type: 2}
-    dialogueLine: Don't scare me, little lamb!
+  - character: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
+    dialogueLine: I'll be with you all the time.
+  - character: {fileID: 11400000, guid: 2f37fd23eb690314993c9e733bfa4eca, type: 2}
+    dialogueLine: Ummm...

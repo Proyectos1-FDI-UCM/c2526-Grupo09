@@ -81,6 +81,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41116ba956d465c48be5dcd91f88deef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyLogic: {fileID: 0}
 --- !u!1 &4633669152838472585
 GameObject:
   m_ObjectHideFlags: 0
@@ -198,7 +199,7 @@ MonoBehaviour:
   ChasingTime: 10
   PatrolSpeed: 1
   ChasingSpeed: 1
-  Player: {fileID: 0}
+  Player: {fileID: 6522229758989385404, guid: 522f76ecd2425fe4aa6d9911eb852ec3, type: 3}
   seenSound: {fileID: -4018230111188539}
   attackSound: {fileID: 3665705693836247104}
 --- !u!61 &8071511312614493079

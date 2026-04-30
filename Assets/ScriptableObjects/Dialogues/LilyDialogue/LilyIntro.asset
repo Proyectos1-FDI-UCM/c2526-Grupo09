@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd1b51748c43e8043b83edef630f10d1, type: 3}
+  m_Name: LilyIntro
+  m_EditorClassIdentifier: 
+  dialogueTurnsList:
+  - character: {fileID: 11400000, guid: 93c580ac30e7bd54b84db33920e85a6f, type: 2}
+    dialogueLine: 'Emm... umm... '
+  - character: {fileID: 11400000, guid: e87ed0745fc98bd4b898847d672cbb01, type: 2}
+    dialogueLine: Hey, pretty!
+  - character: {fileID: 11400000, guid: 93c580ac30e7bd54b84db33920e85a6f, type: 2}
+    dialogueLine: Have you seen any flowers around here?
+  - character: {fileID: 11400000, guid: b84bc399ccd85c047a921a5d9bf97124, type: 2}
+    dialogueLine: Shhh! This is not place to talk!
+  - character: {fileID: 11400000, guid: a1580e768646a4d4cb7e106bba431d0b, type: 2}
+    dialogueLine: Oh- so you have seen them already?!
+  - character: {fileID: 11400000, guid: 463fc10d7c6bbde45848383bf1128c73, type: 2}
+    dialogueLine: See who?
+  - character: {fileID: 11400000, guid: a1580e768646a4d4cb7e106bba431d0b, type: 2}
+    dialogueLine: Those horrifying creatures walking around!
+  - character: {fileID: 11400000, guid: a1580e768646a4d4cb7e106bba431d0b, type: 2}
+    dialogueLine: The smallest sound I made, they would chase to death.
+  - character: {fileID: 11400000, guid: 93c580ac30e7bd54b84db33920e85a6f, type: 2}
+    dialogueLine: I have never run as fast.
+  - character: {fileID: 11400000, guid: b84bc399ccd85c047a921a5d9bf97124, type: 2}
+    dialogueLine: You are scaring me!
+  - character: {fileID: 11400000, guid: 463fc10d7c6bbde45848383bf1128c73, type: 2}
+    dialogueLine: Why isn't nobody chasing us then?
+  - character: {fileID: 11400000, guid: 93c580ac30e7bd54b84db33920e85a6f, type: 2}
+    dialogueLine: Waterfalls or lakes keep them away for some reason...
+  - character: {fileID: 11400000, guid: 1e845b191a59137458fd74ddf8544cf4, type: 2}
+    dialogueLine: That is why I'm here. Waiting till death.
+  - character: {fileID: 11400000, guid: 7bd2146755de1cd40a43e1f48fc82523, type: 2}
+    dialogueLine: No! We are not dying. I won't let that happen.
+  - character: {fileID: 11400000, guid: e87ed0745fc98bd4b898847d672cbb01, type: 2}
+    dialogueLine: 'Haha, I wish. '
+  - character: {fileID: 11400000, guid: 93c580ac30e7bd54b84db33920e85a6f, type: 2}
+    dialogueLine: Whatever, if you ever feel like something or someone is chasing
+      you, hide behind a big bush.
+  - character: {fileID: 11400000, guid: 93c580ac30e7bd54b84db33920e85a6f, type: 2}
+    dialogueLine: One like the one right there.
+  - character: {fileID: 11400000, guid: 93c580ac30e7bd54b84db33920e85a6f, type: 2}
+    dialogueLine: They aren't capable of finding you once you have hidden.
+  - character: {fileID: 11400000, guid: 463fc10d7c6bbde45848383bf1128c73, type: 2}
+    dialogueLine: ... thanks for the advice, tho.
+  - character: {fileID: 11400000, guid: bb224bbb551a96f4c8b1d7b7b7f3c839, type: 2}
+    dialogueLine: May I know your name?
+  - character: {fileID: 11400000, guid: 93c580ac30e7bd54b84db33920e85a6f, type: 2}
+    dialogueLine: Call me Lily, Eve.
+  - character: {fileID: 11400000, guid: b84bc399ccd85c047a921a5d9bf97124, type: 2}
+    dialogueLine: Wait- how did you know my name already?
+  - character: {fileID: 11400000, guid: e87ed0745fc98bd4b898847d672cbb01, type: 2}
+    dialogueLine: Oh! I didn't. You are as pretty as how I imagined true Eve.
+  - character: {fileID: 11400000, guid: 67ed60f38af4b474e8fb39bb24c7b0af, type: 2}
+    dialogueLine: Oh-
+  - character: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
+    dialogueLine: Eve, c'mon. We are running out of time.
+  - character: {fileID: 11400000, guid: bb224bbb551a96f4c8b1d7b7b7f3c839, type: 2}
+    dialogueLine: Ehh... Umm... see you, Lily!
+  - character: {fileID: 11400000, guid: 93c580ac30e7bd54b84db33920e85a6f, type: 2}
+    dialogueLine: Take care, Eve.

@@ -101,6 +101,11 @@ public class DialogueManager : MonoBehaviour
     private int _currentCharIndex = 0;
     private float _typingTimer = 0f;
 
+    /// <summary>
+    /// Sonido por caracteres.
+    /// </summary>
+    private AudioClip _currentTypingSound;
+
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -171,18 +176,24 @@ public class DialogueManager : MonoBehaviour
             _typingTimer += Time.deltaTime;
             while (_typingTimer >= typingSpeed && _currentCharIndex < _pendingLine.Length)
             {
+                //Guardamos la letra que toca para reproducir un sonido.
+                char currentChar = _pendingLine[_currentCharIndex];
+
                 dialogueUI.AppendToDialogArea(_pendingLine[_currentCharIndex].ToString());
                 _currentCharIndex++;
                 _typingTimer -= typingSpeed;
+
+                if (_currentTypingSound != null && dialogSound != null && currentChar != ' ')
+                {
+                    // Uso playOneShot para reproducir el sonido completo y varios a la vez, si no no se escucharía.
+                    dialogSound.PlayOneShot(_currentTypingSound);
+                }
             }
 
             if (_currentCharIndex >= _pendingLine.Length)
             {
                 _isTyping = false;
-                if (dialogSound != null)
-                {
-                    dialogSound.Stop();
-                }
+          
             }
         }
 
@@ -190,16 +201,16 @@ public class DialogueManager : MonoBehaviour
         if (_isTyping && _skipTyping)
         {
             //Pasamos el resto del texto que queda, usando substring.
-            string remaining = _pendingLine.Substring(_currentCharIndex);
-            dialogueUI.AppendToDialogArea(remaining);
+            while (_currentCharIndex < _pendingLine.Length)
+            {
+                dialogueUI.AppendToDialogArea(_pendingLine[_currentCharIndex].ToString());
+                _currentCharIndex++;
+            }
+
             _isTyping = false;
             _skipTyping = false;
             Debug.Log("Terminó de escribir (skip)");
 
-            if (dialogSound != null)
-            {
-                dialogSound.Stop();
-            }
         }
 
         // Input
@@ -250,10 +261,7 @@ public class DialogueManager : MonoBehaviour
         _waitingForInput = true;
         dialogueUI.ClearDialogArea();
 
-        if (dialogSound != null)
-        {
-            dialogSound.Play();
-        }
+        
     }
 
     /// <summary>
@@ -274,6 +282,8 @@ public class DialogueManager : MonoBehaviour
         //Adjuntamos información de los scriptableObjects en la caja de diálogo.
         dialogueUI.setCharacterInfo(currentTurn.GetCharacter());
         dialogueUI.ClearDialogArea();
+
+        _currentTypingSound = currentTurn.GetCharacter()?.TypingSound;
 
         //Reproducción por carácteres.
         StartTyping(currentTurn);

@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd1b51748c43e8043b83edef630f10d1, type: 3}
+  m_Name: FirstEnemy
+  m_EditorClassIdentifier: 
+  dialogueTurnsList:
+  - character: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
+    dialogueLine: See? It is not that scary.
+  - character: {fileID: 11400000, guid: b84bc399ccd85c047a921a5d9bf97124, type: 2}
+    dialogueLine: A-are you kidding me? I've never been as close to death!
+  - character: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
+    dialogueLine: You are too weak, Eve.
+  - character: {fileID: 11400000, guid: 7bd2146755de1cd40a43e1f48fc82523, type: 2}
+    dialogueLine: Stupid lamb...
+  - character: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
+    dialogueLine: Don't. By the way, you were lucky.
+  - character: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
+    dialogueLine: Some of those, block the whole path and need to get distracted.
+  - character: {fileID: 11400000, guid: b84bc399ccd85c047a921a5d9bf97124, type: 2}
+    dialogueLine: How am I supposed to do that?!
+  - character: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
+    dialogueLine: Stones- if you ever find yourself on this situation, go find some
+      rocks.
+  - character: {fileID: 11400000, guid: 7bd2146755de1cd40a43e1f48fc82523, type: 2}
+    dialogueLine: S-stones?!
+  - character: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
+    dialogueLine: No questions. Go foward.

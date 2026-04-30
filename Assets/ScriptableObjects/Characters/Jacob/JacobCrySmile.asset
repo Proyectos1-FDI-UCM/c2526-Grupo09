@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterName: Jacob
   profilePhoto: {fileID: 7301227492631828093, guid: 7dd3ab33e2b6c744eb2a110af8c53c4b, type: 3}
+  typingSound: {fileID: 8300000, guid: cf5ba76c89512f84b8a35c6392466eca, type: 3}

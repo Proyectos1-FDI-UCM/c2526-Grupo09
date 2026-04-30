@@ -224,7 +224,6 @@ public class PlayerMovement : MonoBehaviour
 
                 //Usamos la velocidad de correr
                 currentSpeed = RunSpeed;
-                _animator.SetBool("Walking", false);
                 //_correr = true;
             }/* else
             {

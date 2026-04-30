@@ -5,6 +5,7 @@
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
 
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions.Must;
 using UnityEngine.Rendering;
@@ -48,6 +49,8 @@ public class FollowPlayer : MonoBehaviour
     /// </summary>
     [SerializeField] private float MaxDistancePan = 1f;
 
+    [SerializeField] private LayerMask OcclusionMask;
+
 
     #endregion
 
@@ -61,6 +64,13 @@ public class FollowPlayer : MonoBehaviour
     // Ejemplo: _maxHealthPoints
     private Vector3 _panOffset;
     private Vector3 _lookOffset;
+    private SpriteRenderer lastRenderer;
+
+    /// <summary>
+    /// Listas para guardar los objetos con los que colisiona el raycasting 
+    /// </summary>
+    private List<SpriteRenderer> _transparentObjects = new List<SpriteRenderer>();
+    private List<SpriteRenderer> currentHits = new List<SpriteRenderer>();
 
     #endregion
 
@@ -83,13 +93,107 @@ public class FollowPlayer : MonoBehaviour
     /// Se ejecuta cada frame, después de que se han llamado todas las funciones.
     /// Se utiliza esto para garantizar que la posición de la cámara se actualice después de que se haya movido el jugador.
     /// </summary>
+    /// 
+
     private void LateUpdate()
     {
+
+        currentHits.Clear();
+
+        // Creamos el rayo para el raycasting
+        Vector2  origin = transform.position;
+        Vector2 direction = (Target.position - transform.position);
+        float distance = direction.magnitude;
+
+        // Uso RaycastAll para que detecte más de un objeto.
+        RaycastHit2D[] hits = Physics2D.RaycastAll(origin, direction.normalized, distance, OcclusionMask);
+
+        
+        for (int i = 0; i < hits.Length; i++)
+        {
+            // Guardamos el objeto del array en una variable local.
+
+            RaycastHit2D hit = hits[i];
+
+            // Si es distinto del target (player).
+            if (hit.transform != Target)
+            {
+                // Guardamos el spriterenderer del objeto colisionado si tiene.
+                SpriteRenderer rend = hit.collider.GetComponent<SpriteRenderer>();
+
+                if (rend != null)
+                {
+                    // Evitar duplicados.
+                    bool alreadyAdded = false;
+                    for (int j = 0; j < currentHits.Count; j++)
+                    {
+                        if (currentHits[j] == rend)
+                        {
+                            alreadyAdded = true;
+                           
+                        }
+                    }
+
+                    // Si no ha sido guardado aun.
+                    if (!alreadyAdded)
+                    {
+                        currentHits.Add(rend);
+
+                        // Comprobar si ya es transparente.
+                        bool wasAlreadyTransparent = false;
+
+                        for (int j = 0; j < _transparentObjects.Count; j++)
+                        {
+                            // Lo guardo en un array distinto.
+                            if (_transparentObjects[j] == rend)
+                            {
+                                wasAlreadyTransparent = true;
+                               
+                            }
+                        }
+
+                        if (!wasAlreadyTransparent)
+                        {
+                            // transparentamos el SpriteRenderer.
+                            SetAlpha(rend, 0.3f);
+                        }
+                    }
+                }
+                
+            }
+        }
+        // Restaurar opacidad
+        for (int i = 0; i < _transparentObjects.Count; i++)
+        {
+            SpriteRenderer rend = _transparentObjects[i];
+
+            bool stillHit = false;
+
+            for (int j = 0; j < currentHits.Count; j++)
+            {
+                if (currentHits[j] == rend)
+                {
+                    stillHit = true;
+                    
+                }
+            }
+
+            if (!stillHit)
+            {
+                SetAlpha(rend, 1f);
+            }
+        }
+
+        // Guardarmos objeto en el array transparentes.
+        _transparentObjects = new List<SpriteRenderer>(currentHits);
+
         Vector2 moveDir = InputManager.Instance.MovementVector;
         Vector2 panDir = InputManager.Instance.PanVector;
         Vector3 panOffset;
         Vector3 pos = Target.position + Offset;
         Vector3 targetOffset;
+
+            
 
         if (!PauseManager.Instance.Pause)
         {
@@ -137,7 +241,12 @@ public class FollowPlayer : MonoBehaviour
     // El convenio de nombres de Unity recomienda que estos métodos
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
-
+    void SetAlpha(SpriteRenderer rend, float alpha)
+    {
+        Color color = rend.color;
+        color.a = alpha;
+        rend.color = color;
+    }
     #endregion
 
 } // class FollowPlayer 

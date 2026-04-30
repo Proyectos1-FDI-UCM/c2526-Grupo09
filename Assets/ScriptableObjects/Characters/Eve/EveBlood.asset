@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterName: Eve
   profilePhoto: {fileID: -2126246720042785711, guid: cde320803ce358b4dbb4567bb35f125c, type: 3}
+  typingSound: {fileID: 8300000, guid: 3c47c4c82535c464595a61e488f289ff, type: 3}

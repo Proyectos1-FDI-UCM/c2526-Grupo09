@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterName: Lily
   profilePhoto: {fileID: 6326503791416378949, guid: 322f4ffc77592f448b4495805753379c, type: 3}
+  typingSound: {fileID: 8300000, guid: 68e901689c3f7f84da724f2da5ab500b, type: 3}
