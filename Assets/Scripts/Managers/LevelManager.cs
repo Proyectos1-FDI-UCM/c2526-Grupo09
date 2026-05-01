@@ -28,7 +28,9 @@ public class LevelManager : MonoBehaviour
     // ---- ATRIBUTOS DEL INSPECTOR ----
 
     #region Atributos del Inspector (serialized fields)
+    [Header("Para todas las escenas")]
     [SerializeField] private GameObject PanelWin;
+    // mensaje de que se ha obtenido un checkpoint
     [SerializeField] private GameObject CheckpointObtained;
     [SerializeField] private GameObject Rock;
     [SerializeField] private GameObject Flower;
@@ -36,6 +38,11 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI CurrentDay;
     [SerializeField] private TextMeshProUGUI FlowerObtained;
     [SerializeField] private GameObject HUD;
+
+    [Header("Solo para la escena de Dios")]
+    [SerializeField] private GameObject Choice;
+    [SerializeField] private GameObject TriggerRoute1;
+    [SerializeField] private GameObject TriggerRoute2;
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -198,6 +205,9 @@ public class LevelManager : MonoBehaviour
         Destroy(HUD);
     }
 
+    /// <summary>
+    /// Mira la escena en la que nos encontramos actualmente
+    /// </summary>
     public void CheckCurrentScene()
     {
         // cuenta los diálogos que han sido ejecutados
@@ -210,20 +220,40 @@ public class LevelManager : MonoBehaviour
             // cuando se hayan ejecutado dos diálogos es cuando cambia de escena
             if (dialogCont == 1)
             {
-                SceneManager.LoadScene("God");
+                SceneManager.LoadScene("GodIntro");
             }
+        }
+        else if (sceneName == "God")
+        {
+            Choice.SetActive(true);
         }
     }
 
-    
+    /// <summary>
+    /// Activa los diálogosn de la primera ruta
+    /// </summary>
+    public void Route1()
+    {
+        Choice.SetActive(false);
+        TriggerRoute1.SetActive(true);
+    }
+
+    /// <summary>
+    /// Activa los diálogosn de la segunda ruta
+    /// </summary>
+    public void Route2()
+    {
+        Choice.SetActive(false);
+        TriggerRoute2.SetActive(true);
+    }
+
     #endregion
+    // ---- MÉTODOS PRIVADOS ----
 
-// ---- MÉTODOS PRIVADOS ----
-
-#region Métodos Privados
+    #region Métodos Privados
 
 
-private void Init()
+    private void Init()
     {
         // De momento no hay nada que inicializar
     }

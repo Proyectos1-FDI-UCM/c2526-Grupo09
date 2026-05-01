@@ -311,6 +311,7 @@ public class DialogueManager : MonoBehaviour
         {
             dialogSound.Stop();
         }
+        LevelManager.Instance.CheckCurrentScene();
     }
 
     private void SoundLogic()

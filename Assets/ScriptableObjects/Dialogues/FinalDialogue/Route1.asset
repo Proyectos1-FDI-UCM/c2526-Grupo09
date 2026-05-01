@@ -13,26 +13,26 @@ MonoBehaviour:
   m_Name: Route1
   m_EditorClassIdentifier: 
   dialogueTurnsList:
-  - <Character>k__BackingField: {fileID: 11400000, guid: 2e06b29a3c59d044e8f356f988f846e2, type: 2}
+  - character: {fileID: 11400000, guid: 2e06b29a3c59d044e8f356f988f846e2, type: 2}
     dialogueLine: Good.
-  - <Character>k__BackingField: {fileID: 11400000, guid: 2e06b29a3c59d044e8f356f988f846e2, type: 2}
+  - character: {fileID: 11400000, guid: 2e06b29a3c59d044e8f356f988f846e2, type: 2}
     dialogueLine: Welcome my dear child to the sacred land.
-  - <Character>k__BackingField: {fileID: 11400000, guid: e0a40f19fedc87c479ad40ed52b02dd7, type: 2}
+  - character: {fileID: 11400000, guid: 463fc10d7c6bbde45848383bf1128c73, type: 2}
     dialogueLine: ...
-  - <Character>k__BackingField: {fileID: 11400000, guid: e0a40f19fedc87c479ad40ed52b02dd7, type: 2}
+  - character: {fileID: 11400000, guid: 67ed60f38af4b474e8fb39bb24c7b0af, type: 2}
     dialogueLine: Thank you for everything Lily.
-  - <Character>k__BackingField: {fileID: 11400000, guid: e0a40f19fedc87c479ad40ed52b02dd7, type: 2}
+  - character: {fileID: 11400000, guid: 2f37fd23eb690314993c9e733bfa4eca, type: 2}
     dialogueLine: "Though our paths must diverge now, I\u2019ll always remember you."
-  - <Character>k__BackingField: {fileID: 11400000, guid: e0a40f19fedc87c479ad40ed52b02dd7, type: 2}
+  - character: {fileID: 11400000, guid: b0515a637addc26428dc0bb0046873b4, type: 2}
     dialogueLine: "I\u2019ll miss you so much."
-  - <Character>k__BackingField: {fileID: 11400000, guid: ef51b0dfb5d9b3c438d097e5a36f8e57, type: 2}
+  - character: {fileID: 11400000, guid: e87ed0745fc98bd4b898847d672cbb01, type: 2}
     dialogueLine: "Don\u2019t worry Eve, I\u2019ll be fine. After all, death is my
       only salvation now, the only way in which I could be redeemed."
-  - <Character>k__BackingField: {fileID: 11400000, guid: ef51b0dfb5d9b3c438d097e5a36f8e57, type: 2}
+  - character: {fileID: 11400000, guid: 93c580ac30e7bd54b84db33920e85a6f, type: 2}
     dialogueLine: Take care of yourself.
-  - <Character>k__BackingField: {fileID: 11400000, guid: ef51b0dfb5d9b3c438d097e5a36f8e57, type: 2}
+  - character: {fileID: 11400000, guid: e87ed0745fc98bd4b898847d672cbb01, type: 2}
     dialogueLine: I love you Eve.
-  - <Character>k__BackingField: {fileID: 11400000, guid: e0a40f19fedc87c479ad40ed52b02dd7, type: 2}
+  - character: {fileID: 11400000, guid: 67ed60f38af4b474e8fb39bb24c7b0af, type: 2}
     dialogueLine: ...
-  - <Character>k__BackingField: {fileID: 11400000, guid: e0a40f19fedc87c479ad40ed52b02dd7, type: 2}
+  - character: {fileID: 11400000, guid: 2f37fd23eb690314993c9e733bfa4eca, type: 2}
     dialogueLine: Farewell, Lily.
