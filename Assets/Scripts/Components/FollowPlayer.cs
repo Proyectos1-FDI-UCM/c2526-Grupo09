@@ -64,13 +64,21 @@ public class FollowPlayer : MonoBehaviour
     // Ejemplo: _maxHealthPoints
     private Vector3 _panOffset;
     private Vector3 _lookOffset;
-    private SpriteRenderer lastRenderer;
+
 
     /// <summary>
-    /// Listas para guardar los objetos con los que colisiona el raycasting 
+    /// Array con objetos que son transparentes actualmente.
     /// </summary>
-    private List<SpriteRenderer> _transparentObjects = new List<SpriteRenderer>();
-    private List<SpriteRenderer> currentHits = new List<SpriteRenderer>();
+    private SpriteRenderer[] _transparentObjects = new SpriteRenderer[MAX];
+    private int _transparentObjectsCount = 0;
+
+    /// <summary>
+    /// Array con objetos golpeados por el raycast.
+    /// </summary>
+    private SpriteRenderer[] _currentHits = new SpriteRenderer[MAX];
+    private int _currentHitsCount = 0;
+
+    private const int MAX = 50;
 
     #endregion
 
@@ -98,7 +106,7 @@ public class FollowPlayer : MonoBehaviour
     private void LateUpdate()
     {
 
-        currentHits.Clear();
+        _currentHitsCount = 0;
 
         // Creamos el rayo para el raycasting
         Vector2  origin = transform.position;
@@ -125,9 +133,9 @@ public class FollowPlayer : MonoBehaviour
                 {
                     // Evitar duplicados.
                     bool alreadyAdded = false;
-                    for (int j = 0; j < currentHits.Count; j++)
+                    for (int j = 0; j < _currentHitsCount; j++)
                     {
-                        if (currentHits[j] == rend)
+                        if (_currentHits[j] == rend)
                         {
                             alreadyAdded = true;
                            
@@ -135,14 +143,15 @@ public class FollowPlayer : MonoBehaviour
                     }
 
                     // Si no ha sido guardado aun.
-                    if (!alreadyAdded)
+                    if (!alreadyAdded && _currentHitsCount < MAX)
                     {
-                        currentHits.Add(rend);
+                        _currentHits[_currentHitsCount] = rend;
+                        _currentHitsCount++;
 
                         // Comprobar si ya es transparente.
                         bool wasAlreadyTransparent = false;
 
-                        for (int j = 0; j < _transparentObjects.Count; j++)
+                        for (int j = 0; j < _transparentObjectsCount; j++)
                         {
                             // Lo guardo en un array distinto.
                             if (_transparentObjects[j] == rend)
@@ -163,15 +172,15 @@ public class FollowPlayer : MonoBehaviour
             }
         }
         // Restaurar opacidad
-        for (int i = 0; i < _transparentObjects.Count; i++)
+        for (int i = 0; i < _transparentObjectsCount; i++)
         {
             SpriteRenderer rend = _transparentObjects[i];
 
             bool stillHit = false;
 
-            for (int j = 0; j < currentHits.Count; j++)
+            for (int j = 0; j < _currentHitsCount; j++)
             {
-                if (currentHits[j] == rend)
+                if (_currentHits[j] == rend)
                 {
                     stillHit = true;
                     
@@ -185,7 +194,11 @@ public class FollowPlayer : MonoBehaviour
         }
 
         // Guardarmos objeto en el array transparentes.
-        _transparentObjects = new List<SpriteRenderer>(currentHits);
+        _transparentObjectsCount = _currentHitsCount;
+        for (int i = 0; i < _currentHitsCount; i++)
+        {
+            _transparentObjects[i] = _currentHits[i];
+        }
 
         Vector2 moveDir = InputManager.Instance.MovementVector;
         Vector2 panDir = InputManager.Instance.PanVector;
