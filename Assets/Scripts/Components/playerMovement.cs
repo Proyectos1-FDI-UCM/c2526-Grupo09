@@ -56,6 +56,7 @@ public class PlayerMovement : MonoBehaviour
     private Animator _animator;
     private PlayerNoise _playerNoise;
 
+
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -80,6 +81,7 @@ public class PlayerMovement : MonoBehaviour
         if (PauseManager.Instance.Pause == false)
         {
             _animator.enabled = true;
+
             if (!_isHidden)
             {
 
@@ -184,67 +186,42 @@ public class PlayerMovement : MonoBehaviour
         // Izquierda-Arriba*/
 
         //Comprobamos si se pulsa el Shift
-        if (direction != Vector2.zero)
+        if (incrY == 0 && incrX == 0)
         {
-            // Derecha
-            if (incrX > 0 && incrY == 0)
-            {
-                _animator.SetBool("WalkingRight", true);
-                _animator.SetBool("WalkingDown", false);
-                _animator.SetBool("WalkingUp", false);
-                _animator.SetBool("WalkingLeft", false);
-            }
-            // Abajo
-            else if (incrY < 0 && incrX == 0)
-            {
-                _animator.SetBool("WalkingDown", true);
-                _animator.SetBool("WalkingRight", false);
-                _animator.SetBool("WalkingUp", false);
-                _animator.SetBool("WalkingLeft", false);
-            }
-            // Izquierda
-            else if (incrX < 0 && incrY == 0)
-            {
-                _animator.SetBool("WalkingLeft", true);
-                _animator.SetBool("WalkingRight", false);
-                _animator.SetBool("WalkingUp", false);
-                _animator.SetBool("WalkingDown", false);
-            }
-            // Arriba
-            else if (incrY > 0 && incrX == 0)
-            {
-                _animator.SetBool("WalkingUp", true);
-                _animator.SetBool("WalkingDown", false);
-                _animator.SetBool("WalkingRight", false);
-                _animator.SetBool("WalkingLeft", false);
-            }
-
-            if (InputManager.Instance.RunIsPressed() && isMoving)
-            {
-
-                //Usamos la velocidad de correr
-                currentSpeed = RunSpeed;
-                //_correr = true;
-            }/* else
-            {
-                currentSpeed = walkSpeed;
-                _animator.SetBool("Walking", true);
-            }*/
+            _animator.SetInteger("Direction", 0); // Idle
         }
-        else
+        else if (incrY > 0 && incrX == 0)
         {
-            _animator.SetBool("WalkingUp", false);
-            _animator.SetBool("WalkingDown", false);
-            _animator.SetBool("WalkingRight", false);
-            _animator.SetBool("WalkingLeft", false);
-            //Usamos la velocidad de caminar
-
-            //_correr = false;
+            _animator.SetInteger("Direction", 2); // Arriba
+        }
+        else if (incrY < 0 && incrX == 0)
+        {
+            _animator.SetInteger("Direction", 1); // Abajo
+        }
+        else if (incrX < 0 && incrY == 0)
+        {
+            _animator.SetInteger("Direction", 3); // Izquierda
+        }
+        else if (incrX > 0 && incrY == 0)
+        {
+            _animator.SetInteger("Direction", 4); // Derecha
         }
 
-        //Aplicamos el movimiento
-        //Multiplicamos la dirección por la velocidad y el tiempo
-        transform.Translate(direction * currentSpeed * Time.deltaTime);
+        if (InputManager.Instance.RunIsPressed() && isMoving)
+        {
+
+            //Usamos la velocidad de correr
+            currentSpeed = RunSpeed;
+            //Cambiamos velocidad de animacion.
+            _animator.speed = 1.5f;
+
+        } else {
+            _animator.speed = 1f;
+        }
+
+            //Aplicamos el movimiento
+            //Multiplicamos la dirección por la velocidad y el tiempo
+            transform.Translate(direction * currentSpeed * Time.deltaTime);
 
         if (isMoving && !_isHidden)
         {

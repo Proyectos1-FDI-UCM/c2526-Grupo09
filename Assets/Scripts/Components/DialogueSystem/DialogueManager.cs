@@ -149,8 +149,10 @@ public class DialogueManager : MonoBehaviour
         //Diálogo en proceso.
         _isDialogInProgress = true;
 
-        //Desactivamos el input del player.
+        //Desactivamos el input del player. Ponemos animación idle.
+        player.GetComponent<Animator>().SetInteger("Direction", 0);
         player.GetComponent<PlayerMovement>().enabled = false;
+        player.GetComponent<AudioSource>().enabled = false;
 
         //Mostramos caja de diálogo.
         dialogueUI.ShowDialogBox();
@@ -303,6 +305,7 @@ public class DialogueManager : MonoBehaviour
 
         //Retomamos el input del player.
         player.GetComponent<PlayerMovement>().enabled = true;
+        player.GetComponent<AudioSource>().enabled = true;
 
         if (dialogSound != null)
         {
