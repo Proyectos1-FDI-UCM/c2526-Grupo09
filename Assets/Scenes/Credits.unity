@@ -486,8 +486,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Development team:\nRafael Campos\nDiego Mart\xEDn\nCarmen Rosino\nHao
-    Zheng\n\xC1lvaro Sosa\nIn\xE9s de la Pe\xF1a\n\nSpecial thanks:\nGuillermo (idk
-    los apellidos)\nIsmael\n\n\n"
+    Zheng\n\xC1lvaro Sosa\nIn\xE9s de la Pe\xF1a\n\nTilemap:\nMichele \"Buch\" Bucelli\n\nSounds:\nCharacter
+    sounds - Acedio on GitHub\n\nSpecial thanks:\nGuillermo Jim\xE9nezd D\xEDaz\nIsmael
+    Sagredo Olivenza\n\nMade with Unity Engine\neditor version 6000.0.53f1\n\nTHANKS
+    FOR PLAYING!\n\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

@@ -6,6 +6,7 @@
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
 
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -196,14 +197,33 @@ public class LevelManager : MonoBehaviour
     {
         Destroy(HUD);
     }
+
+    public void CheckCurrentScene()
+    {
+        // cuenta los diálogos que han sido ejecutados
+        int dialogCont = 0;
+        Scene currentScene = SceneManager.GetActiveScene();
+        string sceneName = currentScene.name;
+        if (sceneName == "DosFinales")
+        {
+            dialogCont++;
+            // cuando se hayan ejecutado dos diálogos es cuando cambia de escena
+            if (dialogCont == 1)
+            {
+                SceneManager.LoadScene("God");
+            }
+        }
+    }
+
+    
     #endregion
 
-    // ---- MÉTODOS PRIVADOS ----
+// ---- MÉTODOS PRIVADOS ----
 
-    #region Métodos Privados
+#region Métodos Privados
 
 
-    private void Init()
+private void Init()
     {
         // De momento no hay nada que inicializar
     }

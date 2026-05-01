@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: God
   m_EditorClassIdentifier: 
   characterName: God
-  profilePhoto: {fileID: 0}
+  profilePhoto: {fileID: -2059823583270753353, guid: b1880129aa31bb94ab84b138043e4a46, type: 3}
