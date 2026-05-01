@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd1b51748c43e8043b83edef630f10d1, type: 3}
+  m_Name: GodDialogue
+  m_EditorClassIdentifier: 
+  dialogueTurnsList:
+  - character: {fileID: 11400000, guid: 2e06b29a3c59d044e8f356f988f846e2, type: 2}
+    dialogueLine: Eve.
+  - character: {fileID: 11400000, guid: bb224bbb551a96f4c8b1d7b7b7f3c839, type: 2}
+    dialogueLine: ...
+  - character: {fileID: 11400000, guid: 2e06b29a3c59d044e8f356f988f846e2, type: 2}
+    dialogueLine: You have fought bravely and defeated one of my worst enemies.
+  - character: {fileID: 11400000, guid: 2e06b29a3c59d044e8f356f988f846e2, type: 2}
+    dialogueLine: I offer you divine salvation and acceptance in heaven.
+  - character: {fileID: 11400000, guid: 2e06b29a3c59d044e8f356f988f846e2, type: 2}
+    dialogueLine: You only have to leave everything behind and come with me.
+  - character: {fileID: 11400000, guid: 463fc10d7c6bbde45848383bf1128c73, type: 2}
+    dialogueLine: "Everything \u2026"
+  - character: {fileID: 11400000, guid: 2f37fd23eb690314993c9e733bfa4eca, type: 2}
+    dialogueLine: Will I have to leave her too?
+  - character: {fileID: 11400000, guid: 2e06b29a3c59d044e8f356f988f846e2, type: 2}
+    dialogueLine: Naturally, you can only come alone.
+  - character: {fileID: 11400000, guid: b84bc399ccd85c047a921a5d9bf97124, type: 2}
+    dialogueLine: ...
