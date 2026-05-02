@@ -62,6 +62,11 @@ public class LevelManager : MonoBehaviour
     private static int _levelStage = 0;
 
     private bool _flowerPicked;
+
+    /// <summary>
+    /// gestiona si se ha tomado ya o no la decisión en la escena de Dios
+    /// </summary>
+    private bool _choiceMade;
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -225,7 +230,11 @@ public class LevelManager : MonoBehaviour
         }
         else if (sceneName == "God")
         {
-            Choice.SetActive(true);
+            if (!_choiceMade)
+            {
+                Choice.SetActive(true);
+                _choiceMade = true;
+            } 
         }
     }
 
