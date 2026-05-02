@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd1b51748c43e8043b83edef630f10d1, type: 3}
+  m_Name: Route2Part1
+  m_EditorClassIdentifier: 
+  dialogueTurnsList:
+  - character: {fileID: 11400000, guid: 2e06b29a3c59d044e8f356f988f846e2, type: 2}
+    dialogueLine: I doubt you made the correct decision, albeit I will accept it.
+  - character: {fileID: 11400000, guid: 2e06b29a3c59d044e8f356f988f846e2, type: 2}
+    dialogueLine: I hope you are capable of finding peace in death.
+  - character: {fileID: 11400000, guid: 2e06b29a3c59d044e8f356f988f846e2, type: 2}
+    dialogueLine: So long, ladies.
+  - character: {fileID: 11400000, guid: 463fc10d7c6bbde45848383bf1128c73, type: 2}
+    dialogueLine: ...

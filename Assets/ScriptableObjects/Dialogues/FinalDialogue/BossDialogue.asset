@@ -13,39 +13,39 @@ MonoBehaviour:
   m_Name: BossDialogue
   m_EditorClassIdentifier: 
   dialogueTurnsList:
-  - <Character>k__BackingField: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
+  - character: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
     dialogueLine: YOU DAMNED CHILD
-  - <Character>k__BackingField: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
+  - character: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
     dialogueLine: "Couldn\u2019t you just obey my orders?"
-  - <Character>k__BackingField: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
+  - character: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
     dialogueLine: "Look at what you\u2019ve caused with your nonsense!"
-  - <Character>k__BackingField: {fileID: 11400000, guid: e0a40f19fedc87c479ad40ed52b02dd7, type: 2}
+  - character: {fileID: 11400000, guid: 7bd2146755de1cd40a43e1f48fc82523, type: 2}
     dialogueLine: What?
-  - <Character>k__BackingField: {fileID: 11400000, guid: e0a40f19fedc87c479ad40ed52b02dd7, type: 2}
+  - character: {fileID: 11400000, guid: b84bc399ccd85c047a921a5d9bf97124, type: 2}
     dialogueLine: Where are we?
-  - <Character>k__BackingField: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
+  - character: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
     dialogueLine: Eve
-  - <Character>k__BackingField: {fileID: 11400000, guid: e0a40f19fedc87c479ad40ed52b02dd7, type: 2}
+  - character: {fileID: 11400000, guid: 7bd2146755de1cd40a43e1f48fc82523, type: 2}
     dialogueLine: Yes?
-  - <Character>k__BackingField: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
+  - character: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
     dialogueLine: "I lied to you. I\u2019ve been lying the whole time."
-  - <Character>k__BackingField: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
+  - character: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
     dialogueLine: I am neither Agnus Dei nor Jesus.
-  - <Character>k__BackingField: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
+  - character: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
     dialogueLine: I am one of those devilish creatures you humans hate.
-  - <Character>k__BackingField: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
+  - character: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
     dialogueLine: "I am nothing but a demon. The most powerful of them all if I\u2019m
       allowed to say it."
-  - <Character>k__BackingField: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
+  - character: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
     dialogueLine: God banished me to this den of filth and decay and stripped me
       from all my powers.
-  - <Character>k__BackingField: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
+  - character: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
     dialogueLine: But now, with those damned flowers gone, I can claim my powers
       back.
-  - <Character>k__BackingField: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
+  - character: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
     dialogueLine: And ultimately, take revenge for all these years of horror and
       despair.
-  - <Character>k__BackingField: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
+  - character: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
     dialogueLine: So, with your permission miss, could you please
-  - <Character>k__BackingField: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
+  - character: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
     dialogueLine: GIVE ME THE FUCKING FLOWER!!!!!

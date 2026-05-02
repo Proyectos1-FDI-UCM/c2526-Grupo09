@@ -263,8 +263,6 @@ public class DialogueManager : MonoBehaviour
         _skipTyping = false;
         _waitingForInput = true;
         dialogueUI.ClearDialogArea();
-
-        
     }
 
     /// <summary>

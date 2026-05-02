@@ -45,6 +45,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private GameObject Choice;
     [SerializeField] private GameObject TriggerRoute1;
     [SerializeField] private GameObject TriggerRoute2;
+    [SerializeField] private BackgroundManager backgroundManager;
     
     #endregion
 
@@ -66,10 +67,17 @@ public class LevelManager : MonoBehaviour
 
     private bool _flowerPicked;
 
+    // VARIABLES EXCLUSIVA DE LA GESTIÓN DE LA ESCENA DE DIOS
+
     /// <summary>
     /// gestiona si se ha tomado ya o no la decisión en la escena de Dios
     /// </summary>
-    private bool _choiceMade;
+    private bool _choiceMade = false;
+
+    /// <summary>
+    /// tendrá valor 1 si se escoge la ruta 1 y 2 si se escoge la 2
+    /// </summary>
+    private int _route = 0;
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -250,7 +258,19 @@ public class LevelManager : MonoBehaviour
             {
                 Choice.SetActive(true);
                 _choiceMade = true;
-            } 
+            }
+            else if (_route == 1)
+            {
+                backgroundManager.StartFade();
+            }
+            else if (_route == 2)
+            {
+                SceneManager.LoadScene("EndingRoute2");
+            }
+        }
+        else if (sceneName == "EndingRoute2")
+        {
+            SceneManager.LoadScene("Menu");
         }
     }
 
@@ -260,6 +280,7 @@ public class LevelManager : MonoBehaviour
     public void Route1()
     {
         Choice.SetActive(false);
+        _route = 1;
         TriggerRoute1.SetActive(true);
     }
 
@@ -269,9 +290,9 @@ public class LevelManager : MonoBehaviour
     public void Route2()
     {
         Choice.SetActive(false);
+        _route = 2;
         TriggerRoute2.SetActive(true);
     }
-
     #endregion
     // ---- MÉTODOS PRIVADOS ----
 

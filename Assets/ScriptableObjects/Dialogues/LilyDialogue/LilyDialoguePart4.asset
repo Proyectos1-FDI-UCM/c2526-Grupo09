@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: LilyDialoguePart4
   m_EditorClassIdentifier: 
   dialogueTurnsList:
-  - <Character>k__BackingField: {fileID: 11400000, guid: e0a40f19fedc87c479ad40ed52b02dd7, type: 2}
+  - character: {fileID: 11400000, guid: 7bd2146755de1cd40a43e1f48fc82523, type: 2}
     dialogueLine: I SAID NOOOOOOOO!!!!
