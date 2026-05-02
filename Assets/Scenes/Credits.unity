@@ -462,7 +462,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -480}
+  m_AnchoredPosition: {x: 0, y: -490}
   m_SizeDelta: {x: 600, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &692728960
@@ -486,13 +486,15 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Development team:\nRafael Campos\nDiego Mart\xEDn\nCarmen Rosino\nHao
-    Zheng\n\xC1lvaro Sosa\nIn\xE9s de la Pe\xF1a\n\nTilemap:\nMichele \"Buch\" Bucelli\n\nSounds:\nCharacter
-    sounds - Acedio on GitHub\n\nSpecial thanks:\nGuillermo Jim\xE9nezd D\xEDaz\nIsmael
-    Sagredo Olivenza\n\nMade with Unity Engine\neditor version 6000.0.53f1\n\nTHANKS
-    FOR PLAYING!\n\n"
+    Zheng\n\xC1lvaro Sosa\nIn\xE9s de la Pe\xF1a\n\nTilemap:\nMichele \"Buch\" Bucelli\n\nSound
+    effects:\nAcedio on GitHub\nphotos_ on PixaBay\nVirtualZero on PixaBay\nPWLPL
+    on PixaBay\nfreesound_community on PixaBay\nfreesound_CrunchpixStudio on PixaBay\nAlex_Jauk
+    on PixaBay\nDRAGON-STUDIO on PixaBay\n\nMusic:\nOpenMindAudio on PixaBay \n\nSpecial
+    thanks:\nGuillermo Jim\xE9nez D\xEDaz\nIsmael Sagredo Olivenza\n\nMade with Unity
+    Engine\nversion 6000.0.53f1\n\nTHANKS FOR PLAYING!\n\n"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 67872695b5810724784b78e9295f0251, type: 2}
+  m_sharedMaterial: {fileID: -1155667686722781935, guid: 67872695b5810724784b78e9295f0251, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -516,8 +518,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 16
-  m_fontSizeBase: 16
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -602,7 +604,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -420}
+  m_AnchoredPosition: {x: 0, y: -430}
   m_SizeDelta: {x: 600, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &921117279
@@ -632,8 +634,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 67872695b5810724784b78e9295f0251, type: 2}
+  m_sharedMaterial: {fileID: -1155667686722781935, guid: 67872695b5810724784b78e9295f0251, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -657,8 +659,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 28
+  m_fontSizeBase: 28
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

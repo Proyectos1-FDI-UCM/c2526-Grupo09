@@ -50,11 +50,9 @@ public class HomeExit : MonoBehaviour
         {
             if (GameManager.Instance.GetHaDormido())
             {
-                int siguienteEscena = GameManager.Instance.GetNextScene();
-
+                int nextScene = GameManager.Instance.GetNextScene();
                 GameManager.Instance.ResetBed();
-
-                GameManager.Instance.ChangeScene(siguienteEscena);
+                GameManager.Instance.ChangeScene(nextScene);
             }
             else
             {

@@ -310,7 +310,8 @@ public class LevelManager : MonoBehaviour
         {
             case 0: return;
             case 1:
-                PanelWin.SetActive(true);
+                SceneManager.LoadScene("Home");
+                // PanelWin.SetActive(true);
                 EndGame();
                 break;
             case 2: 

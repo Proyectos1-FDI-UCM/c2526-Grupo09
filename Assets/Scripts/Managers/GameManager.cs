@@ -201,7 +201,7 @@ public class GameManager : MonoBehaviour
     //Para saber a que escena debemos de cambiar al salir de casa
     public int GetNextScene()
     {
-        if (_diaActual == 2) return 7; //devuelve el level2 (7 en la lista de escenas)
+        if (_diaActual == 2) return 6; //devuelve el level2 (6 en la lista de escenas)
         if (_diaActual == 3) return 8; //devuelve level3 (8 en la lista de escenas)
         return 0; // Error o volver al menú
     }
