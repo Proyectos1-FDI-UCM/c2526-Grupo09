@@ -146,7 +146,8 @@ public class FlowerCodeSpawner : MonoBehaviour
             // colocamos la flor en la posición marcada por la variable index
             _singleFlower = Instantiate(FlowerCodePrefab, Positions[index].position, Positions[index].rotation);
             Debug.Log("crea el floripondio");
-
+            SpriteRenderer RenderFlower = _singleFlower.GetComponent<SpriteRenderer>();
+            RenderFlower.sortingOrder = 0;
             // declaramos el tipo de la flor
             _flowers[i] = _singleFlower.GetComponent<FlowerTypes>();
             _flowers[i].DefineType(index);

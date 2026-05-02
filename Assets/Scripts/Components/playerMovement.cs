@@ -78,7 +78,7 @@ public class PlayerMovement : MonoBehaviour
     }
     void Update()
     {
-        if (PauseManager.Instance.Pause == false)
+        if (!PauseManager.Instance.Pause)
         {
             _animator.enabled = true;
 

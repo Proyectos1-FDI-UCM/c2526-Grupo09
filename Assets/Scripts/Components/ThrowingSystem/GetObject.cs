@@ -22,8 +22,10 @@ public class GetObject : MonoBehaviour
     #region Atributos del Inspector (serialized fields)
 
     [SerializeField] GameObject PlayerInScene;
-
+    [SerializeField] GameObject ButtonUI;
+    [SerializeField] private FollowObjectUI FollowObject;
     [SerializeField] private AudioSource rockSound;
+
 
     #endregion
 
@@ -65,11 +67,12 @@ public class GetObject : MonoBehaviour
     {
         _throwingSystem = PlayerInScene.GetComponent<ThrowingSystem>();
         // comprobamos que el componente está bien configurado desde el editor y que la escena esté bien montada
-        if (InputManager.Instance == null) 
+        if (InputManager.Instance == null)
         {
             Debug.Log("gameObject InputManager not found, please check that it is attached to this script in the editor");
             Destroy(this.gameObject);
         }
+
     }
 
     /// <summary>
@@ -81,10 +84,11 @@ public class GetObject : MonoBehaviour
         // habría que ignorarla si es una flor, x lo q hay q identificar que tipo de objeto es
 
         // si el jugador está dentro del collider y no tiene objeto, entra en el if
-        if (_insideCollider && !_hasObject) 
-        { 
+        if (_insideCollider && !_hasObject)
+        {
             if (InputManager.Instance.InteractWasPressedThisFrame())
             {
+                FollowObject.Deactivate();
                 _hasObject = true;
                 LevelManager.Instance.RockPicked(true);
 
@@ -98,30 +102,43 @@ public class GetObject : MonoBehaviour
                 _throwingSystem.SwitchPublicObjectController();
             }
         }
+
     } // Update
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         _player = collision.GetComponent<PlayerMovement>();
-        if (_player != null) 
+        if (_player != null)
         {
             _insideCollider = true;
             _hasObject = _throwingSystem.PublicObjectController();
-            // if (!_hasObject) si no tiene objeto
-                // activa el GUI de la burbuja
-            // else (_hasObject)  si tiene objeto
-                // no activa el GUI
+            if (!_hasObject) //si no tiene objeto
+            {
+                FollowObject.SetNewTarget(transform);
+                FollowObject.ChangeText("pick up");
+
+            }
+            if (_hasObject)  //si tiene objeto
+            {
+                FollowObject.ResetTarget();
+            }
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         _player = collision.GetComponent<PlayerMovement>();
-        if (_player != null) 
+        if (_player != null)
         {
             _insideCollider = false;
-            // if (!_hasObject) si no tiene objeto
-                // desactiva el GUI de la burbuja
+            if (_hasObject) //si tiene objeto
+            {
+                FollowObject.ResetTarget();
+            }
+            if (!_hasObject) //si no tiene objeto 
+            {
+                FollowObject.Deactivate();
+            }
         }
     }
     #endregion
