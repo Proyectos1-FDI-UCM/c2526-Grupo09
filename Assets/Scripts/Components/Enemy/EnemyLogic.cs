@@ -61,6 +61,7 @@ public class EnemyLogic : MonoBehaviour
     [SerializeField]
     private GameObject Player;
 
+
     /// <summary>
     /// audio cuando el jugador entra en el campo de vision
     /// </summary>
@@ -119,6 +120,8 @@ public class EnemyLogic : MonoBehaviour
     private bool _isAttacking = false;
     private float _attackTimer = 0f;
     private const float _attackDelay = 2.0f;
+
+    private bool _gameOver = false;
 
 
 
@@ -227,6 +230,11 @@ public class EnemyLogic : MonoBehaviour
             PlayerMovement pm = Player.GetComponent<PlayerMovement>();
             if (pm != null) pm.enabled = false;
         }
+
+        _gameOver = true;
+        LevelManager.Instance.GameOver(_gameOver);
+
+
     }
 
     #endregion

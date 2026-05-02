@@ -151,6 +151,7 @@ public class DialogueManager : MonoBehaviour
 
         //Desactivamos el input del player. Ponemos animación idle.
         player.GetComponent<Animator>().SetInteger("Direction", 0);
+        player.GetComponent<Animator>().speed = 1.0f;
         player.GetComponent<PlayerMovement>().enabled = false;
         player.GetComponent<AudioSource>().enabled = false;
 

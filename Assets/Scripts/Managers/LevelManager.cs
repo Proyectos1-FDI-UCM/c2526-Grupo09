@@ -38,11 +38,14 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI CurrentDay;
     [SerializeField] private TextMeshProUGUI FlowerObtained;
     [SerializeField] private GameObject HUD;
+    [SerializeField] private GameObject _gameOver;
+    [SerializeField] private GameObject _hidden;
 
     [Header("Solo para la escena de Dios")]
     [SerializeField] private GameObject Choice;
     [SerializeField] private GameObject TriggerRoute1;
     [SerializeField] private GameObject TriggerRoute2;
+    
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -95,6 +98,8 @@ public class LevelManager : MonoBehaviour
         CheckpointObtained.SetActive(false);
         Rock.SetActive(false);
         _flowerPicked = false;
+        _gameOver.SetActive(false);
+        _hidden.SetActive(false);
     }
 
     void Update()
@@ -168,6 +173,11 @@ public class LevelManager : MonoBehaviour
         _flowerPicked = true;
     }
 
+    public void Hidden(bool hidden)
+    {
+        _hidden.SetActive(hidden);
+    }
+
     public bool GetFlowerPicked()
     {
         return _flowerPicked;
@@ -196,6 +206,12 @@ public class LevelManager : MonoBehaviour
         CheckpointObtained.SetActive(picked);
     }
     #endregion
+
+    public void GameOver(bool dead)
+    {
+        _gameOver.SetActive(dead);
+    }
+
 
     // ---- MÉTODOS PRIVADOS ----
 

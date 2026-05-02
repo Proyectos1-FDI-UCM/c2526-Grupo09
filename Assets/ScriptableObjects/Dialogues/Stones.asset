@@ -18,9 +18,10 @@ MonoBehaviour:
   - character: {fileID: 11400000, guid: 463fc10d7c6bbde45848383bf1128c73, type: 2}
     dialogueLine: And what do I have to do with this?
   - character: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
-    dialogueLine: Find a lighting spot near the creature.
+    dialogueLine: Throw them on an empty space, far away from the path but close
+      enough for the enemy to hear it.
   - character: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
-    dialogueLine: Anything that falls on a lighting spot makes a much louder noise.
+    dialogueLine: Anything that falls here makes a much louder noise.
   - character: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
     dialogueLine: Enough for these enemies to chase that sound for a while.
   - character: {fileID: 11400000, guid: 463fc10d7c6bbde45848383bf1128c73, type: 2}

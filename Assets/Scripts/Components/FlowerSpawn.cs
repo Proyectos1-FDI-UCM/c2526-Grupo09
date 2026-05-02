@@ -20,6 +20,7 @@ public class FlowerSpawn : MonoBehaviour
     [SerializeField] private GameObject Flower;
     [SerializeField] private GameObject Gabriel;
     [SerializeField] private GameObject DeadGabriel;
+    [SerializeField] private GameObject Cutscene;
 
     [SerializeField] private AudioSource killSound;
     #endregion
@@ -43,6 +44,7 @@ public class FlowerSpawn : MonoBehaviour
         Flower.SetActive(false);
         DeadGabriel.SetActive(false);
         _insideCollider = false;
+        Cutscene.SetActive(false);
     }
 
     /// <summary>
@@ -67,6 +69,7 @@ public class FlowerSpawn : MonoBehaviour
                 Debug.Log("_hasPLayedSound: "+_hasPlayedSound);
 
                 // Cambios de estado
+                Cutscene.SetActive(true);
                 Flower.SetActive(true);
                 DeadGabriel.SetActive(true);
                 Gabriel.SetActive(false);

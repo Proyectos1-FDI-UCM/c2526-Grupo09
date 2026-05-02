@@ -157,8 +157,11 @@ public class HidingSpot : MonoBehaviour
     /// </summary>
     private void EnterHiding()
     {
+        
+        
         //_playerSprite = _player.GetComponent<SpriteRenderer>();
         _isHiding = true;
+        LevelManager.Instance.Hidden(_isHiding);
 
         //le decimos al player que está escondido
         _player.SetHidden(true);
@@ -186,6 +189,7 @@ public class HidingSpot : MonoBehaviour
             Debug.Log("el jugador ya no existe");
             return; }
         _isHiding = false;
+        LevelManager.Instance.Hidden(_isHiding);
 
         // el player ya no está escondido
         _player.SetHidden(false);

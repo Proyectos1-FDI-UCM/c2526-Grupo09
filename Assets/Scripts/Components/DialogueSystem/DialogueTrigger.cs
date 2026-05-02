@@ -74,7 +74,7 @@ namespace DialogueSystem {
             DialogueManager.Instance.StartDialogue(dialogue); 
 
             //No vuelve a aparecer el diálogo una vez terminado
-            Destroy(this); 
+            Destroy(gameObject); 
         }
 
         #endregion

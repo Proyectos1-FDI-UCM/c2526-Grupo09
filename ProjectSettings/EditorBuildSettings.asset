@@ -50,6 +50,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Controls.unity
     guid: 29b1dd06986b568449474d34542ad3b9
+  - enabled: 1
+    path: Assets/Scenes/LevelRafa.unity
+    guid: c9af96f0ac113874aab5abdde9938255
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
