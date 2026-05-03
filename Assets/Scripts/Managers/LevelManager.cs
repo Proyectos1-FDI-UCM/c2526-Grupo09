@@ -28,7 +28,7 @@ public class LevelManager : MonoBehaviour
     // ---- ATRIBUTOS DEL INSPECTOR ----
 
     #region Atributos del Inspector (serialized fields)
-    [Header("Para todas las escenas")]
+    [Header("Para todas las escenas (menos la de Dios)")]
     [SerializeField] private GameObject PanelWin;
     // mensaje de que se ha obtenido un checkpoint
     [SerializeField] private GameObject CheckpointObtained;
@@ -40,6 +40,13 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private GameObject HUD;
     [SerializeField] private GameObject _gameOver;
     [SerializeField] private GameObject _hidden;
+
+    [Header("Solo para la escena del Final")]
+    [SerializeField] private GameObject LilyPart2;
+    [SerializeField] private GameObject LilyPart3;
+    [SerializeField] private GameObject LilyPart4;
+    [SerializeField] private GameObject PostBattle;
+    [SerializeField] private GameObject KillLily;
 
     [Header("Solo para la escena de Dios")]
     [SerializeField] private GameObject Choice;
@@ -66,6 +73,8 @@ public class LevelManager : MonoBehaviour
     private static int _levelStage = 0;
 
     private bool _flowerPicked;
+
+    private int _dialogCont = 0;
 
     // VARIABLES EXCLUSIVA DE LA GESTIÓN DE LA ESCENA DE DIOS
 
@@ -240,17 +249,19 @@ public class LevelManager : MonoBehaviour
     public void CheckCurrentScene()
     {
         // cuenta los diálogos que han sido ejecutados
-        int dialogCont = 0;
         Scene currentScene = SceneManager.GetActiveScene();
         string sceneName = currentScene.name;
-        if (sceneName == "DosFinales")
+        if (sceneName == "FinalLevel")
         {
-            dialogCont++;
-            // cuando se hayan ejecutado dos diálogos es cuando cambia de escena
-            if (dialogCont == 1)
+            switch (_dialogCont)
             {
-                SceneManager.LoadScene("GodIntro");
+                case 0: KillLily.SetActive(true); break;
+                case 1: KillLily.SetActive(true); break;
+                case 2: KillLily.SetActive(true); break;
+                case 3: PostBattle.SetActive(true); break;
+                case 4: SceneManager.LoadScene("GodIntro"); break;
             }
+            _dialogCont++;
         }
         else if (sceneName == "God")
         {
@@ -271,6 +282,17 @@ public class LevelManager : MonoBehaviour
         else if (sceneName == "EndingRoute2")
         {
             SceneManager.LoadScene("Menu");
+        }
+    }
+
+    public void KillLilyDialogue()
+    {
+        KillLily.SetActive(false);
+        switch (_dialogCont)
+        {
+            case 1: LilyPart2.SetActive(true); break;
+            case 2: LilyPart3.SetActive(true); break;
+            case 3: LilyPart4.SetActive(true); break;
         }
     }
 
