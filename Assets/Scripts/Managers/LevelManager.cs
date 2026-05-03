@@ -281,7 +281,7 @@ public class LevelManager : MonoBehaviour
         }
         else if (sceneName == "EndingRoute2")
         {
-            SceneManager.LoadScene("Menu");
+            SceneManager.LoadScene("Credits");
         }
     }
 

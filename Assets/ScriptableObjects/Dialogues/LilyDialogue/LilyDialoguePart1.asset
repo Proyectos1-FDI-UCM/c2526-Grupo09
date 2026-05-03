@@ -60,5 +60,5 @@ MonoBehaviour:
     dialogueLine: NO, PLEASE NO
   - character: {fileID: 11400000, guid: b0515a637addc26428dc0bb0046873b4, type: 2}
     dialogueLine: "THIS CAN\u2019T BE RIGHHHTTTT"
-  - character: {fileID: 11400000, guid: 7bd2146755de1cd40a43e1f48fc82523, type: 2}
+  - character: {fileID: 11400000, guid: b84bc399ccd85c047a921a5d9bf97124, type: 2}
     dialogueLine: AAAAAAAHHHHHH
