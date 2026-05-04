@@ -47,6 +47,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private GameObject LilyPart4;
     [SerializeField] private GameObject PostBattle;
     [SerializeField] private GameObject KillLily;
+    [SerializeField] private PlayerMovement playerMovement;
 
     [Header("Solo para la escena de Dios")]
     [SerializeField] private GameObject Choice;
@@ -255,9 +256,9 @@ public class LevelManager : MonoBehaviour
         {
             switch (_dialogCont)
             {
-                case 0: KillLily.SetActive(true); break;
-                case 1: KillLily.SetActive(true); break;
-                case 2: KillLily.SetActive(true); break;
+                case 0: KillLily.SetActive(true); playerMovement.enabled = false; break;
+                case 1: KillLily.SetActive(true); playerMovement.enabled = false; break;
+                case 2: KillLily.SetActive(true); playerMovement.enabled = false; break;
                 case 3: PostBattle.SetActive(true); break;
                 case 4: SceneManager.LoadScene("GodIntro"); break;
             }
