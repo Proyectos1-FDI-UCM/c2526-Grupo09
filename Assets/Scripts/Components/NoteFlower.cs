@@ -1,6 +1,6 @@
 //---------------------------------------------------------
 // Breve descripción del contenido del archivo
-// Responsable de la creación de este archivo
+// Hao Zheng
 // Bouquet Of Sins
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
@@ -28,6 +28,15 @@ public class NoteFlower : MonoBehaviour
     [SerializeField] private Image[] ImagesFlower;
     [SerializeField] private GameObject NotePanel;
     [SerializeField] private TextMeshProUGUI TextNote;
+    [SerializeField] private FollowObjectUI FollowObject;
+
+
+    [SerializeField] private Sprite Red;
+    [SerializeField] private Sprite Blue;
+    [SerializeField] private Sprite Cyan;
+    [SerializeField] private Sprite Yellow;
+    [SerializeField] private Sprite Black;
+    [SerializeField] private Sprite White;
 
     #endregion
 
@@ -42,6 +51,7 @@ public class NoteFlower : MonoBehaviour
 
     private bool _nearNote;
     private bool _openNote;
+    private Sprite _spriteColor;
 
     #endregion
 
@@ -83,6 +93,8 @@ public class NoteFlower : MonoBehaviour
         if (collision.GetComponent<PlayerMovement>() != null)
         {
             _nearNote = true;
+            FollowObject.SetNewTarget(transform);
+            FollowObject.ChangeText("interact");
         }
 
     }
@@ -91,6 +103,8 @@ public class NoteFlower : MonoBehaviour
         if (collision.GetComponent<PlayerMovement>() != null)
         {
             _nearNote = false;
+            FollowObject.Deactivate();
+
         }
     }
 
@@ -103,13 +117,13 @@ public class NoteFlower : MonoBehaviour
         FlowerTypes[] flowers = Spawner.GetFlowersArray();
         for (int i = 0; i < flowers.Length; i++)
         {
-            SpriteRenderer sprite = flowers[i].GetComponent<SpriteRenderer>();
-            ImagesFlower[i].sprite = sprite.sprite;
+            Sprite newSprite = GetSpriteByColor(flowers[i].FlowerColor);
+            ImagesFlower[i].sprite = newSprite;
         }
 
         NotePanel.SetActive(true);
         _openNote = true;
-        TextNote.text = "Pray thy God may save us, for this world is doomed. \nIf you still harbour hope in your heart, may these four flowers guide you to its heart\n Might this be the only way out of this apocalypse";
+        TextNote.text = "Pray thy God may save us, for this world is doomed.\r\nHope is a fragile thing… yet it lingers.\r\n\r\nFour flowers remain.\r\nFollow their hues, and heed what they carry.\r\n\r\nFor even in silence, they speak.";
     }
     public void HideNote()
     {
@@ -136,7 +150,20 @@ public class NoteFlower : MonoBehaviour
     // El convenio de nombres de Unity recomienda que estos métodos
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
-
+    private Sprite GetSpriteByColor(string color)
+    {
+        switch (color)
+        {
+            case "RED": _spriteColor= Red;break; 
+            case "BLUE": _spriteColor = Blue;break;
+            case "YELLOW": _spriteColor= Yellow;break;
+            case "CYAN": _spriteColor= Cyan;break;
+            case "BLACK": _spriteColor= Black;break;
+            case "WHITE": _spriteColor= White;break;
+        }
+        return _spriteColor;
+    }
+    
     #endregion
 
 } // class NoteFlower 

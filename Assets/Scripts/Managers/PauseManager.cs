@@ -118,6 +118,14 @@ public class PauseManager : MonoBehaviour
         PausePanel.SetActive(false);
         HUD.SetActive(true);
     }
+    public void ResumeVariable()
+    {
+        Pause = false;
+    }
+    public void PauseVariable()
+    {
+        Pause = true;
+    }
 
     public void ChangeCheatsText(bool cheats)
     {

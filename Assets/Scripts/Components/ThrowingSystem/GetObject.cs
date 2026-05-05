@@ -22,7 +22,6 @@ public class GetObject : MonoBehaviour
     #region Atributos del Inspector (serialized fields)
 
     [SerializeField] GameObject PlayerInScene;
-    [SerializeField] GameObject ButtonUI;
     [SerializeField] private FollowObjectUI FollowObject;
     [SerializeField] private AudioSource rockSound;
 

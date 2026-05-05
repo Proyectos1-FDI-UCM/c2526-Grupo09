@@ -25,7 +25,6 @@ public class FollowObjectUI : MonoBehaviour
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
     [SerializeField] private Vector3 Offset;
-    [SerializeField] private GameObject MainCamera;
     [SerializeField] private Vector3 ButtonScale;
 
 
@@ -106,7 +105,7 @@ public class FollowObjectUI : MonoBehaviour
 
     public void ChangeText(string text)
     {
-        _buttonText.text = "Press `E` to " + text;
+        _buttonText.text = "`E` to " + text;
     }
 
     #endregion

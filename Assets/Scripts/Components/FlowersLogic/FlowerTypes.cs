@@ -45,6 +45,10 @@ public class FlowerTypes : MonoBehaviour
     {
         get { return _nPetals; }
     }
+    public string FlowerColor
+    {
+        get { return _flowerColor; }
+    }
 
     public void DefineType(int index)
     {

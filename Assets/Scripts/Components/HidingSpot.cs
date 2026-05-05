@@ -40,6 +40,11 @@ public class HidingSpot : MonoBehaviour
     /// </summary>
     [SerializeField] private AudioSource hidingSound;
 
+    /// <summary>
+    /// Script para acceder a métodos del botón de interactuar.
+    /// </summary>
+    [SerializeField] private FollowObjectUI FollowObject;
+
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -89,6 +94,7 @@ public class HidingSpot : MonoBehaviour
                 ExitHiding();
                 _light.enabled = true;
                 _sprite.color = Color.white;
+
             }
         }
         // Si no estás escondido, necesitas estar dentro del collider
@@ -97,6 +103,7 @@ public class HidingSpot : MonoBehaviour
             EnterHiding();
             _light.enabled = false;
             _sprite.color = new Color32(170, 170, 170, 255);
+
         }
     }
 
@@ -129,6 +136,9 @@ public class HidingSpot : MonoBehaviour
             _player = foundPlayer;
             _insideCollider = true;
             Debug.Log("Jugador cerca del escondite");
+            FollowObject.SetNewTarget(transform);
+            FollowObject.ChangeText("hide");
+
         }
     }
 
@@ -145,8 +155,9 @@ public class HidingSpot : MonoBehaviour
         {
             _player = foundPlayer;
             _insideCollider = false;
+            FollowObject.Deactivate();
         }
-        
+
     }
 
 
@@ -165,6 +176,8 @@ public class HidingSpot : MonoBehaviour
 
         //le decimos al player que está escondido
         _player.SetHidden(true);
+
+        FollowObject.Deactivate();
 
         _player.transform.position = transform.position;
 
@@ -193,6 +206,8 @@ public class HidingSpot : MonoBehaviour
 
         // el player ya no está escondido
         _player.SetHidden(false);
+
+        FollowObject.SetNewTarget(transform);
 
         hidingSprite.sortingOrder = 0;
 
