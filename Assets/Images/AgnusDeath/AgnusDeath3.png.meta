@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: c47c2a5a8ca9d6b45b37a1a1cb00a597
+guid: c878406ff6c4e3743809eb92d028918f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6563236475585998839
-    second: god1_0
+      213: -4717476943454141736
+    second: AgnusDeath3_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,7 +100,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: god1_0
+      name: AgnusDeath3_0
       rect:
         serializedVersion: 2
         x: 0
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7ffa0301dcc451b50800000000000000
-      internalID: 6563236475585998839
+      spriteID: 8d20255d6b7288eb0800000000000000
+      internalID: -4717476943454141736
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      god1_0: 6563236475585998839
+      AgnusDeath3_0: -4717476943454141736
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
