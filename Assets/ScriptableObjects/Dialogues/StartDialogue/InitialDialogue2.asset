@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd1b51748c43e8043b83edef630f10d1, type: 3}
+  m_Name: InitialDialogue2
+  m_EditorClassIdentifier: 
+  dialogueTurnsList:
+  - character: {fileID: 11400000, guid: b0515a637addc26428dc0bb0046873b4, type: 2}
+    dialogueLine: O-Our Father, who art in heaven,
+  - character: {fileID: 11400000, guid: fcf41119740863649a888151640fd2bb, type: 2}
+    dialogueLine: hallowed be thy name;
+  - character: {fileID: 11400000, guid: fcf41119740863649a888151640fd2bb, type: 2}
+    dialogueLine: t-t-tthy kingdom come;
+  - character: {fileID: 11400000, guid: b0515a637addc26428dc0bb0046873b4, type: 2}
+    dialogueLine: thy will be done on earth as it is in heaven.
+  - character: {fileID: 11400000, guid: 2f37fd23eb690314993c9e733bfa4eca, type: 2}
+    dialogueLine: Give us this day our daily bread;
+  - character: {fileID: 11400000, guid: 2f37fd23eb690314993c9e733bfa4eca, type: 2}
+    dialogueLine: a-and f-f-forgive us our trespasses, as we forgive those who trespass
+      against us;
+  - character: {fileID: 11400000, guid: b0515a637addc26428dc0bb0046873b4, type: 2}
+    dialogueLine: and lead us not into temptation,
+  - character: {fileID: 11400000, guid: fcf41119740863649a888151640fd2bb, type: 2}
+    dialogueLine: but deliver us from e-e-e.evil.
+  - character: {fileID: 11400000, guid: fcf41119740863649a888151640fd2bb, type: 2}
+    dialogueLine: a.....a-a...

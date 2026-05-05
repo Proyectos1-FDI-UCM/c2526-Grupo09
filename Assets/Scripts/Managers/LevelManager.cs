@@ -56,7 +56,18 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private GameObject TriggerRoute1;
     [SerializeField] private GameObject TriggerRoute2;
     [SerializeField] private BackgroundManager backgroundManager;
-    
+
+    [Header("Solo para la escena de Inicio")]
+    [SerializeField] private GameObject Evil;
+    [SerializeField] private GameObject Lamb;
+    [SerializeField] private GameObject Eve;
+    [SerializeField] private GameObject FadeOut;
+    [SerializeField] private GameObject Dialogue2;
+    [SerializeField] private GameObject Dialogue3;
+    [SerializeField] private GameObject Dialogue4;
+    [SerializeField] private GameObject Dialogue5;
+
+
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -285,6 +296,31 @@ public class LevelManager : MonoBehaviour
         else if (sceneName == "EndingRoute2")
         {
             SceneManager.LoadScene("Credits");
+        }
+        else if (sceneName == "StartCutscene")
+        {
+            Debug.Log("Estoy en Start");
+            switch (_dialogCont)
+            {
+                case 0: break;
+                case 1: SceneManager.LoadScene("StartCutscene2"); break;
+                
+            }
+            _dialogCont++;
+        }
+        else if (sceneName == "StartCutscene2")
+        {
+            Debug.Log("Estoy en Start2");
+            switch (_dialogCont)
+            {
+                case 0:Evil.SetActive(true);Dialogue2.SetActive(true); break;
+                case 1:Lamb.SetActive(true); Dialogue3.SetActive(true); break;
+                case 2: Eve.SetActive(true); Dialogue4.SetActive(true); break;
+                case 3: Lamb.SetActive(false); Evil.SetActive(false); Eve.SetActive(false); Dialogue5.SetActive(true); break;
+                case 4: SceneManager.LoadScene("StartCutscene"); break;
+
+            }
+            _dialogCont++;
         }
     }
 

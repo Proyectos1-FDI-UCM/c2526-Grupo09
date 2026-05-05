@@ -245,6 +245,7 @@ public class DialogueManager : MonoBehaviour
         return _isDialogInProgress;
     }
 
+
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----
@@ -312,6 +313,8 @@ public class DialogueManager : MonoBehaviour
         }
         LevelManager.Instance.CheckCurrentScene();
     }
+
+    
 
     private void SoundLogic()
     {
