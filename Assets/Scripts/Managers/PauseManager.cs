@@ -29,6 +29,10 @@ public class PauseManager : MonoBehaviour
     [SerializeField] private GameObject EndPanel;
     [SerializeField] private GameObject HUD;
 
+    [Header("Botones del UI de Pausa")]
+    [SerializeField] private GameObject ExitControls;
+    [SerializeField] private GameObject ResumeButton;
+
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -80,6 +84,8 @@ public class PauseManager : MonoBehaviour
                 Pause = !Pause;
                 PausePanel.SetActive(Pause);
                 HUD.SetActive(!Pause);
+
+                LevelManager.Instance.SetFirstButton(ResumeButton);
             }
         }
     }
@@ -146,6 +152,7 @@ public class PauseManager : MonoBehaviour
     {
         if (PausePanel != null) PausePanel.SetActive(false);
         if (ControlsPanel != null) ControlsPanel.SetActive(true);
+        LevelManager.Instance.SetFirstButton(ExitControls);
     }
 
     /// <summary>
@@ -155,6 +162,7 @@ public class PauseManager : MonoBehaviour
     {
         if (ControlsPanel != null) ControlsPanel.SetActive(false);
         if (PausePanel != null) PausePanel.SetActive(true);
+        LevelManager.Instance.SetFirstButton(ResumeButton);
     }
 
 

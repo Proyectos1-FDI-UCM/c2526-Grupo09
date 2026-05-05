@@ -1,7 +1,7 @@
 //---------------------------------------------------------
 // Script que detecta cuando el jugador (un gameObject con el script PlayerController) entra en el collider (trigger)
 // del objeto para dar la opción de poder recoger el objeto, y lo añade a la mano del jugador (con un bool).
-// Diego Martín Gutiérrez
+// Diego Martín 
 // Bouquet of Sins
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------

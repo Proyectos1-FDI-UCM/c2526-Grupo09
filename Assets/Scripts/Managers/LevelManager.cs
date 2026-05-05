@@ -10,6 +10,7 @@ using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 using static UnityEngine.Rendering.DebugUI;
 
 /// <summary>
@@ -47,6 +48,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private GameObject LilyPart4;
     [SerializeField] private GameObject PostBattle;
     [SerializeField] private GameObject KillLily;
+    [SerializeField] private GameObject KillLilyButton;
     [SerializeField] private PlayerMovement playerMovement;
 
     [Header("Solo para la escena de Dios")]
@@ -256,9 +258,9 @@ public class LevelManager : MonoBehaviour
         {
             switch (_dialogCont)
             {
-                case 0: KillLily.SetActive(true); playerMovement.enabled = false; break;
-                case 1: KillLily.SetActive(true); playerMovement.enabled = false; break;
-                case 2: KillLily.SetActive(true); playerMovement.enabled = false; break;
+                case 0: KillLily.SetActive(true); playerMovement.enabled = false; SetFirstButton(KillLilyButton); break;
+                case 1: KillLily.SetActive(true); playerMovement.enabled = false; SetFirstButton(KillLilyButton); break;
+                case 2: KillLily.SetActive(true); playerMovement.enabled = false; SetFirstButton(KillLilyButton); break;
                 case 3: PostBattle.SetActive(true); break;
                 case 4: SceneManager.LoadScene("GodIntro"); break;
             }
@@ -308,7 +310,7 @@ public class LevelManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Activa los diálogosn de la segunda ruta
+    /// Activa los diálogos de la segunda ruta
     /// </summary>
     public void Route2()
     {
@@ -316,9 +318,20 @@ public class LevelManager : MonoBehaviour
         _route = 2;
         TriggerRoute2.SetActive(true);
     }
-    #endregion
-    // ---- MÉTODOS PRIVADOS ----
 
+    /// <summary>
+    /// Método que borra el botón seleccionado anteriormente y lo sobreescribe con uno nuevo, para poder navegar el UI sin necesidad del ratón.
+    /// </summary>
+    public void SetFirstButton(GameObject Button)
+    {
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(Button);
+    }
+
+
+    #endregion
+
+    // ---- MÉTODOS PRIVADOS ----
     #region Métodos Privados
 
 

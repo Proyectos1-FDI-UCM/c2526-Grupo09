@@ -25,6 +25,7 @@ public class ShowPadlock : MonoBehaviour
 
   
     [SerializeField] private GameObject Padlock;
+    [SerializeField] private GameObject FirstButton;
     [SerializeField] private AudioSource Sound;
     /// <summary>
     /// Script del botón UI
@@ -111,6 +112,7 @@ public class ShowPadlock : MonoBehaviour
         PauseManager.Instance.PauseVariable();
         Padlock.SetActive(true);
         _openPad = true;
+        LevelManager.Instance.SetFirstButton(FirstButton);
     }
 
     public void CloseLock()
