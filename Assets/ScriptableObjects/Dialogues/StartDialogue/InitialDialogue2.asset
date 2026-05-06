@@ -13,22 +13,51 @@ MonoBehaviour:
   m_Name: InitialDialogue2
   m_EditorClassIdentifier: 
   dialogueTurnsList:
-  - character: {fileID: 11400000, guid: b0515a637addc26428dc0bb0046873b4, type: 2}
-    dialogueLine: O-Our Father, who art in heaven,
+  - character: {fileID: 11400000, guid: 463fc10d7c6bbde45848383bf1128c73, type: 2}
+    dialogueLine: Y-you scared me!
+  - character: {fileID: 11400000, guid: 7bd2146755de1cd40a43e1f48fc82523, type: 2}
+    dialogueLine: Wait, this is just a lamb.
+  - character: {fileID: 11400000, guid: 463fc10d7c6bbde45848383bf1128c73, type: 2}
+    dialogueLine: I'd swear I've just heard someone replying to me.
+  - character: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
+    dialogueLine: It was me, Eve.
+  - character: {fileID: 11400000, guid: b84bc399ccd85c047a921a5d9bf97124, type: 2}
+    dialogueLine: WHAT?? You are talking?!
+  - character: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
+    dialogueLine: Who told you animals could not talk?
+  - character: {fileID: 11400000, guid: 7bd2146755de1cd40a43e1f48fc82523, type: 2}
+    dialogueLine: W-what are you...
+  - character: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
+    dialogueLine: Oh, yeah, I forgot to introduce myself.
+  - character: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
+    dialogueLine: My name is Agnus Dei.
+  - character: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
+    dialogueLine: Better known as...
+  - character: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
+    dialogueLine: ...Jesus Christ.
+  - character: {fileID: 11400000, guid: 7bd2146755de1cd40a43e1f48fc82523, type: 2}
+    dialogueLine: W-wa.. wait...
+  - character: {fileID: 11400000, guid: d862b33698658d64e994f41c9bd42428, type: 2}
+    dialogueLine: J-Jesus???!?!?!?
+  - character: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
+    dialogueLine: I am back to save all of you.
+  - character: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
+    dialogueLine: "Including you, Eve.\r"
+  - character: {fileID: 11400000, guid: 7bd2146755de1cd40a43e1f48fc82523, type: 2}
+    dialogueLine: And you want me to believe that?
+  - character: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
+    dialogueLine: Have you ever seen a lamb talking before, pretty?
+  - character: {fileID: 11400000, guid: 463fc10d7c6bbde45848383bf1128c73, type: 2}
+    dialogueLine: ...
   - character: {fileID: 11400000, guid: fcf41119740863649a888151640fd2bb, type: 2}
-    dialogueLine: hallowed be thy name;
-  - character: {fileID: 11400000, guid: fcf41119740863649a888151640fd2bb, type: 2}
-    dialogueLine: t-t-tthy kingdom come;
-  - character: {fileID: 11400000, guid: b0515a637addc26428dc0bb0046873b4, type: 2}
-    dialogueLine: thy will be done on earth as it is in heaven.
+    dialogueLine: I humbly beg for your forgiveness Lord.
+  - character: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
+    dialogueLine: You may think you are a sinner and that is why you are suffering
+      all this chaos. But this world deserves to know the truth.
+  - character: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
+    dialogueLine: Most of my powers have been stolen from me. Therefore, all this
+      "Apocalypse" thing has been made up.
+  - character: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
+    dialogueLine: I need you to listen to me, Eve. Would you do that?
   - character: {fileID: 11400000, guid: 2f37fd23eb690314993c9e733bfa4eca, type: 2}
-    dialogueLine: Give us this day our daily bread;
-  - character: {fileID: 11400000, guid: 2f37fd23eb690314993c9e733bfa4eca, type: 2}
-    dialogueLine: a-and f-f-forgive us our trespasses, as we forgive those who trespass
-      against us;
-  - character: {fileID: 11400000, guid: b0515a637addc26428dc0bb0046873b4, type: 2}
-    dialogueLine: and lead us not into temptation,
-  - character: {fileID: 11400000, guid: fcf41119740863649a888151640fd2bb, type: 2}
-    dialogueLine: but deliver us from e-e-e.evil.
-  - character: {fileID: 11400000, guid: fcf41119740863649a888151640fd2bb, type: 2}
-    dialogueLine: a.....a-a...
+    dialogueLine: S-sure! I would do anything for you.
