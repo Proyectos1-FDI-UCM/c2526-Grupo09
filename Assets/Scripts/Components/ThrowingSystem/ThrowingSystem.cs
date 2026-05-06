@@ -32,7 +32,6 @@ public class ThrowingSystem : MonoBehaviour
 
     [Header("Scripts")]
     [SerializeField] private PlayerMovement Movement;
-    [SerializeField] private FollowPlayer Camera;
 
     [Header("Atributos")]
     [SerializeField] private float CursorSpeed;
@@ -104,7 +103,6 @@ public class ThrowingSystem : MonoBehaviour
 
                     // volvemos a nuestro estado inicial (habilitamos el jugador y la cámara y escondemos el cursor)
                     Movement.enabled = true;
-                    Camera.enabled = true;
                     Cursor.SetActive(false);
 
                     // posición del cursor (con un pequeño offset a la derecha)
@@ -135,7 +133,6 @@ public class ThrowingSystem : MonoBehaviour
             {
                 // volvemos a nuestro estado inicial (habilitamos el jugador y la cámara y escondemos el cursor)
                 Movement.enabled = true;
-                Camera.enabled = true;
                 Cursor.SetActive(false);
                 // posición del cursor (con un pequeño offset a la derecha)
                 Cursor.transform.position = Movement.transform.position + new Vector3(1, 0, 0);
@@ -184,7 +181,6 @@ public class ThrowingSystem : MonoBehaviour
     {
         // bloqueamos el movimiento del jugador y hacemos que el cursor aparezca
         Movement.enabled = false;
-        Camera.enabled = false;
         Cursor.SetActive(true);
 
         // obtenemos la dirección del InputManager

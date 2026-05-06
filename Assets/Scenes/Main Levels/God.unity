@@ -1609,7 +1609,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 650772920}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 650772922}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0cb519cbca97bbe4ab98e131b8b1789f, type: 3}
   m_Name: 
@@ -2019,6 +2019,10 @@ PrefabInstance:
       propertyPath: PanelWin
       value: 
       objectReference: {fileID: 1162428860}
+    - target: {fileID: 2243471610652790539, guid: 12b1a162f6e5aba4ab3be4d85dec2d2e, type: 3}
+      propertyPath: GodButton
+      value: 
+      objectReference: {fileID: 1513168837}
     - target: {fileID: 2243471610652790539, guid: 12b1a162f6e5aba4ab3be4d85dec2d2e, type: 3}
       propertyPath: PanelLost
       value: 
@@ -3132,6 +3136,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bdaeee04a68fe4283b8789c48055f778, type: 3}
+--- !u!1 &1513168837 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3903072797589343805, guid: bdaeee04a68fe4283b8789c48055f778, type: 3}
+  m_PrefabInstance: {fileID: 1316724757}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1731498306
 GameObject:
   m_ObjectHideFlags: 0

@@ -56,6 +56,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private GameObject TriggerRoute1;
     [SerializeField] private GameObject TriggerRoute2;
     [SerializeField] private BackgroundManager backgroundManager;
+    [SerializeField] private GameObject GodButton;
 
     [Header("Solo para la escena de Inicio")]
     [SerializeField] private GameObject Evil;
@@ -292,6 +293,7 @@ public class LevelManager : MonoBehaviour
             if (!_choiceMade)
             {
                 Choice.SetActive(true);
+                SetFirstButton(GodButton);
                 _choiceMade = true;
             }
             else if (_route == 1)
