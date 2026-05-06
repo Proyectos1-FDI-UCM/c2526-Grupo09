@@ -41,6 +41,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Main Levels/StartCutscenes/StartCutscene2.unity
     guid: 8d146ada06d4f1341b62cfab29e56191
+  - enabled: 1
+    path: Assets/Scenes/Main Levels/FinalLevelPrologue.unity
+    guid: 8d20076495b21374095ceb50b7de449c
+  - enabled: 1
+    path: Assets/Scenes/Main Levels/PostBattle.unity
+    guid: 5443ad28c95928e40a8969b21588d65f
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

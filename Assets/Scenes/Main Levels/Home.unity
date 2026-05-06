@@ -726,11 +726,22 @@ MonoBehaviour:
   LilyPart4: {fileID: 0}
   PostBattle: {fileID: 0}
   KillLily: {fileID: 0}
+  KillLilyButton: {fileID: 0}
   playerMovement: {fileID: 0}
   Choice: {fileID: 0}
   TriggerRoute1: {fileID: 0}
   TriggerRoute2: {fileID: 0}
   backgroundManager: {fileID: 0}
+  Evil: {fileID: 0}
+  Lamb: {fileID: 0}
+  Eve: {fileID: 0}
+  FadeOut: {fileID: 0}
+  Dialogue2: {fileID: 0}
+  Dialogue3: {fileID: 0}
+  Dialogue4: {fileID: 0}
+  Dialogue5: {fileID: 0}
+  FadeIn: {fileID: 0}
+  Ending2: {fileID: 0}
 --- !u!4 &375739865
 Transform:
   m_ObjectHideFlags: 0
@@ -1387,6 +1398,51 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 38749338}
   m_SourcePrefab: {fileID: 100100000, guid: 522f76ecd2425fe4aa6d9911eb852ec3, type: 3}
+--- !u!1 &580127070
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 580127071}
+  - component: {fileID: 580127072}
+  m_Layer: 0
+  m_Name: FIxPlayerPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &580127071
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 580127070}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &580127072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 580127070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dda8a1208677cf5469d7ad2a231cbf68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 38749344}
 --- !u!1 &625916321
 GameObject:
   m_ObjectHideFlags: 0
@@ -1431,11 +1487,22 @@ MonoBehaviour:
   LilyPart4: {fileID: 0}
   PostBattle: {fileID: 0}
   KillLily: {fileID: 0}
+  KillLilyButton: {fileID: 0}
   playerMovement: {fileID: 0}
   Choice: {fileID: 0}
   TriggerRoute1: {fileID: 0}
   TriggerRoute2: {fileID: 0}
   backgroundManager: {fileID: 0}
+  Evil: {fileID: 0}
+  Lamb: {fileID: 0}
+  Eve: {fileID: 0}
+  FadeOut: {fileID: 0}
+  Dialogue2: {fileID: 0}
+  Dialogue3: {fileID: 0}
+  Dialogue4: {fileID: 0}
+  Dialogue5: {fileID: 0}
+  FadeIn: {fileID: 0}
+  Ending2: {fileID: 0}
 --- !u!4 &625916323
 Transform:
   m_ObjectHideFlags: 0
@@ -2283,6 +2350,8 @@ MonoBehaviour:
   CheatsText: {fileID: 279703518}
   EndPanel: {fileID: 0}
   HUD: {fileID: 0}
+  ExitControls: {fileID: 0}
+  ResumeButton: {fileID: 0}
 --- !u!4 &1387150634
 Transform:
   m_ObjectHideFlags: 0
@@ -3919,3 +3988,4 @@ SceneRoots:
   - {fileID: 1406687781}
   - {fileID: 1783165683}
   - {fileID: 1796771200}
+  - {fileID: 580127071}
