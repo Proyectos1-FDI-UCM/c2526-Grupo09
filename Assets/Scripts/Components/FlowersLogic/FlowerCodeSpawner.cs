@@ -32,7 +32,7 @@ public class FlowerCodeSpawner : MonoBehaviour
     private Transform[] Positions;
 
     [SerializeField]
-    private GameObject FlowerCodePrefab;
+    private GameObject FlowerCodeOfScene;
 
     [SerializeField]
     private Padlock Padlock = null;
@@ -144,7 +144,7 @@ public class FlowerCodeSpawner : MonoBehaviour
             numbers[i] = index;
 
             // colocamos la flor en la posición marcada por la variable index
-            _singleFlower = Instantiate(FlowerCodePrefab, Positions[index].position, Positions[index].rotation);
+            _singleFlower = Instantiate(FlowerCodeOfScene, Positions[index].position, Positions[index].rotation);
 
             // declaramos el tipo de la flor
             _flowers[i] = _singleFlower.GetComponent<FlowerTypes>();

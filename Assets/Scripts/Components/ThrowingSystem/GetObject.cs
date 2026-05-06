@@ -79,9 +79,6 @@ public class GetObject : MonoBehaviour
     /// </summary>
     void Update()
     {
-        // IMPORTANTE: la variable _hasObject es para que solo puedas pillar una piedra a la vez, esta variable
-        // habría que ignorarla si es una flor, x lo q hay q identificar que tipo de objeto es
-
         // si el jugador está dentro del collider y no tiene objeto, entra en el if
         if (_insideCollider && !_hasObject)
         {
