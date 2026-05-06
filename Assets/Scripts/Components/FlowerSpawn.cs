@@ -54,7 +54,7 @@ public class FlowerSpawn : MonoBehaviour
     {
         // Solo actuamos si el jugador está dentro Y NO hay diálogo activo
         if (_insideCollider && !DialogueManager.Instance.GetIsDialogueInProgress())
-        {
+        {            
             if (!_hasPlayedSound && Gabriel != null && Gabriel.activeSelf)
             {
                 _hasPlayedSound = true; // Lo primero es bloquear futuras ejecuciones
@@ -64,15 +64,11 @@ public class FlowerSpawn : MonoBehaviour
                     // Usamos la posición del transform actual para el sonido 2D
                     AudioSource.PlayClipAtPoint(killSound.clip, transform.position, 1.0f);
                 }
-
-                Debug.Log("¡Muerte ejecutada!");
-                Debug.Log("_hasPLayedSound: "+_hasPlayedSound);
-
                 // Cambios de estado
                 Cutscene.SetActive(true);
-                Flower.SetActive(true);
-                DeadGabriel.SetActive(true);
                 Gabriel.SetActive(false);
+                DeadGabriel.SetActive(true);
+                Flower.SetActive(true);
             }
         }
     }
@@ -89,38 +85,14 @@ public class FlowerSpawn : MonoBehaviour
             _insideCollider = true;
         }
     }
-
-    /// <summary>
-    /// detecta cuando el jugador sale del collider y lo guarda en la variable
-    /// </summary>
-    /// <param name="collision"></param>
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        PlayerMovement playerMovement = collision.gameObject.GetComponent<PlayerMovement>();
-        if (playerMovement != null)
-        {
-            _insideCollider = false;
-        }
-    }
     #endregion
 
     // ---- MÉTODOS PÚBLICOS ----
     #region Métodos públicos
-    // Documentar cada método que aparece aquí con ///<summary>
-    // El convenio de nombres de Unity recomienda que estos métodos
-    // se nombren en formato PascalCase (palabras con primera letra
-    // mayúscula, incluida la primera letra)
-    // Ejemplo: GetPlayerController
-
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----
     #region Métodos Privados
-    // Documentar cada método que aparece aquí
-    // El convenio de nombres de Unity recomienda que estos métodos
-    // se nombren en formato PascalCase (palabras con primera letra
-    // mayúscula, incluida la primera letra)
-
     #endregion
 
 } // class FlowerSpawn

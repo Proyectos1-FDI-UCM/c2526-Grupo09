@@ -16,9 +16,9 @@ MonoBehaviour:
   - character: {fileID: 11400000, guid: fcf41119740863649a888151640fd2bb, type: 2}
     dialogueLine: Please God answer me...
   - character: {fileID: 11400000, guid: b0515a637addc26428dc0bb0046873b4, type: 2}
-    dialogueLine: I don't understand what am I still doing here!
+    dialogueLine: Why are you leaving me inside this hell?
   - character: {fileID: 11400000, guid: fcf41119740863649a888151640fd2bb, type: 2}
-    dialogueLine: Im NOT a sinner.
+    dialogueLine: I am NOT a sinner...
   - character: {fileID: 11400000, guid: fcf41119740863649a888151640fd2bb, type: 2}
     dialogueLine: O-Our Father, who art in heaven,
   - character: {fileID: 11400000, guid: fcf41119740863649a888151640fd2bb, type: 2}

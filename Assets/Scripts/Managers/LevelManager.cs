@@ -56,6 +56,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private GameObject TriggerRoute1;
     [SerializeField] private GameObject TriggerRoute2;
     [SerializeField] private BackgroundManager backgroundManager;
+    [SerializeField] private GameObject GodButton;
 
     [Header("Solo para la escena de Inicio")]
     [SerializeField] private GameObject Evil;
@@ -261,19 +262,27 @@ public class LevelManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Mira la escena en la que nos encontramos actualmente
+    /// Mira la escena en la que nos encontramos actualmente y ejecuta
+    /// la acción correspondiente después de que se termine un diálogo
     /// </summary>
     public void CheckCurrentScene()
     {
         // cuenta los diálogos que han sido ejecutados
         Scene currentScene = SceneManager.GetActiveScene();
         string sceneName = currentScene.name;
-        if (sceneName == "FinalLevel")
+        if (sceneName == "FinalLevelPrologue")
         {
-            KillLily.SetActive(true);
-            playerMovement.enabled = false;
-            SetFirstButton(KillLilyButton);
-            _dialogCont++;
+            if (_dialogCont < 3)
+            {
+                KillLily.SetActive(true);
+                playerMovement.enabled = false;
+                SetFirstButton(KillLilyButton);
+                _dialogCont++;
+            }
+            else
+            {
+                SceneManager.LoadScene("FinalLevel");
+            }
         }
         if (sceneName == "PostBattle")
         {
@@ -284,6 +293,7 @@ public class LevelManager : MonoBehaviour
             if (!_choiceMade)
             {
                 Choice.SetActive(true);
+                SetFirstButton(GodButton);
                 _choiceMade = true;
             }
             else if (_route == 1)
@@ -301,18 +311,15 @@ public class LevelManager : MonoBehaviour
         }
         else if (sceneName == "StartCutscene")
         {
-            Debug.Log("Estoy en Start");
             switch (_dialogCont)
             {
                 case 0: break;
                 case 1: SceneManager.LoadScene("StartCutscene2"); break;
-
             }
             _dialogCont++;
         }
         else if (sceneName == "StartCutscene2")
         {
-            Debug.Log("Estoy en Start2");
             switch (_dialogCont)
             {
                 case 0: Evil.SetActive(true); Dialogue2.SetActive(true); _dialogCont++; break;
@@ -322,7 +329,6 @@ public class LevelManager : MonoBehaviour
                         FadeIn.SetActive(true); Dialogue5.SetActive(true); _dialogCont++; break;
                 case 4: SceneManager.LoadScene("FirstLevel"); break;
             }
-
         }
     }
 
