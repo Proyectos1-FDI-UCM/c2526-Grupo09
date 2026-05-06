@@ -3,8 +3,8 @@ guid: 694e2f1bb27dc5e4e88b2aae83b56458
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8586315232568132594
-    second: cabra_0
+      213: 5184005503590806286
+    second: Agnus_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,23 +100,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: cabra_0
+      name: Agnus_0
       rect:
         serializedVersion: 2
-        x: 15
+        x: 7
         y: 0
-        width: 284
-        height: 436
+        width: 293
+        height: 432
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 72, z: 0, w: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e0c3049c9c747d880800000000000000
-      internalID: -8586315232568132594
+      spriteID: e03333b1a8941f740800000000000000
+      internalID: 5184005503590806286
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 33a753fe51136a446a7e77446309fe72
+    spriteID: 9fbc3f1bb58433e43bca1ce20dcb8b81
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      cabra_0: -8586315232568132594
+      Agnus_0: 5184005503590806286
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
