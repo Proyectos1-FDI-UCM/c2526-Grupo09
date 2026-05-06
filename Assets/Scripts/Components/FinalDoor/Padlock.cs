@@ -36,6 +36,24 @@ public class Padlock : MonoBehaviour
     /// </summary>
     [SerializeField]
     private FlowerCodeSpawner FlowerCodeSpawner = null;
+
+    /// <summary>
+    /// Sprite al que cambia el GameObject
+    /// </summary>
+    [SerializeField]
+    private Sprite DoorOpen;
+
+    /// <summary>
+    /// GameObject de la puerta
+    /// </summary>
+    [SerializeField]
+    private GameObject Door;
+
+    /// <summary>
+    /// Hace referencia al Script Para enseñar el candado
+    /// </summary>
+    [SerializeField]
+    private ShowPadlock ShowPad;
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -67,6 +85,16 @@ public class Padlock : MonoBehaviour
     /// Array de las flores
     /// </summary>
     private FlowerTypes[] _flowers = null;
+
+    /// <summary>
+    /// Sprite de la puerta
+    /// </summary>
+    private SpriteRenderer _spriteDoor;
+
+    /// <summary>
+    /// Collider de la puerta
+    /// </summary>
+    private Collider2D _spriteCol;
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -82,6 +110,10 @@ public class Padlock : MonoBehaviour
             _codeBools[i] = false;
             _nums[i] = 0;
         }
+
+        _spriteDoor= Door.GetComponent<SpriteRenderer>();
+        _spriteCol=Door.GetComponent<Collider2D>();
+
     }
     #endregion
 
@@ -133,7 +165,8 @@ public class Padlock : MonoBehaviour
         }
         if (i == _codeBools.Length)
         {
-            Debug.Log("Codigo correcto");
+            ChangeSprite();
+            ShowPad.DestroyPad();
         }
         else
         {
@@ -141,8 +174,17 @@ public class Padlock : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Cambia Sprite de la puerta
+    /// </summary>
+    public void ChangeSprite()
+    {
+        _spriteDoor.sprite = DoorOpen;
+        _spriteCol.enabled = false;
+    }
+
     #endregion
-    
+
     // ---- MÉTODOS PRIVADOS ----
     #region Métodos Privados
     // Documentar cada método que aparece aquí
@@ -150,7 +192,7 @@ public class Padlock : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
 
-    #endregion   
+    #endregion
 
 } // class Padlock 
 // namespace

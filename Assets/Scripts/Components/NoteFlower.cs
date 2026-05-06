@@ -31,12 +31,8 @@ public class NoteFlower : MonoBehaviour
     [SerializeField] private FollowObjectUI FollowObject;
 
 
-    [SerializeField] private Sprite Red;
-    [SerializeField] private Sprite Blue;
-    [SerializeField] private Sprite Cyan;
-    [SerializeField] private Sprite Yellow;
-    [SerializeField] private Sprite Black;
-    [SerializeField] private Sprite White;
+    [SerializeField] private Sprite[] Colours=new Sprite[6];
+    
 
     #endregion
 
@@ -154,12 +150,12 @@ public class NoteFlower : MonoBehaviour
     {
         switch (color)
         {
-            case "RED": _spriteColor= Red;break; 
-            case "BLUE": _spriteColor = Blue;break;
-            case "YELLOW": _spriteColor= Yellow;break;
-            case "CYAN": _spriteColor= Cyan;break;
-            case "BLACK": _spriteColor= Black;break;
-            case "WHITE": _spriteColor= White;break;
+            case "RED": _spriteColor= Colours[0];break; 
+            case "BLUE": _spriteColor = Colours[1]; break;
+            case "YELLOW": _spriteColor= Colours[2]; break;
+            case "CYAN": _spriteColor= Colours[3]; break;
+            case "BLACK": _spriteColor= Colours[4]; break;
+            case "WHITE": _spriteColor= Colours[5]; break;
         }
         return _spriteColor;
     }

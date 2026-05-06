@@ -121,7 +121,12 @@ public class ShowPadlock : MonoBehaviour
         PauseManager.Instance.ResumeVariable();
         _openPad=false;
     }
-
+    public void DestroyPad()
+    {
+        gameObject.SetActive(false);
+        Padlock.SetActive(false);
+        PauseManager.Instance.ResumeVariable();
+    }
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----
