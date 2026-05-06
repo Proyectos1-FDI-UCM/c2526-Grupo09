@@ -365,8 +365,20 @@ public class LevelManager : MonoBehaviour
     /// </summary>
     private void Day()
     {
-        int day = GameManager.Instance.GetCurrentDay();
-        CurrentDay.text = "Day " + day;
+        Scene currentScene = SceneManager.GetActiveScene();
+        string sceneName = currentScene.name;
+        if (sceneName == "FirstLevel")
+        {
+            CurrentDay.text = "Day 1";
+        }
+        else if (sceneName == "SecondLevel")
+        {
+            CurrentDay.text = "Day 2";
+        }
+        else if (sceneName == "FinalLevelPrologue" || sceneName == "FinalLevel" || sceneName == "PostBattle")
+        {
+            CurrentDay.text = "Day 3";
+        }
     }
 
     private void Init()

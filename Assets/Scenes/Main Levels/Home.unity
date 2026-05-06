@@ -1440,10 +1440,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 580127070}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dda8a1208677cf5469d7ad2a231cbf68, type: 3}
+  m_Script: {fileID: 11500000, guid: c5e453a6f5a051f46a71ca57f5ec7d9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 38749344}
+  Camera: {fileID: 1811017481}
   pos: {x: 4.097, y: -0.948, z: 0}
 --- !u!1 &625916321
 GameObject:
@@ -3359,6 +3360,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panelDormir: {fileID: 2110631494}
+  SleepButton: {fileID: 0}
 --- !u!50 &1702407399
 Rigidbody2D:
   serializedVersion: 5
@@ -3673,6 +3675,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1455900c3704c18489f5483df602daa7, type: 3}
+--- !u!4 &1811017481 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6786577745074158325, guid: 1455900c3704c18489f5483df602daa7, type: 3}
+  m_PrefabInstance: {fileID: 1811017480}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2009940314
 GameObject:
   m_ObjectHideFlags: 0

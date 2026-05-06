@@ -1,5 +1,5 @@
 //---------------------------------------------------------
-// Arregla la posición del jugador en la escena Home
+// Arregla la posición del jugador en el Level2
 // Responsable de la creación de este archivo
 // Bouquet Of Sins
 // Proyectos 1 - Curso 2025-26
@@ -16,6 +16,7 @@ public class FixPlayerPos : MonoBehaviour
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
     [SerializeField] private Transform Player;
+    [SerializeField] private Transform Camera;
     [SerializeField] private Vector3 pos;
     #endregion
 
@@ -31,7 +32,12 @@ public class FixPlayerPos : MonoBehaviour
     /// </summary>
     void Start()
     {
-        Player.position = pos;
+        if (!CheckPointSystem.Instance.FixPosLevel)
+        {
+            CheckPointSystem.Instance.FixPosLevel = true;
+            Player.position = pos;
+            Camera.position = pos;
+        }
     }
     #endregion
 

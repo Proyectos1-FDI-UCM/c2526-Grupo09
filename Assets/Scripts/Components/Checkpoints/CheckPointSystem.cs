@@ -25,9 +25,10 @@ public class CheckPointSystem : MonoBehaviour
     #region Atributos Privados (private fields)
     private static CheckPointSystem _instance;
     private Vector2 _lastCheck;
+    private bool _fixPosLevel = false;
 
     #endregion
-    
+
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
     private void Awake()
@@ -35,6 +36,7 @@ public class CheckPointSystem : MonoBehaviour
         if (_instance == null)
         {
             _instance = this;
+            DontDestroyOnLoad(_instance);
         }
         else
         {
@@ -50,6 +52,12 @@ public class CheckPointSystem : MonoBehaviour
 
     // ---- MÉTODOS PÚBLICOS ----
     #region Métodos públicos
+    public bool FixPosLevel
+    {
+        get { return _fixPosLevel; }
+        set { _fixPosLevel = value; }
+    }
+
     /// <summary>
     /// Marca el manager de checkpoints como singleton porque no puede haber más de un
     /// mangaer de checkpoints
@@ -99,7 +107,6 @@ public class CheckPointSystem : MonoBehaviour
     {
         return _lastCheck;
     }
-
     #endregion
     
     // ---- MÉTODOS PRIVADOS ----

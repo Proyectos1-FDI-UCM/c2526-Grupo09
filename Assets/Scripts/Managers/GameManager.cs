@@ -119,6 +119,7 @@ public class GameManager : MonoBehaviour
     // ---- MÉTODOS PÚBLICOS ----
 
     #region Métodos públicos
+    
 
     /// <summary>
     /// Propiedad para acceder a la única instancia de la clase.
