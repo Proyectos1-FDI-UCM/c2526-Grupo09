@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -103,10 +103,10 @@ TextureImporter:
       name: Agnus_0
       rect:
         serializedVersion: 2
-        x: 7
+        x: 0
         y: 0
-        width: 293
-        height: 432
+        width: 299
+        height: 413
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 9fbc3f1bb58433e43bca1ce20dcb8b81
+    spriteID: 82dd876f4695c2c4985f1ca2ac3f5d9a
     internalID: 0
     vertices: []
     indices: 
