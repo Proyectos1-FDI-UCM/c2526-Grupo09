@@ -66,6 +66,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private GameObject Dialogue3;
     [SerializeField] private GameObject Dialogue4;
     [SerializeField] private GameObject Dialogue5;
+    [SerializeField] private GameObject FadeIn;
 
 
     #endregion
@@ -265,6 +266,8 @@ public class LevelManager : MonoBehaviour
         // cuenta los diálogos que han sido ejecutados
         Scene currentScene = SceneManager.GetActiveScene();
         string sceneName = currentScene.name;
+        float timer = 0f;
+
         if (sceneName == "FinalLevel")
         {
             switch (_dialogCont)
@@ -304,7 +307,7 @@ public class LevelManager : MonoBehaviour
             {
                 case 0: break;
                 case 1: SceneManager.LoadScene("StartCutscene2"); break;
-                
+
             }
             _dialogCont++;
         }
@@ -313,14 +316,15 @@ public class LevelManager : MonoBehaviour
             Debug.Log("Estoy en Start2");
             switch (_dialogCont)
             {
-                case 0:Evil.SetActive(true);Dialogue2.SetActive(true); break;
-                case 1:Lamb.SetActive(true); Dialogue3.SetActive(true); break;
-                case 2: Eve.SetActive(true); Dialogue4.SetActive(true); break;
-                case 3: Lamb.SetActive(false); Evil.SetActive(false); Eve.SetActive(false); Dialogue5.SetActive(true); break;
-                case 4: SceneManager.LoadScene("StartCutscene"); break;
+                case 0: Evil.SetActive(true); Dialogue2.SetActive(true); _dialogCont++; break;
+                case 1: Lamb.SetActive(true); Dialogue3.SetActive(true); _dialogCont++; break;
+                case 2: Eve.SetActive(true); Dialogue4.SetActive(true); _dialogCont++; break;
+                case 3: Lamb.SetActive(false); Evil.SetActive(false); Eve.SetActive(false); FadeIn.SetActive(true); Dialogue5.SetActive(true); _dialogCont++; break;
+                case 4: SceneManager.LoadScene("FirstLevel"); break;
+
 
             }
-            _dialogCont++;
+
         }
     }
 
