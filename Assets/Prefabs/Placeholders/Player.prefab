@@ -298,6 +298,5 @@ MonoBehaviour:
   RockPrefab: {fileID: 0}
   Cursor: {fileID: 0}
   Movement: {fileID: 0}
-  Camera: {fileID: 0}
   CursorSpeed: 0
   ObjectSpeed: 3

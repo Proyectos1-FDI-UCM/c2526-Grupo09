@@ -104,7 +104,10 @@ public class PauseManager : MonoBehaviour
         get { return CheatsText; }
     }
 
-    public bool Pause { get; private set; }
+    public bool Pause 
+    { 
+        get; private set; 
+    }
 
     public static PauseManager Instance
     {
