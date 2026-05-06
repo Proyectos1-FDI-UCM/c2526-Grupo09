@@ -1,5 +1,5 @@
 //---------------------------------------------------------
-// Breve descripción del contenido del archivo
+// Contiene todos los tipos distintos de flores
 // Diego Martín
 // Bouquet Of Sins
 // Proyectos 1 - Curso 2025-26
@@ -8,10 +8,9 @@
 using UnityEngine;
 // Añadir aquí el resto de directivas using
 
-
 /// <summary>
-/// Antes de cada class, descripción de qué es y para qué sirve,
-/// usando todas las líneas que sean necesarias.
+/// Clase que contiene todos los tipos de flores del último nivel (DefineType()). Cuenta con dos métodos getter para acceder
+/// al color y número de pétalos de las flores.
 /// </summary>
 public class FlowerTypes : MonoBehaviour
 {
@@ -41,6 +40,7 @@ public class FlowerTypes : MonoBehaviour
 
     // ---- MÉTODOS PÚBLICOS ----
     #region Métodos públicos
+    // métodos getter
     public int NumPetals
     {
         get { return _nPetals; }
@@ -52,8 +52,7 @@ public class FlowerTypes : MonoBehaviour
 
     public void DefineType(int index)
     {
-        if (_tempColor == null)
-            _tempColor = GetComponent<SpriteRenderer>();
+        _tempColor = GetComponent<SpriteRenderer>();
         // tipos definidos de las flores, cada color tiene un número de pétalos asignado
         // añadir aquí todos los tipos de flores que se deseen (teniendo en cuenta el número posiciones)
         switch (index)
