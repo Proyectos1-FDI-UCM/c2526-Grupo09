@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd1b51748c43e8043b83edef630f10d1, type: 3}
+  m_Name: Intro
+  m_EditorClassIdentifier: 
+  dialogueTurnsList:
+  - character: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
+    dialogueLine: You already know the rules, Eve.
+  - character: {fileID: 11400000, guid: 463fc10d7c6bbde45848383bf1128c73, type: 2}
+    dialogueLine: L-lord, I...
+  - character: {fileID: 11400000, guid: b84bc399ccd85c047a921a5d9bf97124, type: 2}
+    dialogueLine: I don't feel comfortable killing people.
+  - character: {fileID: 11400000, guid: b84bc399ccd85c047a921a5d9bf97124, type: 2}
+    dialogueLine: What's next?
+  - character: {fileID: 11400000, guid: b0515a637addc26428dc0bb0046873b4, type: 2}
+    dialogueLine: Killing a friend? Killing a child?
+  - character: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
+    dialogueLine: Eve. Listen.
+  - character: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
+    dialogueLine: These people are not real. They have flowers inside.
+  - character: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
+    dialogueLine: Have you ever seen that coming from a human?
+  - character: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
+    dialogueLine: These people are sins. They are product of Satan.
+  - character: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
+    dialogueLine: They are evil and want Earth destroyed.
+  - character: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
+    dialogueLine: God's lesson has always been about sharing love. Caring about others.
+      But never ever about making sins.
+  - character: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
+    dialogueLine: Letting these flowers exist is a huge sin.
+  - character: {fileID: 11400000, guid: b0515a637addc26428dc0bb0046873b4, type: 2}
+    dialogueLine: I-I see.
+  - character: {fileID: 11400000, guid: b0515a637addc26428dc0bb0046873b4, type: 2}
+    dialogueLine: Forgive me, my lord, because of doubting about it.
+  - character: {fileID: 11400000, guid: 2f37fd23eb690314993c9e733bfa4eca, type: 2}
+    dialogueLine: I promise I will save Earth.
