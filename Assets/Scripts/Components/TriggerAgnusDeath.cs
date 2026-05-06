@@ -7,8 +7,6 @@
 
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
-
 
 /// <summary>
 /// Antes de cada class, descripción de qué es y para qué sirve,

@@ -486,12 +486,17 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Development team:\nRafael Campos\nDiego Mart\xEDn\nCarmen Rosino\nHao
-    Zheng\n\xC1lvaro Sosa\nIn\xE9s de la Pe\xF1a\n\nTilemap:\nMichele \"Buch\" Bucelli\n\nSound
-    effects:\nAcedio on GitHub\nphotos_ on PixaBay\nVirtualZero on PixaBay\nPWLPL
-    on PixaBay\nfreesound_community on PixaBay\nfreesound_CrunchpixStudio on PixaBay\nAlex_Jauk
-    on PixaBay\nDRAGON-STUDIO on PixaBay\n\nMusic:\nOpenMindAudio on PixaBay \n\nSpecial
-    thanks:\nGuillermo Jim\xE9nez D\xEDaz\nIsmael Sagredo Olivenza\n\nMade with Unity
-    Engine\nversion 6000.0.53f1\n\nTHANKS FOR PLAYING!\n\n"
+    Zheng\n\xC1lvaro Sosa\nIn\xE9s de la Pe\xF1a\n\nAssets:\nRock - hooss_cat on
+    Reddit\nPile of rocks - karsiori on Itch.io\nBush - makss122 on Reddit\n\nTilemap:\nMichele
+    \"Buch\" Bucelli\n\nSound effects:\nAcedio on GitHub\nphotos_ on PixaBay\nVirtualZero
+    on PixaBay\nPWLPL on PixaBay\nfreesound_community on PixaBay\nfreesound_CrunchpixStudio
+    on PixaBay\nAlex_Jauk on PixaBay\nDRAGON-STUDIO on PixaBay\nOlivia_parker on
+    Pixabay\nFreeSoundCommunity on FreeSound\nMusic:\nOpenMindAudio on PixaBay\nClannad
+    - VISUAL ARTS / Key - \u753A, \u6642\u306E\u6D41\u308C, \u4EBA\r\nAutumn\u2019s
+    Grey Solace\r\nMagnolia - ChouChou\r\nClannad - VISUAL ARTS / Key - \u6F6E\u9CF4\u308A\r\n\nFonts:\nHewett
+    Tsoi on DaFont\nAC Wild World by Nintendo\n\nSpecial thanks:\nGuillermo Jim\xE9nez
+    D\xEDaz\nIsmael Sagredo Olivenza\nJadsa Games for tutorials\n\nMade with Unity
+    Engine\nversion 6000.0.53f1\n\n\n\n\n\n\n\n\n\n\n\nTHANKS FOR PLAYING!\n\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 67872695b5810724784b78e9295f0251, type: 2}
   m_sharedMaterial: {fileID: -1155667686722781935, guid: 67872695b5810724784b78e9295f0251, type: 2}
@@ -811,7 +816,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Credits: {fileID: 1843980281}
-  FinalPos: 920
+  FinalPos: 1480
 --- !u!4 &1383749974
 Transform:
   m_ObjectHideFlags: 0
