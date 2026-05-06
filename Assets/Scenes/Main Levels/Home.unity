@@ -732,6 +732,7 @@ MonoBehaviour:
   TriggerRoute1: {fileID: 0}
   TriggerRoute2: {fileID: 0}
   backgroundManager: {fileID: 0}
+  GodButton: {fileID: 0}
   Evil: {fileID: 0}
   Lamb: {fileID: 0}
   Eve: {fileID: 0}
@@ -1443,6 +1444,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 38749344}
+  pos: {x: 4.097, y: -0.948, z: 0}
 --- !u!1 &625916321
 GameObject:
   m_ObjectHideFlags: 0
@@ -1493,6 +1495,7 @@ MonoBehaviour:
   TriggerRoute1: {fileID: 0}
   TriggerRoute2: {fileID: 0}
   backgroundManager: {fileID: 0}
+  GodButton: {fileID: 0}
   Evil: {fileID: 0}
   Lamb: {fileID: 0}
   Eve: {fileID: 0}

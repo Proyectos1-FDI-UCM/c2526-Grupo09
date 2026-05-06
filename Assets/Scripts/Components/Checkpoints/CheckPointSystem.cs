@@ -35,7 +35,6 @@ public class CheckPointSystem : MonoBehaviour
         if (_instance == null)
         {
             _instance = this;
-            DontDestroyOnLoad(_instance);
         }
         else
         {

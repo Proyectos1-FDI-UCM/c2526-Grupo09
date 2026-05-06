@@ -175,7 +175,6 @@ public class GameManager : MonoBehaviour
     {
         _haDormido = true;
         _diaActual++;
-        Debug.Log("Has dormido. Mañana será el día: " + _diaActual);
     }
 
     //Resetea la cama para dormir
@@ -185,11 +184,18 @@ public class GameManager : MonoBehaviour
     }
 
     //Para saber a que escena debemos de cambiar al salir de casa
-    public int GetNextScene()
+    public string GetNextScene()
     {
-        if (_diaActual == 2) return 6; //devuelve el level2 (6 en la lista de escenas)
-        if (_diaActual == 3) return 8; //devuelve level3 (8 en la lista de escenas)
-        return 0; // Error o volver al menú
+        string nextScene = " ";
+        if (_diaActual == 2)
+        {
+            nextScene = "SecondLevel";
+        }
+        else if (_diaActual == 3)
+        {
+            nextScene = "FinalLevelPrologue";
+        }
+        return nextScene;
     }
 
     /// <summary>
@@ -199,7 +205,6 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(9);  // 9 - escena de la cabaña
     }
-
 
     /// <summary>
     /// Permite a otros scripts consultar si el jugador ha dormido hoy.

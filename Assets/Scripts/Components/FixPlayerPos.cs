@@ -16,11 +16,11 @@ public class FixPlayerPos : MonoBehaviour
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
     [SerializeField] private Transform Player;
+    [SerializeField] private Vector3 pos;
     #endregion
-    
-    // ---- ATRIBUTOS PRIVADOS ----
+
+     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
-    private Vector3 pos = new (4.097f, -0.948f, 0f);
     #endregion
     
     // ---- MÉTODOS DE MONOBEHAVIOUR ----

@@ -135,6 +135,7 @@ public class LevelManager : MonoBehaviour
         _flowerPicked = false;
         _gameOver.SetActive(false);
         _hidden.SetActive(false);
+        Day();
     }
 
     void Update()
@@ -146,7 +147,6 @@ public class LevelManager : MonoBehaviour
     // ---- MÉTODOS PÚBLICOS ----
 
     #region Métodos públicos
-
     /// <summary>
     /// Propiedad para acceder a la única instancia de la clase.
     /// </summary>
@@ -224,15 +224,6 @@ public class LevelManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Muestra en la esquina superior izquierda del HUD el día actual
-    /// </summary>
-    public void Day()
-    {
-        int day = GameManager.Instance.GetCurrentDay();
-        CurrentDay.text = "Day " + day;
-    }
-
-    /// <summary>
     /// Si se ha obtenido un checkpoint, aparece un mensaje en la esquina superior
     /// derecha durante dos segundos indicando que se ha cogido un checkpoint
     /// </summary>
@@ -240,17 +231,11 @@ public class LevelManager : MonoBehaviour
     {
         CheckpointObtained.SetActive(picked);
     }
-    #endregion
 
     public void GameOver(bool dead)
     {
         _gameOver.SetActive(dead);
     }
-
-
-    // ---- MÉTODOS PRIVADOS ----
-
-    #region Métodos Privados
 
     /// <summary>
     /// Método que activa el panel de FinDeJuego y cambia el texto del panel dependiendo de si pierdes o ganas
@@ -260,7 +245,7 @@ public class LevelManager : MonoBehaviour
     {
         Destroy(HUD);
     }
-
+   
     /// <summary>
     /// Mira la escena en la que nos encontramos actualmente y ejecuta
     /// la acción correspondiente después de que se termine un diálogo
@@ -371,13 +356,18 @@ public class LevelManager : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(Button);
     }
-
-
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----
     #region Métodos Privados
-
+    /// <summary>
+    /// Muestra en la esquina superior izquierda del HUD el día actual
+    /// </summary>
+    private void Day()
+    {
+        int day = GameManager.Instance.GetCurrentDay();
+        CurrentDay.text = "Day " + day;
+    }
 
     private void Init()
     {
