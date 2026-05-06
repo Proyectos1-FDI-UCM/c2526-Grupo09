@@ -26,7 +26,7 @@ public class FlowerCodeSpawner : MonoBehaviour
     private GameObject FlowerCodeOfScene;
 
     [SerializeField]
-    private Padlock Padlock = null;
+    private Padlock Padlock;
 
     #endregion
 
@@ -53,7 +53,6 @@ public class FlowerCodeSpawner : MonoBehaviour
         _player = collision.GetComponent<PlayerMovement>();
         if (_player != null)
         {
-            Debug.Log("detecta al player");
             GenerateFlowers();
         }
     }
@@ -94,7 +93,6 @@ public class FlowerCodeSpawner : MonoBehaviour
                 {
                     alreadyChosen = false;
                 }
-                Debug.Log("genera un num random");
                 index = Random.Range(0, Positions.Length);
 
                 int j = 0;
@@ -108,7 +106,6 @@ public class FlowerCodeSpawner : MonoBehaviour
                         if (index == numbers[j])
                         {
                             alreadyChosen = true;
-                            Debug.Log("detecta que es el mismo");
                         }
                         else j++;
                     }
