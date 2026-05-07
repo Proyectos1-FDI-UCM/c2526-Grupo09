@@ -25317,6 +25317,7 @@ MonoBehaviour:
   HUD: {fileID: 0}
   _gameOver: {fileID: 0}
   _hidden: {fileID: 0}
+  _throwMode: {fileID: 0}
   LilyPart2: {fileID: 0}
   LilyPart3: {fileID: 0}
   LilyPart4: {fileID: 0}

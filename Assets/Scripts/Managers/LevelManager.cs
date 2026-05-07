@@ -41,6 +41,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private GameObject HUD;
     [SerializeField] private GameObject _gameOver;
     [SerializeField] private GameObject _hidden;
+    [SerializeField] private GameObject _throwMode;
 
     [Header("Solo para la escena del Final")]
     [SerializeField] private GameObject LilyPart2;
@@ -138,6 +139,7 @@ public class LevelManager : MonoBehaviour
         _flowerPicked = false;
         _gameOver.SetActive(false);
         _hidden.SetActive(false);
+        _throwMode.SetActive(false);
         Day();
     }
 
@@ -214,6 +216,11 @@ public class LevelManager : MonoBehaviour
     public void Hidden(bool hidden)
     {
         _hidden.SetActive(hidden);
+    }
+
+    public void ThrowingMode(bool mode)
+    {
+        _throwMode.SetActive(mode);
     }
 
     public bool GetFlowerPicked()

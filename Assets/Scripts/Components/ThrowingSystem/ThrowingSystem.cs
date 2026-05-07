@@ -121,6 +121,8 @@ public class ThrowingSystem : MonoBehaviour
                 {
                     // comenzamos el movimiento del objeto
                     ThrowObject();
+                   
+                    LevelManager.Instance.ThrowingMode(false);
                     LevelManager.Instance.RockPicked(false);
                 }
                 else
@@ -134,6 +136,8 @@ public class ThrowingSystem : MonoBehaviour
                 // volvemos a nuestro estado inicial (habilitamos el jugador y la cámara y escondemos el cursor)
                 Movement.enabled = true;
                 Cursor.SetActive(false);
+                LevelManager.Instance.ThrowingMode(false);
+
                 // posición del cursor (con un pequeño offset a la derecha)
                 Cursor.transform.position = Movement.transform.position + new Vector3(1, 0, 0);
             }
@@ -179,8 +183,12 @@ public class ThrowingSystem : MonoBehaviour
     /// </summary>
     private void CursorMovement()
     {
+        // Establecemos modo lanzamiento.
+        LevelManager.Instance.ThrowingMode(true);
+
         // bloqueamos el movimiento del jugador y hacemos que el cursor aparezca
         Movement.enabled = false;
+        
         Cursor.SetActive(true);
 
         // obtenemos la dirección del InputManager
