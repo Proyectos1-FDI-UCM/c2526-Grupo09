@@ -23,6 +23,7 @@ public class PauseManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI CheatsText;
     [SerializeField] private GameObject EndPanel;
     [SerializeField] private GameObject HUD;
+    [SerializeField] private GameObject FadeUI;
    
 
     [Header("Botones del UI de Pausa")]
@@ -73,6 +74,7 @@ public class PauseManager : MonoBehaviour
                 Pause = !Pause;
                 PausePanel.SetActive(Pause);
                 HUD.SetActive(!Pause);
+                if (FadeUI != null) Destroy(FadeUI);
 
                 LevelManager.Instance.SetFirstButton(ResumeButton);
             }
