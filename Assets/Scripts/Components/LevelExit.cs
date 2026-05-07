@@ -42,9 +42,14 @@ public class LevelExit : MonoBehaviour
         {
             if (LevelManager.Instance.GetFlowerPicked())
             {
-                SceneManager.LoadScene("GoingHome");
-                // LevelManager.LevelWon();
-                // LevelManager.Instance.EndGame();
+                if (GameManager.Instance.GetCurrentDay() == 1)
+                {
+                    SceneManager.LoadScene("GoingHome");
+                }
+                else
+                {
+                    SceneManager.LoadScene("GoingHome2");
+                }
             }
             else if (padlock.GetDoorOpen())
             {

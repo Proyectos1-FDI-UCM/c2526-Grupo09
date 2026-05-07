@@ -71,7 +71,7 @@ public class BackgroundManager : MonoBehaviour
             if (endTime >= 1f)
             {
                 _isFading = false;
-                SceneManager.LoadScene("CreditsEnding");
+                SceneManager.LoadScene("CreditsEnding2");
             }    
         }
     }

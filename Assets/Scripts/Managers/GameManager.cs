@@ -210,6 +210,11 @@ public class GameManager : MonoBehaviour
         return _haDormido;
     }
 
+    public int GetCurrentDay()
+    {
+        return _diaActual;
+    }
+
     public void QuitGame()
     {
         Application.Quit();

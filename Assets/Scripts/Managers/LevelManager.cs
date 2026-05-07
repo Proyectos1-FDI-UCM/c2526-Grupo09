@@ -151,13 +151,9 @@ public class LevelManager : MonoBehaviour
         string sceneName = currentScene.name;
         if (sceneName == "FinalLevel")
         {
-            if (GameManager.Instance.DialogueExecuted)
+            if (!GameManager.Instance.DialogueExecuted)
             {
-                BossDialogue.SetActive(false);
-            }
-            else
-            {
-                GameManager.Instance.DialogueExecuted = true;
+                BossDialogue.SetActive(true);
             }
         }
     }
@@ -189,11 +185,6 @@ public class LevelManager : MonoBehaviour
     public static bool HasInstance()
     {
         return _instance != null;
-    }
-
-    public static void LevelReset()
-    {
-        _levelStage = 0;
     }
 
     /// <summary>
@@ -409,11 +400,11 @@ public class LevelManager : MonoBehaviour
         else if (sceneName == "FinalLevelPrologue" || sceneName == "FinalLevel" || sceneName == "PostBattle")
         {
             CurrentDay.text = "Day 3";
-        }
-        else if (sceneName == "FinalLevel" || sceneName == "PostBattle")
-        {
-            FlowerObtained.text = "0/0";
-        }
+            if (sceneName == "FinalLevel" || sceneName == "PostBattle")
+            {
+                FlowerObtained.text = "0/0";
+            }
+        } 
     }
 
     private void Init()
