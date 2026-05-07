@@ -165,9 +165,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingLayerID: 1899010987
+  m_SortingLayer: 1
+  m_SortingOrder: 5
   m_Sprite: {fileID: 2147685559727469259, guid: 3b9651ede723cc646831c4619f69b8c4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1283,6 +1283,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8606664896545888718, guid: bdaeee04a68fe4283b8789c48055f778, type: 3}
   m_PrefabInstance: {fileID: 535176275}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &535176277 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3903072797589343805, guid: bdaeee04a68fe4283b8789c48055f778, type: 3}
+  m_PrefabInstance: {fileID: 535176275}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &543145466
 GameObject:
   m_ObjectHideFlags: 0
@@ -1530,7 +1535,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 976402422735028487, guid: 522f76ecd2425fe4aa6d9911eb852ec3, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 0.26
+      value: 0.24
       objectReference: {fileID: 0}
     - target: {fileID: 976402422735028487, guid: 522f76ecd2425fe4aa6d9911eb852ec3, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
@@ -1539,6 +1544,10 @@ PrefabInstance:
     - target: {fileID: 976402422735028487, guid: 522f76ecd2425fe4aa6d9911eb852ec3, type: 3}
       propertyPath: m_SpriteTilingProperty.adaptiveTilingThreshold
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1934644146244757556, guid: 522f76ecd2425fe4aa6d9911eb852ec3, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2246988364955933717, guid: 522f76ecd2425fe4aa6d9911eb852ec3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1600,7 +1609,9 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2357163202997159014, guid: 522f76ecd2425fe4aa6d9911eb852ec3, type: 3}
+    - {fileID: -2929507570003626549, guid: 522f76ecd2425fe4aa6d9911eb852ec3, type: 3}
     m_RemovedGameObjects:
     - {fileID: 841928951783432775, guid: 522f76ecd2425fe4aa6d9911eb852ec3, type: 3}
     m_AddedGameObjects: []
@@ -1658,7 +1669,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 38749344}
   Camera: {fileID: 0}
-  pos: {x: 4.097, y: -0.948, z: 0}
+  pos: {x: 4.1, y: -0.95, z: 0}
 --- !u!1 &663634300
 GameObject:
   m_ObjectHideFlags: 0
@@ -2530,6 +2541,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8606664896545888718, guid: bdaeee04a68fe4283b8789c48055f778, type: 3}
   m_PrefabInstance: {fileID: 1044481318}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1044481320 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3903072797589343805, guid: bdaeee04a68fe4283b8789c48055f778, type: 3}
+  m_PrefabInstance: {fileID: 1044481318}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1102263392
 GameObject:
   m_ObjectHideFlags: 0
@@ -2539,7 +2555,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1102263393}
-  - component: {fileID: 1102263394}
   m_Layer: 0
   m_Name: Home
   m_TagString: Untagged
@@ -2565,18 +2580,6 @@ Transform:
   - {fileID: 2082153528}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1102263394
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1102263392}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 555a74b47e1590f4f914bfad8e5b1d2d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &1163856321 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8606664896545888718, guid: bdaeee04a68fe4283b8789c48055f778, type: 3}
@@ -2694,8 +2697,8 @@ MonoBehaviour:
   CheatsText: {fileID: 279703518}
   EndPanel: {fileID: 0}
   HUD: {fileID: 0}
-  ExitControls: {fileID: 0}
-  ResumeButton: {fileID: 0}
+  ExitControls: {fileID: 535176277}
+  ResumeButton: {fileID: 1044481320}
 --- !u!4 &1387150634
 Transform:
   m_ObjectHideFlags: 0
