@@ -22,7 +22,7 @@ public class FlowerSpawn : MonoBehaviour
     [SerializeField] private GameObject DeadGabriel;
     [SerializeField] private GameObject Cutscene;
     [SerializeField] private GameObject DialogEnd;
-    [SerializeField] private GameObject FlowerTrigger;
+
 
     [SerializeField] private AudioSource killSound;
     #endregion
