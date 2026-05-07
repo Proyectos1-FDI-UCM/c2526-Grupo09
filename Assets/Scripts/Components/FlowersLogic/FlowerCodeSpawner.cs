@@ -19,14 +19,10 @@ public class FlowerCodeSpawner : MonoBehaviour
     #region Atributos del Inspector (serialized fields)
 
     // posiciones de las flores
-    [SerializeField]
-    private Transform[] Positions;
-
-    [SerializeField]
-    private GameObject FlowerCodeOfScene;
-
-    [SerializeField]
-    private Padlock Padlock;
+    [SerializeField] private Transform[] Positions;
+    [SerializeField] private GameObject FlowerCodeOfScene;
+    [SerializeField] private Padlock Padlock;
+    [SerializeField] private Collider2D SpawnerCollider;
 
     #endregion
 
@@ -127,7 +123,7 @@ public class FlowerCodeSpawner : MonoBehaviour
         {
             Padlock.CreatePadlockCode();
         }
-        this.enabled = false;
+        SpawnerCollider.enabled = false;
     } // GenerateFlowers
     #endregion
 
