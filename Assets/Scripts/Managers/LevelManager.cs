@@ -62,6 +62,11 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private BackgroundManager backgroundManager;
     [SerializeField] private GameObject GodButton;
 
+    [Header("Solo para la escena de rezar")]
+    [SerializeField] private GameObject Agnus;
+    [SerializeField] private GameObject Fading;
+
+
     [Header("Solo para la escena de Inicio")]
     [SerializeField] private GameObject Evil;
     [SerializeField] private GameObject Lamb;
@@ -281,11 +286,12 @@ public class LevelManager : MonoBehaviour
         }
         else if (sceneName == "StartCutscene")
         {
-            if (_dialogCont  > 0)
+            switch (_dialogCont)
             {
-                SceneManager.LoadScene("StartCutscene2");
+                case 0: Agnus.SetActive(true); Fading.SetActive(true);  _dialogCont++; break;
+                case 1: SceneManager.LoadScene("StartCutscene2"); break;
             }
-            _dialogCont++;
+            
         }
         else if (sceneName == "StartCutscene2")
         {

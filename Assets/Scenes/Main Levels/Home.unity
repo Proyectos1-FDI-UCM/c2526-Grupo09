@@ -744,6 +744,8 @@ MonoBehaviour:
   TriggerRoute2: {fileID: 0}
   backgroundManager: {fileID: 0}
   GodButton: {fileID: 0}
+  Agnus: {fileID: 0}
+  Fading: {fileID: 0}
   Evil: {fileID: 0}
   Lamb: {fileID: 0}
   Eve: {fileID: 0}
@@ -1655,7 +1657,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 38749344}
-  Camera: {fileID: 0}
+  Camera: {fileID: 2851207222802566145}
   pos: {x: 4.097, y: -0.948, z: 0}
 --- !u!1 &663634300
 GameObject:

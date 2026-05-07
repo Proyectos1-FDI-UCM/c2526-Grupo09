@@ -135,7 +135,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!95 &1660393
 Animator:
   serializedVersion: 7
@@ -782,9 +782,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7881854568605715221, guid: c252708ca5802d642b9c96c84e423b24, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2006938129}
-    - targetCorrespondingSourceObject: {fileID: 7881854568605715221, guid: c252708ca5802d642b9c96c84e423b24, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2006938133}
   m_SourcePrefab: {fileID: 100100000, guid: c252708ca5802d642b9c96c84e423b24, type: 3}
 --- !u!82 &975372248
 AudioSource:
@@ -960,19 +957,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &975372259
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6522229757723844944}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c70565b03e6f123438b32c896f89f496, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _toActive: {fileID: 1660392}
 --- !u!1 &981534920
 GameObject:
   m_ObjectHideFlags: 0
@@ -12713,19 +12697,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4049718758950587130, guid: c252708ca5802d642b9c96c84e423b24, type: 3}
   m_PrefabInstance: {fileID: 889436132}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2006938133
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2006938128}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c70565b03e6f123438b32c896f89f496, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _toActive: {fileID: 1438484065}
 --- !u!1 &2054613095
 GameObject:
   m_ObjectHideFlags: 0
@@ -13005,6 +12976,8 @@ MonoBehaviour:
   TriggerRoute2: {fileID: 0}
   backgroundManager: {fileID: 0}
   GodButton: {fileID: 0}
+  Agnus: {fileID: 1660392}
+  Fading: {fileID: 1438484065}
   Evil: {fileID: 0}
   Lamb: {fileID: 0}
   Eve: {fileID: 0}
@@ -13316,7 +13289,6 @@ GameObject:
   - component: {fileID: 975372252}
   - component: {fileID: 975372251}
   - component: {fileID: 975372248}
-  - component: {fileID: 975372259}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
