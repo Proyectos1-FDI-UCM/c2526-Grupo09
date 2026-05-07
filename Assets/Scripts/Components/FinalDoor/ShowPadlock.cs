@@ -41,13 +41,13 @@ public class ShowPadlock : MonoBehaviour
     void Update()
     {
         //solo si esta tocando la puerta y presionando E se ejecutara
-        if (_nearPad && InputManager.Instance.InteractWasPressedThisFrame())
+        if (InputManager.Instance.InteractWasPressedThisFrame() && !_openPad && _nearPad)
         {
-            if (_openPad)//si está abierto, lo cierra
-            {
-                CloseLock();
-            }
-            else InteractLock();
+            InteractLock();
+        }
+        else if (InputManager.Instance.PauseWasPressedThisFrame() && _openPad)
+        {
+            CloseLock();
         }
     }
 
@@ -87,19 +87,26 @@ public class ShowPadlock : MonoBehaviour
         Padlock.SetActive(true);
         _openPad = true;
         LevelManager.Instance.SetFirstButton(FirstButton);
+        PauseManager.Instance.OpenUI();
     }
 
     public void CloseLock()
     {
         Padlock.SetActive(false);
         PauseManager.Instance.ResumeVariable();
-        _openPad=false;
+        _openPad = false;
+        PauseManager.Instance.CloseUI();
     }
     public void DestroyPad()
     {
         gameObject.SetActive(false);
         Padlock.SetActive(false);
         PauseManager.Instance.ResumeVariable();
+    }
+
+    public bool IsOpen
+    {
+        get { return _openPad; }
     }
     #endregion
 

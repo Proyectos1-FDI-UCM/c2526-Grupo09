@@ -56,13 +56,17 @@ public class NoteFlower : MonoBehaviour
     void Update()
     {
         //solo si esta tocando la nota y presionando E se ejecutara
-        if (_nearNote && InputManager.Instance.InteractWasPressedThisFrame())
+
+        if (InputManager.Instance.InteractWasPressedThisFrame() && _nearNote)
         {
             if (_openNote)
             {
                 HideNote();
             }
-            else ShowNote();
+            else
+            {
+                ShowNote();
+            }
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -81,7 +85,6 @@ public class NoteFlower : MonoBehaviour
         {
             _nearNote = false;
             FollowObject.Deactivate();
-
         }
     }
     #endregion
@@ -100,17 +103,21 @@ public class NoteFlower : MonoBehaviour
             Sprite newSprite = GetSpriteByColor(flowers[i].FlowerColor);
             ImagesFlower[i].sprite = newSprite;
         }
-
+        PauseManager.Instance.PauseVariable();
         NotePanel.SetActive(true);
         _openNote = true;
         TextNote.text = "Pray thy God may save us, for this world is doomed.\r\nHope is a fragile thing… yet it lingers.\r\n\r\nFour flowers remain.\r\nFollow their hues, and heed what they carry.\r\n\r\nFor even in silence, they speak.";
+
     }
     public void HideNote()
     {
-
         NotePanel.SetActive(false);
+        PauseManager.Instance.ResumeVariable();
         _openNote = false;
-
+    }
+    public bool IsOpen
+    {
+        get { return _openNote; }
     }
     #endregion
 
