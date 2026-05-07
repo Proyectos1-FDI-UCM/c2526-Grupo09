@@ -19,24 +19,46 @@ public class Bed : MonoBehaviour
     #region Atributos del Inspector (serialized fields)
     [SerializeField] private GameObject panelDormir;
     [SerializeField] private GameObject SleepButton;  // boton de dormir
+    [SerializeField] private PlayerMovement Player;
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
+    private bool _inCollider = false;
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
+
+    private void Update()
+    {
+        if (_inCollider) 
+        {
+            if (!GameManager.Instance.GetHaDormido() && InputManager.Instance.InteractWasPressedThisFrame())
+            {
+                Player.enabled = false;
+                panelDormir.SetActive(true);
+                LevelManager.Instance.SetFirstButton(SleepButton);
+            }
+        }
+    }
+
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         PlayerMovement playerMovement = collision.gameObject.GetComponent<PlayerMovement>();
         if (playerMovement != null)
         {
-            if (!GameManager.Instance.GetHaDormido())
-            {
-                panelDormir.SetActive(true);
-                LevelManager.Instance.SetFirstButton(SleepButton);
-            }
+            _inCollider = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        PlayerMovement playerMovement = collision.gameObject.GetComponent<PlayerMovement>();
+        if (playerMovement != null)
+        {
+            _inCollider = false;
         }
     }
     #endregion
@@ -45,6 +67,7 @@ public class Bed : MonoBehaviour
     #region Métodos públicos
     public void ConfirmSleep()
     {
+        Player.enabled = true;
         GameManager.Instance.Sleep();
         panelDormir.SetActive(false);
     }
@@ -52,6 +75,7 @@ public class Bed : MonoBehaviour
     public void CancelSleep()
     {
         panelDormir.SetActive(false);
+        Player.enabled = true;
     }
 
     #endregion

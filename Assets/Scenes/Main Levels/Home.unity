@@ -206,6 +206,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2246988364955933717, guid: 522f76ecd2425fe4aa6d9911eb852ec3, type: 3}
   m_PrefabInstance: {fileID: 559596595}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &38749348 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1271348129770439711, guid: 522f76ecd2425fe4aa6d9911eb852ec3, type: 3}
+  m_PrefabInstance: {fileID: 559596595}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 38749337}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cb519cbca97bbe4ab98e131b8b1789f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &70363371
 GameObject:
   m_ObjectHideFlags: 0
@@ -3335,7 +3346,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.021859467, y: -0.09307636}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -3345,7 +3356,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.6703581, y: 1.1861527}
   m_EdgeRadius: 0
 --- !u!114 &1702407398
 MonoBehaviour:
@@ -3360,7 +3371,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panelDormir: {fileID: 2110631494}
-  SleepButton: {fileID: 0}
+  SleepButton: {fileID: 2101856021}
+  Player: {fileID: 38749348}
 --- !u!50 &1702407399
 Rigidbody2D:
   serializedVersion: 5
@@ -3903,6 +3915,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &2101856021 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3903072797589343805, guid: bdaeee04a68fe4283b8789c48055f778, type: 3}
+  m_PrefabInstance: {fileID: 91403659}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2110631494
 GameObject:
   m_ObjectHideFlags: 0
