@@ -1657,7 +1657,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 38749344}
-  Camera: {fileID: 2851207222802566145}
+  Camera: {fileID: 0}
   pos: {x: 4.097, y: -0.948, z: 0}
 --- !u!1 &663634300
 GameObject:

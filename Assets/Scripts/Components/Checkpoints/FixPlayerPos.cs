@@ -32,7 +32,10 @@ public class FixPlayerPos : MonoBehaviour
         {
             CheckPointSystem.Instance.FixPosLevel = true;
             Player.position = pos;
-            Camera.position = pos;
+            if (Camera != null)
+            {
+                Camera.position = pos;
+            }
         }
     }
     #endregion
