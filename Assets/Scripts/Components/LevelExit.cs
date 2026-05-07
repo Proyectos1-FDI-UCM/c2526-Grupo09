@@ -42,8 +42,9 @@ public class LevelExit : MonoBehaviour
         {
             if (LevelManager.Instance.GetFlowerPicked())
             {
-                LevelManager.LevelWon();
-                LevelManager.Instance.EndGame();
+                SceneManager.LoadScene("GoingHome");
+                // LevelManager.LevelWon();
+                // LevelManager.Instance.EndGame();
             }
             else if (padlock.GetDoorOpen())
             {

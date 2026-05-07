@@ -1835,6 +1835,10 @@ PrefabInstance:
       value: TileMap
       objectReference: {fileID: 0}
     - target: {fileID: 5831010511492087517, guid: 16d79363db929e341bdcfbe9e4d6f7c3, type: 3}
+      propertyPath: m_SortingOrder
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5831010511492087517, guid: 16d79363db929e341bdcfbe9e4d6f7c3, type: 3}
       propertyPath: m_ChunkCullingBounds.x
       value: 0.009215236
       objectReference: {fileID: 0}
@@ -13447,13 +13451,14 @@ MonoBehaviour:
   _gameOver: {fileID: 0}
   _hidden: {fileID: 0}
   _throwMode: {fileID: 0}
+  playerNoise: {fileID: 0}
+  playerMovement: {fileID: 0}
   LilyPart2: {fileID: 0}
   LilyPart3: {fileID: 0}
   LilyPart4: {fileID: 0}
-  PostBattle: {fileID: 0}
   KillLily: {fileID: 0}
   KillLilyButton: {fileID: 0}
-  playerMovement: {fileID: 0}
+  BossDialogue: {fileID: 0}
   Choice: {fileID: 0}
   TriggerRoute1: {fileID: 0}
   TriggerRoute2: {fileID: 0}
