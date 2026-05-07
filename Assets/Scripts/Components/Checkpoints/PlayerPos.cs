@@ -27,10 +27,15 @@ public class PlayerPos : MonoBehaviour
     /// Start is called on the frame when a script is enabled just before 
     /// any of the Update methods are called the first time.
     /// </summary>
-    private void Start()
+    private void Awake()
     {
+        Debug.Log("PlayerPos");
+        Debug.Log("PLAYER POS: " + transform.position);
         transform.position = CheckPointSystem.Instance.GetLastCheck();
-        cam.transform.position = transform.position;
+        if (cam != null )
+        {
+            cam.transform.position = transform.position;
+        }
     }
     #endregion
 

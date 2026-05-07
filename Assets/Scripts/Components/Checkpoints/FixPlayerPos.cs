@@ -28,6 +28,8 @@ public class FixPlayerPos : MonoBehaviour
     /// </summary>
     void Start()
     {
+        Debug.Log("FixPlayerPos");
+        Debug.Log("PLAYER POS: " + Player.position);
         if (!CheckPointSystem.Instance.FixPosLevel)
         {
             CheckPointSystem.Instance.FixPosLevel = true;
