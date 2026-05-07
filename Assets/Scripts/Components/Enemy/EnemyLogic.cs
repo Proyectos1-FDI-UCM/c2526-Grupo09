@@ -233,6 +233,7 @@ public class EnemyLogic : MonoBehaviour
 
         _gameOver = true;
         LevelManager.Instance.GameOver(_gameOver);
+        Player.GetComponent<Animator>().SetBool("Dead", true);
 
 
     }
