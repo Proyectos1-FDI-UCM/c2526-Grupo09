@@ -71,6 +71,7 @@ La exploración, el silencio y la planificación serán fundamentales para sobre
 - El tileset muestra líneas verdes entre los tiles.
 - Al tener los cheats activos mientras hay una cutscene activa, las animaciones dejan de ejecutarse eventualmente.
 - Si sales al menú principal y entras al juego de nuevo, las animaciones paran por un rato.
+- Tienes que entrar y salir del collider de la cama para que pueda salir el panel si decides no dormir.
   
 ### _Si encuentra algún error durante el juego, crea un nuevo Issue con la plantilla Bug Report en Issues._
 
