@@ -2479,6 +2479,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4294398038989633363, guid: 1455900c3704c18489f5483df602daa7, type: 3}
   m_PrefabInstance: {fileID: 945622029}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &945622031 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6786577745074158325, guid: 1455900c3704c18489f5483df602daa7, type: 3}
+  m_PrefabInstance: {fileID: 945622029}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &945622032 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2668595531766511571, guid: 1455900c3704c18489f5483df602daa7, type: 3}
@@ -2587,6 +2592,53 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &998319699
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 998319701}
+  - component: {fileID: 998319700}
+  m_Layer: 0
+  m_Name: FIxPlayerPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &998319700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 998319699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5e453a6f5a051f46a71ca57f5ec7d9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 650772921}
+  Camera: {fileID: 945622031}
+  pos: {x: -113.5, y: 35, z: 0}
+--- !u!4 &998319701
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 998319699}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1018062999 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8739169297722821231, guid: 4f8ff53be8d04084c897f83417641e53, type: 3}
@@ -3724,3 +3776,4 @@ SceneRoots:
   - {fileID: 932461106}
   - {fileID: 667901863}
   - {fileID: 736370501}
+  - {fileID: 998319701}
