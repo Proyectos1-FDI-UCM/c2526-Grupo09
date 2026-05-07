@@ -20,9 +20,9 @@ MonoBehaviour:
   - character: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
     dialogueLine: Pick up the flower, Eve.
   - character: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
-    dialogueLine: You've just destroyed a sin on Earth.
+    dialogueLine: You've just destroyed a sinner on Earth.
   - character: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
-    dialogueLine: Congratulations! There is only two more remaining.
+    dialogueLine: Congratulations! There are only two more remaining.
   - character: {fileID: 11400000, guid: 817ef739fb283a84995207a6f9e76224, type: 2}
     dialogueLine: I-I.. I can't...
   - character: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
