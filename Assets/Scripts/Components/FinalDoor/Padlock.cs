@@ -95,6 +95,11 @@ public class Padlock : MonoBehaviour
     /// Collider de la puerta
     /// </summary>
     private Collider2D _spriteCol;
+
+    /// <summary>
+    /// Puerta cerrada - false, puerta abierta - true
+    /// </summary>
+    private bool _doorOpen = false;
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -167,6 +172,7 @@ public class Padlock : MonoBehaviour
         {
             ChangeSprite();
             ShowPad.DestroyPad();
+            _doorOpen = true;
         }
         else
         {
@@ -183,6 +189,15 @@ public class Padlock : MonoBehaviour
         _spriteCol.enabled = false;
     }
 
+    /// <summary>
+    /// Indica si se ha abierto la puerta para que la salida
+    /// se active
+    /// </summary>
+    /// <returns></returns>
+    public bool GetDoorOpen()
+    {
+        return _doorOpen;
+    }
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----

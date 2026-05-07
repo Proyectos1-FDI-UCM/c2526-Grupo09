@@ -379,6 +379,10 @@ public class LevelManager : MonoBehaviour
         {
             CurrentDay.text = "Day 3";
         }
+        else if (sceneName == "FinalLevel" || sceneName == "PostBattle")
+        {
+            FlowerObtained.text = "0/0";
+        }
     }
 
     private void Init()
