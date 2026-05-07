@@ -6,8 +6,7 @@
 //---------------------------------------------------------
 
 using UnityEngine;
-// Añadir aquí el resto de directivas using
-
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// Antes de cada class, descripción de qué es y para qué sirve,
@@ -18,6 +17,7 @@ public class LevelExit : MonoBehaviour
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
     [SerializeField] private GameObject WarningMessage;
+    [SerializeField] private Padlock padlock;
     #endregion
     
     // ---- ATRIBUTOS PRIVADOS ----
@@ -35,14 +35,6 @@ public class LevelExit : MonoBehaviour
         WarningMessage.SetActive(false);
     }
 
-    /// <summary>
-    /// Update is called every frame, if the MonoBehaviour is enabled.
-    /// </summary>
-    void Update()
-    {
-        
-    }
-
     void OnTriggerEnter2D(Collider2D collision)
     {
         PlayerMovement player = collision.GetComponent<PlayerMovement>();
@@ -52,6 +44,10 @@ public class LevelExit : MonoBehaviour
             {
                 LevelManager.LevelWon();
                 LevelManager.Instance.EndGame();
+            }
+            else if (padlock.GetDoorOpen())
+            {
+                SceneManager.LoadScene("PostBattle");
             }
             else
             {
