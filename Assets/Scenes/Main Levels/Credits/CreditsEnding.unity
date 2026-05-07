@@ -1156,7 +1156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ece18b8482b8b946a36a76dc32c83d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Credits: {fileID: 0}
+  Credits: {fileID: 1097286340}
   FinalPos: 1480
 --- !u!4 &1383749974
 Transform:
@@ -1239,10 +1239,11 @@ MonoBehaviour:
     Pixabay\nFreeSoundCommunity on FreeSound\n\n\nMusic:\nOpenMindAudio on PixaBay\nClannad
     - VISUAL ARTS / Key - Town, \nthe passage of time, people\r\nAutumn\u2019s Grey
     Solace\r\nMagnolia - ChouChou\r\nClannad - VISUAL ARTS / Key - Shiomari II\nYasunori
-    Nishiki - Suterareta Miyako\n\r\nFonts:\nHewett Tsoi on DaFont\nAC Wild World
-    by Nintendo\n\nSpecial thanks:\nGuillermo Jim\xE9nez D\xEDaz\nIsmael Sagredo
-    Olivenza\nJadsa Games for tutorials\nAll artwork made by Bistec-Studios\n\nMade
-    with Unity Engine\nversion 6000.0.53f1\n\n\n\n\n\n\n\n\n\n\n\nTHANKS FOR PLAYING!\n\n"
+    Nishiki - Suterareta Miyako\nMission Mode - Yandere Simulator\nMemories of School
+    - Persona 3\n\nFonts:\nHewett Tsoi on DaFont\nAC Wild World by Nintendo\n\nSpecial
+    thanks:\nGuillermo Jim\xE9nez D\xEDaz\nIsmael Sagredo Olivenza\nJadsa Games for
+    tutorials\nAll artwork made by Bistec-Studios\n\nMade with Unity Engine\nversion
+    6000.0.53f1\n\n\n\n\n\n\n\n\n\n\n\nTHANKS FOR PLAYING!\n\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 67872695b5810724784b78e9295f0251, type: 2}
   m_sharedMaterial: {fileID: -1155667686722781935, guid: 67872695b5810724784b78e9295f0251, type: 2}
