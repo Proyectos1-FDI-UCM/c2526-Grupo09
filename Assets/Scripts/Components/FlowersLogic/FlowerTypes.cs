@@ -60,37 +60,31 @@ public class FlowerTypes : MonoBehaviour
             case 0:
                 _nPetals = 2;
                 _flowerColor = "RED";
-                _tempColor.material.color = Color.red;
                 break;
 
             case 1:
                 _nPetals = 3;
                 _flowerColor = "BLUE";
-                _tempColor.material.color = Color.blue;
                 break;
 
             case 2:
                 _nPetals = 5;
                 _flowerColor = "YELLOW";
-                _tempColor.material.color = Color.yellow;
                 break;
 
             case 3:
                 _nPetals = 4;
                 _flowerColor = "CYAN";
-                _tempColor.material.color = Color.cyan;
                 break;
 
             case 4:
                 _nPetals = 6;
                 _flowerColor = "BLACK";
-                _tempColor.material.color = Color.black;
                 break;
 
             case 5:
                 _nPetals = 7;
                 _flowerColor = "WHITE";
-                _tempColor.material.color = Color.white;
                 break;
 
         }

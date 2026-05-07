@@ -51,8 +51,12 @@ public class Bed : MonoBehaviour
         if (playerMovement != null)
         {
             _inCollider = true;
-            ButtonInteract.SetNewTarget(transform);
-            ButtonInteract.ChangeText("to sleep");
+            if (!GameManager.Instance.GetHaDormido())
+            {
+                ButtonInteract.SetNewTarget(transform);
+                ButtonInteract.ChangeText("sleep");
+            }
+          
         }
     }
 
@@ -75,6 +79,7 @@ public class Bed : MonoBehaviour
         Player.enabled = true;
         GameManager.Instance.Sleep();
         panelDormir.SetActive(false);
+        ButtonInteract.Deactivate();
     }
 
     public void CancelSleep()
