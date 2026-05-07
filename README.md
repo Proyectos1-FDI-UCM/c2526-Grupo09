@@ -36,9 +36,9 @@ La exploración, el silencio y la planificación serán fundamentales para sobre
 
 ### **Mando**
 - **Movimiento y acción**
-    - **joystick izquierdo/D-pad_** - Sirve para moverse por el mapa y por las interfaces.
-    - **Botón X_** - Correr.
-    - **Botón A_** - Interactuar con elementos del entorno/ avanzar el diálogo.
+    - **_joystick izquierdo/D-pad_** - Sirve para moverse por el mapa y por las interfaces.
+    - **_Botón X_** - Correr.
+    - **_Botón A_** - Interactuar con elementos del entorno/ avanzar el diálogo.
 
 - **Sistema de Lanzamiento**
     - **_CTRL/LB_**- Entrar/salir del modo lanzamiento.
@@ -69,7 +69,10 @@ La exploración, el silencio y la planificación serán fundamentales para sobre
 
 # **Known Issues**
 - El tileset muestra líneas verdes entre los tiles.
-
+- Al tener los cheats activos mientras hay una cutscene activa, las animaciones dejan de ejecutarse eventualmente.
+- Si sales al menú principal y entras al juego de nuevo, las animaciones paran por un rato.
+- 
+  
 ### _Si encuentra algún error durante el juego, crea un nuevo Issue con la plantilla Bug Report en Issues._
 
 ---
