@@ -280,6 +280,30 @@ public class EnemyLogic : MonoBehaviour
         {
             _animator.SetInteger("Direction", 4); // Derecha
         }
+        
+        else if (incrX > 0 && incrY > 0)
+        {
+            _animator.SetInteger("Direction", 2); // Derecha-Arriba
+
+        }
+        
+        else if (incrX < 0 && incrY < 0)
+        {
+            _animator.SetInteger("Direction", 1); // Izquierda-Abajo
+
+        }
+        
+        else if (incrX > 0 && incrY < 0)
+        {
+            _animator.SetInteger("Direction", 1); // Derecha-Abajo
+
+        }
+
+        
+        else if (incrX < 0 && incrY > 0)
+        {
+            _animator.SetInteger("Direction", 2); // Izquierda-Arriba
+        }
 
         //Derecha
         if (incrX > 0 && incrY == 0)
