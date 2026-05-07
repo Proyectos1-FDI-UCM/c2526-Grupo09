@@ -47,9 +47,9 @@ public class LevelExit : MonoBehaviour
                     SceneManager.LoadScene("GoingHome2");
                 }
             }
-            else if (padlock.GetDoorOpen())
+            else if (padlock != null)
             {
-                SceneManager.LoadScene("PostBattle");
+                if (padlock.GetDoorOpen()) SceneManager.LoadScene("PostBattle");
             }
             else
             {
