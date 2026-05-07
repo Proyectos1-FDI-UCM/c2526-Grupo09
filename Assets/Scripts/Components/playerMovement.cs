@@ -57,7 +57,9 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         _animator = GetComponent<Animator>();
-        
+        Debug.Log("PLAYER POS: " + transform.position);
+        Debug.Log("PLAYER ACTIVE: " + gameObject.activeSelf);
+        Debug.Log("SPRITE ENABLED: " + GetComponent<SpriteRenderer>().enabled);
     }
 
     void Update()

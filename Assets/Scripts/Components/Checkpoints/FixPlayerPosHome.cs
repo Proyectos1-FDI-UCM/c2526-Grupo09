@@ -29,7 +29,10 @@ public class FixPlayerPosHome : MonoBehaviour
     void Start()
     {
         Player.position = pos;
-        Camera.position = pos;
+        if (Camera != null )
+        {
+            Camera.position = pos;
+        }
     }
     #endregion
 } // class FixPlayerPos 
