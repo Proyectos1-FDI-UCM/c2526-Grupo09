@@ -21,6 +21,8 @@ public class FlowerSpawn : MonoBehaviour
     [SerializeField] private GameObject Gabriel;
     [SerializeField] private GameObject DeadGabriel;
     [SerializeField] private GameObject Cutscene;
+    [SerializeField] private GameObject DialogEnd;
+    [SerializeField] private GameObject FlowerTrigger;
 
     [SerializeField] private AudioSource killSound;
     #endregion
@@ -30,6 +32,8 @@ public class FlowerSpawn : MonoBehaviour
     private bool _insideCollider;
 
     private bool _hasPlayedSound = false;
+    private float timer = 0f;
+    private bool _killed = false;
 
     #endregion
 
@@ -45,6 +49,7 @@ public class FlowerSpawn : MonoBehaviour
         DeadGabriel.SetActive(false);
         _insideCollider = false;
         Cutscene.SetActive(false);
+        DialogEnd.SetActive(false);
     }
 
     /// <summary>
@@ -52,6 +57,7 @@ public class FlowerSpawn : MonoBehaviour
     /// </summary>
     void Update()
     {
+        
         // Solo actuamos si el jugador está dentro Y NO hay diálogo activo
         if (_insideCollider && !DialogueManager.Instance.GetIsDialogueInProgress())
         {            
@@ -64,11 +70,27 @@ public class FlowerSpawn : MonoBehaviour
                     // Usamos la posición del transform actual para el sonido 2D
                     AudioSource.PlayClipAtPoint(killSound.clip, transform.position, 1.0f);
                 }
+                
                 // Cambios de estado
                 Cutscene.SetActive(true);
                 Gabriel.SetActive(false);
+
                 DeadGabriel.SetActive(true);
                 Flower.SetActive(true);
+                _killed = true;
+               
+            }
+        }
+
+        if (_killed)
+        {
+            timer += Time.deltaTime;
+            Debug.Log("Se le ha sumado al contador");
+            if (timer >= 2f)
+            {
+                Debug.Log("Ya ha llegado");
+                DialogEnd.SetActive(true);
+                _killed = false;
             }
         }
     }

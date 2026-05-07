@@ -210,7 +210,7 @@ public class FollowPlayer : MonoBehaviour
 
         if (!PauseManager.Instance.Pause)
         {
-            if (moveDir != Vector2.zero)
+            if (moveDir != Vector2.zero && !DialogueManager.Instance.GetIsDialogueInProgress())
             {
                 targetOffset = new Vector3(moveDir.x, moveDir.y, 0).normalized * MaxDistanceMain;
                 _lookOffset = Vector3.Lerp(_lookOffset, targetOffset, TimePan * Time.deltaTime);
@@ -221,7 +221,7 @@ public class FollowPlayer : MonoBehaviour
             }
 
 
-            if (panDir != Vector2.zero)
+            if (panDir != Vector2.zero && !DialogueManager.Instance.GetIsDialogueInProgress())
             {
                 panOffset = new Vector3(panDir.x, panDir.y, 0).normalized * MaxDistancePan;
             }

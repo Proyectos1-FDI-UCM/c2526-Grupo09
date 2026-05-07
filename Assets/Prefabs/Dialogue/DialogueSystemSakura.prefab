@@ -52,6 +52,7 @@ MonoBehaviour:
   typingSpeed: 0.05
   player: {fileID: 6522229758989385404, guid: 522f76ecd2425fe4aa6d9911eb852ec3, type: 3}
   dialogSound: {fileID: 6975378734555555077}
+  _camera: {fileID: 2668595531766511571, guid: 1455900c3704c18489f5483df602daa7, type: 3}
 --- !u!1 &505157285041011543
 GameObject:
   m_ObjectHideFlags: 0
@@ -137,7 +138,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &837318672163463695
 MonoBehaviour:
   m_ObjectHideFlags: 0

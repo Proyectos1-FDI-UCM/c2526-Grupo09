@@ -40,7 +40,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4294398038989633363}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 673e25135372187499d4b2ea7ab97e53, type: 3}
   m_Name: 
@@ -51,6 +51,9 @@ MonoBehaviour:
   TimeNormal: 4
   TimePan: 1
   MaxDistancePan: 1
+  OcclusionMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &7705675025863625342
 GameObject:
   m_ObjectHideFlags: 0

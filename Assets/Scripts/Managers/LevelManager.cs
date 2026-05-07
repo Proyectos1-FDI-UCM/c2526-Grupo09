@@ -72,6 +72,9 @@ public class LevelManager : MonoBehaviour
     [Header("Solo para la escena de Ending2")]
     [SerializeField] private TriggerEnding2 Ending2;
 
+    [Header("Solo para la escena de entre niveles")]
+    [SerializeField] private GameObject fadeOut;
+
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -315,6 +318,13 @@ public class LevelManager : MonoBehaviour
                 case 4: SceneManager.LoadScene("FirstLevel"); break;
             }
         }
+        else if (sceneName == "GoingHome")
+        {
+            switch (_dialogCont)
+            {
+                case 0: fadeOut.SetActive(true); SceneManager.LoadScene("Home"); break;
+            }
+        }
     }
 
     public void KillLilyDialogue()
@@ -396,7 +406,7 @@ public class LevelManager : MonoBehaviour
         {
             case 0: return;
             case 1:
-                SceneManager.LoadScene("Home");
+                SceneManager.LoadScene("GoingHome");
                 // PanelWin.SetActive(true);
                 EndGame();
                 break;

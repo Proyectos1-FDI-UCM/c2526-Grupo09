@@ -131,6 +131,7 @@ public class HidingSpot : MonoBehaviour
         // Solo asignamos si el objeto tiene el script PlayerMovement
         PlayerMovement foundPlayer = collision.gameObject.GetComponent<PlayerMovement>();
 
+
         if (foundPlayer != null)
         {
             _player = foundPlayer;
@@ -176,10 +177,17 @@ public class HidingSpot : MonoBehaviour
 
         //le decimos al player que está escondido
         _player.SetHidden(true);
+        
+        
 
         FollowObject.Deactivate();
 
         _player.transform.position = transform.position;
+
+        // Desactivamos el movimiento visual del jugador
+        _player.GetComponent<Animator>().SetInteger("Direction", 0);
+        _player.GetComponent<Animator>().speed = 1.0f;
+        _player.GetComponent<AudioSource>().enabled = false;
 
         hidingSprite.sortingOrder = hidingSortingOrder;
 
@@ -206,6 +214,9 @@ public class HidingSpot : MonoBehaviour
 
         // el player ya no está escondido
         _player.SetHidden(false);
+
+        // Reactivamos el sonido del jugador
+        _player.GetComponent<AudioSource>().enabled = true;
 
         FollowObject.SetNewTarget(transform);
 

@@ -47,6 +47,12 @@ public class DialogueManager : MonoBehaviour
     /// </summary>
     [SerializeField] private AudioSource dialogSound;
 
+    /// <summary>
+    /// Desactivar cámara.
+    /// </summary>
+    //[SerializeField] private FollowPlayer _camera;
+
+
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -106,6 +112,7 @@ public class DialogueManager : MonoBehaviour
     /// </summary>
     private AudioClip _currentTypingSound;
 
+    
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -154,6 +161,7 @@ public class DialogueManager : MonoBehaviour
         player.GetComponent<Animator>().speed = 1.0f;
         player.GetComponent<PlayerMovement>().enabled = false;
         player.GetComponent<AudioSource>().enabled = false;
+        //_camera.GetComponent<FollowPlayer>().enabled = false;
 
         //Mostramos caja de diálogo.
         dialogueUI.ShowDialogBox();
@@ -306,6 +314,7 @@ public class DialogueManager : MonoBehaviour
         //Retomamos el input del player.
         player.GetComponent<PlayerMovement>().enabled = true;
         player.GetComponent<AudioSource>().enabled = true;
+        //_camera.GetComponent<FollowPlayer>().enabled = true;
 
         if (dialogSound != null)
         {
