@@ -138,7 +138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cb519cbca97bbe4ab98e131b8b1789f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WalkSpeed: 2
+  WalkSpeed: 2.5
   RunSpeed: 4
   walkSound: {fileID: 1934644146244757556}
 --- !u!95 &984047282553847496
@@ -246,7 +246,7 @@ MonoBehaviour:
   RockPrefab: {fileID: 7810082326039403918, guid: 9f88d62237a1da0489c3452b724f8500, type: 3}
   Cursor: {fileID: 0}
   Movement: {fileID: 1271348129770439711}
-  CursorSpeed: 3.5
+  CursorSpeed: 4
   ObjectSpeed: 4.5
 --- !u!82 &1934644146244757556
 AudioSource:
