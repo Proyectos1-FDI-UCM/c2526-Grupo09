@@ -104,10 +104,6 @@ public class ShowPadlock : MonoBehaviour
         PauseManager.Instance.ResumeVariable();
     }
 
-    public bool IsOpen
-    {
-        get { return _openPad; }
-    }
     #endregion
 
 } // class ShowPadlock 
