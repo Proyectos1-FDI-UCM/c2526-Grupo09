@@ -24,11 +24,11 @@ MonoBehaviour:
   - character: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
     dialogueLine: Don't. By the way, you were lucky.
   - character: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
-    dialogueLine: Some of those, block the whole path and need to get distracted.
+    dialogueLine: Some of those block the whole path and need to get distracted.
   - character: {fileID: 11400000, guid: b84bc399ccd85c047a921a5d9bf97124, type: 2}
     dialogueLine: How am I supposed to do that?!
   - character: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
-    dialogueLine: Stones- if you ever find yourself on this situation, go find some
+    dialogueLine: Stones- if you ever find yourself in this situation, go find some
       rocks.
   - character: {fileID: 11400000, guid: 7bd2146755de1cd40a43e1f48fc82523, type: 2}
     dialogueLine: S-stones?!

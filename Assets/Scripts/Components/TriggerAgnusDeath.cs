@@ -20,6 +20,7 @@ public class TriggerAgnusDeath : MonoBehaviour
     [SerializeField] private Image AgnusImage;  // imagen de agnus
     [SerializeField] private Sprite[] images;  // 4 fotos en orden
     [SerializeField] private PlayerMovement Player;
+    [SerializeField] private GameObject Agnus;
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -78,6 +79,7 @@ public class TriggerAgnusDeath : MonoBehaviour
     /// <param name="collision"></param>
     void OnTriggerEnter2D(Collider2D collision)
     {
+        Agnus.SetActive(false);
         Panel.SetActive(true);
         _triggered = true;
     }

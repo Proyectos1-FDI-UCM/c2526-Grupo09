@@ -18,7 +18,7 @@ MonoBehaviour:
   - character: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
     dialogueLine: Yes.
   - character: {fileID: 11400000, guid: bb224bbb551a96f4c8b1d7b7b7f3c839, type: 2}
-    dialogueLine: Recovering your power could make it possible to stop Stan's will?
+    dialogueLine: Recovering your power could make it possible to stop Satan's will?
   - character: {fileID: 11400000, guid: b0515a637addc26428dc0bb0046873b4, type: 2}
     dialogueLine: Would I see all my friends again?
   - character: {fileID: 11400000, guid: fcf41119740863649a888151640fd2bb, type: 2}
@@ -26,7 +26,7 @@ MonoBehaviour:
   - character: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
     dialogueLine: Of course! Everything is possible with the power of God.
   - character: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
-    dialogueLine: I just need you to pick up a flower each of the remaining days
+    dialogueLine: I just need you to pick up a flower each one of the remaining days
       of Earth.
   - character: {fileID: 11400000, guid: 463fc10d7c6bbde45848383bf1128c73, type: 2}
     dialogueLine: f-flowers?
