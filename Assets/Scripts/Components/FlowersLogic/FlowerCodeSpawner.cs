@@ -28,8 +28,6 @@ public class FlowerCodeSpawner : MonoBehaviour
 
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
-
-
     PlayerMovement _player;
 
     // array de flores que componen el código de 4 dígitos
@@ -41,7 +39,6 @@ public class FlowerCodeSpawner : MonoBehaviour
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
-
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

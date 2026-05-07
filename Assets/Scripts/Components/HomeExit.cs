@@ -14,14 +14,6 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class HomeExit : MonoBehaviour
 {
-    // ---- ATRIBUTOS DEL INSPECTOR ----
-    #region Atributos del Inspector (serialized fields)
-    #endregion
-
-    // ---- ATRIBUTOS PRIVADOS ----
-    #region Atributos Privados (private fields)
-    #endregion
-
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
@@ -37,14 +29,6 @@ public class HomeExit : MonoBehaviour
             }
         }
     }
-    #endregion
-
-    // ---- MÉTODOS PÚBLICOS ----
-    #region Métodos públicos
-    #endregion
-
-    // ---- MÉTODOS PRIVADOS ----
-    #region Métodos Privados
     #endregion
 
 } // class HomeExit 

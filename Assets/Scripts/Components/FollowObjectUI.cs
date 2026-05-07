@@ -7,7 +7,6 @@
 
 using UnityEngine;
 using TMPro;
-using static UnityEngine.GraphicsBuffer;
 // Añadir aquí el resto de directivas using
 
 
@@ -19,25 +18,12 @@ public class FollowObjectUI : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
-    // Documentar cada atributo que aparece aquí.
-    // El convenio de nombres de Unity recomienda que los atributos
-    // públicos y de inspector se nombren en formato PascalCase
-    // (palabras con primera letra mayúscula, incluida la primera letra)
-    // Ejemplo: MaxHealthPoints
     [SerializeField] private Vector3 Offset;
     [SerializeField] private Vector3 ButtonScale;
-
-
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
-    // Documentar cada atributo que aparece aquí.
-    // El convenio de nombres de Unity recomienda que los atributos
-    // privados se nombren en formato _camelCase (comienza con _, 
-    // primera palabra en minúsculas y el resto con la 
-    // primera letra en mayúsculas)
-    // Ejemplo: _maxHealthPoints
     private Transform Target;
     private TextMeshProUGUI _buttonText;
 
@@ -45,10 +31,6 @@ public class FollowObjectUI : MonoBehaviour
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
-
-    // Por defecto están los típicos (Update y Start) pero:
-    // - Hay que añadir todos los que sean necesarios
-    // - Hay que borrar los que no se usen 
     private void Start()
     {
         _buttonText = GetComponentInChildren<TextMeshProUGUI>();
@@ -70,12 +52,6 @@ public class FollowObjectUI : MonoBehaviour
 
     // ---- MÉTODOS PÚBLICOS ----
     #region Métodos públicos
-    // Documentar cada método que aparece aquí con ///<summary>
-    // El convenio de nombres de Unity recomienda que estos métodos
-    // se nombren en formato PascalCase (palabras con primera letra
-    // mayúscula, incluida la primera letra)
-    // Ejemplo: GetPlayerController
-
     /// <summary>
     /// Metodo que se le llama desde getobject para transformarlo en el target, para que el botón salga al lado de este. Activa el botón.
     /// </summary>
@@ -107,15 +83,6 @@ public class FollowObjectUI : MonoBehaviour
     {
         _buttonText.text = "`E`/`A` to " + text;
     }
-
-    #endregion
-
-    // ---- MÉTODOS PRIVADOS ----
-    #region Métodos Privados
-    // Documentar cada método que aparece aquí
-    // El convenio de nombres de Unity recomienda que estos métodos
-    // se nombren en formato PascalCase (palabras con primera letra
-    // mayúscula, incluida la primera letra)
 
     #endregion
 

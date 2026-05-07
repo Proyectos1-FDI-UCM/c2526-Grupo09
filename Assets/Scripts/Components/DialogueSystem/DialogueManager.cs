@@ -18,12 +18,6 @@ public class DialogueManager : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
-    // Documentar cada atributo que aparece aquí.
-    // El convenio de nombres de Unity recomienda que los atributos
-    // públicos y de inspector se nombren en formato PascalCase
-    // (palabras con primera letra mayúscula, incluida la primera letra)
-    // Ejemplo: MaxHealthPoints
-
     /// <summary>
     /// Necesitamos de un canvas para mostrar el diálogo.
     /// </summary>
@@ -57,12 +51,6 @@ public class DialogueManager : MonoBehaviour
 
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
-    // Documentar cada atributo que aparece aquí.
-    // El convenio de nombres de Unity recomienda que los atributos
-    // privados se nombren en formato _camelCase (comienza con _, 
-    // primera palabra en minúsculas y el resto con la 
-    // primera letra en mayúsculas)
-    // Ejemplo: _maxHealthPoints
 
     /// <summary>
     /// Propiedad global de solo lectura para otros scripts.
@@ -170,9 +158,6 @@ public class DialogueManager : MonoBehaviour
         NextTurn();
     }
 
-  
-
-
     /// <summary>
     /// En el Update() controlamos la interacción con el input.
     /// </summary>
@@ -242,11 +227,6 @@ public class DialogueManager : MonoBehaviour
 
     // ---- MÉTODOS PÚBLICOS ----
     #region Métodos públicos
-    // Documentar cada método que aparece aquí con ///<summary>
-    // El convenio de nombres de Unity recomienda que estos métodos
-    // se nombren en formato PascalCase (palabras con primera letra
-    // mayúscula, incluida la primera letra)
-    // Ejemplo: GetPlayerController
 
     public bool GetIsDialogueInProgress()
     {
@@ -258,10 +238,6 @@ public class DialogueManager : MonoBehaviour
 
     // ---- MÉTODOS PRIVADOS ----
     #region Métodos Privados
-    // Documentar cada método que aparece aquí
-    // El convenio de nombres de Unity recomienda que estos métodos
-    // se nombren en formato PascalCase (palabras con primera letra
-    // mayúscula, incluida la primera letra)
 
     private void StartTyping(DialogueTurn dialogTurn)
     {
@@ -321,13 +297,6 @@ public class DialogueManager : MonoBehaviour
             dialogSound.Stop();
         }
         LevelManager.Instance.CheckCurrentScene();
-    }
-
-    
-
-    private void SoundLogic()
-    {
-        
     }
     #endregion   
 

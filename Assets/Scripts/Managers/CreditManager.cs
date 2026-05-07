@@ -49,13 +49,5 @@ public class CreditManager : MonoBehaviour
     }
     #endregion
 
-    // ---- MÉTODOS PÚBLICOS ----
-    #region Métodos públicos
-    #endregion
-    
-    // ---- MÉTODOS PRIVADOS ----
-    #region Métodos Privados
-    #endregion   
-
 } // class CreditManager 
 // namespace

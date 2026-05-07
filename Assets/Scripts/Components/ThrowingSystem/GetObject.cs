@@ -20,12 +20,9 @@ public class GetObject : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
-
     [SerializeField] GameObject PlayerInScene;
     [SerializeField] private FollowObjectUI FollowObject;
     [SerializeField] private AudioSource rockSound;
-
-
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -71,7 +68,6 @@ public class GetObject : MonoBehaviour
             Debug.Log("gameObject InputManager not found, please check that it is attached to this script in the editor");
             Destroy(this.gameObject);
         }
-
     }
 
     /// <summary>
@@ -137,15 +133,6 @@ public class GetObject : MonoBehaviour
             }
         }
     }
-    #endregion
-
-
-    // ---- MÉTODOS PÚBLICOS ----
-    #region Métodos públicos
-    #endregion
-
-    // ---- MÉTODOS PRIVADOS ----
-    #region Métodos Privados
     #endregion
 
 } // class GetObject 

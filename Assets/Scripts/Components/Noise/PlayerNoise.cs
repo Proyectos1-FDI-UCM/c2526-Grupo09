@@ -27,10 +27,6 @@ public class PlayerNoise : MonoBehaviour
 
     #endregion
 
-    // ---- MÉTODOS DE MONOBEHAVIOUR ----
-    #region Métodos de MonoBehaviour
-    #endregion
-
     // ---- MÉTODOS PÚBLICOS ----
     #region Métodos públicos
     /// <summary>
@@ -55,9 +51,5 @@ public class PlayerNoise : MonoBehaviour
         }
     }
 
-    #endregion
-    
-    // ---- MÉTODOS PRIVADOS ----
-    #region Métodos Privados
-    #endregion   
+    #endregion 
 }

@@ -25,17 +25,9 @@ public class FlowerTypes : MonoBehaviour
 
     // número de pétalos, usados en el código de la puerta
     int _nPetals = 0;
-
     string _flowerColor = string.Empty;
-
     SpriteRenderer _tempColor;
 
-    #endregion
-
-    // ---- MÉTODOS DE MONOBEHAVIOUR ----
-    #region Métodos de MonoBehaviour
-
- 
     #endregion
 
     // ---- MÉTODOS PÚBLICOS ----
@@ -90,12 +82,6 @@ public class FlowerTypes : MonoBehaviour
         }
         _tempColor.sprite = SpriteFlower[index];
     }
-
     #endregion
-
-    // ---- MÉTODOS PRIVADOS ----
-    #region Métodos Privados
-    #endregion
-
 } // class FlowerTypes 
 // namespace

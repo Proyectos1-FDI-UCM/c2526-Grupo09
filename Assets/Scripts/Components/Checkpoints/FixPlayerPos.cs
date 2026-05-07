@@ -1,6 +1,6 @@
 //---------------------------------------------------------
 // Arregla la posición del jugador en el Level2
-// Responsable de la creación de este archivo
+// Carmen Rosino Vílchez
 // Bouquet Of Sins
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
@@ -19,10 +19,6 @@ public class FixPlayerPos : MonoBehaviour
     [SerializeField] private Transform Camera;
     [SerializeField] private Vector3 pos;
     #endregion
-
-     // ---- ATRIBUTOS PRIVADOS ----
-    #region Atributos Privados (private fields)
-    #endregion
     
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
@@ -40,14 +36,5 @@ public class FixPlayerPos : MonoBehaviour
         }
     }
     #endregion
-
-    // ---- MÉTODOS PÚBLICOS ----
-    #region Métodos públicos
-    #endregion
-    
-    // ---- MÉTODOS PRIVADOS ----
-    #region Métodos Privados
-    #endregion   
-
 } // class FixPlayerPos 
 // namespace

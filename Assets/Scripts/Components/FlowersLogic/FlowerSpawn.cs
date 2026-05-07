@@ -1,6 +1,6 @@
 //---------------------------------------------------------
 // Breve descripción del contenido del archivo
-// Responsable de la creación de este archivo
+// Carmen Rosino Vílchez
 // Bouquet Of Sins
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------

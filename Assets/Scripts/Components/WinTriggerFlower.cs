@@ -8,7 +8,6 @@
 using UnityEngine;
 // Añadir aquí el resto de directivas using
 
-
 /// <summary>
 /// Detecta si el jugador entra en contacto con esta para ganar / recoger las flores del último nivel.
 /// </summary>
@@ -50,14 +49,5 @@ public class WinTriggerFlower : MonoBehaviour
         } 
     }
     #endregion
-
-    // ---- MÉTODOS PÚBLICOS ----
-    #region Métodos públicos
-    #endregion
-
-    // ---- MÉTODOS PRIVADOS ----
-    #region Métodos Privados
-    #endregion
-
 } // class WinTriggerFlower 
 // namespace

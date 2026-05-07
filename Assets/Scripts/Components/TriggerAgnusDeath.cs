@@ -81,25 +81,6 @@ public class TriggerAgnusDeath : MonoBehaviour
         Panel.SetActive(true);
         _triggered = true;
     }
-    #endregion
-
-    // ---- MÉTODOS PÚBLICOS ----
-    #region Métodos públicos
-    // Documentar cada método que aparece aquí con ///<summary>
-    // El convenio de nombres de Unity recomienda que estos métodos
-    // se nombren en formato PascalCase (palabras con primera letra
-    // mayúscula, incluida la primera letra)
-    // Ejemplo: GetPlayerController
-
-    #endregion
-    
-    // ---- MÉTODOS PRIVADOS ----
-    #region Métodos Privados
-    // Documentar cada método que aparece aquí
-    // El convenio de nombres de Unity recomienda que estos métodos
-    // se nombren en formato PascalCase (palabras con primera letra
-    // mayúscula, incluida la primera letra)
-
     #endregion   
 
 } // class TriggerAgnusDeath 

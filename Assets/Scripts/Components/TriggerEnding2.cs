@@ -1,6 +1,6 @@
 //---------------------------------------------------------
 // Breve descripción del contenido del archivo
-// Responsable de la creación de este archivo
+// Carmen Rosino Vílchez
 // Bouquet Of Sins
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
@@ -63,11 +63,7 @@ public class TriggerEnding2 : MonoBehaviour
         Panel.SetActive(true);
         activate = true;
     }
-    #endregion
-    
-    // ---- MÉTODOS PRIVADOS ----
-    #region Métodos Privados
-    #endregion   
+    #endregion 
 
 } // class TriggerEnding2 
 // namespace

@@ -88,10 +88,5 @@ public class BackgroundManager : MonoBehaviour
         _isFading = true;
     }
     #endregion
-
-    // ---- MÉTODOS PRIVADOS ----
-    #region Métodos Privados
-    #endregion
-
 } // class BackgroundManager 
 // namespace

@@ -1,6 +1,6 @@
 //---------------------------------------------------------
 // Lógica que gestiona todos los checkpoints
-// Responsable de la creación de este archivo
+// Carmen Rosino Vílchez
 // Bouquet Of Sins
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
@@ -107,11 +107,6 @@ public class CheckPointSystem : MonoBehaviour
     {
         return _lastCheck;
     }
-    #endregion
-    
-    // ---- MÉTODOS PRIVADOS ----
-    #region Métodos Privados
-    #endregion   
-
+    #endregion 
 } // class CheckpointsSystem 
 // namespace

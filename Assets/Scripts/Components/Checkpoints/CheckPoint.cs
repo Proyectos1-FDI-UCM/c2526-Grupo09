@@ -16,10 +16,6 @@ using UnityEngine;
 /// </summary>
 public class CheckPoint : MonoBehaviour
 {
-    // ---- ATRIBUTOS DEL INSPECTOR ----
-    #region Atributos del Inspector (serialized fields)
-    #endregion
-
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
     // indica si el checkpoint se ha cogido ya o no
@@ -63,10 +59,6 @@ public class CheckPoint : MonoBehaviour
     {
         _checkPicked = false;
     }
-    #endregion
-
-    // ---- MÉTODOS PRIVADOS ----
-    #region Métodos Privados
     #endregion
 
 } // class CheckPoint 

@@ -19,12 +19,6 @@ public class Padlock : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
-    // Documentar cada atributo que aparece aquí.
-    // El convenio de nombres de Unity recomienda que los atributos
-    // públicos y de inspector se nombren en formato PascalCase
-    // (palabras con primera letra mayúscula, incluida la primera letra)
-    // Ejemplo: MaxHealthPoints
-
     /// <summary>
     /// Text del primer digito del candado
     /// </summary>
@@ -58,14 +52,6 @@ public class Padlock : MonoBehaviour
 
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
-    // Documentar cada atributo que aparece aquí.
-    // El convenio de nombres de Unity recomienda que los atributos
-    // privados se nombren en formato _camelCase (comienza con _, 
-    // primera palabra en minúsculas y el resto con la 
-    // primera letra en mayúsculas)
-    // Ejemplo: _maxHealthPoints
-
-
     /// <summary>
     /// Numero que cambia cuando el jugador interactua con el boton
     /// </summary>
@@ -124,12 +110,6 @@ public class Padlock : MonoBehaviour
 
     // ---- MÉTODOS PÚBLICOS ----
     #region Métodos públicos
-    // Documentar cada método que aparece aquí con ///<summary>
-    // El convenio de nombres de Unity recomienda que estos métodos
-    // se nombren en formato PascalCase (palabras con primera letra
-    // mayúscula, incluida la primera letra)
-    // Ejemplo: GetPlayerController
-
     /// <summary>
     /// Cambia el GUI del candado dependiendo del boton que se pulse, ademas si el digito
     /// coincide con el codigo de la puerta, pone su respectivo bool a true
@@ -199,15 +179,5 @@ public class Padlock : MonoBehaviour
         return _doorOpen;
     }
     #endregion
-
-    // ---- MÉTODOS PRIVADOS ----
-    #region Métodos Privados
-    // Documentar cada método que aparece aquí
-    // El convenio de nombres de Unity recomienda que estos métodos
-    // se nombren en formato PascalCase (palabras con primera letra
-    // mayúscula, incluida la primera letra)
-
-    #endregion
-
 } // class Padlock 
 // namespace

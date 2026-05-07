@@ -23,16 +23,6 @@ namespace DialogueSystem
     {
         // ---- ATRIBUTOS DEL INSPECTOR ----
         #region Atributos del Inspector (serialized fields)
-        // Documentar cada atributo que aparece aquí.
-        // El convenio de nombres de Unity recomienda que los atributos
-        // públicos y de inspector se nombren en formato PascalCase
-        // (palabras con primera letra mayúscula, incluida la primera letra)
-        // Ejemplo: MaxHealthPoints
-
-    
-        
-
-        
         /// <summary>
         /// Caja de diálogo.
         /// </summary>
@@ -52,18 +42,6 @@ namespace DialogueSystem
         /// Área de diálogo.
         /// </summary>
         [SerializeField] private TextMeshProUGUI dialogArea;
-
-        #endregion
-
-        // ---- ATRIBUTOS PRIVADOS ----
-        #region Atributos Privados (private fields)
-        // Documentar cada atributo que aparece aquí.
-        // El convenio de nombres de Unity recomienda que los atributos
-        // privados se nombren en formato _camelCase (comienza con _, 
-        // primera palabra en minúsculas y el resto con la 
-        // primera letra en mayúsculas)
-        // Ejemplo: _maxHealthPoints
-
         #endregion
 
         // ---- MÉTODOS PÚBLICOS ----
@@ -115,18 +93,6 @@ namespace DialogueSystem
             dialogArea.text = string.Empty;
         }
 
-
-        /// <summary>
-        /// Establecer texto en caja de diálogo.
-        /// </summary>
-        /// <param name="text"></param>
-        /*public void SetDialogArea(string text) 
-        {
-            //Remplaza el texto.
-            dialogArea.text = text; 
-        }
-        */
-
         /// <summary>
         /// Secuencia de carácteres uno por uno en el texto del diálogo.
         /// </summary>
@@ -137,15 +103,5 @@ namespace DialogueSystem
         }
 
         #endregion
-
-        // ---- MÉTODOS PRIVADOS ----
-        #region Métodos Privados
-        // Documentar cada método que aparece aquí
-        // El convenio de nombres de Unity recomienda que estos métodos
-        // se nombren en formato PascalCase (palabras con primera letra
-        // mayúscula, incluida la primera letra)
-
-        #endregion
-
     }
 }

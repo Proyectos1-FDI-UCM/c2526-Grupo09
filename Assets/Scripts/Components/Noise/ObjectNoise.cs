@@ -21,14 +21,6 @@ public class ObjectNoise : MonoBehaviour
     [SerializeField] private AudioSource throwSound;
     #endregion
 
-    // ---- ATRIBUTOS PRIVADOS ----
-    #region Atributos Privados (private fields)
-    #endregion
-
-    // ---- MÉTODOS DE MONOBEHAVIOUR ----
-    #region Métodos de MonoBehaviour
-    #endregion
-
     // ---- MÉTODOS PÚBLICOS ----
     #region Métodos públicos
     /// <summary>
@@ -50,9 +42,4 @@ public class ObjectNoise : MonoBehaviour
         // noisecircle.CheckIfFallenObject(false);
     }
     #endregion
-    
-    // ---- MÉTODOS PRIVADOS ----
-    #region Métodos Privados
-    #endregion   
-
 }

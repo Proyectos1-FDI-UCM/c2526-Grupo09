@@ -21,10 +21,6 @@ public class PlayerPos : MonoBehaviour
     [SerializeField] private GameObject cam;
     #endregion
 
-    // ---- ATRIBUTOS PRIVADOS ----
-    #region Atributos Privados (private fields)
-    #endregion
-
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
     /// <summary>
@@ -46,15 +42,6 @@ public class PlayerPos : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     #endregion
-    
-    // ---- MÉTODOS PRIVADOS ----
-    #region Métodos Privados
-    // Documentar cada método que aparece aquí
-    // El convenio de nombres de Unity recomienda que estos métodos
-    // se nombren en formato PascalCase (palabras con primera letra
-    // mayúscula, incluida la primera letra)
-
-    #endregion   
 
 } // class PlayerPos 
 // namespace

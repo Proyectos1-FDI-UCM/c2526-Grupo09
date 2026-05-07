@@ -18,13 +18,6 @@ public class HidingSpot : MonoBehaviour
 
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
-    // Documentar cada atributo que aparece aquí.
-    // El convenio de nombres de Unity recomienda que los atributos
-    // públicos y de inspector se nombren en formato PascalCase
-    // (palabras con primera letra mayúscula, incluida la primera letra)
-    // Ejemplo: MaxHealthPoints
-    //Sprite
-
     /// <summary>
     /// Sprite del objeto que nos esconde
     /// </summary>
@@ -105,16 +98,7 @@ public class HidingSpot : MonoBehaviour
 
         }
     }
-
-
     #endregion
-
-    // ---- MÉTODOS PÚBLICOS ----
-    #region Métodos públicos
-
-    #endregion
-
-
 
     // ---- MÉTODOS PRIVADOS ----
     #region Métodos Privados
@@ -157,27 +141,20 @@ public class HidingSpot : MonoBehaviour
             _insideCollider = false;
             FollowObject.Deactivate();
         }
-
     }
 
-
     //Métodos de entrada y salida del escondite.
-
     /// <summary>
     /// Método para la entrada de escondite del jugador.
     /// </summary>
     private void EnterHiding()
     {
-        
-        
         //_playerSprite = _player.GetComponent<SpriteRenderer>();
         _isHiding = true;
         LevelManager.Instance.Hidden(_isHiding);
 
         //le decimos al player que está escondido
         _player.SetHidden(true);
-        
-        
 
         FollowObject.Deactivate();
 
@@ -228,11 +205,6 @@ public class HidingSpot : MonoBehaviour
 
         //EnemyVision.IsPlayerHidden = false; Provisional hasta qe sepamos como funciona el enemigo
         Debug.Log("Jugador salió del escondite");
-
     }
-
     #endregion
-
-
-
 }

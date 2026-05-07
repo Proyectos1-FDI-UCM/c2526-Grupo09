@@ -22,10 +22,6 @@ public class VideoManager : MonoBehaviour
     [SerializeField] private VideoPlayer VideoPlayer;
     #endregion
 
-    // ---- ATRIBUTOS PRIVADOS ----
-    #region Atributos Privados (private fields)
-    #endregion
-
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
     /// <summary>
@@ -38,10 +34,6 @@ public class VideoManager : MonoBehaviour
         VideoPlayer.loopPointReached += OnVideoFinished;
         VideoPlayer.Play();
     }
-    #endregion
-
-    // ---- MÉTODOS PÚBLICOS ----
-    #region Métodos públicos
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----

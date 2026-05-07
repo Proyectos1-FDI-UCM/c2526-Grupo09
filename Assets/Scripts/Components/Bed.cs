@@ -1,6 +1,6 @@
 //---------------------------------------------------------
 // Breve descripción del contenido del archivo
-// Responsable de la creación de este archivo
+// Inés de la Peña Kures
 // Bouquet Of Sins
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
@@ -43,7 +43,6 @@ public class Bed : MonoBehaviour
             }
         }
     }
-
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -88,10 +87,6 @@ public class Bed : MonoBehaviour
         Player.enabled = true;
     }
 
-    #endregion
-
-    // ---- MÉTODOS PRIVADOS ----
-    #region Métodos Privados
     #endregion
 
 } // class Bed 
