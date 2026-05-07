@@ -139,6 +139,15 @@ public class LevelManager : MonoBehaviour
     /// </summary>
     private void Start()
     {
+        if (BossDialogue != null && GameManager.Instance.GetCurrentDay() == 3)
+        {
+            if (!GameManager.Instance.DialogueExecuted)
+            {
+                BossDialogue.SetActive(true);
+                GameManager.Instance.DialogueExecuted = true;
+            }
+        }
+        Day();
         PanelWin.SetActive(false);
         CheckpointObtained.SetActive(false);
         Rock.SetActive(false);
@@ -146,16 +155,7 @@ public class LevelManager : MonoBehaviour
         _gameOver.SetActive(false);
         _hidden.SetActive(false);
         _throwMode.SetActive(false);
-        Day();
-        Scene currentScene = SceneManager.GetActiveScene();
-        string sceneName = currentScene.name;
-        if (sceneName == "FinalLevel")
-        {
-            if (!GameManager.Instance.DialogueExecuted)
-            {
-                BossDialogue.SetActive(true);
-            }
-        }
+        Debug.Log("EEEE");
     }
     #endregion
 
@@ -299,7 +299,7 @@ public class LevelManager : MonoBehaviour
                 case 4: SceneManager.LoadScene("FirstLevel"); break;
             }
         }
-        else if (sceneName == "GoingHome")
+        else if (sceneName == "GoingHome" || sceneName == "GoingHome2")
         {
             fadeOut.SetActive(true);
             SceneManager.LoadScene("Home");

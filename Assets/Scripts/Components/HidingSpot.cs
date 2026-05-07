@@ -77,7 +77,6 @@ public class HidingSpot : MonoBehaviour
         _bush = transform.Find("Bush").gameObject;
         if (_bush != null)
         {
-            Debug.Log("Existe el arbusto");
             _light = _bush.GetComponent<Light2D>();
             _sprite = _bush.GetComponent<SpriteRenderer>();
         }
