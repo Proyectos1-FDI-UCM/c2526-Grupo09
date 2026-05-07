@@ -19,12 +19,6 @@ public class EnemyLogic : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
-    // Documentar cada atributo que aparece aquí.
-    // El convenio de nombres de Unity recomienda que los atributos
-    // públicos y de inspector se nombren en formato PascalCase
-    // (palabras con primera letra mayúscula, incluida la primera letra)
-    // Ejemplo: MaxHealthPoints
-
     /// <summary>
     /// El atributo Positions define las posiciones a las que irá el enemigo cuando este patrullando.
     /// </summary>
@@ -61,7 +55,6 @@ public class EnemyLogic : MonoBehaviour
     [SerializeField]
     private GameObject Player;
 
-
     /// <summary>
     /// audio cuando el jugador entra en el campo de vision
     /// </summary>
@@ -75,13 +68,6 @@ public class EnemyLogic : MonoBehaviour
 
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
-    // Documentar cada atributo que aparece aquí.
-    // El convenio de nombres de Unity recomienda que los atributos
-    // privados se nombren en formato _camelCase (comienza con _, 
-    // primera palabra en minúsculas y el resto con la 
-    // primera letra en mayúsculas)
-    // Ejemplo: _maxHealthPoints
-
     /// <summary>
     /// La variable _posIndex es el índice que indica en que posición se encuentra el enemigo del array de posiciones
     /// </summary>
@@ -122,6 +108,7 @@ public class EnemyLogic : MonoBehaviour
     private const float _attackDelay = 2.0f;
 
     private bool _gameOver = false;
+    private float _rotZ = 0;
 
 
 
@@ -184,12 +171,6 @@ public class EnemyLogic : MonoBehaviour
 
     // ---- MÉTODOS PÚBLICOS ----
     #region Métodos públicos
-    // Documentar cada método que aparece aquí con ///<summary>
-    // El convenio de nombres de Unity recomienda que estos métodos
-    // se nombren en formato PascalCase (palabras con primera letra
-    // mayúscula, incluida la primera letra)
-    // Ejemplo: GetPlayerController
-
     /// <summary>
     /// Metodo que se llama desde EnemyVision cuando detecta al jugador en el FOV del enemigo.
     /// </summary>
@@ -242,11 +223,6 @@ public class EnemyLogic : MonoBehaviour
 
     // ---- MÉTODOS PRIVADOS ----
     #region Métodos Privados
-    // Documentar cada método que aparece aquí
-    // El convenio de nombres de Unity recomienda que estos métodos
-    // se nombren en formato PascalCase (palabras con primera letra
-    // mayúscula, incluida la primera letra
-
     /// <summary>
     /// Metodo que mueve al enemigo a una posicion "endPos". Ademas, rota el cono de vision en 8 direcciones.
     /// </summary>
@@ -256,7 +232,6 @@ public class EnemyLogic : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, endPos, speed * Time.deltaTime);
         // Rotacion del cono de vision
         Vector3 dir = endPos - transform.position;
-        float rotZ = 0;
         int incrX = Mathf.RoundToInt(dir.x);
         int incrY = Mathf.RoundToInt(dir.y);
 
@@ -299,7 +274,6 @@ public class EnemyLogic : MonoBehaviour
 
         }
 
-        
         else if (incrX < 0 && incrY > 0)
         {
             _animator.SetInteger("Direction", 2); // Izquierda-Arriba
@@ -308,54 +282,54 @@ public class EnemyLogic : MonoBehaviour
         //Derecha
         if (incrX > 0 && incrY == 0)
         {
-            rotZ = -90;
+            _rotZ = -90;
             
         }
         // Abajo
         else if (incrY < 0 && incrX == 0)
         {
-            rotZ = -180;
+            _rotZ = -180;
             
         }
         // Izquierda
         else if (incrX < 0 && incrY == 0)
         {
-            rotZ = 90;
+            _rotZ = 90;
            
         }
         // Arriba
         else if (incrY > 0 && incrX == 0)
         {
-            rotZ = 0;
+            _rotZ = 0;
             
         }
         // Derecha-Arriba
         else if (incrX > 0 && incrY > 0)
         {
-            rotZ = -45;
+            _rotZ = -45;
            
         }
         // Izquierda-Abajo
         else if (incrX < 0 && incrY < 0)
         {
-            rotZ = 135;
+            _rotZ = 135;
             
         }
         // Derecha-Abajo
         else if (incrX > 0 && incrY < 0)
         {
-            rotZ = -135;
+            _rotZ = -135;
             
         }
 
         // Izquierda-Arriba
         else if (incrX < 0 && incrY > 0)
         {
-            rotZ = 45;
+            _rotZ = 45;
         }
        
         Transform enemyRotate = _enemyVision.transform.parent;
-        enemyRotate.rotation = Quaternion.Euler(0, 0, rotZ);
+        enemyRotate.rotation = Quaternion.Euler(0, 0, _rotZ);
     }
 
     /// <summary>

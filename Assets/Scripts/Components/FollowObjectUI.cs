@@ -9,10 +9,8 @@ using UnityEngine;
 using TMPro;
 // Añadir aquí el resto de directivas using
 
-
 /// <summary>
-/// Antes de cada class, descripción de qué es y para qué sirve,
-/// usando todas las líneas que sean necesarias.
+/// Clase Que gestiona la lógica del botón de interactuar
 /// </summary>
 public class FollowObjectUI : MonoBehaviour
 {
@@ -20,10 +18,12 @@ public class FollowObjectUI : MonoBehaviour
     #region Atributos del Inspector (serialized fields)
     [SerializeField] private Vector3 Offset;
     [SerializeField] private Vector3 ButtonScale;
+
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
+   
     private Transform Target;
     private TextMeshProUGUI _buttonText;
 
@@ -53,7 +53,7 @@ public class FollowObjectUI : MonoBehaviour
     // ---- MÉTODOS PÚBLICOS ----
     #region Métodos públicos
     /// <summary>
-    /// Metodo que se le llama desde getobject para transformarlo en el target, para que el botón salga al lado de este. Activa el botón.
+    /// Metodo que se le llama  para transformarlo en el target, para que el botón salga al lado de este. Activa el botón.
     /// </summary>
     /// <param name="newTarget"></param>
     public void SetNewTarget(Transform newTarget)
@@ -63,7 +63,7 @@ public class FollowObjectUI : MonoBehaviour
     }
 
     /// <summary>
-    /// Método que se llama desde getobject para que en el momento que coges un objeto, se ponga el target a null para que no vuelva a salir el botón de interactuar.
+    /// Método que se llama para que en el momento que coges un objeto, se ponga el target a null para que no vuelva a salir el botón de interactuar.
     /// </summary>
     public void ResetTarget()
     {
@@ -72,18 +72,20 @@ public class FollowObjectUI : MonoBehaviour
 
     }
     /// <summary>
-    /// método que desactiva el boton.
+    /// Método que desactiva el boton.
     /// </summary>
     public void Deactivate()
     {
         gameObject.SetActive(false);
     }
-
+    /// <summary>
+    /// Método que cambia el texto del botón
+    /// </summary>
+    /// <param name="text"></param>
     public void ChangeText(string text)
     {
         _buttonText.text = "`E`/`A` to " + text;
     }
-
     #endregion
 
 } // class FollowObjectUI 
