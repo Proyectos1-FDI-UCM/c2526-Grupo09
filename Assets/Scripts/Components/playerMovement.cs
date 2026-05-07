@@ -1,14 +1,12 @@
 //---------------------------------------------------------
-// Breve descripción del contenido del archivo
-// Responsable de la creación de este archivo
+// Movimiento del jugador y animaciones del movimiento
+// Rafa Campos García
 // Bouquet Of Sins
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
 
 using System;
 using UnityEngine;
-// Añadir aquí el resto de directivas using
-
 
 /// <summary>
 /// Antes de cada class, descripción de qué es y para qué sirve,
@@ -18,12 +16,6 @@ public class PlayerMovement : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
-    // Documentar cada atributo que aparece aquí.
-    // El convenio de nombres de Unity recomienda que los atributos
-    // públicos y de inspector se nombren en formato PascalCase
-    // (palabras con primera letra mayúscula, incluida la primera letra)
-    // Ejemplo: MaxHealthPoints
-
     /// <summary>
     /// velocidad del jugador al caminar
     /// </summary>
@@ -54,28 +46,20 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     private bool _isHidden = false;
     private Animator _animator;
-    private PlayerNoise _playerNoise;
-
-
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
-
-    // Por defecto están los típicos (Update y Start) pero:
-    // - Hay que añadir todos los que sean necesarios
-    // - Hay que borrar los que no se usen 
-
     /// <summary>
     /// Update is called every frame, if the MonoBehaviour is enabled.
     /// En cada frame se mueve al jugador
     /// </summary>
-    /// 
-    private void Start()
+    void Start()
     {
         _animator = GetComponent<Animator>();
-        _playerNoise = GetComponent<PlayerNoise>();
+        
     }
+
     void Update()
     {
         if (!PauseManager.Instance.Pause)
@@ -90,7 +74,8 @@ public class PlayerMovement : MonoBehaviour
                 // Solo intentamos hacer ruido si nos hemos movido Y tenemos el script de ruido
                 if (_posAnterior != transform.position)
                 {
-                    if (_playerNoise != null)
+                    PlayerNoise _playerNoise = this.gameObject.GetComponent<PlayerNoise>();
+                    if (_playerNoise.enabled)
                     {
                         _playerNoise.PlayerMoving();
                     }
@@ -108,12 +93,6 @@ public class PlayerMovement : MonoBehaviour
 
     // ---- MÉTODOS PÚBLICOS ----
     #region Métodos públicos
-    // Documentar cada método que aparece aquí con ///<summary>
-    // El convenio de nombres de Unity recomienda que estos métodos
-    // se nombren en formato PascalCase (palabras con primera letra
-    // mayúscula, incluida la primera letra)
-    // Ejemplo: GetPlayerController
-
     /// <summary>
     /// Permite a otros scripts consultar si el jugador está escondido.
     /// </summary>
@@ -154,11 +133,6 @@ public class PlayerMovement : MonoBehaviour
 
     // ---- MÉTODOS PRIVADOS ----
     #region Métodos Privados
-    // Documentar cada método que aparece aquí
-    // El convenio de nombres de Unity recomienda que estos métodos
-    // se nombren en formato PascalCase (palabras con primera letra
-    // mayúscula, incluida la primera letra)
-
     /// <summary>
     /// Método que se encarga de manejar el movimeinto del jugador
     /// </summary>
@@ -176,14 +150,6 @@ public class PlayerMovement : MonoBehaviour
 
         int incrX = Mathf.RoundToInt(direction.x);
         int incrY = Mathf.RoundToInt(direction.y);
-
-        /*// Derecha-Arriba
-        else if (incrX > 0 && incrY > 0) rotZ = -45;
-        // Izquierda-Abajo
-        else if (incrX < 0 && incrY < 0) rotZ = 135;
-        // Derecha-Abajo
-        else if (incrX > 0 && incrY < 0) rotZ = -135;
-        // Izquierda-Arriba*/
 
         //Comprobamos si se pulsa el Shift
         if (incrY == 0 && incrX == 0)
@@ -215,13 +181,14 @@ public class PlayerMovement : MonoBehaviour
             //Cambiamos velocidad de animacion.
             _animator.speed = 1.5f;
 
-        } else {
+        } else
+        {
             _animator.speed = 1f;
         }
 
-            //Aplicamos el movimiento
-            //Multiplicamos la dirección por la velocidad y el tiempo
-            transform.Translate(direction * currentSpeed * Time.deltaTime);
+        // Aplicamos el movimiento
+        // Multiplicamos la dirección por la velocidad y el tiempo
+       transform.Translate(direction * currentSpeed * Time.deltaTime);
 
         if (isMoving && !_isHidden)
         {

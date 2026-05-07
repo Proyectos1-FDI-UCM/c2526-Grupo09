@@ -564,11 +564,11 @@ PrefabInstance:
     - target: {fileID: 8367459987240929699, guid: bdaeee04a68fe4283b8789c48055f778, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 375739864}
     - target: {fileID: 8367459987240929699, guid: bdaeee04a68fe4283b8789c48055f778, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 268604379}
     - target: {fileID: 8367459987240929699, guid: bdaeee04a68fe4283b8789c48055f778, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: SetCheats
@@ -579,7 +579,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8367459987240929699, guid: bdaeee04a68fe4283b8789c48055f778, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: GameManager, Assembly-CSharp
+      value: LevelManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8606664896545888718, guid: bdaeee04a68fe4283b8789c48055f778, type: 3}
       propertyPath: m_Pivot.x
@@ -1657,85 +1657,6 @@ MonoBehaviour:
   Player: {fileID: 38749344}
   Camera: {fileID: 0}
   pos: {x: 4.097, y: -0.948, z: 0}
---- !u!1 &625916321
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 625916323}
-  - component: {fileID: 625916322}
-  m_Layer: 0
-  m_Name: LevelManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &625916322
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 625916321}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 398120f647e7e40da805fa99971f1f17, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PanelWin: {fileID: 0}
-  CheckpointObtained: {fileID: 0}
-  Rock: {fileID: 0}
-  Flower: {fileID: 0}
-  FlowerImage: {fileID: 0}
-  CurrentDay: {fileID: 0}
-  FlowerObtained: {fileID: 0}
-  HUD: {fileID: 0}
-  _gameOver: {fileID: 0}
-  _hidden: {fileID: 0}
-  _throwMode: {fileID: 0}
-  playerNoise: {fileID: 0}
-  playerMovement: {fileID: 0}
-  LilyPart2: {fileID: 0}
-  LilyPart3: {fileID: 0}
-  LilyPart4: {fileID: 0}
-  KillLily: {fileID: 0}
-  KillLilyButton: {fileID: 0}
-  BossDialogue: {fileID: 0}
-  Choice: {fileID: 0}
-  TriggerRoute1: {fileID: 0}
-  TriggerRoute2: {fileID: 0}
-  backgroundManager: {fileID: 0}
-  GodButton: {fileID: 0}
-  Evil: {fileID: 0}
-  Lamb: {fileID: 0}
-  Eve: {fileID: 0}
-  FadeOut: {fileID: 0}
-  Dialogue2: {fileID: 0}
-  Dialogue3: {fileID: 0}
-  Dialogue4: {fileID: 0}
-  Dialogue5: {fileID: 0}
-  FadeIn: {fileID: 0}
-  Ending2: {fileID: 0}
-  fadeOut: {fileID: 0}
---- !u!4 &625916323
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 625916321}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &663634300
 GameObject:
   m_ObjectHideFlags: 0
@@ -4741,7 +4662,6 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 268604380}
-  - {fileID: 625916323}
   - {fileID: 2082623356}
   - {fileID: 70363374}
   - {fileID: 2851207222802566145}
