@@ -11,7 +11,7 @@ A lo largo de la aventura, el jugador explorará escenarios hostiles llenos de c
 # **Objetivo**
 El objetivo del juego es ayudar a Agnus encontrando las flores necesarias para recuperar su poder, mientras Eve intenta sobrevivir y escapar de las criaturas que amenazan su vida.
 Para lograrlo, el jugador deberá evitar ser detectado, utilizando el entorno y las mecánicas de sigilo para avanzar sin atraer a los monstruos.
-
+Además, la narrativa juega un papel fundamental en la experiencia, invitando al jugador a descubrir paso a paso el misterio que rodea a Agnus. Los personajes y sus diálogos están diseñados para generar una conexión real, haciendo que el jugador se implique emocionalmente en la historia.
 
 ---
 # **Como Jugar**
@@ -31,8 +31,8 @@ La exploración, el silencio y la planificación serán fundamentales para sobre
 - **Cámara**
     - **_IJKL_** - Control del paneo de cámara.  
 - **Sistema**
-    - **_ESC/start_** - Abrir el menú de pausa.
-    - **_Enter/A_** - Seleccionar botón   
+    - **_ESC_** - Abrir el menú de pausa.
+    - **_Enter_** - Seleccionar botón   
 
 ### **Mando**
 - **Movimiento y acción**
@@ -41,16 +41,16 @@ La exploración, el silencio y la planificación serán fundamentales para sobre
     - **_Botón A_** - Interactuar con elementos del entorno/ avanzar el diálogo.
 
 - **Sistema de Lanzamiento**
-    - **_CTRL/LB_**- Entrar/salir del modo lanzamiento.
-    - **_Espacio/RB_**- confirmar el lanzamiento.
-    - **_WASD/joystick izquierdo_** - Mover el cursor durante el modo lanzamiento.  
+    - **_LB_**- Entrar/salir del modo lanzamiento.
+    - **_RB_**- confirmar el lanzamiento.
+    - **_Joystick izquierdo/D-pad_** - Mover el cursor durante el modo lanzamiento.  
 
 - **Cámara**
-    - **_IJKL/joystick derecho_** - Control del paneo de cámara.  
+    - **_Joystick derecho_** - Control del paneo de cámara.  
 
 - **Sistema**
-    - **_ESC/start_** - Abrir el menú de pausa.
-    - **_Enter/A_** - Seleccionar botón
+    - **_start_** - Abrir el menú de pausa.
+    - **_A_** - Seleccionar botón
 
 <p align="center">
   <img width="789" height="512" alt="image" src="https://github.com/user-attachments/assets/a41ae3e6-b7d3-4931-9318-5501e2c06921"/>
@@ -71,7 +71,6 @@ La exploración, el silencio y la planificación serán fundamentales para sobre
 - El tileset muestra líneas verdes entre los tiles.
 - Al tener los cheats activos mientras hay una cutscene activa, las animaciones dejan de ejecutarse eventualmente.
 - Si sales al menú principal y entras al juego de nuevo, las animaciones paran por un rato.
-- 
   
 ### _Si encuentra algún error durante el juego, crea un nuevo Issue con la plantilla Bug Report en Issues._
 
@@ -135,7 +134,7 @@ La exploración, el silencio y la planificación serán fundamentales para sobre
 <summary><strong>PixelArt</strong></summary>
   
 - **_Rocas_**: [pixelart hooss_cat(reddit)](https://www.reddit.com/user/hooss_cat/)
-- **calabera**: Rafael Campos García.
+- **_Calavera_**: Rafael Campos García.
 - **_TileMap_**: [Michele "Buch" Bucelli](https://pixeljoint.com/p/45953.htm)
 - **_Montón de rocas_**: [Karsiori(itch.io)](https://karsiori.itch.io/)
 - **_Arbusto_**: [makss122(reddit)](https://www.reddit.com/user/makss122/)
