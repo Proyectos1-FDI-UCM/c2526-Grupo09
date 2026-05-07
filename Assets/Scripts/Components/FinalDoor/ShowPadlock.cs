@@ -30,7 +30,7 @@ public class ShowPadlock : MonoBehaviour
     /// <summary>
     /// Script del botón UI
     /// </summary>
-    [SerializeField] private FollowObjectUI FollowObject;
+    [SerializeField] private FollowObjectUI ButtonInteract;
 
     #endregion
 
@@ -76,8 +76,8 @@ public class ShowPadlock : MonoBehaviour
         if (collision.GetComponent<PlayerMovement>() != null)
         {
             _nearPad = true;
-            FollowObject.SetNewTarget(transform);
-            FollowObject.ChangeText("open lock");
+            ButtonInteract.SetNewTarget(transform);
+            ButtonInteract.ChangeText("open lock");
         }
 
     }
@@ -86,7 +86,7 @@ public class ShowPadlock : MonoBehaviour
         if (collision.GetComponent<PlayerMovement>() != null)
         {
             _nearPad = false;
-            FollowObject.Deactivate();
+            ButtonInteract.Deactivate();
         }
     }
     #endregion

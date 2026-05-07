@@ -105,7 +105,7 @@ public class FollowObjectUI : MonoBehaviour
 
     public void ChangeText(string text)
     {
-        _buttonText.text = "`E` to " + text;
+        _buttonText.text = "`E`/`A` to " + text;
     }
 
     #endregion

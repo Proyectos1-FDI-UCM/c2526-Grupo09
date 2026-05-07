@@ -20,6 +20,7 @@ public class Bed : MonoBehaviour
     [SerializeField] private GameObject panelDormir;
     [SerializeField] private GameObject SleepButton;  // boton de dormir
     [SerializeField] private PlayerMovement Player;
+    [SerializeField] private FollowObjectUI ButtonInteract;
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -50,6 +51,8 @@ public class Bed : MonoBehaviour
         if (playerMovement != null)
         {
             _inCollider = true;
+            ButtonInteract.SetNewTarget(transform);
+            ButtonInteract.ChangeText("to sleep");
         }
     }
 
@@ -59,6 +62,8 @@ public class Bed : MonoBehaviour
         if (playerMovement != null)
         {
             _inCollider = false;
+            ButtonInteract.Deactivate();
+
         }
     }
     #endregion
