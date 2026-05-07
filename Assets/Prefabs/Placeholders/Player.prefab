@@ -139,7 +139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WalkSpeed: 2
-  RunSpeed: 3.5
+  RunSpeed: 4
   walkSound: {fileID: 0}
 --- !u!114 &5078308143841300864
 MonoBehaviour:
