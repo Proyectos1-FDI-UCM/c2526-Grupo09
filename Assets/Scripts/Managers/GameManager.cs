@@ -29,8 +29,6 @@ public class GameManager : MonoBehaviour
     // ---- ATRIBUTOS DEL INSPECTOR ----
 
     #region Atributos del Inspector (serialized fields)
-    [SerializeField] private PlayerNoise playerNoise;  // script de ruido
-    [SerializeField] private PlayerMovement playerMovement;  // script de movimiento
     [SerializeField] private AudioSource uiAudioSource;
     [SerializeField] private AudioClip clickSound;
     #endregion
@@ -57,8 +55,7 @@ public class GameManager : MonoBehaviour
     /// </summary>
     private bool _haDormido = false;
 
-    // variable que gestionan la activación / desactivación de cheats
-    private bool _activeCheats;
+    private bool _dialogueExecuted = false;
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -133,6 +130,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public bool DialogueExecuted
+    {
+        get { return _dialogueExecuted; }
+        set { _dialogueExecuted = value; }
+    }
+
     /// <summary>
     /// Devuelve cierto si la instancia del singleton está creada y
     /// falso en otro caso.
@@ -200,14 +203,6 @@ public class GameManager : MonoBehaviour
     }
 
     /// <summary>
-    /// carga la escena de la cabaña cuando se supera el nivel
-    /// </summary>
-    public void ReturnToHut()
-    {
-        SceneManager.LoadScene(9);  // 9 - escena de la cabaña
-    }
-
-    /// <summary>
     /// Permite a otros scripts consultar si el jugador ha dormido hoy.
     /// </summary>
     public bool GetHaDormido()
@@ -215,49 +210,11 @@ public class GameManager : MonoBehaviour
         return _haDormido;
     }
 
-    /// <summary>
-    /// Permite al LevelManager consultar el día actual
-    /// </summary>
-    /// <returns></returns>
-    public int GetCurrentDay()
-    {
-        return _diaActual;
-    }
-
     public void QuitGame()
     {
         Application.Quit();
     }
 
-    public void SetCheats()
-    {
-        // si los cheats no están activos
-        if (!_activeCheats)
-        {
-            // se desactiva el script del círculo de ruido
-            playerNoise.enabled = false;
-            // se duplica la velocidad de caminar
-            float walkSpeed = playerMovement.GetWalkSpeed();
-            playerMovement.SetWalkSpeed(walkSpeed * 2);
-            // se duplica la velocidad de correr
-            float runSpeed = playerMovement.GetRunSpeed();
-            playerMovement.SetRunSpeed(runSpeed * 2);
-            _activeCheats = true;
-        }
-        else
-        {
-            // se activa el script del círculo de ruido
-            playerNoise.enabled = true;
-            // se reduce la velocidad de caminar a la original
-            float walkSpeed = playerMovement.GetWalkSpeed();
-            playerMovement.SetWalkSpeed(walkSpeed / 2);
-            // se reduce la velocidad de correr a la original
-            float runSpeed = playerMovement.GetRunSpeed();
-            playerMovement.SetRunSpeed(runSpeed / 2);
-            _activeCheats = false;
-        }
-        PauseManager.Instance.ChangeCheatsText(_activeCheats);
-    }
     /// <summary>
     /// Metodo al que llamaran todos los botones del juegos al ser pulsados para repodrucir un sonido
     /// </summary>

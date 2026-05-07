@@ -42,15 +42,18 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private GameObject _gameOver;
     [SerializeField] private GameObject _hidden;
     [SerializeField] private GameObject _throwMode;
+    [SerializeField] private PlayerNoise playerNoise;  // script de ruido
+    [SerializeField] private PlayerMovement playerMovement;  // script de movimiento
 
-    [Header("Solo para la escena del Final")]
+    [Header("Solo para la escena del FinalPrologue")]
     [SerializeField] private GameObject LilyPart2;
     [SerializeField] private GameObject LilyPart3;
     [SerializeField] private GameObject LilyPart4;
-    [SerializeField] private GameObject PostBattle;
     [SerializeField] private GameObject KillLily;
     [SerializeField] private GameObject KillLilyButton;
-    [SerializeField] private PlayerMovement playerMovement;
+
+    [Header("Solo para la escena del Final")]
+    [SerializeField] private GameObject BossDialogue;
 
     [Header("Solo para la escena de Dios")]
     [SerializeField] private GameObject Choice;
@@ -73,7 +76,7 @@ public class LevelManager : MonoBehaviour
     [Header("Solo para la escena de Ending2")]
     [SerializeField] private TriggerEnding2 Ending2;
 
-    [Header("Solo para la escena de entre niveles")]
+    [Header("Solo para la escena de GoingHome")]
     [SerializeField] private GameObject fadeOut;
 
     #endregion
@@ -109,6 +112,9 @@ public class LevelManager : MonoBehaviour
     /// tendrá valor 1 si se escoge la ruta 1 y 2 si se escoge la 2
     /// </summary>
     private int _route = 0;
+
+    // variable que gestionan la activación / desactivación de cheats
+    private bool _activeCheats;
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -141,11 +147,19 @@ public class LevelManager : MonoBehaviour
         _hidden.SetActive(false);
         _throwMode.SetActive(false);
         Day();
-    }
-
-    void Update()
-    {
-        CheckLevelStage();
+        Scene currentScene = SceneManager.GetActiveScene();
+        string sceneName = currentScene.name;
+        if (sceneName == "FinalLevel")
+        {
+            if (GameManager.Instance.DialogueExecuted)
+            {
+                BossDialogue.SetActive(false);
+            }
+            else
+            {
+                GameManager.Instance.DialogueExecuted = true;
+            }
+        }
     }
     #endregion
 
@@ -175,27 +189,6 @@ public class LevelManager : MonoBehaviour
     public static bool HasInstance()
     {
         return _instance != null;
-    }
-
-    public static int LevelStage()
-    {
-        return _levelStage;
-    }
-
-    public static void LevelWon()
-    {
-        _levelStage = 1;
-    }
-
-    public static void LevelLost()
-    {
-        _levelStage = 2;
-    }
-
-    public void RetryLevel()
-    {
-        LevelReset();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public static void LevelReset()
@@ -246,15 +239,6 @@ public class LevelManager : MonoBehaviour
     {
         _gameOver.SetActive(dead);
     }
-
-    /// <summary>
-    /// Método que activa el panel de FinDeJuego y cambia el texto del panel dependiendo de si pierdes o ganas
-    /// </summary>
-    /// <param name="loose"></param>
-    public void EndGame()
-    {
-        Destroy(HUD);
-    }
    
     /// <summary>
     /// Mira la escena en la que nos encontramos actualmente y ejecuta
@@ -279,7 +263,7 @@ public class LevelManager : MonoBehaviour
                 SceneManager.LoadScene("FinalLevel");
             }
         }
-        if (sceneName == "PostBattle")
+        else if (sceneName == "PostBattle")
         {
             SceneManager.LoadScene("GodIntro");
         }
@@ -306,10 +290,9 @@ public class LevelManager : MonoBehaviour
         }
         else if (sceneName == "StartCutscene")
         {
-            switch (_dialogCont)
+            if (_dialogCont  > 0)
             {
-                case 0: break;
-                case 1: SceneManager.LoadScene("StartCutscene2"); break;
+                SceneManager.LoadScene("StartCutscene2");
             }
             _dialogCont++;
         }
@@ -327,10 +310,8 @@ public class LevelManager : MonoBehaviour
         }
         else if (sceneName == "GoingHome")
         {
-            switch (_dialogCont)
-            {
-                case 0: fadeOut.SetActive(true); SceneManager.LoadScene("Home"); break;
-            }
+            fadeOut.SetActive(true);
+            SceneManager.LoadScene("Home");
         }
     }
 
@@ -373,6 +354,39 @@ public class LevelManager : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(Button);
     }
+
+    /// <summary>
+    /// Método que activa los cheats del juego
+    /// </summary>
+    public void SetCheats()
+    {
+        // si los cheats no están activos
+        if (!_activeCheats)
+        {
+            // se desactiva el script del círculo de ruido
+            playerNoise.enabled = false;
+            // se duplica la velocidad de caminar
+            float walkSpeed = playerMovement.GetWalkSpeed();
+            playerMovement.SetWalkSpeed(walkSpeed * 2);
+            // se duplica la velocidad de correr
+            float runSpeed = playerMovement.GetRunSpeed();
+            playerMovement.SetRunSpeed(runSpeed * 2);
+            _activeCheats = true;
+        }
+        else
+        {
+            // se activa el script del círculo de ruido
+            playerNoise.enabled = true;
+            // se reduce la velocidad de caminar a la original
+            float walkSpeed = playerMovement.GetWalkSpeed();
+            playerMovement.SetWalkSpeed(walkSpeed / 2);
+            // se reduce la velocidad de correr a la original
+            float runSpeed = playerMovement.GetRunSpeed();
+            playerMovement.SetRunSpeed(runSpeed / 2);
+            _activeCheats = false;
+        }
+        PauseManager.Instance.ChangeCheatsText(_activeCheats);
+    }
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----
@@ -406,23 +420,6 @@ public class LevelManager : MonoBehaviour
     {
         // De momento no hay nada que inicializar
     }
-
-    private void CheckLevelStage()
-    {
-        switch (_levelStage)
-        {
-            case 0: return;
-            case 1:
-                SceneManager.LoadScene("GoingHome");
-                // PanelWin.SetActive(true);
-                EndGame();
-                break;
-            case 2: 
-                EndGame();
-                break;
-        }
-    }
-
     #endregion
 } // class LevelManager 
 // namespace
