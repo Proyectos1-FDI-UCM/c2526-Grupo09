@@ -31,6 +31,6 @@ MonoBehaviour:
     dialogueLine: You made a promise to me. Im God. I am the one who knows what is
       right and what is wrong.
   - character: {fileID: 11400000, guid: f744c7f0aa979e14a931ddcfb4fb1faf, type: 2}
-    dialogueLine: Don't misbehave me, Eve.
+    dialogueLine: Don't disobey me, Eve.
   - character: {fileID: 11400000, guid: b0515a637addc26428dc0bb0046873b4, type: 2}
     dialogueLine: ...
