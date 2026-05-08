@@ -757,6 +757,7 @@ MonoBehaviour:
   FadeIn: {fileID: 0}
   Ending2: {fileID: 0}
   fadeOut: {fileID: 0}
+  HomeDialogue: {fileID: 1499758371}
 --- !u!4 &375739865
 Transform:
   m_ObjectHideFlags: 0
@@ -2697,6 +2698,7 @@ MonoBehaviour:
   CheatsText: {fileID: 279703518}
   EndPanel: {fileID: 0}
   HUD: {fileID: 0}
+  FadeUI: {fileID: 0}
   ExitControls: {fileID: 535176277}
   ResumeButton: {fileID: 1044481320}
 --- !u!4 &1387150634

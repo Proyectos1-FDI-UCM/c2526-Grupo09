@@ -84,6 +84,8 @@ public class LevelManager : MonoBehaviour
     [Header("Solo para la escena de GoingHome")]
     [SerializeField] private GameObject fadeOut;
 
+    [Header("Solo para la escena Home")]
+    [SerializeField] private GameObject HomeDialogue;
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -383,6 +385,14 @@ public class LevelManager : MonoBehaviour
             _activeCheats = false;
         }
         PauseManager.Instance.ChangeCheatsText(_activeCheats);
+    }
+
+    public void QuitHomeDialogue()
+    {
+        if (HomeDialogue != null)
+        {
+            HomeDialogue.SetActive(false);
+        }
     }
     #endregion
 

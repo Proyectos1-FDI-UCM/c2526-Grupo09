@@ -83,7 +83,7 @@ public class Bed : MonoBehaviour
         GameManager.Instance.Sleep();
         panelDormir.SetActive(false);
         ButtonInteract.Deactivate();
-
+        LevelManager.Instance.QuitHomeDialogue();
     }
 
     public void CancelSleep()
