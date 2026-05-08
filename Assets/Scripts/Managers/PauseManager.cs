@@ -24,7 +24,7 @@ public class PauseManager : MonoBehaviour
     [SerializeField] private GameObject EndPanel;
     [SerializeField] private GameObject HUD;
     [SerializeField] private GameObject FadeUI;
-   
+
 
     [Header("Botones del UI de Pausa")]
     [SerializeField] private GameObject ExitControls;
@@ -67,17 +67,16 @@ public class PauseManager : MonoBehaviour
     /// </summary>
     void Update()
     {
-        if (InputManager.Instance.PauseWasPressedThisFrame() && EndPanel.activeSelf == false) 
+        if (InputManager.Instance.PauseWasPressedThisFrame() && !ControlsPanel.activeSelf )
         {
-            if (!ControlsPanel.activeSelf &&!UIOpened)
-            {
-                Pause = !Pause;
-                PausePanel.SetActive(Pause);
-                HUD.SetActive(!Pause);
-                if (FadeUI != null) Destroy(FadeUI);
 
-                LevelManager.Instance.SetFirstButton(ResumeButton);
-            }
+            Pause = !Pause;
+            PausePanel.SetActive(Pause);
+            HUD.SetActive(!Pause);
+            if (FadeUI != null) Destroy(FadeUI);
+
+            LevelManager.Instance.SetFirstButton(ResumeButton);
+
         }
     }
     #endregion
@@ -88,11 +87,10 @@ public class PauseManager : MonoBehaviour
     {
         get { return CheatsText; }
     }
-    public bool UIOpened { get; private set; }
 
-    public bool Pause 
-    { 
-        get; private set; 
+    public bool Pause
+    {
+        get; private set;
     }
 
     public static PauseManager Instance
@@ -122,14 +120,6 @@ public class PauseManager : MonoBehaviour
         Pause = true;
     }
 
-    public void OpenUI()
-    {
-        UIOpened= true;
-    }
-    public void CloseUI()
-    {
-        UIOpened= false;
-    }
     public void ChangeCheatsText(bool cheats)
     {
         if (cheats)

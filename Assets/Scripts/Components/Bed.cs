@@ -26,7 +26,6 @@ public class Bed : MonoBehaviour
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
     private bool _inCollider = false;
-    private bool _openPanel;
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -34,24 +33,20 @@ public class Bed : MonoBehaviour
 
     private void Update()
     {
-        if (InputManager.Instance.InteractWasPressedThisFrame() && !_openPanel && _inCollider)
+        if(_inCollider)
         {
-            Player.enabled = false;
-            panelDormir.SetActive(true);
-            LevelManager.Instance.SetFirstButton(SleepButton);
-            _openPanel = true;
-            PauseManager.Instance.OpenUI();
-
+            if (InputManager.Instance.InteractWasPressedThisFrame() && !GameManager.Instance.GetHaDormido())
+            {
+                Player.enabled = false;
+                panelDormir.SetActive(true);
+                LevelManager.Instance.SetFirstButton(SleepButton);
+            }
+            else if(GameManager.Instance.GetHaDormido()&& InputManager.Instance.ConfirmWasPressedThisFrame()) 
+            {
+                Player.enabled = false;
+                panelDormir.SetActive(false);
+            }
         }
-        else if (InputManager.Instance.PauseWasPressedThisFrame() && _openPanel)
-        {
-
-            Player.enabled = true;
-            panelDormir.SetActive(false);
-            _openPanel = false;
-            PauseManager.Instance.CloseUI();
-        }
-
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -75,8 +70,6 @@ public class Bed : MonoBehaviour
         {
             _inCollider = false;
             ButtonInteract.Deactivate();
-            _openPanel = false;
-            PauseManager.Instance.CloseUI();
 
         }
     }

@@ -104,7 +104,6 @@ public class NoteFlower : MonoBehaviour
             ImagesFlower[i].sprite = newSprite;
         }
         PauseManager.Instance.PauseVariable();
-        PauseManager.Instance.OpenUI();
         NotePanel.SetActive(true);
         _openNote = true;
         TextNote.text = "Pray thy God may save us, for this world is doomed.\r\nHope is a fragile thing… yet it lingers.\r\n\r\nFour flowers remain.\r\nFollow their hues, and heed what they carry.\r\n\r\nFor even in silence, they speak.";
@@ -114,7 +113,6 @@ public class NoteFlower : MonoBehaviour
     {
         NotePanel.SetActive(false);
         PauseManager.Instance.ResumeVariable();
-        PauseManager.Instance.CloseUI();
         _openNote = false;
     }
     public bool IsOpen

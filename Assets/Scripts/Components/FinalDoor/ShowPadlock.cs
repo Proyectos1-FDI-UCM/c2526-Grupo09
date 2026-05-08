@@ -41,14 +41,16 @@ public class ShowPadlock : MonoBehaviour
     void Update()
     {
         //solo si esta tocando la puerta y presionando E se ejecutara
-        if (InputManager.Instance.InteractWasPressedThisFrame() && !_openPad && _nearPad)
+        if (InputManager.Instance.InteractWasPressedThisFrame() && _nearPad&& !_openPad)
         {
-            InteractLock();
+              InteractLock();
         }
-        else if (InputManager.Instance.PauseWasPressedThisFrame() && _openPad)
+        else if(InputManager.Instance.ConfirmWasPressedThisFrame()&&_openPad)
         {
             CloseLock();
         }
+
+       
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -87,7 +89,6 @@ public class ShowPadlock : MonoBehaviour
         Padlock.SetActive(true);
         _openPad = true;
         LevelManager.Instance.SetFirstButton(FirstButton);
-        PauseManager.Instance.OpenUI();
     }
 
     public void CloseLock()
@@ -95,7 +96,6 @@ public class ShowPadlock : MonoBehaviour
         Padlock.SetActive(false);
         PauseManager.Instance.ResumeVariable();
         _openPad = false;
-        PauseManager.Instance.CloseUI();
     }
     public void DestroyPad()
     {
@@ -103,6 +103,8 @@ public class ShowPadlock : MonoBehaviour
         Padlock.SetActive(false);
         PauseManager.Instance.ResumeVariable();
     }
+
+   
 
     #endregion
 

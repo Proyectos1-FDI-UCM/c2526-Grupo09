@@ -75,6 +75,8 @@ public class InputManager : MonoBehaviour
     /// </summary>
     private InputAction _pause;
 
+
+    private InputAction _confirm;
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -174,7 +176,7 @@ public class InputManager : MonoBehaviour
     /// </summary>
     public bool InteractIsPressed()
     {
-        return _interact.IsPressed();
+        return _interact.WasPressedThisFrame();
     }
 
     /// <summary>
@@ -184,6 +186,10 @@ public class InputManager : MonoBehaviour
     public bool RunIsPressed()
     {
         return _run.IsPressed();
+    }
+    public bool ConfirmWasPressedThisFrame()
+    {
+        return _confirm.WasPressedThisFrame();
     }
 
     /// <summary>
@@ -282,6 +288,7 @@ public class InputManager : MonoBehaviour
         _pan.canceled += OnPan;
 
         _pause = _theController.Player.Pause;
+        _confirm =_theController.Player.Confirm;
     }
 
     /// <summary>
