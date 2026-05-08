@@ -37,7 +37,7 @@ La exploración, el silencio y la planificación serán fundamentales para sobre
 
 ### **Mando**
 - **Movimiento y acción**
-    - **_joystick izquierdo/D-pad_** - Sirve para moverse por el mapa y por las interfaces.
+    - **_Joystick izquierdo/D-pad_** - Sirve para moverse por el mapa y por las interfaces.
     - **_Botón X_** - Correr.
     - **_Botón A_** - Interactuar con elementos del entorno/ avanzar el diálogo.
 
@@ -50,7 +50,7 @@ La exploración, el silencio y la planificación serán fundamentales para sobre
     - **_Joystick derecho_** - Control del paneo de cámara.  
 
 - **Sistema**
-    - **_start_** - Abrir el menú de pausa.
+    - **_Start_** - Abrir el menú de pausa.
     - **_A_** - Seleccionar botón
     - **_B_** - salir de panel 
 
@@ -74,13 +74,14 @@ La exploración, el silencio y la planificación serán fundamentales para sobre
 - Al tener los cheats activos mientras hay una cutscene activa, las animaciones dejan de ejecutarse eventualmente.
 - Si sales al menú principal y entras al juego de nuevo, las animaciones paran por un rato.
 - Tienes que entrar y salir del collider de la cama para que pueda salir el panel si decides no dormir.
+- El botón de quit funciona cuando abres el juego, pero después no.
   
 ### _Si encuentra algún error durante el juego, crea un nuevo Issue con la plantilla Bug Report en Issues._
 
 ---
 # **Desarrolladores** 
-| <img src="https://github.com/asriela-q.png" width="25"> | **Diego Martín Guitiérrez** | [Diego Martín Guitiérrez](https://github.com/asriela-q) |  
-| <img src="https://github.com/espectral55.png" width="25"> | **Álvaro Sosa Rodrígez** | [Álvaro Sosa Rodrígez](https://github.com/espectral55) |  
+| <img src="https://github.com/asriela-q.png" width="25"> | **Diego Martín Gutiérrez** | [Diego Martín Gutiérrez](https://github.com/asriela-q) |  
+| <img src="https://github.com/espectral55.png" width="25"> | **Álvaro Sosa Rodríguez** | [Álvaro Sosa Rodríguez](https://github.com/espectral55) |  
 | <img src="https://github.com/InesUcm.png" width="25"> | **Inés de la Peña Kures** | [Inés de la Peña Kures](https://github.com/InesUcm) |  
 | <img src="https://github.com/tobt0bu.png" width="25"> | **Rafael Campos García** | [Rafael Campos García](https://github.com/tobt0bu) |  
 | <img src="https://github.com/kar-rv.png" width="25"> | **Carmen Rosino Vílchez** | [Carmen Rosino Vílchez](https://github.com/kar-rv) |  
@@ -142,7 +143,7 @@ La exploración, el silencio y la planificación serán fundamentales para sobre
 - **_Montón de rocas_**: [Karsiori(itch.io)](https://karsiori.itch.io/)
 - **_Arbusto_**: [makss122(reddit)](https://www.reddit.com/user/makss122/)
 - **_Candado y puerta_**: Hao Zheng.
-- **_Enemigo y Enemigo Final/Casa Inicial_** : Álvaro Sosa Rodrígez.
+- **_Enemigo y Enemigo Final/Casa Inicial_** : Álvaro Sosa Rodríguez.
 - El resto del arte que no ha sido mencionado ha sido realizado por el grupo.
  
 </details>
