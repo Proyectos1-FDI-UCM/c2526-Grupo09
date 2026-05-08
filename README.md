@@ -32,7 +32,8 @@ La exploración, el silencio y la planificación serán fundamentales para sobre
     - **_IJKL_** - Control del paneo de cámara.  
 - **Sistema**
     - **_ESC_** - Abrir el menú de pausa.
-    - **_Enter_** - Seleccionar botón   
+    - **_Enter_** - Seleccionar botón
+    - **_Q_** - salir de panel 
 
 ### **Mando**
 - **Movimiento y acción**
@@ -51,6 +52,7 @@ La exploración, el silencio y la planificación serán fundamentales para sobre
 - **Sistema**
     - **_start_** - Abrir el menú de pausa.
     - **_A_** - Seleccionar botón
+    - **_B_** - salir de panel 
 
 <p align="center">
   <img width="789" height="512" alt="image" src="https://github.com/user-attachments/assets/a41ae3e6-b7d3-4931-9318-5501e2c06921"/>
