@@ -168,6 +168,6 @@ La exploración, el silencio y la planificación serán fundamentales para sobre
 
 # ¡Gracias por jugar nuestro juego!
 <p align="center">
-<img width="511" height="300" alt="imagen" src="https://github.com/user-attachments/assets/e4670362-e327-4692-ba6a-ef0b7ee7903f" />
+<img width="1169" height="300" alt="imagen" src="https://github.com/user-attachments/assets/6b60f137-850d-46b6-bf24-cd1f8cb5ba52" />
 </p>
 
