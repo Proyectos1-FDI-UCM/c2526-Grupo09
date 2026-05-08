@@ -20,6 +20,8 @@ public class ShowPadlock : MonoBehaviour
     [SerializeField] private GameObject Padlock;
     [SerializeField] private GameObject FirstButton;
     [SerializeField] private AudioSource Sound;
+    [SerializeField] private PlayerMovement Player;
+
     /// <summary>
     /// Script del botón UI
     /// </summary>
@@ -85,7 +87,7 @@ public class ShowPadlock : MonoBehaviour
         {
             Sound.Play();
         }
-        PauseManager.Instance.PauseVariable();
+        Player.enabled = false;
         Padlock.SetActive(true);
         _openPad = true;
         LevelManager.Instance.SetFirstButton(FirstButton);
@@ -94,17 +96,16 @@ public class ShowPadlock : MonoBehaviour
     public void CloseLock()
     {
         Padlock.SetActive(false);
-        PauseManager.Instance.ResumeVariable();
+        Player.enabled = true;
         _openPad = false;
     }
     public void DestroyPad()
     {
         gameObject.SetActive(false);
         Padlock.SetActive(false);
-        PauseManager.Instance.ResumeVariable();
+        Player.enabled = true;
     }
 
-   
 
     #endregion
 

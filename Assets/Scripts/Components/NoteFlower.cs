@@ -24,6 +24,7 @@ public class NoteFlower : MonoBehaviour
     [SerializeField] private GameObject NotePanel;
     [SerializeField] private TextMeshProUGUI TextNote;
     [SerializeField] private FollowObjectUI FollowObject;
+    [SerializeField] private PlayerMovement Player;
 
     [SerializeField] private Sprite[] Colours=new Sprite[6];
     
@@ -103,7 +104,7 @@ public class NoteFlower : MonoBehaviour
             Sprite newSprite = GetSpriteByColor(flowers[i].FlowerColor);
             ImagesFlower[i].sprite = newSprite;
         }
-        PauseManager.Instance.PauseVariable();
+        Player.enabled = false;
         NotePanel.SetActive(true);
         _openNote = true;
         TextNote.text = "Pray thy God may save us, for this world is doomed.\r\nHope is a fragile thing… yet it lingers.\r\n\r\nFour flowers remain.\r\nFollow their hues, and heed what they carry.\r\n\r\nFor even in silence, they speak.";
@@ -112,7 +113,7 @@ public class NoteFlower : MonoBehaviour
     public void HideNote()
     {
         NotePanel.SetActive(false);
-        PauseManager.Instance.ResumeVariable();
+        Player.enabled = true;
         _openNote = false;
     }
     public bool IsOpen
