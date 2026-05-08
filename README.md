@@ -75,6 +75,7 @@ La exploración, el silencio y la planificación serán fundamentales para sobre
 - Si sales al menú principal y entras al juego de nuevo, las animaciones paran por un rato.
 - Tienes que entrar y salir del collider de la cama para que pueda salir el panel si decides no dormir.
 - El botón de quit funciona cuando abres el juego, pero después no.
+- El panel del candado, si le das al esc, se despausa el juego y puedes abrir el panel de pausa
   
 ### _Si encuentra algún error durante el juego, crea un nuevo Issue con la plantilla Bug Report en Issues._
 
