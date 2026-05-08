@@ -63,6 +63,10 @@ La exploración, el silencio y la planificación serán fundamentales para sobre
 <p align="center">
   <img width="1976" height="1102" alt="imagen" src="https://github.com/user-attachments/assets/6ebd8a29-e327-4700-bdec-89073b4ef1ec" />
 </p>
+
+<p align="center">
+<img width="2878" height="1618" alt="imagen" src="https://github.com/user-attachments/assets/7158333c-252b-4828-9e40-b68518fb75cd" />
+</p>
    
 <p align="center">
 <img width="1528" height="856" alt="imagen" src="https://github.com/user-attachments/assets/ffb5e340-ee48-433d-aad2-41bd7a093b55" />
@@ -163,3 +167,7 @@ La exploración, el silencio y la planificación serán fundamentales para sobre
 
 
 # ¡Gracias por jugar nuestro juego!
+<p align="center">
+<img width="511" height="300" alt="imagen" src="https://github.com/user-attachments/assets/e4670362-e327-4692-ba6a-ef0b7ee7903f" />
+</p>
+
