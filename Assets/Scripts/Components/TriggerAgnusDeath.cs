@@ -21,6 +21,7 @@ public class TriggerAgnusDeath : MonoBehaviour
     [SerializeField] private Sprite[] images;  // 4 fotos en orden
     [SerializeField] private PlayerMovement Player;
     [SerializeField] private GameObject Agnus;
+    [SerializeField] private GameObject AgnusDead;
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -39,6 +40,7 @@ public class TriggerAgnusDeath : MonoBehaviour
     void Start()
     {
         AgnusImage.sprite = images[0];
+        AgnusDead.SetActive(false);
     }
 
     /// <summary>
@@ -68,6 +70,7 @@ public class TriggerAgnusDeath : MonoBehaviour
                 if (_timer >= 2f)
                 {
                     Panel.SetActive(false);
+                    AgnusDead.SetActive(true);
                 }
             }
         }

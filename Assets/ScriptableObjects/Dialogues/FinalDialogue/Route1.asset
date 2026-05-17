@@ -31,7 +31,7 @@ MonoBehaviour:
   - character: {fileID: 11400000, guid: 93c580ac30e7bd54b84db33920e85a6f, type: 2}
     dialogueLine: Take care of yourself.
   - character: {fileID: 11400000, guid: e87ed0745fc98bd4b898847d672cbb01, type: 2}
-    dialogueLine: I love you Eve.
+    dialogueLine: I love you, Eve.
   - character: {fileID: 11400000, guid: 67ed60f38af4b474e8fb39bb24c7b0af, type: 2}
     dialogueLine: ...
   - character: {fileID: 11400000, guid: 2f37fd23eb690314993c9e733bfa4eca, type: 2}

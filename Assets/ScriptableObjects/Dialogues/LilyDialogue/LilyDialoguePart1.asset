@@ -20,8 +20,8 @@ MonoBehaviour:
   - character: {fileID: 11400000, guid: 93c580ac30e7bd54b84db33920e85a6f, type: 2}
     dialogueLine: "Oh you know\u2026"
   - character: {fileID: 11400000, guid: e87ed0745fc98bd4b898847d672cbb01, type: 2}
-    dialogueLine: "I\u2026 I just wanted to smell the scent of flowers for our last
-      day here\u2026"
+    dialogueLine: "I\u2026 I just wanted to smell the scent of the flowers for our
+      last day here\u2026"
   - character: {fileID: 11400000, guid: e87ed0745fc98bd4b898847d672cbb01, type: 2}
     dialogueLine: "But I haven\u2019t found anyone yet."
   - character: {fileID: 11400000, guid: b84bc399ccd85c047a921a5d9bf97124, type: 2}
@@ -31,17 +31,26 @@ MonoBehaviour:
   - character: {fileID: 11400000, guid: a1580e768646a4d4cb7e106bba431d0b, type: 2}
     dialogueLine: What? What 's wrong?
   - character: {fileID: 11400000, guid: b0515a637addc26428dc0bb0046873b4, type: 2}
-    dialogueLine: You are the last one.
+    dialogueLine: You are the last one. You are the last flower on Earth. Consuming
+      God's power...
   - character: {fileID: 11400000, guid: 7bd2146755de1cd40a43e1f48fc82523, type: 2}
-    dialogueLine: "I CAN\u2019T DO THIS ANYMORE"
+    dialogueLine: "I CAN\u2019T DO THIS ANYMORE. I CAN NOT DO THIS, AGNUS!!!!!!!!"
   - character: {fileID: 11400000, guid: fcf41119740863649a888151640fd2bb, type: 2}
-    dialogueLine: "I\u2019m so tired\u2026"
+    dialogueLine: "I\u2019m so tired\u2026 I just want this to end..."
   - character: {fileID: 11400000, guid: 93c580ac30e7bd54b84db33920e85a6f, type: 2}
-    dialogueLine: "Oh\u2026 I see\u2026"
+    dialogueLine: I don't understand, Eve.
   - character: {fileID: 11400000, guid: 93c580ac30e7bd54b84db33920e85a6f, type: 2}
-    dialogueLine: "Well\u2026"
+    dialogueLine: Who is Agnus?
+  - character: {fileID: 11400000, guid: b0515a637addc26428dc0bb0046873b4, type: 2}
+    dialogueLine: It's God. Its power has been consumed by the flowers of Lillith,
+      which have to be destroyed before the day ends.
+  - character: {fileID: 11400000, guid: b0515a637addc26428dc0bb0046873b4, type: 2}
+    dialogueLine: Agnus is capable of stoping the Apocalypse if I pick up those flowers.
+  - character: {fileID: 11400000, guid: fcf41119740863649a888151640fd2bb, type: 2}
+    dialogueLine: But... those flowers are inside people. And it seems you are one
+      of them.
   - character: {fileID: 11400000, guid: 1e845b191a59137458fd74ddf8544cf4, type: 2}
-    dialogueLine: You have to do it!
+    dialogueLine: Then, get rid of this flower!
   - character: {fileID: 11400000, guid: 1e845b191a59137458fd74ddf8544cf4, type: 2}
     dialogueLine: "You have come so far. You can\u2019t back out now."
   - character: {fileID: 11400000, guid: b0515a637addc26428dc0bb0046873b4, type: 2}
@@ -51,11 +60,12 @@ MonoBehaviour:
   - character: {fileID: 11400000, guid: a1580e768646a4d4cb7e106bba431d0b, type: 2}
     dialogueLine: "If it isn\u2019t by your hand it would be by the end of the apocalypse."
   - character: {fileID: 11400000, guid: fcf41119740863649a888151640fd2bb, type: 2}
-    dialogueLine: "I can\u2019t! I\u2019m not ready to live without you."
+    dialogueLine: "I can\u2019t! I\u2019m not ready to live like this. How could
+      I stand up after killing you?"
   - character: {fileID: 11400000, guid: 1e845b191a59137458fd74ddf8544cf4, type: 2}
-    dialogueLine: You have to do it Eve.
+    dialogueLine: 'You have to do it, Eve. You barely know me, it will get better. '
   - character: {fileID: 11400000, guid: 1e845b191a59137458fd74ddf8544cf4, type: 2}
-    dialogueLine: Your heart must not harbor any doubt.
+    dialogueLine: Your heart must not harbor any doubt. We will be OK.
   - character: {fileID: 11400000, guid: b0515a637addc26428dc0bb0046873b4, type: 2}
     dialogueLine: NO, PLEASE NO
   - character: {fileID: 11400000, guid: b0515a637addc26428dc0bb0046873b4, type: 2}

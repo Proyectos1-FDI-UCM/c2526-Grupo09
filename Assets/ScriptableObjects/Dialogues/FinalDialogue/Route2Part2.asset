@@ -24,14 +24,19 @@ MonoBehaviour:
   - character: {fileID: 11400000, guid: 2f37fd23eb690314993c9e733bfa4eca, type: 2}
     dialogueLine: "I realised I didn\u2019t want my sin to be forgiven."
   - character: {fileID: 11400000, guid: 67ed60f38af4b474e8fb39bb24c7b0af, type: 2}
-    dialogueLine: "I\u2026 I realised I\u2026 wanted to be with you."
+    dialogueLine: Not if it meant leaving you behind and never see you again.
   - character: {fileID: 11400000, guid: 67ed60f38af4b474e8fb39bb24c7b0af, type: 2}
-    dialogueLine: "Lily I\u2026 I love you."
+    dialogueLine: Lily, dying isn't as scary as watching someone you love doing so.
   - character: {fileID: 11400000, guid: e87ed0745fc98bd4b898847d672cbb01, type: 2}
-    dialogueLine: Oh Eve I love you too.
+    dialogueLine: '!!!'
   - character: {fileID: 11400000, guid: e87ed0745fc98bd4b898847d672cbb01, type: 2}
-    dialogueLine: I love you so much.
+    dialogueLine: Then let's die together, next to each other.
   - character: {fileID: 11400000, guid: 67ed60f38af4b474e8fb39bb24c7b0af, type: 2}
-    dialogueLine: I just wish to spend the rest of my days with you.
+    dialogueLine: I just wish to spend the rest of my time with you. Even if it means
+      the last 5 seconds of it.
   - character: {fileID: 11400000, guid: e87ed0745fc98bd4b898847d672cbb01, type: 2}
-    dialogueLine: "Death is not that scary if I\u2019m dying with you."
+    dialogueLine: I truly believe my life became complete after meeting you, Eve.
+  - character: {fileID: 11400000, guid: e87ed0745fc98bd4b898847d672cbb01, type: 2}
+    dialogueLine: That's because... God made you for me.
+  - character: {fileID: 11400000, guid: 2f37fd23eb690314993c9e733bfa4eca, type: 2}
+    dialogueLine: I can't ask for more.
